@@ -443,7 +443,14 @@ function RosterMode({watch,tw,wk}){
   const sp=useMemo(()=>snakePicks(draftPos),[draftPos]);
 
   // All players pool
-  const allPool=useMemo(()=>[...ALL_P,...ALL_B].sort((a,b)=>b.par-a.par),[]);
+  const allPool=useMemo(()=>{
+    const map=new Map();
+    [...ALL_P,...ALL_B].forEach(p=>{
+      const k=p.n+"~"+p.t;
+      if(!map.has(k)||p.pts>map.get(k).pts)map.set(k,p);
+    });
+    return[...map.values()].sort((a,b)=>a.adp-b.adp);
+  },[]);
 
   // Planned player keys
   const plannedKeys=useMemo(()=>{
