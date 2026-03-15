@@ -644,7 +644,7 @@ function RosterMode({watch,tw,wk}){
               h("th",{style:{...S,fontWeight:700,position:"sticky",top:0,background:"#1e1a14",cursor:"pointer",userSelect:"none",color:poolSort==="par"?"#f0e8d8":"#9a8e7a",borderBottom:poolSort==="par"?"2px solid #c8a878":"none"},onClick:()=>doPoolSort("par")},"PAR"+(poolSort==="par"?(poolAsc?" \u25B2":" \u25BC"):"")),
               h("th",{style:{...S,fontWeight:700,position:"sticky",top:0,background:"#1e1a14",cursor:"pointer",userSelect:"none",color:poolSort==="adp"?"#f0e8d8":"#9a8e7a",borderBottom:poolSort==="adp"?"2px solid #c8a878":"none"},onClick:()=>doPoolSort("adp")},"ADP"+(poolSort==="adp"?(poolAsc?" \u25B2":" \u25BC"):"")),
               selSlot?h("th",{style:{width:100,position:"sticky",top:0,background:"#1e1a14",textAlign:"center",fontSize:9,color:GOLD,fontWeight:700}},"ROUND"):null)),
-            h("tbody",null,...filteredPool.slice(0,150).map((p,i)=>{
+            h("tbody",null,...filteredPool.slice(0,550).map((p,i)=>{
               const isP=p.type==="P",wt=watch.has(wk(p));
               return h("tr",{key:p.n+p.t,style:{background:wt?"rgba(240,200,80,0.04)":i%2?"rgba(200,170,120,0.02)":"transparent",borderLeft:wt?"2px solid "+GOLD:"2px solid transparent"},
                 onMouseEnter:ev=>{ev.currentTarget.style.background="rgba(200,170,120,0.07)"},
