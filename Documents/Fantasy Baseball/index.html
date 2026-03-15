@@ -37,7 +37,15 @@ function gtc(t){return TC[t]||TC[t+"_"]||"#666";}
 const fm=(v,d)=>v!=null?Number(v).toFixed(d==null?1:d):"\u2014";
 
 // Build ALL from PIT+BAT
-const ALL_P=PIT.map(p=>({...p,type:"P"}));
+const ALL_P=PIT.map(p=>{
+  const o={...p,type:"P"};
+  // SP/RP dual-eligible: value at RP replacement (190) instead of SP (295)
+  if((p.pos||"").includes("SP")&&(p.pos||"").includes("RP")){
+    o.par=Math.round(p.pts-190);
+    o._rpAdj=true;
+  }
+  return o;
+});
 const ALL_B=BAT.map(b=>({...b,type:"B"}));
 
 // Snake helpers
