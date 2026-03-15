@@ -74,8 +74,8 @@ const SLOTS=[
   {id:"Util",l:"Util",m:p=>p.type==="B"},
   {id:"SP1",l:"SP",m:p=>p.type==="P"&&p.pt==="SP"},
   {id:"SP2",l:"SP",m:p=>p.type==="P"&&p.pt==="SP"},
-  {id:"RP1",l:"RP",m:p=>p.type==="P"&&p.pt==="RP"},
-  {id:"RP2",l:"RP",m:p=>p.type==="P"&&p.pt==="RP"},
+  {id:"RP1",l:"RP",m:p=>p.type==="P"&&(p.pos||"").includes("RP")},
+  {id:"RP2",l:"RP",m:p=>p.type==="P"&&(p.pos||"").includes("RP")},
   {id:"P",l:"P",m:p=>p.type==="P"},
   {id:"BN1",l:"BN",m:()=>true},{id:"BN2",l:"BN",m:()=>true},{id:"BN3",l:"BN",m:()=>true},
   {id:"BN4",l:"BN",m:()=>true},{id:"BN5",l:"BN",m:()=>true},
@@ -512,7 +512,7 @@ function RosterMode({watch,tw,wk}){
       const slot=rosterSlots.find(s=>s.id===selSlot);
       if(slot&&slot.pos!=="BN"&&slot.pos!=="Util"&&slot.pos!=="P"){
         if(slot.pos==="SP")arr=arr.filter(x=>x.type==="P"&&x.pt==="SP");
-        else if(slot.pos==="RP")arr=arr.filter(x=>x.type==="P"&&x.pt==="RP");
+        else if(slot.pos==="RP")arr=arr.filter(x=>x.type==="P"&&(x.pos||"").includes("RP"));
         else arr=arr.filter(x=>x.type==="B"&&(x.pos||"").includes(slot.pos));
       } else if(slot&&slot.pos==="P"){
         arr=arr.filter(x=>x.type==="P");
