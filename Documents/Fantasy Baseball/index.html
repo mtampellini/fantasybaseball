@@ -436,7 +436,9 @@ function RosterMode({watch,tw,wk}){
   const[search,setSearch]=useState("");
   const[posF,setPosF]=useState("ALL");
   const[view,setView]=useState("pos"); // "pos" or "round"
-  const[selSlot,setSelSlot]=useState(null); // which slot is being filled
+  const[selSlot,setSelSlot]=useState(null);
+  const[poolSort,setPoolSort]=useState("adp");
+  const[poolAsc,setPoolAsc]=useState(true); // which slot is being filled
   useEffect(()=>{try{localStorage.setItem("vnv_plan",JSON.stringify(plan))}catch(e){}},[plan]);
   useEffect(()=>{try{localStorage.setItem("vnv_dp",String(draftPos))}catch(e){}},[draftPos]);
 
@@ -449,7 +451,9 @@ function RosterMode({watch,tw,wk}){
       const k=p.n+"~"+p.t;
       if(!map.has(k)||p.pts>map.get(k).pts)map.set(k,p);
     });
-    return[...map.values()].sort((a,b)=>a.adp-b.adp);
+    const arr=[...map.values()].sort((a,b)=>b.par-a.par);
+    arr.forEach((p,i)=>{p.parRk=i+1;});
+    return arr.sort((a,b)=>a.adp-b.adp);
   },[]);
 
   // Planned player keys
@@ -512,8 +516,9 @@ function RosterMode({watch,tw,wk}){
       if(posF==="SP"||posF==="RP")arr=arr.filter(x=>x.type==="P"&&(x.pt===posF||(x.pos||"").includes(posF)));
       else arr=arr.filter(x=>x.type==="B"&&(x.pos||"").includes(posF));
     }
+    arr.sort((a,b)=>{const av=a[poolSort]??999999,bv=b[poolSort]??999999;const c=av>bv?1:av<bv?-1:0;return poolAsc?c:-c;});
     return arr;
-  },[allPool,plannedKeys,search,selSlot,posF]);
+  },[allPool,plannedKeys,search,selSlot,posF,poolSort,poolAsc]);
 
   // Build round-based view data
   const byRound=useMemo(()=>{
@@ -527,6 +532,7 @@ function RosterMode({watch,tw,wk}){
   },[plan]);
   const filledCount=Object.values(plan).filter(Boolean).length;
 
+  const doPoolSort=(col)=>{setPoolSort(prev=>{if(prev===col){setPoolAsc(a=>!a);return col;}setPoolAsc(col==="pts"||col==="par"?false:true);return col;});};
   const posOpts=["ALL","C","1B","2B","3B","SS","OF","DH","SP","RP"];
   const S={padding:"5px",textAlign:"right",color:"#b0a898",fontSize:11,fontVariantNumeric:"tabular-nums"};
 
@@ -633,9 +639,10 @@ function RosterMode({watch,tw,wk}){
           h("table",{style:{width:"100%",borderCollapse:"collapse",fontSize:10}},
             h("thead",null,h("tr",{style:{background:"#1e1a14"}},
               h("th",{style:{textAlign:"left",padding:"6px 8px",fontSize:9,fontWeight:700,color:"#9a8e7a",position:"sticky",top:0,background:"#1e1a14"}},"PLAYER"),
-              h("th",{style:{...S,fontWeight:700,color:"#9a8e7a",position:"sticky",top:0,background:"#1e1a14"}},"PTS"),
-              h("th",{style:{...S,fontWeight:700,color:"#9a8e7a",position:"sticky",top:0,background:"#1e1a14"}},"PAR"),
-              h("th",{style:{...S,fontWeight:700,color:"#9a8e7a",position:"sticky",top:0,background:"#1e1a14"}},"ADP"),
+              h("th",{style:{...S,fontWeight:700,position:"sticky",top:0,background:"#1e1a14",cursor:"pointer",userSelect:"none",color:poolSort==="parRk"?"#f0e8d8":"#9a8e7a",borderBottom:poolSort==="parRk"?"2px solid #c8a878":"none"},onClick:()=>doPoolSort("parRk")},"PAR#"+(poolSort==="parRk"?(poolAsc?" \u25B2":" \u25BC"):"")),
+              h("th",{style:{...S,fontWeight:700,position:"sticky",top:0,background:"#1e1a14",cursor:"pointer",userSelect:"none",color:poolSort==="pts"?"#f0e8d8":"#9a8e7a",borderBottom:poolSort==="pts"?"2px solid #c8a878":"none"},onClick:()=>doPoolSort("pts")},"PTS"+(poolSort==="pts"?(poolAsc?" \u25B2":" \u25BC"):"")),
+              h("th",{style:{...S,fontWeight:700,position:"sticky",top:0,background:"#1e1a14",cursor:"pointer",userSelect:"none",color:poolSort==="par"?"#f0e8d8":"#9a8e7a",borderBottom:poolSort==="par"?"2px solid #c8a878":"none"},onClick:()=>doPoolSort("par")},"PAR"+(poolSort==="par"?(poolAsc?" \u25B2":" \u25BC"):"")),
+              h("th",{style:{...S,fontWeight:700,position:"sticky",top:0,background:"#1e1a14",cursor:"pointer",userSelect:"none",color:poolSort==="adp"?"#f0e8d8":"#9a8e7a",borderBottom:poolSort==="adp"?"2px solid #c8a878":"none"},onClick:()=>doPoolSort("adp")},"ADP"+(poolSort==="adp"?(poolAsc?" \u25B2":" \u25BC"):"")),
               selSlot?h("th",{style:{width:100,position:"sticky",top:0,background:"#1e1a14",textAlign:"center",fontSize:9,color:GOLD,fontWeight:700}},"ROUND"):null)),
             h("tbody",null,...filteredPool.slice(0,150).map((p,i)=>{
               const isP=p.type==="P",wt=watch.has(wk(p));
@@ -651,6 +658,7 @@ function RosterMode({watch,tw,wk}){
                     h("div",{style:{fontSize:8,color:"#9a8e7a",display:"flex",gap:2}},
                       h("span",{style:{fontWeight:700}},p.t),
                       h("span",{style:{background:isP?((p.pt||"")==="SP"?"rgba(80,140,200,0.18)":"rgba(220,160,80,0.18)"):"rgba(100,180,100,0.12)",color:isP?((p.pt||"")==="SP"?"#7ab8e8":"#e0b870"):"#90c890",padding:"0 3px",borderRadius:2,fontWeight:700,fontSize:7}},p.pos))))),
+                h("td",{style:{...S,fontWeight:700,color:p.parRk<=10?"#40ff60":p.parRk<=30?"#60c860":p.parRk<=60?"#90b890":"#b0a898"}},p.parRk),
                 h("td",{style:{...S,fontWeight:700,color:GOLD}},Math.round(p.pts)),
                 h("td",{style:{...S,color:p.par>200?"#60c860":"#b0a898"}},Math.round(p.par)),
                 h("td",{style:{...S,color:p.adp>=900?"#504840":"#b0a898"}},p.adp>=900?999:p.adp),
