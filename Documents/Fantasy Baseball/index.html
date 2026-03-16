@@ -440,13 +440,17 @@ function MockMode({watch,tw,wk}){
 function RosterMode({watch,tw,wk}){
   const[draftPos,setDraftPos]=useState(()=>{try{return parseInt(localStorage.getItem("vnv_dp"))||11}catch(e){return 11}});
   const[plan,setPlan]=useState(()=>{try{return JSON.parse(localStorage.getItem("vnv_plan"))||{}}catch(e){return{}}});
+  const[rdPlan,setRdPlan]=useState(()=>{try{return JSON.parse(localStorage.getItem("vnv_rdp"))||{}}catch(e){return{}}});
   const[search,setSearch]=useState("");
   const[posF,setPosF]=useState("ALL");
   const[view,setView]=useState("pos"); // "pos" or "round"
   const[selSlot,setSelSlot]=useState(null);
+  const[selRd,setSelRd]=useState(null);
+  const[selCol,setSelCol]=useState(null);
   const[poolSort,setPoolSort]=useState("adp");
   const[poolAsc,setPoolAsc]=useState(true); // which slot is being filled
   useEffect(()=>{try{localStorage.setItem("vnv_plan",JSON.stringify(plan))}catch(e){}},[plan]);
+  useEffect(()=>{try{localStorage.setItem("vnv_rdp",JSON.stringify(rdPlan))}catch(e){}},[rdPlan]);
   useEffect(()=>{try{localStorage.setItem("vnv_dp",String(draftPos))}catch(e){}},[draftPos]);
 
   const sp=useMemo(()=>snakePicks(draftPos),[draftPos]);
@@ -469,6 +473,15 @@ function RosterMode({watch,tw,wk}){
     Object.values(plan).forEach(v=>{if(v&&v.n)s.add(v.n+"~"+v.t);});
     return s;
   },[plan]);
+  const rdPlannedKeys=useMemo(()=>{
+    const s=new Set();
+    Object.values(rdPlan).forEach(rd=>{
+      if(rd.likely)s.add(rd.likely.n+"~"+rd.likely.t);
+      if(rd.backup)s.add(rd.backup.n+"~"+rd.backup.t);
+      if(rd.stretch)s.add(rd.stretch.n+"~"+rd.stretch.t);
+    });
+    return s;
+  },[rdPlan]);
 
   // Roster structure with rounds
   const rosterSlots=[
@@ -498,14 +511,29 @@ function RosterMode({watch,tw,wk}){
     setSelSlot(null);
     setSearch("");
   };
+  const assignRd=(rd,col,player)=>{
+    setRdPlan(prev=>{
+      const cur=prev[rd]||{};
+      return{...prev,[rd]:{...cur,[col]:player}};
+    });
+    setSelRd(null);setSelCol(null);setSearch("");
+  };
+  const unassignRd=(rd,col)=>{
+    setRdPlan(prev=>{
+      const cur={...(prev[rd]||{})};
+      delete cur[col];
+      if(!cur.likely&&!cur.backup&&!cur.stretch){const n={...prev};delete n[rd];return n;}
+      return{...prev,[rd]:cur};
+    });
+  };
   const unassign=(slotId)=>{
     setPlan(prev=>{const n={...prev};delete n[slotId];return n;});
   };
-  const clearAll=()=>{if(confirm("Clear entire roster plan?"))setPlan({});};
+  const clearAll=()=>{if(confirm("Clear entire plan?")){setPlan({});setRdPlan({});}};
 
   // Filtered available pool when selecting
   const filteredPool=useMemo(()=>{
-    let arr=allPool.filter(p=>!plannedKeys.has(p.n+"~"+p.t));
+    let arr=allPool.filter(p=>view==="pos"?!plannedKeys.has(p.n+"~"+p.t):!rdPlannedKeys.has(p.n+"~"+p.t));
     if(search){const s=search.toLowerCase();arr=arr.filter(x=>(x.n||"").toLowerCase().includes(s)||(x.t||"").toLowerCase().includes(s));}
     if(selSlot){
       const slot=rosterSlots.find(s=>s.id===selSlot);
@@ -525,7 +553,7 @@ function RosterMode({watch,tw,wk}){
     }
     arr.sort((a,b)=>{const av=a[poolSort]??999999,bv=b[poolSort]??999999;const c=av>bv?1:av<bv?-1:0;return poolAsc?c:-c;});
     return arr;
-  },[allPool,plannedKeys,search,selSlot,posF,poolSort,poolAsc]);
+  },[allPool,plannedKeys,rdPlannedKeys,search,selSlot,posF,poolSort,poolAsc,view]);
 
   // Build round-based view data
   const byRound=useMemo(()=>{
@@ -599,38 +627,42 @@ function RosterMode({watch,tw,wk}){
             })
           ):
           // === BY ROUND VIEW ===
-          h("div",{style:{padding:"8px"}},
+          h("div",{style:{padding:"6px"}},
+            // Header row
+            h("div",{style:{display:"flex",gap:4,padding:"4px 6px",borderBottom:"1px solid rgba(200,170,120,0.1)",marginBottom:4}},
+              h("div",{style:{width:60}}),
+              h("div",{style:{flex:1,fontSize:9,color:GOLD,fontWeight:700,textAlign:"center"}},"LIKELY"),
+              h("div",{style:{flex:1,fontSize:9,color:"#7ab8e8",fontWeight:700,textAlign:"center"}},"BACKUP"),
+              h("div",{style:{flex:1,fontSize:9,color:"#b090d0",fontWeight:700,textAlign:"center"}},"STRETCH")),
             ...sp.map((pick,i)=>{
               const rd=i+1;
-              const entry=byRound.find(([k,v])=>v.targetRd===rd);
-              const pl=entry?entry[1]:null;
-              const slotId=entry?entry[0]:null;
-              const slotLabel=slotId?rosterSlots.find(s=>s.id===slotId)?.l:"";
-              return h("div",{key:rd,style:{padding:"6px 8px",display:"flex",alignItems:"center",gap:8,borderRadius:4,marginBottom:2,
-                background:pl?"rgba(200,170,120,0.04)":"transparent",
-                borderLeft:pl?"3px solid "+GOLD:"3px solid rgba(200,170,120,0.06)"}},
-                h("div",{style:{width:50,flexShrink:0}},
-                  h("div",{style:{fontSize:12,fontWeight:800,color:"#d4c8b0"}},"Rd "+rd),
-                  h("div",{style:{fontSize:9,color:"#7a7060"}},"Pick #"+pick)),
-                pl?h("div",{style:{flex:1,display:"flex",alignItems:"center",gap:6}},
-                  h("div",{style:{width:3,height:18,borderRadius:1,background:gtc(pl.t),flexShrink:0}}),
+              const entry=rdPlan[rd]||{};
+              const renderCell=(col,color)=>{
+                const pl=entry[col];
+                const isSel=selRd===rd&&selCol===col;
+                if(pl)return h("div",{style:{flex:1,padding:"3px 5px",background:"rgba(200,170,120,0.04)",borderRadius:3,display:"flex",alignItems:"center",gap:4,border:"1px solid rgba(200,170,120,0.06)",minWidth:0}},
+                  h("div",{style:{width:2,height:14,borderRadius:1,background:gtc(pl.t),flexShrink:0}}),
                   h("div",{style:{flex:1,minWidth:0}},
-                    h("div",{style:{fontWeight:600,color:"#f0e8d8",fontSize:12}},pl.n),
-                    h("div",{style:{fontSize:9,color:"#9a8e7a",display:"flex",gap:4}},
-                      h("span",{style:{color:"#c8a878"}},slotLabel),
-                      h("span",null,pl.pos),
-                      h("span",{style:{color:GOLD}},Math.round(pl.pts)),
-                      pl.adp<900?h("span",{style:{color:"#7a7060"}},"ADP "+pl.adp):null)),
-                  h("button",{onClick:()=>unassign(slotId),style:{padding:"2px 6px",borderRadius:2,fontSize:9,cursor:"pointer",background:"rgba(200,80,80,0.1)",border:"1px solid rgba(200,80,80,0.2)",color:"#d07050"}},"\u2715")
-                ):h("span",{style:{color:"#3a3830",fontSize:10,fontStyle:"italic"}},"Unplanned")
-              );
+                    h("div",{style:{fontWeight:600,color:color,fontSize:10,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}},pl.n),
+                    h("div",{style:{fontSize:7,color:"#7a7060"}},pl.pos," ",h("span",{style:{color:GOLD}},Math.round(pl.pts))," ADP:",pl.adp<900?pl.adp:"?")),
+                  h("span",{onClick:()=>unassignRd(rd,col),style:{cursor:"pointer",fontSize:9,color:"#7a7060",flexShrink:0}},"✕"));
+                return h("div",{onClick:()=>{if(isSel){setSelRd(null);setSelCol(null);}else{setSelRd(rd);setSelCol(col);setSelSlot(null);}},
+                  style:{flex:1,padding:"6px 5px",borderRadius:3,cursor:"pointer",textAlign:"center",fontSize:9,
+                    background:isSel?"rgba(200,170,120,0.12)":"rgba(200,170,120,0.02)",
+                    border:isSel?"1px solid "+color:"1px dashed rgba(200,170,120,0.08)",
+                    color:isSel?color:"#3a3830"}},isSel?"Pick from pool →":"+");
+              };
+              return h("div",{key:rd,style:{display:"flex",gap:4,alignItems:"center",marginBottom:3}},
+                h("div",{style:{width:60,flexShrink:0}},
+                  h("div",{style:{fontSize:11,fontWeight:800,color:"#d4c8b0"}},"Rd "+rd),
+                  h("div",{style:{fontSize:8,color:"#7a7060"}},"#"+pick)),
+                renderCell("likely",GOLD),
+                renderCell("backup","#7ab8e8"),
+                renderCell("stretch","#b090d0"));
             })
           )
       ),
-
-      // RIGHT: Player Pool
-      h("div",{style:{flex:1,display:"flex",flexDirection:"column",overflow:"hidden"}},
-        // Pool header
+      // Pool header
         h("div",{style:{padding:"6px 10px",borderBottom:"1px solid rgba(200,170,120,0.08)",display:"flex",gap:4,flexWrap:"wrap",alignItems:"center"}},
           selSlot?h("div",{style:{display:"flex",alignItems:"center",gap:6}},
             h("span",{style:{fontSize:11,color:GOLD,fontWeight:700}},"Filling: "+rosterSlots.find(s=>s.id===selSlot)?.l),
@@ -650,7 +682,7 @@ function RosterMode({watch,tw,wk}){
               h("th",{style:{...S,fontWeight:700,position:"sticky",top:0,background:"#1e1a14",cursor:"pointer",userSelect:"none",color:poolSort==="pts"?"#f0e8d8":"#9a8e7a",borderBottom:poolSort==="pts"?"2px solid #c8a878":"none"},onClick:()=>doPoolSort("pts")},"PTS"+(poolSort==="pts"?(poolAsc?" \u25B2":" \u25BC"):"")),
               h("th",{style:{...S,fontWeight:700,position:"sticky",top:0,background:"#1e1a14",cursor:"pointer",userSelect:"none",color:poolSort==="par"?"#f0e8d8":"#9a8e7a",borderBottom:poolSort==="par"?"2px solid #c8a878":"none"},onClick:()=>doPoolSort("par")},"PAR"+(poolSort==="par"?(poolAsc?" \u25B2":" \u25BC"):"")),
               h("th",{style:{...S,fontWeight:700,position:"sticky",top:0,background:"#1e1a14",cursor:"pointer",userSelect:"none",color:poolSort==="adp"?"#f0e8d8":"#9a8e7a",borderBottom:poolSort==="adp"?"2px solid #c8a878":"none"},onClick:()=>doPoolSort("adp")},"ADP"+(poolSort==="adp"?(poolAsc?" \u25B2":" \u25BC"):"")),
-              selSlot?h("th",{style:{width:100,position:"sticky",top:0,background:"#1e1a14",textAlign:"center",fontSize:9,color:GOLD,fontWeight:700}},"ROUND"):null)),
+              (selSlot||selRd)?h("th",{style:{width:100,position:"sticky",top:0,background:"#1e1a14",textAlign:"center",fontSize:9,color:GOLD,fontWeight:700}},selRd?"PICK":"ROUND"):null)),
             h("tbody",null,...filteredPool.slice(0,550).map((p,i)=>{
               const isP=p.type==="P",wt=watch.has(wk(p));
               return h("tr",{key:p.n+p.t,style:{background:wt?"rgba(240,200,80,0.04)":i%2?"rgba(200,170,120,0.02)":"transparent",borderLeft:wt?"2px solid "+GOLD:"2px solid transparent"},
@@ -669,6 +701,12 @@ function RosterMode({watch,tw,wk}){
                 h("td",{style:{...S,fontWeight:700,color:GOLD}},Math.round(p.pts)),
                 h("td",{style:{...S,color:p.par>200?"#60c860":"#b0a898"}},Math.round(p.par)),
                 h("td",{style:{...S,color:p.adp>=900?"#504840":"#b0a898"}},p.adp>=900?999:p.adp),
+                selRd?h("td",{style:{padding:"4px",textAlign:"center"}},
+                  h("button",{onClick:()=>assignRd(selRd,selCol,p),style:{padding:"3px 10px",borderRadius:3,fontSize:9,fontWeight:800,cursor:"pointer",
+                    background:selCol==="likely"?"rgba(240,200,80,0.15)":selCol==="backup"?"rgba(120,180,230,0.15)":"rgba(180,140,210,0.15)",
+                    border:"1px solid "+(selCol==="likely"?GOLD:selCol==="backup"?"#7ab8e8":"#b090d0"),
+                    color:selCol==="likely"?GOLD:selCol==="backup"?"#7ab8e8":"#b090d0"}},
+                    selCol==="likely"?"Likely":selCol==="backup"?"Backup":"Stretch")):
                 selSlot?h("td",{style:{padding:"4px",textAlign:"center"}},
                   h("select",{onChange:ev=>{const rd=parseInt(ev.target.value);if(rd)assign(selSlot,p,rd);},defaultValue:"",
                     style:{padding:"3px 4px",borderRadius:3,fontSize:10,fontWeight:700,cursor:"pointer",background:"rgba(200,170,120,0.1)",border:"1px solid rgba(200,170,120,0.2)",color:"#f0e8d8",appearance:"auto"}},
@@ -678,8 +716,7 @@ function RosterMode({watch,tw,wk}){
               );
             }))))
       )
-    )
-  );
+    );
 }
 
 ReactDOM.render(h(App),document.getElementById("root"));
