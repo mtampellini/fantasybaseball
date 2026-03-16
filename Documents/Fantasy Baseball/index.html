@@ -93,14 +93,13 @@ function aiPick(avail,roster){
   const has={};SLOTS.forEach(s=>{if(roster[s.id])has[s.l]=(has[s.l]||0)+1;});
   const sc=avail.map(p=>{
     let s=1000-p.adp;
-    if(p.type==="B"&&(p.pos||"").includes("C")&&!has.C)s+=15;
-    if(p.type==="B"&&(p.pos||"").includes("SS")&&!has.SS)s+=5;
-    if(p.type==="P"&&p.pt==="RP"&&(has.RP||0)<2)s+=5;
+    if(p.type==="B"&&(p.pos||"").includes("C")&&!has.C)s+=3;
+    if(p.type==="P"&&p.pt==="RP"&&(has.RP||0)<2)s+=2;
     return{...p,_s:s};
   });
   sc.sort((a,b)=>b._s-a._s);
-  const t=sc.slice(0,3),r=Math.random();
-  return t.length<2?t[0]:r<0.7?t[0]:r<0.9?t[1]:t[2]||t[0];
+  const t=sc.slice(0,2),r=Math.random();
+  return t.length<2?t[0]:r<0.85?t[0]:t[1];
 }
 
 // ====== MAIN APP ======
