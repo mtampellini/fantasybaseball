@@ -607,7 +607,7 @@ function RosterMode({watch,tw,wk}){
                   const pl=plan[slot.id];
                   const isSel=selSlot===slot.id;
                   return h("div",{key:slot.id,
-                    onClick:()=>!pl&&setSelSlot(isSel?null:slot.id),
+                    onClick:()=>{if(!pl){setSelSlot(isSel?null:slot.id);setSelRd(null);setSelCol(null);}},
                     style:{padding:"6px 8px",display:"flex",alignItems:"center",gap:8,borderRadius:4,marginBottom:2,cursor:pl?"default":"pointer",
                       background:isSel?"rgba(200,170,120,0.12)":pl?"rgba(200,170,120,0.04)":"rgba(200,170,120,0.01)",
                       border:isSel?"1px solid #c8a878":"1px solid transparent"}},
@@ -671,12 +671,16 @@ function RosterMode({watch,tw,wk}){
       ),
       // Pool header
         h("div",{style:{padding:"6px 10px",borderBottom:"1px solid rgba(200,170,120,0.08)",display:"flex",gap:4,flexWrap:"wrap",alignItems:"center"}},
+          selRd?h("div",{style:{display:"flex",alignItems:"center",gap:6}},
+            h("span",{style:{fontSize:11,color:selCol==="likely"?GOLD:selCol==="backup"?"#7ab8e8":"#b090d0",fontWeight:700}},"Rd "+selRd+" \u2022 "+(selCol==="likely"?"Likely":selCol==="backup"?"Backup":"Stretch")),
+            h("span",{style:{fontSize:9,color:"#7a7060"}},"Pick a player"),
+            h("button",{onClick:()=>{setSelRd(null);setSelCol(null);setSearch("")},style:{padding:"2px 8px",borderRadius:3,fontSize:9,cursor:"pointer",background:"rgba(200,170,120,0.1)",border:"1px solid rgba(200,170,120,0.15)",color:"#9a8e7a"}},"\u2715 Cancel")):
           selSlot?h("div",{style:{display:"flex",alignItems:"center",gap:6}},
             h("span",{style:{fontSize:11,color:GOLD,fontWeight:700}},"Filling: "+rosterSlots.find(s=>s.id===selSlot)?.l),
             h("span",{style:{fontSize:9,color:"#7a7060"}},"Pick a round then a player"),
             h("button",{onClick:()=>{setSelSlot(null);setSearch("")},style:{padding:"2px 8px",borderRadius:3,fontSize:9,cursor:"pointer",background:"rgba(200,170,120,0.1)",border:"1px solid rgba(200,170,120,0.15)",color:"#9a8e7a"}},"\u2715 Cancel")):
           h("span",{style:{fontSize:11,color:"#9a8e7a",fontWeight:600}},"PLAYER POOL"),
-          !selSlot?h(React.Fragment,null,
+          !(selSlot||selRd)?h(React.Fragment,null,
             h("input",{type:"text",placeholder:"Search...",value:search,onChange:ev=>setSearch(ev.target.value),style:{width:130,padding:"4px 7px",background:"rgba(200,170,120,0.06)",border:"1px solid rgba(200,170,120,0.15)",borderRadius:3,color:"#e0d4b8",fontSize:10,marginLeft:6}}),
             ...posOpts.map(f=>h("button",{key:f,onClick:()=>setPosF(f),style:{padding:"3px 6px",borderRadius:3,fontSize:8,fontWeight:700,cursor:"pointer",border:posF===f?"1px solid #c8a878":"1px solid rgba(200,170,120,0.1)",background:posF===f?"rgba(200,170,120,0.2)":"transparent",color:posF===f?"#f0e8d8":"#9a8e7a"}},f))):null,
           h("span",{style:{fontSize:9,color:"#7a7060",marginLeft:"auto"}},filteredPool.length)),
