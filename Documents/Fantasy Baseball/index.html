@@ -480,8 +480,9 @@ function RosterMode({watch,tw,wk}){
       if(rd.backup)s.add(rd.backup.n+"~"+rd.backup.t);
       if(rd.stretch)s.add(rd.stretch.n+"~"+rd.stretch.t);
     });
+    Object.values(plan).forEach(v=>{if(v&&v.n)s.add(v.n+"~"+v.t);});
     return s;
-  },[rdPlan]);
+  },[rdPlan,plan]);
 
   // Roster structure with rounds
   const rosterSlots=[
@@ -637,15 +638,21 @@ function RosterMode({watch,tw,wk}){
             ...sp.map((pick,i)=>{
               const rd=i+1;
               const entry=rdPlan[rd]||{};
+              const planEntry=Object.values(plan).find(v=>v&&v.targetRd===rd);
               const renderCell=(col,color)=>{
-                const pl=entry[col];
+                const pl=col==="likely"?(entry.likely||planEntry||null):entry[col];
                 const isSel=selRd===rd&&selCol===col;
                 if(pl)return h("div",{style:{flex:1,padding:"3px 5px",background:"rgba(200,170,120,0.04)",borderRadius:3,display:"flex",alignItems:"center",gap:4,border:"1px solid rgba(200,170,120,0.06)",minWidth:0}},
                   h("div",{style:{width:2,height:14,borderRadius:1,background:gtc(pl.t),flexShrink:0}}),
                   h("div",{style:{flex:1,minWidth:0}},
                     h("div",{style:{fontWeight:600,color:color,fontSize:10,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}},pl.n),
                     h("div",{style:{fontSize:7,color:"#7a7060"}},pl.pos," ",h("span",{style:{color:GOLD}},Math.round(pl.pts))," ADP:",pl.adp<900?pl.adp:"?")),
-                  h("span",{onClick:()=>unassignRd(rd,col),style:{cursor:"pointer",fontSize:9,color:"#7a7060",flexShrink:0}},"✕"));
+                  h("span",{onClick:()=>{
+                    if(col==="likely"&&!entry.likely&&planEntry){
+                      const slotId=Object.entries(plan).find(([k,v])=>v&&v.targetRd===rd);
+                      if(slotId)unassign(slotId[0]);
+                    }else{unassignRd(rd,col);}
+                  },style:{cursor:"pointer",fontSize:9,color:"#7a7060",flexShrink:0}},"✕"));
                 return h("div",{onClick:()=>{if(isSel){setSelRd(null);setSelCol(null);}else{setSelRd(rd);setSelCol(col);setSelSlot(null);}},
                   style:{flex:1,padding:"6px 5px",borderRadius:3,cursor:"pointer",textAlign:"center",fontSize:9,
                     background:isSel?"rgba(200,170,120,0.12)":"rgba(200,170,120,0.02)",
