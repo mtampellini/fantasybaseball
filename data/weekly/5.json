@@ -1,0 +1,114 @@
+[
+  {
+    "team_id": 1,
+    "team_name": "Pine Barrens",
+    "hitting": 305.0,
+    "pitching": 106.0,
+    "total": 411.0,
+    "week": 5
+  },
+  {
+    "team_id": 3,
+    "team_name": "Chicks Dig Longballs",
+    "hitting": 261.0,
+    "pitching": 99.75,
+    "total": 360.75,
+    "week": 5
+  },
+  {
+    "team_id": 2,
+    "team_name": "Balcony Tears",
+    "hitting": 316.0,
+    "pitching": 88.17,
+    "total": 404.17,
+    "week": 5
+  },
+  {
+    "team_id": 12,
+    "team_name": "The SS Express",
+    "hitting": 303.5,
+    "pitching": 126.17,
+    "total": 429.67,
+    "week": 5
+  },
+  {
+    "team_id": 4,
+    "team_name": "Diamond Dogs",
+    "hitting": 270.5,
+    "pitching": 46.75,
+    "total": 317.25,
+    "week": 5
+  },
+  {
+    "team_id": 11,
+    "team_name": "Tamp Slam",
+    "hitting": 271.0,
+    "pitching": 189.58,
+    "total": 460.58,
+    "week": 5
+  },
+  {
+    "team_id": 5,
+    "team_name": "Rayhood",
+    "hitting": 313.0,
+    "pitching": 118.5,
+    "total": 431.5,
+    "week": 5
+  },
+  {
+    "team_id": 8,
+    "team_name": "Mama's Juiced Meatballs",
+    "hitting": 297.0,
+    "pitching": 66.5,
+    "total": 363.5,
+    "week": 5
+  },
+  {
+    "team_id": 6,
+    "team_name": "KING JULIAN",
+    "hitting": 231.5,
+    "pitching": 89.83,
+    "total": 321.33,
+    "week": 5
+  },
+  {
+    "team_id": 13,
+    "team_name": "Wally Cats",
+    "hitting": 270.0,
+    "pitching": 85.17,
+    "total": 355.17,
+    "week": 5
+  },
+  {
+    "team_id": 7,
+    "team_name": "LB Jefes",
+    "hitting": 312.0,
+    "pitching": 67.83,
+    "total": 379.83,
+    "week": 5
+  },
+  {
+    "team_id": 14,
+    "team_name": "Short Porchers",
+    "hitting": 297.5,
+    "pitching": 47.17,
+    "total": 344.67,
+    "week": 5
+  },
+  {
+    "team_id": 9,
+    "team_name": "Soto Shuffle",
+    "hitting": 222.5,
+    "pitching": 27.33,
+    "total": 249.83,
+    "week": 5
+  },
+  {
+    "team_id": 10,
+    "team_name": "South Park Cows",
+    "hitting": 318.5,
+    "pitching": 72.17,
+    "total": 390.67,
+    "week": 5
+  }
+]

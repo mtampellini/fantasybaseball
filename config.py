@@ -6,9 +6,9 @@ YAHOO_TEAM_ID = "11"
 TEAM_NAME = "Tamp Slam"
 LEAGUE_NAME = "Il Nuovo Vesuvio"
 
-# Number of FAs to pull
-FA_PITCHER_COUNT = 30
-FA_HITTER_COUNT = 30
+# Number of FAs to display (after hybrid rerank). Pool = 2x this count.
+FA_PITCHER_COUNT = 50
+FA_HITTER_COUNT = 50
 
 # Per-start xwOBA depth
 PER_START_DEPTH = 5

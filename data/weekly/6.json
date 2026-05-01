@@ -1,0 +1,114 @@
+[
+  {
+    "team_id": 1,
+    "team_name": "Pine Barrens",
+    "hitting": 153.5,
+    "pitching": 40.92,
+    "total": 194.42,
+    "week": 6
+  },
+  {
+    "team_id": 10,
+    "team_name": "South Park Cows",
+    "hitting": 152.5,
+    "pitching": 30.92,
+    "total": 183.42,
+    "week": 6
+  },
+  {
+    "team_id": 2,
+    "team_name": "Balcony Tears",
+    "hitting": 138.5,
+    "pitching": 46.42,
+    "total": 184.92,
+    "week": 6
+  },
+  {
+    "team_id": 7,
+    "team_name": "LB Jefes",
+    "hitting": 131.0,
+    "pitching": 55.0,
+    "total": 186.0,
+    "week": 6
+  },
+  {
+    "team_id": 3,
+    "team_name": "Chicks Dig Longballs",
+    "hitting": 175.5,
+    "pitching": 68.67,
+    "total": 244.17,
+    "week": 6
+  },
+  {
+    "team_id": 12,
+    "team_name": "The SS Express",
+    "hitting": 128.5,
+    "pitching": 63.5,
+    "total": 192.0,
+    "week": 6
+  },
+  {
+    "team_id": 4,
+    "team_name": "Diamond Dogs",
+    "hitting": 153.5,
+    "pitching": 7.08,
+    "total": 160.58,
+    "week": 6
+  },
+  {
+    "team_id": 9,
+    "team_name": "Soto Shuffle",
+    "hitting": 163.5,
+    "pitching": 47.0,
+    "total": 210.5,
+    "week": 6
+  },
+  {
+    "team_id": 5,
+    "team_name": "Rayhood",
+    "hitting": 141.0,
+    "pitching": 47.17,
+    "total": 188.17,
+    "week": 6
+  },
+  {
+    "team_id": 11,
+    "team_name": "Tamp Slam",
+    "hitting": 170.0,
+    "pitching": 52.08,
+    "total": 222.08,
+    "week": 6
+  },
+  {
+    "team_id": 6,
+    "team_name": "KING JULIAN",
+    "hitting": 123.5,
+    "pitching": 78.5,
+    "total": 202.0,
+    "week": 6
+  },
+  {
+    "team_id": 8,
+    "team_name": "Mama's Juiced Meatballs",
+    "hitting": 153.5,
+    "pitching": 59.92,
+    "total": 213.42,
+    "week": 6
+  },
+  {
+    "team_id": 13,
+    "team_name": "Wally Cats",
+    "hitting": 159.5,
+    "pitching": 39.0,
+    "total": 198.5,
+    "week": 6
+  },
+  {
+    "team_id": 14,
+    "team_name": "Short Porchers",
+    "hitting": 116.5,
+    "pitching": 56.92,
+    "total": 173.42,
+    "week": 6
+  }
+]

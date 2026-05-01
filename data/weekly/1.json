@@ -1,0 +1,114 @@
+[
+  {
+    "team_id": 1,
+    "team_name": "Pine Barrens",
+    "hitting": 85.0,
+    "pitching": 82.0,
+    "total": 167.0,
+    "week": 1
+  },
+  {
+    "team_id": 14,
+    "team_name": "Short Porchers",
+    "hitting": 164.5,
+    "pitching": 47.58,
+    "total": 212.08,
+    "week": 1
+  },
+  {
+    "team_id": 2,
+    "team_name": "Balcony Tears",
+    "hitting": 135.0,
+    "pitching": 92.83,
+    "total": 227.83,
+    "week": 1
+  },
+  {
+    "team_id": 8,
+    "team_name": "Mama's Juiced Meatballs",
+    "hitting": 145.5,
+    "pitching": 55.08,
+    "total": 200.58,
+    "week": 1
+  },
+  {
+    "team_id": 3,
+    "team_name": "Chicks Dig Longballs",
+    "hitting": 174.0,
+    "pitching": 62.75,
+    "total": 236.75,
+    "week": 1
+  },
+  {
+    "team_id": 13,
+    "team_name": "Wally Cats",
+    "hitting": 165.0,
+    "pitching": 44.0,
+    "total": 209.0,
+    "week": 1
+  },
+  {
+    "team_id": 4,
+    "team_name": "Diamond Dogs",
+    "hitting": 158.5,
+    "pitching": 88.75,
+    "total": 247.25,
+    "week": 1
+  },
+  {
+    "team_id": 5,
+    "team_name": "Rayhood",
+    "hitting": 180.0,
+    "pitching": 129.33,
+    "total": 309.33,
+    "week": 1
+  },
+  {
+    "team_id": 6,
+    "team_name": "KING JULIAN",
+    "hitting": 104.5,
+    "pitching": 39.58,
+    "total": 144.08,
+    "week": 1
+  },
+  {
+    "team_id": 10,
+    "team_name": "South Park Cows",
+    "hitting": 146.0,
+    "pitching": 19.33,
+    "total": 165.33,
+    "week": 1
+  },
+  {
+    "team_id": 7,
+    "team_name": "LB Jefes",
+    "hitting": 187.5,
+    "pitching": 66.08,
+    "total": 253.58,
+    "week": 1
+  },
+  {
+    "team_id": 11,
+    "team_name": "Tamp Slam",
+    "hitting": 119.5,
+    "pitching": 46.5,
+    "total": 166.0,
+    "week": 1
+  },
+  {
+    "team_id": 9,
+    "team_name": "Soto Shuffle",
+    "hitting": 136.0,
+    "pitching": 39.67,
+    "total": 175.67,
+    "week": 1
+  },
+  {
+    "team_id": 12,
+    "team_name": "The SS Express",
+    "hitting": 146.5,
+    "pitching": 51.67,
+    "total": 198.17,
+    "week": 1
+  }
+]

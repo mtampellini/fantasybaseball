@@ -1,0 +1,114 @@
+[
+  {
+    "team_id": 1,
+    "team_name": "Pine Barrens",
+    "hitting": 197.0,
+    "pitching": 134.42,
+    "total": 331.42,
+    "week": 4
+  },
+  {
+    "team_id": 2,
+    "team_name": "Balcony Tears",
+    "hitting": 335.5,
+    "pitching": 108.42,
+    "total": 443.92,
+    "week": 4
+  },
+  {
+    "team_id": 3,
+    "team_name": "Chicks Dig Longballs",
+    "hitting": 322.5,
+    "pitching": 89.25,
+    "total": 411.75,
+    "week": 4
+  },
+  {
+    "team_id": 9,
+    "team_name": "Soto Shuffle",
+    "hitting": 338.5,
+    "pitching": 86.75,
+    "total": 425.25,
+    "week": 4
+  },
+  {
+    "team_id": 4,
+    "team_name": "Diamond Dogs",
+    "hitting": 229.5,
+    "pitching": 159.17,
+    "total": 388.67,
+    "week": 4
+  },
+  {
+    "team_id": 8,
+    "team_name": "Mama's Juiced Meatballs",
+    "hitting": 329.0,
+    "pitching": 92.5,
+    "total": 421.5,
+    "week": 4
+  },
+  {
+    "team_id": 5,
+    "team_name": "Rayhood",
+    "hitting": 259.0,
+    "pitching": 136.75,
+    "total": 395.75,
+    "week": 4
+  },
+  {
+    "team_id": 13,
+    "team_name": "Wally Cats",
+    "hitting": 253.0,
+    "pitching": 113.58,
+    "total": 366.58,
+    "week": 4
+  },
+  {
+    "team_id": 6,
+    "team_name": "KING JULIAN",
+    "hitting": 271.0,
+    "pitching": 60.08,
+    "total": 331.08,
+    "week": 4
+  },
+  {
+    "team_id": 14,
+    "team_name": "Short Porchers",
+    "hitting": 286.0,
+    "pitching": 111.33,
+    "total": 397.33,
+    "week": 4
+  },
+  {
+    "team_id": 7,
+    "team_name": "LB Jefes",
+    "hitting": 298.5,
+    "pitching": 42.92,
+    "total": 341.42,
+    "week": 4
+  },
+  {
+    "team_id": 12,
+    "team_name": "The SS Express",
+    "hitting": 322.5,
+    "pitching": 119.0,
+    "total": 441.5,
+    "week": 4
+  },
+  {
+    "team_id": 10,
+    "team_name": "South Park Cows",
+    "hitting": 362.0,
+    "pitching": 98.42,
+    "total": 460.42,
+    "week": 4
+  },
+  {
+    "team_id": 11,
+    "team_name": "Tamp Slam",
+    "hitting": 239.0,
+    "pitching": 173.42,
+    "total": 412.42,
+    "week": 4
+  }
+]

@@ -69,17 +69,140 @@ td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
 .tag-il { background: var(--red); color: white; }
 .tag-dtd { background: var(--orange); color: white; }
 .tag-na { background: #888; color: white; }
+.tag-waiver { background: var(--blue); color: white; }
 .dim { color: var(--muted); }
 .per-start { font-family: SFMono-Regular, Menlo, monospace; font-size: 10.5px; }
 .dot { color: var(--muted); margin: 0 4px; }
 .note { color: var(--muted); font-size: 10px; margin-top: 4px; }
+
+.weekly-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 8px;
+}
+.weekly-grid table { font-size: 11px; }
+.weekly-grid h3 { margin-top: 0; }
+.me-row { background: var(--good-bg); font-weight: 600; }
+.me-row td { font-weight: 600; }
+.in-progress-tag {
+  display: inline-block;
+  background: var(--orange);
+  color: white;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-left: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  vertical-align: middle;
+}
+table.sortable th { cursor: pointer; user-select: none; }
+table.sortable th:hover { color: var(--blue); }
+table.sortable th[data-sort-dir="asc"]::after  { content: " \25B2"; color: var(--blue); }
+table.sortable th[data-sort-dir="desc"]::after { content: " \25BC"; color: var(--blue); }
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+.chart-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+}
+.chart-box h4 {
+  margin: 0 0 8px 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.chart-line-other {
+  stroke: var(--muted);
+  stroke-width: 1;
+  opacity: 0.35;
+  fill: none;
+}
+.chart-line-other:hover {
+  opacity: 0.9;
+  stroke: var(--text);
+  stroke-width: 1.5;
+}
+.chart-line-me {
+  stroke: var(--blue);
+  stroke-width: 2.5;
+  fill: none;
+}
+.chart-dot-me {
+  fill: var(--blue);
+}
+.chart-axis {
+  stroke: var(--border);
+}
+.chart-tick {
+  fill: var(--muted);
+  font-size: 9px;
+}
+.chart-x-label {
+  fill: var(--muted);
+  font-size: 10px;
+}
+.stat-boxes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 8px 0 12px 0;
+}
+.stat-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+  text-align: center;
+}
+.stat-box .label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.stat-box .rank {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1;
+}
+.stat-box .of {
+  font-size: 14px;
+  color: var(--muted);
+}
+.stat-box .detail {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.summary-line {
+  background: var(--highlight-bg);
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  margin: 8px 0 0 0;
+}
+.diff-pos { color: var(--green); font-weight: 600; }
+.diff-neg { color: var(--red); font-weight: 600; }
 </style>
 </head>
 <body>
 
 <header>
   <h1>Tamp Slam Daily Report</h1>
-  <p class="meta">2026-05-01 · Week 6 · Record  · Updated 2026-05-01 18:21:19</p>
+  <p class="meta">2026-05-01 · Week 6 · Record  · Updated 2026-05-01 16:25:42</p>
 </header>
 
 <section class="section">
@@ -155,10 +278,272 @@ td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
 
 </section>
 
+
 <section class="section">
-  <h2>Free Agent Hitters (Top 30)</h2>
+  <h2>League Standings &amp; Distributions</h2>
   
-<table>
+<h3 style="margin-top: 24px;">Standings</h3>
+<table class="sortable">
+  <thead>
+    <tr>
+      <th class="r">Rank</th>
+      <th>Team</th>
+      <th class="c">Record</th>
+      <th class="r">Win%</th>
+      <th class="c">GB</th>
+      <th class="r">PF</th>
+      <th class="r">PA</th>
+      <th class="r">PF-PA</th>
+      <th class="r">Waiver</th>
+      <th class="r">Moves</th>
+      <th class="r">Trades</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr class=""><td class="r">1</td><td class="nm">Balcony Tears</td><td class="c">4-1</td><td class="r">0.800</td><td class="c dim">-</td><td class="r"><strong>1845.67</strong></td><td class="r dim">1673.75</td><td class="r diff-pos">+171.9</td><td class="r">9</td><td class="r">21</td><td class="r dim">0</td></tr>
+<tr class=""><td class="r">2</td><td class="nm">Rayhood</td><td class="c">4-1</td><td class="r">0.800</td><td class="c dim">-</td><td class="r"><strong>1842.17</strong></td><td class="r dim">1709.08</td><td class="r diff-pos">+133.1</td><td class="r">3</td><td class="r">19</td><td class="r dim">0</td></tr>
+<tr class=""><td class="r">3</td><td class="nm">The SS Express</td><td class="c">4-1</td><td class="r">0.800</td><td class="c dim">-</td><td class="r"><strong>1796.76</strong></td><td class="r dim">1653.01</td><td class="r diff-pos">+143.7</td><td class="r">5</td><td class="r">11</td><td class="r dim">0</td></tr>
+<tr class=""><td class="r">4</td><td class="nm">Mama&#x27;s Juiced Meatballs</td><td class="c">3-2</td><td class="r">0.600</td><td class="c dim">1</td><td class="r"><strong>1948.08</strong></td><td class="r dim">1716.09</td><td class="r diff-pos">+232.0</td><td class="r">2</td><td class="r">8</td><td class="r dim">0</td></tr>
+<tr class=""><td class="r">5</td><td class="nm">South Park Cows</td><td class="c">3-2</td><td class="r">0.600</td><td class="c dim">1</td><td class="r"><strong>1703.76</strong></td><td class="r dim">1674.33</td><td class="r diff-pos">+29.4</td><td class="r">10</td><td class="r">17</td><td class="r dim">0</td></tr>
+<tr class=""><td class="r">6</td><td class="nm">Pine Barrens</td><td class="c">3-2</td><td class="r">0.600</td><td class="c dim">1</td><td class="r"><strong>1693.58</strong></td><td class="r dim">1736.42</td><td class="r diff-neg">-42.8</td><td class="r">4</td><td class="r">22</td><td class="r dim">0</td></tr>
+<tr class=""><td class="r">7</td><td class="nm">Wally Cats</td><td class="c">3-2</td><td class="r">0.600</td><td class="c dim">1</td><td class="r"><strong>1582.42</strong></td><td class="r dim">1552.75</td><td class="r diff-pos">+29.7</td><td class="r">8</td><td class="r">14</td><td class="r dim">1</td></tr>
+<tr class="me-row"><td class="r">8</td><td class="nm">Tamp Slam</td><td class="c">2-3</td><td class="r">0.400</td><td class="c dim">2</td><td class="r"><strong>1819.50</strong></td><td class="r dim">1706.58</td><td class="r diff-pos">+112.9</td><td class="r">13</td><td class="r">21</td><td class="r dim">1</td></tr>
+<tr class=""><td class="r">9</td><td class="nm">KING JULIAN</td><td class="c">2-3</td><td class="r">0.400</td><td class="c dim">2</td><td class="r"><strong>1743.32</strong></td><td class="r dim">1709.75</td><td class="r diff-pos">+33.6</td><td class="r">14</td><td class="r">24</td><td class="r dim">1</td></tr>
+<tr class=""><td class="r">10</td><td class="nm">LB Jefes</td><td class="c">2-3</td><td class="r">0.400</td><td class="c dim">2</td><td class="r"><strong>1665.92</strong></td><td class="r dim">1729.00</td><td class="r diff-neg">-63.1</td><td class="r">7</td><td class="r">7</td><td class="r dim">0</td></tr>
+<tr class=""><td class="r">11</td><td class="nm">Short Porchers</td><td class="c">2-3</td><td class="r">0.400</td><td class="c dim">2</td><td class="r"><strong>1626.92</strong></td><td class="r dim">1609.75</td><td class="r diff-pos">+17.2</td><td class="r">11</td><td class="r">10</td><td class="r dim">0</td></tr>
+<tr class=""><td class="r">12</td><td class="nm">Soto Shuffle</td><td class="c">2-3</td><td class="r">0.400</td><td class="c dim">2</td><td class="r"><strong>1533.33</strong></td><td class="r dim">1638.76</td><td class="r diff-neg">-105.4</td><td class="r">1</td><td class="r">24</td><td class="r dim">0</td></tr>
+<tr class=""><td class="r">13</td><td class="nm">Chicks Dig Longballs</td><td class="c">1-4</td><td class="r">0.200</td><td class="c dim">3</td><td class="r"><strong>1562.00</strong></td><td class="r dim">1851.25</td><td class="r diff-neg">-289.2</td><td class="r">12</td><td class="r">18</td><td class="r dim">0</td></tr>
+<tr class=""><td class="r">14</td><td class="nm">Diamond Dogs</td><td class="c">0-5</td><td class="r">0.000</td><td class="c dim">4</td><td class="r"><strong>1643.17</strong></td><td class="r dim">2046.08</td><td class="r diff-neg">-402.9</td><td class="r">6</td><td class="r">19</td><td class="r dim">1</td></tr>
+  </tbody>
+</table>
+<p class="note">PF = points for. PA = points against. Click any column header to sort. Tamp Slam highlighted.</p>
+
+
+<h3>Current Week — Week 6<span class="in-progress-tag">in progress</span></h3>
+<table class="sortable">
+  <thead>
+    <tr>
+      <th class="r">Rank</th>
+      <th>Team</th>
+      <th class="r">Hitting</th>
+      <th class="r">Hit#</th>
+      <th class="r">Pitching</th>
+      <th class="r">Pit#</th>
+      <th class="r">Total</th>
+      <th class="r">vs avg</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr class=""><td class="r">1</td><td class="nm">Chicks Dig Longballs</td><td class="r">175.50</td><td class="r dim">#1</td><td class="r">68.67</td><td class="r dim">#2</td><td class="r"><strong>244.17</strong></td><td class="r dim">—</td></tr>
+<tr class="me-row"><td class="r">2</td><td class="nm">Tamp Slam</td><td class="r">170.00</td><td class="r dim">#2</td><td class="r">52.08</td><td class="r dim">#7</td><td class="r"><strong>222.08</strong></td><td class="r diff-pos">+25.4</td></tr>
+<tr class=""><td class="r">3</td><td class="nm">Mama&#x27;s Juiced Meatballs</td><td class="r">153.50</td><td class="r dim">#7</td><td class="r">59.92</td><td class="r dim">#4</td><td class="r"><strong>213.42</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">4</td><td class="nm">Soto Shuffle</td><td class="r">163.50</td><td class="r dim">#3</td><td class="r">47.00</td><td class="r dim">#9</td><td class="r"><strong>210.50</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">5</td><td class="nm">KING JULIAN</td><td class="r">123.50</td><td class="r dim">#13</td><td class="r">78.50</td><td class="r dim">#1</td><td class="r"><strong>202.00</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">6</td><td class="nm">Wally Cats</td><td class="r">159.50</td><td class="r dim">#4</td><td class="r">39.00</td><td class="r dim">#12</td><td class="r"><strong>198.50</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">7</td><td class="nm">Pine Barrens</td><td class="r">153.50</td><td class="r dim">#5</td><td class="r">40.92</td><td class="r dim">#11</td><td class="r"><strong>194.42</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">8</td><td class="nm">The SS Express</td><td class="r">128.50</td><td class="r dim">#12</td><td class="r">63.50</td><td class="r dim">#3</td><td class="r"><strong>192.00</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">9</td><td class="nm">Rayhood</td><td class="r">141.00</td><td class="r dim">#9</td><td class="r">47.17</td><td class="r dim">#8</td><td class="r"><strong>188.17</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">10</td><td class="nm">LB Jefes</td><td class="r">131.00</td><td class="r dim">#11</td><td class="r">55.00</td><td class="r dim">#6</td><td class="r"><strong>186.00</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">11</td><td class="nm">Balcony Tears</td><td class="r">138.50</td><td class="r dim">#10</td><td class="r">46.42</td><td class="r dim">#10</td><td class="r"><strong>184.92</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">12</td><td class="nm">South Park Cows</td><td class="r">152.50</td><td class="r dim">#8</td><td class="r">30.92</td><td class="r dim">#13</td><td class="r"><strong>183.42</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">13</td><td class="nm">Short Porchers</td><td class="r">116.50</td><td class="r dim">#14</td><td class="r">56.92</td><td class="r dim">#5</td><td class="r"><strong>173.42</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">14</td><td class="nm">Diamond Dogs</td><td class="r">153.50</td><td class="r dim">#6</td><td class="r">7.08</td><td class="r dim">#14</td><td class="r"><strong>160.58</strong></td><td class="r dim">—</td></tr>
+  </tbody>
+</table>
+<p class="note">League avg so far: hit 147.2 / pitch 49.5 / total 196.7. Tamp Slam highlighted. Click any column header to sort.</p>
+
+
+<h3>Most Recent Completed Week — Week 5</h3>
+<table class="sortable">
+  <thead>
+    <tr>
+      <th class="r">Rank</th>
+      <th>Team</th>
+      <th class="r">Hitting</th>
+      <th class="r">Hit#</th>
+      <th class="r">Pitching</th>
+      <th class="r">Pit#</th>
+      <th class="r">Total</th>
+      <th class="r">vs avg</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr class="me-row"><td class="r">1</td><td class="nm">Tamp Slam</td><td class="r">271.00</td><td class="r dim">#9</td><td class="r">189.58</td><td class="r dim">#1</td><td class="r"><strong>460.58</strong></td><td class="r diff-pos">+87.7</td></tr>
+<tr class=""><td class="r">2</td><td class="nm">Rayhood</td><td class="r">313.00</td><td class="r dim">#3</td><td class="r">118.50</td><td class="r dim">#3</td><td class="r"><strong>431.50</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">3</td><td class="nm">The SS Express</td><td class="r">303.50</td><td class="r dim">#6</td><td class="r">126.17</td><td class="r dim">#2</td><td class="r"><strong>429.67</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">4</td><td class="nm">Pine Barrens</td><td class="r">305.00</td><td class="r dim">#5</td><td class="r">106.00</td><td class="r dim">#4</td><td class="r"><strong>411.00</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">5</td><td class="nm">Balcony Tears</td><td class="r">316.00</td><td class="r dim">#2</td><td class="r">88.17</td><td class="r dim">#7</td><td class="r"><strong>404.17</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">6</td><td class="nm">South Park Cows</td><td class="r">318.50</td><td class="r dim">#1</td><td class="r">72.17</td><td class="r dim">#9</td><td class="r"><strong>390.67</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">7</td><td class="nm">LB Jefes</td><td class="r">312.00</td><td class="r dim">#4</td><td class="r">67.83</td><td class="r dim">#10</td><td class="r"><strong>379.83</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">8</td><td class="nm">Mama&#x27;s Juiced Meatballs</td><td class="r">297.00</td><td class="r dim">#8</td><td class="r">66.50</td><td class="r dim">#11</td><td class="r"><strong>363.50</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">9</td><td class="nm">Chicks Dig Longballs</td><td class="r">261.00</td><td class="r dim">#12</td><td class="r">99.75</td><td class="r dim">#5</td><td class="r"><strong>360.75</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">10</td><td class="nm">Wally Cats</td><td class="r">270.00</td><td class="r dim">#11</td><td class="r">85.17</td><td class="r dim">#8</td><td class="r"><strong>355.17</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">11</td><td class="nm">Short Porchers</td><td class="r">297.50</td><td class="r dim">#7</td><td class="r">47.17</td><td class="r dim">#12</td><td class="r"><strong>344.67</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">12</td><td class="nm">KING JULIAN</td><td class="r">231.50</td><td class="r dim">#13</td><td class="r">89.83</td><td class="r dim">#6</td><td class="r"><strong>321.33</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">13</td><td class="nm">Diamond Dogs</td><td class="r">270.50</td><td class="r dim">#10</td><td class="r">46.75</td><td class="r dim">#13</td><td class="r"><strong>317.25</strong></td><td class="r dim">—</td></tr>
+<tr class=""><td class="r">14</td><td class="nm">Soto Shuffle</td><td class="r">222.50</td><td class="r dim">#14</td><td class="r">27.33</td><td class="r dim">#14</td><td class="r"><strong>249.83</strong></td><td class="r dim">—</td></tr>
+  </tbody>
+</table>
+<p class="note">League avg this week: hit 284.9 / pitch 87.9 / total 372.9. Tamp Slam highlighted. Click any column header to sort.</p>
+
+
+<h3 style="margin-top: 24px;">Season Distributions (W2, W3, W4, W5)</h3>
+<p class="note">Population SD (n, not n-1). Week 1 excluded as a known short-week outlier. Tamp Slam highlighted.</p>
+<div class="weekly-grid">
+
+<div>
+  <h3>Hitting Consistency (low SD = consistent)</h3>
+  <table class="sortable">
+    <thead><tr><th class="r">#</th><th>Team</th><th class="r">Mean</th><th class="r">SD</th></tr></thead>
+    <tbody>
+<tr class=""><td class="r dim">1</td><td class="nm">Wally Cats</td><td class="r ">248.2</td><td class="r good">17.4</td></tr>
+<tr class="me-row"><td class="r dim">2</td><td class="nm">Tamp Slam</td><td class="r ">268.8</td><td class="r good">18.0</td></tr>
+<tr class=""><td class="r dim">3</td><td class="nm">Rayhood</td><td class="r ">274.9</td><td class="r good">22.4</td></tr>
+<tr class=""><td class="r dim">4</td><td class="nm">Balcony Tears</td><td class="r ">302.6</td><td class="r good">24.5</td></tr>
+<tr class=""><td class="r dim">5</td><td class="nm">South Park Cows</td><td class="r ">323.1</td><td class="r good">27.2</td></tr>
+<tr class=""><td class="r dim">6</td><td class="nm">Diamond Dogs</td><td class="r ">239.5</td><td class="r good">30.0</td></tr>
+<tr class=""><td class="r dim">7</td><td class="nm">Short Porchers</td><td class="r ">261.2</td><td class="r good">34.9</td></tr>
+<tr class=""><td class="r dim">8</td><td class="nm">Pine Barrens</td><td class="r ">247.1</td><td class="r good">38.4</td></tr>
+<tr class=""><td class="r dim">9</td><td class="nm">KING JULIAN</td><td class="r ">287.2</td><td class="r good">39.0</td></tr>
+<tr class=""><td class="r dim">10</td><td class="nm">The SS Express</td><td class="r ">280.2</td><td class="r ">40.4</td></tr>
+<tr class=""><td class="r dim">11</td><td class="nm">Mama&#x27;s Juiced Meatballs</td><td class="r ">321.2</td><td class="r ">41.3</td></tr>
+<tr class=""><td class="r dim">12</td><td class="nm">Soto Shuffle</td><td class="r ">266.2</td><td class="r ">44.0</td></tr>
+<tr class=""><td class="r dim">13</td><td class="nm">LB Jefes</td><td class="r ">263.8</td><td class="r ">46.3</td></tr>
+<tr class=""><td class="r dim">14</td><td class="nm">Chicks Dig Longballs</td><td class="r ">250.0</td><td class="r ">47.1</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div>
+  <h3>Pitching Consistency (low SD = consistent)</h3>
+  <table class="sortable">
+    <thead><tr><th class="r">#</th><th>Team</th><th class="r">Mean</th><th class="r">SD</th></tr></thead>
+    <tbody>
+<tr class=""><td class="r dim">1</td><td class="nm">The SS Express</td><td class="r ">119.4</td><td class="r good">7.1</td></tr>
+<tr class=""><td class="r dim">2</td><td class="nm">Wally Cats</td><td class="r ">95.1</td><td class="r good">16.2</td></tr>
+<tr class=""><td class="r dim">3</td><td class="nm">Pine Barrens</td><td class="r ">134.5</td><td class="r good">19.8</td></tr>
+<tr class=""><td class="r dim">4</td><td class="nm">South Park Cows</td><td class="r ">61.5</td><td class="r good">25.6</td></tr>
+<tr class=""><td class="r dim">5</td><td class="nm">Chicks Dig Longballs</td><td class="r ">81.3</td><td class="r good">25.7</td></tr>
+<tr class=""><td class="r dim">6</td><td class="nm">Short Porchers</td><td class="r ">92.5</td><td class="r good">26.4</td></tr>
+<tr class=""><td class="r dim">7</td><td class="nm">Balcony Tears</td><td class="r ">101.8</td><td class="r good">26.4</td></tr>
+<tr class=""><td class="r dim">8</td><td class="nm">Rayhood</td><td class="r ">108.3</td><td class="r good">29.4</td></tr>
+<tr class=""><td class="r dim">9</td><td class="nm">Mama&#x27;s Juiced Meatballs</td><td class="r ">115.6</td><td class="r ">37.3</td></tr>
+<tr class="me-row"><td class="r dim">10</td><td class="nm">Tamp Slam</td><td class="r ">144.6</td><td class="r ">37.4</td></tr>
+<tr class=""><td class="r dim">11</td><td class="nm">Soto Shuffle</td><td class="r ">73.2</td><td class="r ">37.5</td></tr>
+<tr class=""><td class="r dim">12</td><td class="nm">LB Jefes</td><td class="r ">89.3</td><td class="r ">38.5</td></tr>
+<tr class=""><td class="r dim">13</td><td class="nm">Diamond Dogs</td><td class="r ">109.5</td><td class="r ">47.4</td></tr>
+<tr class=""><td class="r dim">14</td><td class="nm">KING JULIAN</td><td class="r ">112.6</td><td class="r vbad">61.4</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div>
+  <h3>Total Output (mean desc)</h3>
+  <table class="sortable">
+    <thead><tr><th class="r">#</th><th>Team</th><th class="r">Mean</th><th class="r">SD</th></tr></thead>
+    <tbody>
+<tr class=""><td class="r dim">1</td><td class="nm">Mama&#x27;s Juiced Meatballs</td><td class="r ">436.9</td><td class="r ">63.6</td></tr>
+<tr class="me-row"><td class="r dim">2</td><td class="nm">Tamp Slam</td><td class="r ">413.4</td><td class="r ">29.3</td></tr>
+<tr class=""><td class="r dim">3</td><td class="nm">Balcony Tears</td><td class="r ">404.5</td><td class="r ">38.0</td></tr>
+<tr class=""><td class="r dim">4</td><td class="nm">KING JULIAN</td><td class="r ">399.8</td><td class="r ">84.6</td></tr>
+<tr class=""><td class="r dim">5</td><td class="nm">The SS Express</td><td class="r ">399.6</td><td class="r ">46.0</td></tr>
+<tr class=""><td class="r dim">6</td><td class="nm">South Park Cows</td><td class="r ">384.6</td><td class="r ">49.9</td></tr>
+<tr class=""><td class="r dim">7</td><td class="nm">Rayhood</td><td class="r ">383.2</td><td class="r ">37.3</td></tr>
+<tr class=""><td class="r dim">8</td><td class="nm">Pine Barrens</td><td class="r ">381.6</td><td class="r ">32.1</td></tr>
+<tr class=""><td class="r dim">9</td><td class="nm">Short Porchers</td><td class="r ">353.7</td><td class="r ">28.8</td></tr>
+<tr class=""><td class="r dim">10</td><td class="nm">LB Jefes</td><td class="r ">353.1</td><td class="r ">39.0</td></tr>
+<tr class=""><td class="r dim">11</td><td class="nm">Diamond Dogs</td><td class="r ">349.0</td><td class="r ">55.2</td></tr>
+<tr class=""><td class="r dim">12</td><td class="nm">Wally Cats</td><td class="r ">343.4</td><td class="r ">18.1</td></tr>
+<tr class=""><td class="r dim">13</td><td class="nm">Soto Shuffle</td><td class="r ">339.4</td><td class="r ">65.0</td></tr>
+<tr class=""><td class="r dim">14</td><td class="nm">Chicks Dig Longballs</td><td class="r ">331.3</td><td class="r ">61.0</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+
+
+<h3 style="margin-top: 24px;">My Position — Tamp Slam</h3>
+<div class="stat-boxes">
+  <div class="stat-box">
+    <div class="label">Hitting Consistency Rank</div>
+    <div><span class="rank">#2</span><span class="of"> / 14</span></div>
+    <div class="detail">μ 268.8 · SD 18.03</div>
+  </div>
+  <div class="stat-box">
+    <div class="label">Pitching Consistency Rank</div>
+    <div><span class="rank">#10</span><span class="of"> / 14</span></div>
+    <div class="detail">μ 144.6 · SD 37.42</div>
+  </div>
+  <div class="stat-box">
+    <div class="label">Total Output Rank</div>
+    <div><span class="rank">#2</span><span class="of"> / 14</span></div>
+    <div class="detail">μ 413.4/wk</div>
+  </div>
+</div>
+<p class="summary-line">
+  You're <strong>#2</strong> in hitting consistency (SD 18.03),
+  <strong>#10</strong> in pitching consistency (SD 37.42),
+  and <strong>#2</strong> in total mean output (413.4/wk).
+</p>
+
+
+<h3 style="margin-top: 24px;">Weekly Trend (W2 → most recent)</h3>
+<p class="note">Tamp Slam in blue; other teams in gray. Hover any line for the team name.</p>
+<div class="chart-grid">
+
+<div class="chart-box">
+  <h4>Total Points</h4>
+  <svg viewBox="0 0 340 220" width="100%" preserveAspectRatio="xMidYMid meet">
+    <line class="chart-axis" x1="38" y1="10" x2="38" y2="192" />
+    <line class="chart-axis" x1="38" y1="192" x2="328" y2="192" />
+    <line class="chart-axis" x1="35" y1="192.0" x2="38" y2="192.0" /><text class="chart-tick" x="33" y="195.0" text-anchor="end">226</text><line class="chart-axis" x1="35" y1="146.5" x2="38" y2="146.5" /><text class="chart-tick" x="33" y="149.5" text-anchor="end">310</text><line class="chart-axis" x1="35" y1="101.0" x2="38" y2="101.0" /><text class="chart-tick" x="33" y="104.0" text-anchor="end">394</text><line class="chart-axis" x1="35" y1="55.5" x2="38" y2="55.5" /><text class="chart-tick" x="33" y="58.5" text-anchor="end">478</text><line class="chart-axis" x1="35" y1="10.0" x2="38" y2="10.0" /><text class="chart-tick" x="33" y="13.0" text-anchor="end">562</text>
+    <text class="chart-x-label" x="38.0" y="206" text-anchor="middle">W2</text><text class="chart-x-label" x="134.7" y="206" text-anchor="middle">W3</text><text class="chart-x-label" x="231.3" y="206" text-anchor="middle">W4</text><text class="chart-x-label" x="328.0" y="206" text-anchor="middle">W5</text>
+    <polyline class="chart-line-other" points="38.0,110.6 134.7,93.3 231.3,134.8 328.0,91.7"><title>Pine Barrens</title></polyline><polyline class="chart-line-other" points="38.0,139.0 134.7,95.5 231.3,75.2 328.0,81.6"><title>The SS Express</title></polyline><polyline class="chart-line-other" points="38.0,83.3 134.7,128.4 231.3,73.9 328.0,95.4"><title>Balcony Tears</title></polyline><polyline class="chart-line-other" points="38.0,149.6 134.7,179.4 231.3,91.3 328.0,118.9"><title>Chicks Dig Longballs</title></polyline><polyline class="chart-line-other" points="38.0,84.8 134.7,22.6 231.3,86.0 328.0,117.4"><title>Mama&#x27;s Juiced Meatballs</title></polyline><polyline class="chart-line-other" points="38.0,89.9 134.7,164.9 231.3,103.8 328.0,142.4"><title>Diamond Dogs</title></polyline><polyline class="chart-line-other" points="38.0,26.1 134.7,89.7 231.3,134.9 328.0,140.2"><title>KING JULIAN</title></polyline><polyline class="chart-line-other" points="38.0,136.6 134.7,109.7 231.3,99.9 328.0,80.6"><title>Rayhood</title></polyline><polyline class="chart-line-other" points="38.0,142.5 134.7,121.6 231.3,99.1 328.0,127.6"><title>Short Porchers</title></polyline><polyline class="chart-line-other" points="38.0,154.5 134.7,99.7 231.3,129.3 328.0,108.6"><title>LB Jefes</title></polyline><polyline class="chart-line-other" points="38.0,114.6 134.7,144.3 231.3,84.0 328.0,178.9"><title>Soto Shuffle</title></polyline><polyline class="chart-line-other" points="38.0,139.2 134.7,117.0 231.3,64.9 328.0,102.7"><title>South Park Cows</title></polyline><polyline class="chart-line-other" points="38.0,135.9 134.7,139.6 231.3,115.7 328.0,121.9"><title>Wally Cats</title></polyline>
+    <polyline class="chart-line-me" points="38.0,98.6 134.7,107.2 231.3,90.9 328.0,64.9"><title>Tamp Slam</title></polyline>
+    <circle class="chart-dot-me" cx="38.0" cy="98.6" r="3" /><circle class="chart-dot-me" cx="134.7" cy="107.2" r="3" /><circle class="chart-dot-me" cx="231.3" cy="90.9" r="3" /><circle class="chart-dot-me" cx="328.0" cy="64.9" r="3" />
+  </svg>
+</div>
+
+
+<div class="chart-box">
+  <h4>Pitching Points</h4>
+  <svg viewBox="0 0 340 220" width="100%" preserveAspectRatio="xMidYMid meet">
+    <line class="chart-axis" x1="38" y1="10" x2="38" y2="192" />
+    <line class="chart-axis" x1="38" y1="192" x2="328" y2="192" />
+    <line class="chart-axis" x1="35" y1="192.0" x2="38" y2="192.0" /><text class="chart-tick" x="33" y="195.0" text-anchor="end">12</text><line class="chart-axis" x1="35" y1="146.5" x2="38" y2="146.5" /><text class="chart-tick" x="33" y="149.5" text-anchor="end">67</text><line class="chart-axis" x1="35" y1="101.0" x2="38" y2="101.0" /><text class="chart-tick" x="33" y="104.0" text-anchor="end">122</text><line class="chart-axis" x1="35" y1="55.5" x2="38" y2="55.5" /><text class="chart-tick" x="33" y="58.5" text-anchor="end">177</text><line class="chart-axis" x1="35" y1="10.0" x2="38" y2="10.0" /><text class="chart-tick" x="33" y="13.0" text-anchor="end">232</text>
+    <text class="chart-x-label" x="38.0" y="206" text-anchor="middle">W2</text><text class="chart-x-label" x="134.7" y="206" text-anchor="middle">W3</text><text class="chart-x-label" x="231.3" y="206" text-anchor="middle">W4</text><text class="chart-x-label" x="328.0" y="206" text-anchor="middle">W5</text>
+    <polyline class="chart-line-other" points="38.0,90.0 134.7,68.1 231.3,91.0 328.0,114.5"><title>Pine Barrens</title></polyline><polyline class="chart-line-other" points="38.0,112.8 134.7,99.2 231.3,103.7 328.0,97.8"><title>The SS Express</title></polyline><polyline class="chart-line-other" points="38.0,85.5 134.7,144.4 231.3,112.5 328.0,129.2"><title>Balcony Tears</title></polyline><polyline class="chart-line-other" points="38.0,120.3 134.7,171.2 231.3,128.3 328.0,119.6"><title>Chicks Dig Longballs</title></polyline><polyline class="chart-line-other" points="38.0,78.7 134.7,74.6 231.3,125.6 328.0,147.1"><title>Mama&#x27;s Juiced Meatballs</title></polyline><polyline class="chart-line-other" points="38.0,77.1 134.7,135.3 231.3,70.5 328.0,163.4"><title>Diamond Dogs</title></polyline><polyline class="chart-line-other" points="38.0,22.6 134.7,133.4 231.3,152.4 328.0,127.8"><title>KING JULIAN</title></polyline><polyline class="chart-line-other" points="38.0,153.4 134.7,103.6 231.3,89.1 328.0,104.1"><title>Rayhood</title></polyline><polyline class="chart-line-other" points="38.0,111.4 134.7,118.0 231.3,110.1 328.0,163.1"><title>Short Porchers</title></polyline><polyline class="chart-line-other" points="38.0,118.7 134.7,81.7 231.3,166.6 328.0,146.0"><title>LB Jefes</title></polyline><polyline class="chart-line-other" points="38.0,97.3 134.7,159.2 231.3,130.4 328.0,179.4"><title>Soto Shuffle</title></polyline><polyline class="chart-line-other" points="38.0,170.9 134.7,170.9 231.3,120.7 328.0,142.4"><title>South Park Cows</title></polyline><polyline class="chart-line-other" points="38.0,113.0 134.7,141.0 231.3,108.2 328.0,131.7"><title>Wally Cats</title></polyline>
+    <polyline class="chart-line-me" points="38.0,109.7 134.7,116.3 231.3,58.8 328.0,45.4"><title>Tamp Slam</title></polyline>
+    <circle class="chart-dot-me" cx="38.0" cy="109.7" r="3" /><circle class="chart-dot-me" cx="134.7" cy="116.3" r="3" /><circle class="chart-dot-me" cx="231.3" cy="58.8" r="3" /><circle class="chart-dot-me" cx="328.0" cy="45.4" r="3" />
+  </svg>
+</div>
+
+
+<div class="chart-box">
+  <h4>Hitting Points</h4>
+  <svg viewBox="0 0 340 220" width="100%" preserveAspectRatio="xMidYMid meet">
+    <line class="chart-axis" x1="38" y1="10" x2="38" y2="192" />
+    <line class="chart-axis" x1="38" y1="192" x2="328" y2="192" />
+    <line class="chart-axis" x1="35" y1="192.0" x2="38" y2="192.0" /><text class="chart-tick" x="33" y="195.0" text-anchor="end">179</text><line class="chart-axis" x1="35" y1="146.5" x2="38" y2="146.5" /><text class="chart-tick" x="33" y="149.5" text-anchor="end">234</text><line class="chart-axis" x1="35" y1="101.0" x2="38" y2="101.0" /><text class="chart-tick" x="33" y="104.0" text-anchor="end">289</text><line class="chart-axis" x1="35" y1="55.5" x2="38" y2="55.5" /><text class="chart-tick" x="33" y="58.5" text-anchor="end">344</text><line class="chart-axis" x1="35" y1="10.0" x2="38" y2="10.0" /><text class="chart-tick" x="33" y="13.0" text-anchor="end">400</text>
+    <text class="chart-x-label" x="38.0" y="206" text-anchor="middle">W2</text><text class="chart-x-label" x="134.7" y="206" text-anchor="middle">W3</text><text class="chart-x-label" x="231.3" y="206" text-anchor="middle">W4</text><text class="chart-x-label" x="328.0" y="206" text-anchor="middle">W5</text>
+    <polyline class="chart-line-other" points="38.0,141.2 134.7,136.6 231.3,177.0 328.0,88.0"><title>Pine Barrens</title></polyline><polyline class="chart-line-other" points="38.0,161.7 134.7,109.0 231.3,73.6 328.0,89.3"><title>The SS Express</title></polyline><polyline class="chart-line-other" points="38.0,104.1 134.7,114.0 231.3,62.9 328.0,79.0"><title>Balcony Tears</title></polyline><polyline class="chart-line-other" points="38.0,170.4 134.7,165.0 231.3,73.6 328.0,124.3"><title>Chicks Dig Longballs</title></polyline><polyline class="chart-line-other" points="38.0,113.1 134.7,22.6 231.3,68.3 328.0,94.6"><title>Mama&#x27;s Juiced Meatballs</title></polyline><polyline class="chart-line-other" points="38.0,122.6 134.7,178.6 231.3,150.2 328.0,116.4"><title>Diamond Dogs</title></polyline><polyline class="chart-line-other" points="38.0,79.8 134.7,66.2 231.3,116.0 328.0,148.6"><title>KING JULIAN</title></polyline><polyline class="chart-line-other" points="38.0,117.7 134.7,126.3 231.3,125.9 328.0,81.4"><title>Rayhood</title></polyline><polyline class="chart-line-other" points="38.0,168.3 134.7,130.0 231.3,103.7 328.0,94.2"><title>Short Porchers</title></polyline><polyline class="chart-line-other" points="38.0,179.4 134.7,132.9 231.3,93.4 328.0,82.3"><title>LB Jefes</title></polyline><polyline class="chart-line-other" points="38.0,139.9 134.7,123.4 231.3,60.4 328.0,156.0"><title>Soto Shuffle</title></polyline><polyline class="chart-line-other" points="38.0,104.1 134.7,70.3 231.3,41.1 328.0,76.9"><title>South Park Cows</title></polyline><polyline class="chart-line-other" points="38.0,156.8 134.7,134.6 231.3,130.9 328.0,116.9"><title>Wally Cats</title></polyline>
+    <polyline class="chart-line-me" points="38.0,103.3 134.7,109.9 231.3,142.4 328.0,116.0"><title>Tamp Slam</title></polyline>
+    <circle class="chart-dot-me" cx="38.0" cy="103.3" r="3" /><circle class="chart-dot-me" cx="134.7" cy="109.9" r="3" /><circle class="chart-dot-me" cx="231.3" cy="142.4" r="3" /><circle class="chart-dot-me" cx="328.0" cy="116.0" r="3" />
+  </svg>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+  <h2>Free Agent Hitters (Top 50)</h2>
+  
+<table class="sortable">
   <thead>
     <tr>
       <th>Hitter</th>
@@ -166,7 +551,8 @@ td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
       <th>Eligible</th>
       <th class="r">%Ros</th>
       <th class="r">FP</th>
-      <th class="r">Avg_FP_L4_Weeks</th>
+      <th class="r">Avg_FP_L4W</th>
+      <th class="r">Avg_FP_L2W</th>
       <th class="r">BABIP</th>
       <th class="r">wOBA</th>
       <th class="r">xwOBA</th>
@@ -175,46 +561,66 @@ td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
     </tr>
   </thead>
   <tbody>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/687221" target="_blank">Dalton Rushing</a></td><td class="c">LAD</td><td class="dim">C, Util</td><td class="r">29%</td><td class="r"><span class="dim">—</span></td><td class="r">30.1</td><td class="r">0.346</td><td class="r">0.533</td><td class="r elite">0.436</td><td class="r">0.633</td><td class="r vbad">+97</td></tr>
-<tr class="IL"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/571970" target="_blank">Max Muncy</a><span class="tag tag-il">IL10</span></td><td class="c">ATH</td><td class="dim">2B, 3B, SS, Util, IL</td><td class="r">17%</td><td class="r"><span class="dim">—</span></td><td class="r">19.9</td><td class="r">0.313</td><td class="r">0.416</td><td class="r elite">0.413</td><td class="r">0.592</td><td class="r ">+3</td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/682177" target="_blank">Daniel Schneemann</a></td><td class="c">CLE</td><td class="dim">2B, 3B, SS, OF, Util</td><td class="r">28%</td><td class="r"><span class="dim">—</span></td><td class="r">31.1</td><td class="r">0.438</td><td class="r">0.417</td><td class="r good">0.369</td><td class="r">0.496</td><td class="r ">+48</td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/694208" target="_blank">Moisés Ballesteros</a></td><td class="c">CHC</td><td class="dim">C, Util</td><td class="r">31%</td><td class="r"><span class="dim">—</span></td><td class="r">30.4</td><td class="r">0.345</td><td class="r">0.435</td><td class="r good">0.364</td><td class="r">0.500</td><td class="r ">+71</td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/663757" target="_blank">Trent Grisham</a></td><td class="c">NYY</td><td class="dim">OF, Util</td><td class="r">39%</td><td class="r"><span class="dim">—</span></td><td class="r">24.4</td><td class="r">0.145</td><td class="r">0.286</td><td class="r good">0.357</td><td class="r">0.440</td><td class="r good">-71</td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/682626" target="_blank">Francisco Alvarez</a></td><td class="c">NYM</td><td class="dim">C, Util</td><td class="r">29%</td><td class="r"><span class="dim">—</span></td><td class="r">17.4</td><td class="r">0.250</td><td class="r">0.321</td><td class="r ">0.344</td><td class="r">0.474</td><td class="r ">-23</td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/690993" target="_blank">Colt Keith</a></td><td class="c">DET</td><td class="dim">1B, 2B, 3B, Util</td><td class="r">18%</td><td class="r"><span class="dim">—</span></td><td class="r">18.8</td><td class="r">0.411</td><td class="r">0.339</td><td class="r ">0.342</td><td class="r">0.467</td><td class="r ">-3</td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/605137" target="_blank">Josh Bell</a></td><td class="c">MIN</td><td class="dim">1B, Util</td><td class="r">20%</td><td class="r"><span class="dim">—</span></td><td class="r">32.6</td><td class="r">0.256</td><td class="r">0.304</td><td class="r ">0.332</td><td class="r">0.427</td><td class="r ">-28</td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/808982" target="_blank">Jung Hoo Lee</a></td><td class="c">SF</td><td class="dim">OF, Util</td><td class="r">20%</td><td class="r"><span class="dim">—</span></td><td class="r">28.0</td><td class="r">0.330</td><td class="r">0.346</td><td class="r ">0.327</td><td class="r">0.391</td><td class="r ">+19</td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/671277" target="_blank">Luis García Jr.</a></td><td class="c">WSH</td><td class="dim">1B, 2B, Util</td><td class="r">47%</td><td class="r"><span class="dim">—</span></td><td class="r">26.0</td><td class="r">0.289</td><td class="r">0.284</td><td class="r ">0.324</td><td class="r">0.438</td><td class="r ">-40</td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/669016" target="_blank">Brandon Marsh</a></td><td class="c">PHI</td><td class="dim">OF, Util</td><td class="r">17%</td><td class="r"><span class="dim">—</span></td><td class="r">29.5</td><td class="r">0.351</td><td class="r">0.351</td><td class="r ">0.317</td><td class="r">0.443</td><td class="r ">+34</td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/668904" target="_blank">Royce Lewis</a></td><td class="c">MIN</td><td class="dim">3B, Util</td><td class="r">31%</td><td class="r"><span class="dim">—</span></td><td class="r">14.2</td><td class="r">0.238</td><td class="r">0.304</td><td class="r ">0.315</td><td class="r">0.372</td><td class="r ">-11</td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/691176" target="_blank">Jasson Domínguez</a><span class="tag tag-dtd">DTD</span></td><td class="c">NYY</td><td class="dim">OF, Util</td><td class="r">16%</td><td class="r"><span class="dim">—</span></td><td class="r">0.5</td><td class="r">0.143</td><td class="r">0.164</td><td class="r ">0.309</td><td class="r">0.310</td><td class="r good">-145</td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/571448" target="_blank">Nolan Arenado</a></td><td class="c">AZ</td><td class="dim">3B, Util</td><td class="r">22%</td><td class="r"><span class="dim">—</span></td><td class="r">32.0</td><td class="r">0.297</td><td class="r">0.336</td><td class="r ">0.307</td><td class="r">0.402</td><td class="r ">+29</td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/699912" target="_blank">Jose Fernandez</a></td><td class="c">AZ</td><td class="dim">1B, SS, Util</td><td class="r">17%</td><td class="r"><span class="dim">—</span></td><td class="r">24.8</td><td class="r">0.393</td><td class="r">0.362</td><td class="r ">0.306</td><td class="r">0.411</td><td class="r ">+56</td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/691026" target="_blank">Masyn Winn</a></td><td class="c">STL</td><td class="dim">SS, Util</td><td class="r">42%</td><td class="r"><span class="dim">—</span></td><td class="r">28.5</td><td class="r">0.324</td><td class="r">0.315</td><td class="r ">0.300</td><td class="r">0.321</td><td class="r ">+15</td></tr>
-<tr class="IL"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/592663" target="_blank">J.T. Realmuto</a><span class="tag tag-il">IL10</span></td><td class="c">PHI</td><td class="dim">C, Util, IL</td><td class="r">15%</td><td class="r"><span class="dim">—</span></td><td class="r">12.0</td><td class="r">0.310</td><td class="r">0.321</td><td class="r ">0.300</td><td class="r">0.329</td><td class="r ">+21</td></tr>
-<tr class="IL poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/672386" target="_blank">Alejandro Kirk</a><span class="tag tag-il">IL10</span></td><td class="c">TOR</td><td class="dim">C, Util, IL</td><td class="r">29%</td><td class="r"><span class="dim">—</span></td><td class="r">1.8</td><td class="r">0.118</td><td class="r">0.258</td><td class="r bad">0.299</td><td class="r">0.343</td><td class="r ">-41</td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/670623" target="_blank">Isaac Paredes</a></td><td class="c">HOU</td><td class="dim">3B, Util</td><td class="r">47%</td><td class="r"><span class="dim">—</span></td><td class="r">24.8</td><td class="r">0.282</td><td class="r">0.330</td><td class="r bad">0.298</td><td class="r">0.332</td><td class="r ">+32</td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/543760" target="_blank">Marcus Semien</a></td><td class="c">NYM</td><td class="dim">2B, Util</td><td class="r">52%</td><td class="r"><span class="dim">—</span></td><td class="r">21.9</td><td class="r">0.267</td><td class="r">0.259</td><td class="r bad">0.289</td><td class="r">0.363</td><td class="r ">-30</td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/683737" target="_blank">Michael Busch</a></td><td class="c">CHC</td><td class="dim">1B, Util</td><td class="r">78%</td><td class="r"><span class="dim">—</span></td><td class="r">22.5</td><td class="r">0.241</td><td class="r">0.271</td><td class="r bad">0.285</td><td class="r">0.316</td><td class="r ">-14</td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/686797" target="_blank">Brooks Lee</a></td><td class="c">MIN</td><td class="dim">2B, 3B, SS, Util</td><td class="r">17%</td><td class="r"><span class="dim">—</span></td><td class="r">31.8</td><td class="r">0.257</td><td class="r">0.321</td><td class="r vbad">0.274</td><td class="r">0.333</td><td class="r ">+47</td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/664761" target="_blank">Alec Bohm</a></td><td class="c">PHI</td><td class="dim">1B, 3B, Util</td><td class="r">36%</td><td class="r"><span class="dim">—</span></td><td class="r">15.0</td><td class="r">0.170</td><td class="r">0.201</td><td class="r vbad">0.271</td><td class="r">0.299</td><td class="r good">-70</td></tr>
-<tr class="IL poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/593871" target="_blank">Jorge Polanco</a><span class="tag tag-il">IL10</span></td><td class="c">NYM</td><td class="dim">2B, 3B, Util, IL</td><td class="r">30%</td><td class="r"><span class="dim">—</span></td><td class="r">5.6</td><td class="r">0.205</td><td class="r">0.244</td><td class="r vbad">0.270</td><td class="r">0.320</td><td class="r ">-26</td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/669394" target="_blank">Jake Burger</a></td><td class="c">TEX</td><td class="dim">1B, Util</td><td class="r">19%</td><td class="r"><span class="dim">—</span></td><td class="r">21.5</td><td class="r">0.266</td><td class="r">0.272</td><td class="r vbad">0.269</td><td class="r">0.376</td><td class="r ">+3</td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/673237" target="_blank">Yainer Diaz</a></td><td class="c">HOU</td><td class="dim">C, Util</td><td class="r">56%</td><td class="r"><span class="dim">—</span></td><td class="r">20.8</td><td class="r">0.273</td><td class="r">0.276</td><td class="r vbad">0.265</td><td class="r">0.331</td><td class="r ">+11</td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/686668" target="_blank">Brenton Doyle</a></td><td class="c">COL</td><td class="dim">OF, Util</td><td class="r">43%</td><td class="r"><span class="dim">—</span></td><td class="r">19.5</td><td class="r">0.333</td><td class="r">0.268</td><td class="r vbad">0.258</td><td class="r">0.283</td><td class="r ">+10</td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/670770" target="_blank">TJ Friedl</a></td><td class="c">CIN</td><td class="dim">OF, Util</td><td class="r">16%</td><td class="r"><span class="dim">—</span></td><td class="r">21.6</td><td class="r">0.234</td><td class="r">0.256</td><td class="r vbad">0.246</td><td class="r">0.253</td><td class="r ">+10</td></tr>
-<tr class="IL"><td class="nm">Andrew Vaughn<span class="tag tag-il">IL10</span></td><td class="c">MIL</td><td class="dim">1B, Util, IL</td><td class="r">34%</td><td class="r"><span class="dim">—</span></td><td class="r">0.0</td><td class="r"><span class="dim">—</span></td><td class="r"><span class="dim">—</span></td><td class="r "><span class="dim">—</span></td><td class="r"><span class="dim">—</span></td><td class="r ">—</td></tr>
-<tr class="IL"><td class="nm">Jordan Westburg<span class="tag tag-il">IL60</span></td><td class="c">BAL</td><td class="dim">2B, 3B, Util, IL</td><td class="r">21%</td><td class="r"><span class="dim">—</span></td><td class="r">0.0</td><td class="r"><span class="dim">—</span></td><td class="r"><span class="dim">—</span></td><td class="r "><span class="dim">—</span></td><td class="r"><span class="dim">—</span></td><td class="r ">—</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/687221" target="_blank">Dalton Rushing</a></td><td class="c">LAD</td><td class="dim">C, Util</td><td class="r">28%</td><td class="r"><span class="dim">—</span></td><td class="r">30.1</td><td class="r">18.5</td><td class="r">0.346</td><td class="r">0.533</td><td class="r elite">0.436</td><td class="r">0.633</td><td class="r vbad">+97</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/663993" target="_blank">Nathaniel Lowe</a></td><td class="c">CIN</td><td class="dim">1B, Util</td><td class="r">5%</td><td class="r"><span class="dim">—</span></td><td class="r">23.0</td><td class="r">59.5</td><td class="r">0.256</td><td class="r">0.438</td><td class="r elite">0.426</td><td class="r">0.595</td><td class="r ">+12</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/641487" target="_blank">J.P. Crawford</a></td><td class="c">SEA</td><td class="dim">SS, Util</td><td class="r">6%</td><td class="r"><span class="dim">—</span></td><td class="r">23.9</td><td class="r">27.0</td><td class="r">0.226</td><td class="r">0.325</td><td class="r elite">0.391</td><td class="r">0.451</td><td class="r good">-66</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/686527" target="_blank">Dominic Canzone</a></td><td class="c">SEA</td><td class="dim">OF, Util</td><td class="r">5%</td><td class="r"><span class="dim">—</span></td><td class="r">19.0</td><td class="r">17.5</td><td class="r">0.333</td><td class="r">0.373</td><td class="r elite">0.386</td><td class="r">0.548</td><td class="r ">-13</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/668885" target="_blank">Austin Martin</a></td><td class="c">MIN</td><td class="dim">2B, OF, Util</td><td class="r">3%</td><td class="r"><span class="dim">—</span></td><td class="r">24.1</td><td class="r">16.0</td><td class="r">0.373</td><td class="r">0.415</td><td class="r elite">0.382</td><td class="r">0.370</td><td class="r ">+33</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/666397" target="_blank">Edouard Julien</a></td><td class="c">COL</td><td class="dim">1B, 2B, Util</td><td class="r">3%</td><td class="r"><span class="dim">—</span></td><td class="r">28.6</td><td class="r">28.0</td><td class="r">0.400</td><td class="r">0.378</td><td class="r good">0.379</td><td class="r">0.488</td><td class="r ">-1</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/665750" target="_blank">Leody Taveras</a></td><td class="c">BAL</td><td class="dim">OF, Util</td><td class="r">3%</td><td class="r"><span class="dim">—</span></td><td class="r">30.5</td><td class="r">16.5</td><td class="r">0.354</td><td class="r">0.383</td><td class="r good">0.373</td><td class="r">0.453</td><td class="r ">+10</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/682177" target="_blank">Daniel Schneemann</a></td><td class="c">CLE</td><td class="dim">2B, 3B, SS, OF, Util</td><td class="r">28%</td><td class="r"><span class="dim">—</span></td><td class="r">31.1</td><td class="r">33.0</td><td class="r">0.438</td><td class="r">0.417</td><td class="r good">0.369</td><td class="r">0.496</td><td class="r ">+48</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/694208" target="_blank">Moisés Ballesteros</a></td><td class="c">CHC</td><td class="dim">C, Util</td><td class="r">31%</td><td class="r"><span class="dim">—</span></td><td class="r">30.4</td><td class="r">41.5</td><td class="r">0.345</td><td class="r">0.435</td><td class="r good">0.364</td><td class="r">0.500</td><td class="r ">+71</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/663757" target="_blank">Trent Grisham</a></td><td class="c">NYY</td><td class="dim">OF, Util</td><td class="r">39%</td><td class="r"><span class="dim">—</span></td><td class="r">24.4</td><td class="r">22.0</td><td class="r">0.145</td><td class="r">0.286</td><td class="r good">0.357</td><td class="r">0.440</td><td class="r good">-71</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/660821" target="_blank">Jesús Sánchez</a></td><td class="c">TOR</td><td class="dim">OF, Util</td><td class="r">5%</td><td class="r"><span class="dim">—</span></td><td class="r">21.1</td><td class="r">29.5</td><td class="r">0.264</td><td class="r">0.313</td><td class="r good">0.356</td><td class="r">0.500</td><td class="r ">-43</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/690993" target="_blank">Colt Keith</a></td><td class="c">DET</td><td class="dim">1B, 2B, 3B, Util</td><td class="r">18%</td><td class="r"><span class="dim">—</span></td><td class="r">18.8</td><td class="r">17.0</td><td class="r">0.411</td><td class="r">0.339</td><td class="r ">0.342</td><td class="r">0.467</td><td class="r ">-3</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/669003" target="_blank">Garrett Mitchell</a></td><td class="c">MIL</td><td class="dim">OF, Util</td><td class="r">12%</td><td class="r"><span class="dim">—</span></td><td class="r">29.5</td><td class="r">21.0</td><td class="r">0.439</td><td class="r">0.355</td><td class="r ">0.341</td><td class="r">0.379</td><td class="r ">+14</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/681198" target="_blank">TJ Rumfield</a></td><td class="c">COL</td><td class="dim">1B, Util</td><td class="r">7%</td><td class="r"><span class="dim">—</span></td><td class="r">25.6</td><td class="r">22.0</td><td class="r">0.293</td><td class="r">0.331</td><td class="r ">0.341</td><td class="r">0.443</td><td class="r ">-10</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/663886" target="_blank">Tyler Stephenson</a></td><td class="c">CIN</td><td class="dim">C, Util</td><td class="r">4%</td><td class="r"><span class="dim">—</span></td><td class="r">16.4</td><td class="r">18.0</td><td class="r">0.234</td><td class="r">0.276</td><td class="r ">0.340</td><td class="r">0.435</td><td class="r good">-64</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/643446" target="_blank">Jeff McNeil</a></td><td class="c">ATH</td><td class="dim">2B, OF, Util</td><td class="r">7%</td><td class="r"><span class="dim">—</span></td><td class="r">23.5</td><td class="r">18.0</td><td class="r">0.316</td><td class="r">0.341</td><td class="r ">0.339</td><td class="r">0.375</td><td class="r ">+2</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/693304" target="_blank">Nick Gonzales</a></td><td class="c">PIT</td><td class="dim">2B, 3B, SS, Util</td><td class="r">9%</td><td class="r"><span class="dim">—</span></td><td class="r">25.5</td><td class="r">40.0</td><td class="r">0.398</td><td class="r">0.334</td><td class="r ">0.333</td><td class="r">0.392</td><td class="r ">+1</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/605137" target="_blank">Josh Bell</a></td><td class="c">MIN</td><td class="dim">1B, Util</td><td class="r">20%</td><td class="r"><span class="dim">—</span></td><td class="r">32.6</td><td class="r">14.5</td><td class="r">0.256</td><td class="r">0.304</td><td class="r ">0.332</td><td class="r">0.427</td><td class="r ">-28</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/808982" target="_blank">Jung Hoo Lee</a></td><td class="c">SF</td><td class="dim">OF, Util</td><td class="r">20%</td><td class="r"><span class="dim">—</span></td><td class="r">28.0</td><td class="r">42.5</td><td class="r">0.330</td><td class="r">0.346</td><td class="r ">0.327</td><td class="r">0.391</td><td class="r ">+19</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/671277" target="_blank">Luis García Jr.</a></td><td class="c">WSH</td><td class="dim">1B, 2B, Util</td><td class="r">47%</td><td class="r"><span class="dim">—</span></td><td class="r">26.0</td><td class="r">18.5</td><td class="r">0.289</td><td class="r">0.284</td><td class="r ">0.324</td><td class="r">0.438</td><td class="r ">-40</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/657757" target="_blank">Gavin Sheets</a></td><td class="c">SD</td><td class="dim">1B, OF, Util</td><td class="r">3%</td><td class="r"><span class="dim">—</span></td><td class="r">26.4</td><td class="r">18.0</td><td class="r">0.258</td><td class="r">0.326</td><td class="r ">0.324</td><td class="r">0.460</td><td class="r ">+2</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/687859" target="_blank">Troy Johnston</a></td><td class="c">COL</td><td class="dim">1B, OF, Util</td><td class="r">7%</td><td class="r"><span class="dim">—</span></td><td class="r">28.5</td><td class="r">22.5</td><td class="r">0.389</td><td class="r">0.366</td><td class="r ">0.321</td><td class="r">0.398</td><td class="r ">+45</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/669016" target="_blank">Brandon Marsh</a></td><td class="c">PHI</td><td class="dim">OF, Util</td><td class="r">17%</td><td class="r"><span class="dim">—</span></td><td class="r">29.5</td><td class="r">26.5</td><td class="r">0.351</td><td class="r">0.351</td><td class="r ">0.317</td><td class="r">0.443</td><td class="r ">+34</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/807713" target="_blank">Matt Shaw</a></td><td class="c">CHC</td><td class="dim">3B, OF, Util</td><td class="r">11%</td><td class="r"><span class="dim">—</span></td><td class="r">23.4</td><td class="r">19.5</td><td class="r">0.333</td><td class="r">0.369</td><td class="r ">0.316</td><td class="r">0.414</td><td class="r ">+53</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/701675" target="_blank">Nathan Church</a></td><td class="c">STL</td><td class="dim">OF, Util</td><td class="r">12%</td><td class="r"><span class="dim">—</span></td><td class="r">25.9</td><td class="r">44.0</td><td class="r">0.250</td><td class="r">0.307</td><td class="r ">0.313</td><td class="r">0.455</td><td class="r ">-6</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/677587" target="_blank">Brayan Rocchio</a></td><td class="c">CLE</td><td class="dim">2B, SS, Util</td><td class="r">15%</td><td class="r"><span class="dim">—</span></td><td class="r">28.8</td><td class="r">24.5</td><td class="r">0.294</td><td class="r">0.347</td><td class="r ">0.312</td><td class="r">0.355</td><td class="r ">+35</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/571448" target="_blank">Nolan Arenado</a></td><td class="c">AZ</td><td class="dim">3B, Util</td><td class="r">22%</td><td class="r"><span class="dim">—</span></td><td class="r">32.0</td><td class="r">28.0</td><td class="r">0.297</td><td class="r">0.336</td><td class="r ">0.307</td><td class="r">0.402</td><td class="r ">+29</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/699912" target="_blank">Jose Fernandez</a></td><td class="c">AZ</td><td class="dim">1B, SS, Util</td><td class="r">17%</td><td class="r"><span class="dim">—</span></td><td class="r">24.8</td><td class="r">30.5</td><td class="r">0.393</td><td class="r">0.362</td><td class="r ">0.306</td><td class="r">0.411</td><td class="r ">+56</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/805367" target="_blank">Chase Meidroth</a></td><td class="c">CWS</td><td class="dim">2B, 3B, SS, Util</td><td class="r">7%</td><td class="r"><span class="dim">—</span></td><td class="r">24.0</td><td class="r">18.0</td><td class="r">0.329</td><td class="r">0.311</td><td class="r ">0.304</td><td class="r">0.339</td><td class="r ">+7</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/686217" target="_blank">Sal Frelick</a></td><td class="c">MIL</td><td class="dim">OF, Util</td><td class="r">12%</td><td class="r"><span class="dim">—</span></td><td class="r">20.5</td><td class="r">30.5</td><td class="r">0.211</td><td class="r">0.292</td><td class="r ">0.303</td><td class="r">0.343</td><td class="r ">-11</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/691781" target="_blank">Brady House</a></td><td class="c">WSH</td><td class="dim">3B, Util</td><td class="r">5%</td><td class="r"><span class="dim">—</span></td><td class="r">26.6</td><td class="r">41.5</td><td class="r">0.304</td><td class="r">0.293</td><td class="r ">0.301</td><td class="r">0.397</td><td class="r ">-8</td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/691026" target="_blank">Masyn Winn</a></td><td class="c">STL</td><td class="dim">SS, Util</td><td class="r">42%</td><td class="r"><span class="dim">—</span></td><td class="r">28.5</td><td class="r">30.5</td><td class="r">0.324</td><td class="r">0.315</td><td class="r ">0.300</td><td class="r">0.321</td><td class="r ">+15</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/670623" target="_blank">Isaac Paredes</a></td><td class="c">HOU</td><td class="dim">3B, Util</td><td class="r">47%</td><td class="r"><span class="dim">—</span></td><td class="r">24.8</td><td class="r">39.0</td><td class="r">0.282</td><td class="r">0.330</td><td class="r bad">0.298</td><td class="r">0.332</td><td class="r ">+32</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/694384" target="_blank">Nolan Schanuel</a></td><td class="c">LAA</td><td class="dim">1B, Util</td><td class="r">15%</td><td class="r"><span class="dim">—</span></td><td class="r">23.4</td><td class="r">17.0</td><td class="r">0.258</td><td class="r">0.301</td><td class="r bad">0.296</td><td class="r">0.338</td><td class="r ">+5</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/691785" target="_blank">Marcelo Mayer</a></td><td class="c">BOS</td><td class="dim">2B, 3B, Util</td><td class="r">6%</td><td class="r"><span class="dim">—</span></td><td class="r">17.0</td><td class="r">25.5</td><td class="r">0.290</td><td class="r">0.313</td><td class="r bad">0.295</td><td class="r">0.346</td><td class="r ">+18</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/691723" target="_blank">Coby Mayo</a></td><td class="c">BAL</td><td class="dim">1B, 3B, Util</td><td class="r">3%</td><td class="r"><span class="dim">—</span></td><td class="r">18.2</td><td class="r">15.5</td><td class="r">0.200</td><td class="r">0.256</td><td class="r bad">0.294</td><td class="r">0.370</td><td class="r ">-38</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/701807" target="_blank">Carson Benge</a></td><td class="c">NYM</td><td class="dim">OF, Util</td><td class="r">10%</td><td class="r"><span class="dim">—</span></td><td class="r">16.2</td><td class="r">17.5</td><td class="r">0.231</td><td class="r">0.241</td><td class="r bad">0.287</td><td class="r">0.360</td><td class="r ">-46</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/668901" target="_blank">Mark Vientos</a></td><td class="c">NYM</td><td class="dim">1B, 3B, Util</td><td class="r">6%</td><td class="r"><span class="dim">—</span></td><td class="r">18.9</td><td class="r">14.5</td><td class="r">0.286</td><td class="r">0.289</td><td class="r bad">0.286</td><td class="r">0.364</td><td class="r ">+3</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/683737" target="_blank">Michael Busch</a></td><td class="c">CHC</td><td class="dim">1B, Util</td><td class="r">78%</td><td class="r"><span class="dim">—</span></td><td class="r">22.5</td><td class="r">17.5</td><td class="r">0.241</td><td class="r">0.271</td><td class="r bad">0.285</td><td class="r">0.316</td><td class="r ">-14</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/683146" target="_blank">Brett Baty</a></td><td class="c">NYM</td><td class="dim">1B, 2B, 3B, OF, Util</td><td class="r">6%</td><td class="r"><span class="dim">—</span></td><td class="r">18.2</td><td class="r">17.0</td><td class="r">0.281</td><td class="r">0.253</td><td class="r bad">0.283</td><td class="r">0.373</td><td class="r ">-30</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/702222" target="_blank">Justin Crawford</a></td><td class="c">PHI</td><td class="dim">OF, Util</td><td class="r">10%</td><td class="r"><span class="dim">—</span></td><td class="r">19.1</td><td class="r">21.5</td><td class="r">0.338</td><td class="r">0.317</td><td class="r bad">0.282</td><td class="r">0.308</td><td class="r ">+35</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/683083" target="_blank">Nasim Nuñez</a></td><td class="c">WSH</td><td class="dim">2B, SS, Util</td><td class="r">7%</td><td class="r"><span class="dim">—</span></td><td class="r">25.0</td><td class="r">37.5</td><td class="r">0.264</td><td class="r">0.259</td><td class="r vbad">0.279</td><td class="r">0.268</td><td class="r ">-20</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/669357" target="_blank">Nolan Gorman</a></td><td class="c">STL</td><td class="dim">2B, 3B, Util</td><td class="r">5%</td><td class="r"><span class="dim">—</span></td><td class="r">24.6</td><td class="r">34.0</td><td class="r">0.275</td><td class="r">0.287</td><td class="r vbad">0.279</td><td class="r">0.364</td><td class="r ">+8</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/686797" target="_blank">Brooks Lee</a></td><td class="c">MIN</td><td class="dim">2B, 3B, SS, Util</td><td class="r">17%</td><td class="r"><span class="dim">—</span></td><td class="r">31.8</td><td class="r">39.5</td><td class="r">0.257</td><td class="r">0.321</td><td class="r vbad">0.274</td><td class="r">0.333</td><td class="r ">+47</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/702332" target="_blank">Caleb Durbin</a></td><td class="c">BOS</td><td class="dim">2B, 3B, Util</td><td class="r">12%</td><td class="r"><span class="dim">—</span></td><td class="r">24.5</td><td class="r">40.5</td><td class="r">0.195</td><td class="r">0.246</td><td class="r vbad">0.272</td><td class="r">0.286</td><td class="r ">-26</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/641857" target="_blank">Ryan McMahon</a></td><td class="c">NYY</td><td class="dim">3B, Util</td><td class="r">2%</td><td class="r"><span class="dim">—</span></td><td class="r">13.4</td><td class="r">22.0</td><td class="r">0.233</td><td class="r">0.247</td><td class="r vbad">0.271</td><td class="r">0.301</td><td class="r ">-24</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/807712" target="_blank">Luke Keaschall</a> <span class="tag tag-waiver">W</span></td><td class="c">MIN</td><td class="dim">2B, Util</td><td class="r">83%</td><td class="r"><span class="dim">—</span></td><td class="r">29.8</td><td class="r">24.5</td><td class="r">0.250</td><td class="r">0.248</td><td class="r vbad">0.268</td><td class="r">0.322</td><td class="r ">-20</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/673237" target="_blank">Yainer Diaz</a></td><td class="c">HOU</td><td class="dim">C, Util</td><td class="r">56%</td><td class="r"><span class="dim">—</span></td><td class="r">20.8</td><td class="r">33.0</td><td class="r">0.273</td><td class="r">0.276</td><td class="r vbad">0.265</td><td class="r">0.331</td><td class="r ">+11</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/686668" target="_blank">Brenton Doyle</a></td><td class="c">COL</td><td class="dim">OF, Util</td><td class="r">43%</td><td class="r"><span class="dim">—</span></td><td class="r">19.5</td><td class="r">22.0</td><td class="r">0.333</td><td class="r">0.268</td><td class="r vbad">0.258</td><td class="r">0.283</td><td class="r ">+10</td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/670770" target="_blank">TJ Friedl</a></td><td class="c">CIN</td><td class="dim">OF, Util</td><td class="r">16%</td><td class="r"><span class="dim">—</span></td><td class="r">21.6</td><td class="r">30.5</td><td class="r">0.234</td><td class="r">0.256</td><td class="r vbad">0.246</td><td class="r">0.253</td><td class="r ">+10</td></tr>
   </tbody>
 </table>
-<p class="note">FP = season fantasy points. Avg_FP_L4_Weeks = weekly avg over last 4 weeks. Sorted by xwOBA descending. Row highlighted red when xwOBA &lt; .300.</p>
+<p class="note">Pool: top 100 by Yahoo ownership/season FP (incl. waivers), filtered to those with ≥15 PA over the last 2 weeks (1-week data extrapolated), then re-ranked by hybrid (L4W/wk + L1W) and trimmed to 50. Avg_FP_L2W est uses Yahoo's lastweek (7d) since 14d isn't exposed. Display sorted by xwOBA desc. Row highlighted red when xwOBA &lt; .300. <strong>W</strong> badge = waiver claim required.</p>
 
 </section>
 
 <section class="section">
-  <h2>Free Agent Pitchers (Top 30)</h2>
+  <h2>Free Agent Pitchers (Top 50)</h2>
   
-<table>
+<table class="sortable">
   <thead>
     <tr>
       <th>Pitcher</th>
@@ -222,7 +628,8 @@ td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
       <th>Eligible</th>
       <th class="r">%Ros</th>
       <th class="r">FP</th>
-      <th class="r">Avg_FP_L4_Weeks</th>
+      <th class="r">Avg_FP_L4W</th>
+      <th class="r">Avg_FP_L2W</th>
       <th class="r">K%</th>
       <th class="r">BB%</th>
       <th class="r">K-BB%</th>
@@ -232,39 +639,59 @@ td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
     </tr>
   </thead>
   <tbody>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/643511" target="_blank">Tyler Rogers</a></td><td class="c">TOR</td><td class="dim">RP, P</td><td class="r">21%</td><td class="r"><span class="dim">—</span></td><td class="r">4.4</td><td class="r">13.6</td><td class="r ">6.8</td><td class="r vbad">6.8</td><td class="r elite">0.203</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/670329" target="_blank">Rico Garcia</a></td><td class="c">BAL</td><td class="dim">RP, P</td><td class="r">17%</td><td class="r"><span class="dim">—</span></td><td class="r">8.7</td><td class="r">32.6</td><td class="r ">8.7</td><td class="r elite">23.9</td><td class="r elite">0.215</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/642397" target="_blank">Gregory Soto</a></td><td class="c">PIT</td><td class="dim">RP, P</td><td class="r">26%</td><td class="r"><span class="dim">—</span></td><td class="r">11.2</td><td class="r">35.7</td><td class="r bad">10.7</td><td class="r elite">25.0</td><td class="r elite">0.221</td><td class="r">0.063</td><td class="per-start"><span class="good">0.285</span> <span class="dot">·</span> <span class="elite">0.118</span> <span class="dot">·</span> <span class="elite">0.250</span> <span class="dot">·</span> <span class="elite">0.226</span> <span class="dot">·</span> <span class="elite">0.144</span></td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/592094" target="_blank">Jason Adam</a></td><td class="c">SD</td><td class="dim">RP, P</td><td class="r">16%</td><td class="r"><span class="dim">—</span></td><td class="r">2.8</td><td class="r">12.5</td><td class="r ">6.3</td><td class="r vbad">6.2</td><td class="r elite">0.239</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/641745" target="_blank">Brad Keller</a></td><td class="c">PHI</td><td class="dim">RP, P</td><td class="r">15%</td><td class="r"><span class="dim">—</span></td><td class="r">5.4</td><td class="r">26.0</td><td class="r ">6.0</td><td class="r good">20.0</td><td class="r elite">0.253</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/621381" target="_blank">Matt Strahm</a></td><td class="c">KC</td><td class="dim">RP, P</td><td class="r">15%</td><td class="r"><span class="dim">—</span></td><td class="r">2.9</td><td class="r">25.0</td><td class="r bad">10.4</td><td class="r ">14.6</td><td class="r elite">0.256</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/681911" target="_blank">Alex Vesia</a></td><td class="c">LAD</td><td class="dim">RP, P</td><td class="r">31%</td><td class="r"><span class="dim">—</span></td><td class="r">8.4</td><td class="r">34.1</td><td class="r vbad">12.2</td><td class="r good">21.9</td><td class="r elite">0.259</td><td class="r">0.289</td><td class="per-start"><span class="elite">0.000</span> <span class="dot">·</span> <span class="elite">0.177</span> <span class="dot">·</span> <span class="vbad">0.412</span> <span class="dot">·</span> <span class="vbad">0.831</span> <span class="dot">·</span> <span class="elite">0.161</span></td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/681870" target="_blank">Erik Sabrowski</a></td><td class="c">CLE</td><td class="dim">RP, P</td><td class="r">21%</td><td class="r"><span class="dim">—</span></td><td class="r">6.6</td><td class="r">40.7</td><td class="r vbad">11.1</td><td class="r elite">29.6</td><td class="r good">0.261</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/676879" target="_blank">Aaron Ashby</a></td><td class="c">MIL</td><td class="dim">RP, P</td><td class="r">26%</td><td class="r"><span class="dim">—</span></td><td class="r">16.2</td><td class="r">37.5</td><td class="r vbad">13.8</td><td class="r elite">23.7</td><td class="r good">0.266</td><td class="r">0.096</td><td class="per-start"><span class="elite">0.250</span> <span class="dot">·</span> <span class="elite">0.150</span> <span class="dot">·</span> <span class="vbad">0.449</span> <span class="dot">·</span> <span class="good">0.285</span> <span class="dot">·</span> <span class="good">0.285</span></td></tr>
-<tr class="IL"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/690990" target="_blank">Cade Horton</a><span class="tag tag-il">IL60</span></td><td class="c">CHC</td><td class="dim">SP, P, IL</td><td class="r">30%</td><td class="r"><span class="dim">—</span></td><td class="r">-0.1</td><td class="r">15.4</td><td class="r ">7.7</td><td class="r vbad">7.7</td><td class="r good">0.283</td><td class="r">0.045</td><td class="per-start"><span class="elite">0.211</span> <span class="dot">·</span> <span>0.301</span></td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/678022" target="_blank">Jack Perkins</a></td><td class="c">ATH</td><td class="dim">SP, RP, P</td><td class="r">15%</td><td class="r"><span class="dim">—</span></td><td class="r">15.5</td><td class="r">30.9</td><td class="r good">5.5</td><td class="r elite">25.4</td><td class="r ">0.294</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
-<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/663574" target="_blank">Tony Santillan</a></td><td class="c">CIN</td><td class="dim">RP, P</td><td class="r">19%</td><td class="r"><span class="dim">—</span></td><td class="r">7.4</td><td class="r">28.3</td><td class="r vbad">13.2</td><td class="r ">15.1</td><td class="r ">0.298</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/596001" target="_blank">Jakob Junis</a></td><td class="c">TEX</td><td class="dim">RP, P</td><td class="r">23%</td><td class="r"><span class="dim">—</span></td><td class="r">4.6</td><td class="r">10.9</td><td class="r ">7.3</td><td class="r vbad">3.6</td><td class="r bad">0.314</td><td class="r">0.252</td><td class="per-start"><span class="elite">0.190</span> <span class="dot">·</span> <span class="elite">0.255</span> <span class="dot">·</span> <span class="vbad">0.759</span> <span class="dot">·</span> <span class="elite">0.102</span> <span class="dot">·</span> <span class="vbad">0.589</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/656945" target="_blank">Tanner Scott</a></td><td class="c">LAD</td><td class="dim">RP, P</td><td class="r">44%</td><td class="r"><span class="dim">—</span></td><td class="r">5.4</td><td class="r">26.5</td><td class="r good">4.1</td><td class="r elite">22.4</td><td class="r bad">0.317</td><td class="r">0.321</td><td class="per-start"><span class="elite">0.237</span> <span class="dot">·</span> <span class="elite">0.177</span> <span class="dot">·</span> <span class="vbad">0.959</span> <span class="dot">·</span> <span class="elite">0.059</span> <span class="dot">·</span> <span class="vbad">0.511</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/669160" target="_blank">Dustin May</a></td><td class="c">STL</td><td class="dim">SP, P</td><td class="r">17%</td><td class="r"><span class="dim">—</span></td><td class="r">12.7</td><td class="r">16.9</td><td class="r good">5.4</td><td class="r vbad">11.5</td><td class="r bad">0.319</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/592791" target="_blank">Jameson Taillon</a></td><td class="c">CHC</td><td class="dim">SP, P</td><td class="r">17%</td><td class="r"><span class="dim">—</span></td><td class="r">12.5</td><td class="r">22.0</td><td class="r bad">9.2</td><td class="r ">12.8</td><td class="r bad">0.321</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/607067" target="_blank">Colin Rea</a></td><td class="c">CHC</td><td class="dim">SP, RP, P</td><td class="r">18%</td><td class="r"><span class="dim">—</span></td><td class="r">11.1</td><td class="r">20.5</td><td class="r ">7.7</td><td class="r ">12.8</td><td class="r bad">0.326</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/676974" target="_blank">Max Meyer</a></td><td class="c">MIA</td><td class="dim">SP, P</td><td class="r">22%</td><td class="r"><span class="dim">—</span></td><td class="r">12.3</td><td class="r">25.0</td><td class="r bad">9.1</td><td class="r ">15.9</td><td class="r vbad">0.332</td><td class="r">0.056</td><td class="per-start"><span class="vbad">0.338</span> <span class="dot">·</span> <span class="elite">0.223</span> <span class="dot">·</span> <span class="vbad">0.353</span> <span class="dot">·</span> <span class="vbad">0.348</span> <span class="dot">·</span> <span class="vbad">0.389</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/656492" target="_blank">Foster Griffin</a></td><td class="c">WSH</td><td class="dim">SP, RP, P</td><td class="r">32%</td><td class="r"><span class="dim">—</span></td><td class="r">14.5</td><td class="r">21.9</td><td class="r ">7.3</td><td class="r ">14.6</td><td class="r vbad">0.335</td><td class="r">0.044</td><td class="per-start"><span class="bad">0.329</span> <span class="dot">·</span> <span class="vbad">0.357</span> <span class="dot">·</span> <span class="good">0.280</span> <span class="dot">·</span> <span class="good">0.280</span> <span class="dot">·</span> <span class="vbad">0.394</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/625643" target="_blank">Reynaldo López</a></td><td class="c">ATL</td><td class="dim">SP, P</td><td class="r">18%</td><td class="r"><span class="dim">—</span></td><td class="r">9.5</td><td class="r">21.8</td><td class="r bad">10.9</td><td class="r vbad">10.9</td><td class="r vbad">0.340</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
-<tr class="IL poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/673540" target="_blank">Kodai Senga</a><span class="tag tag-il">IL15</span></td><td class="c">NYM</td><td class="dim">SP, P, IL</td><td class="r">17%</td><td class="r"><span class="dim">—</span></td><td class="r">-2.4</td><td class="r">23.7</td><td class="r vbad">13.4</td><td class="r vbad">10.3</td><td class="r vbad">0.340</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/656849" target="_blank">David Peterson</a></td><td class="c">NYM</td><td class="dim">SP, P</td><td class="r">13%</td><td class="r"><span class="dim">—</span></td><td class="r">2.1</td><td class="r">20.1</td><td class="r bad">9.7</td><td class="r vbad">10.4</td><td class="r vbad">0.340</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/702275" target="_blank">JR Ritchie</a></td><td class="c">ATL</td><td class="dim">SP, P</td><td class="r">33%</td><td class="r"><span class="dim">—</span></td><td class="r">6.3</td><td class="r">21.6</td><td class="r vbad">11.8</td><td class="r vbad">9.8</td><td class="r vbad">0.342</td><td class="r">0.010</td><td class="per-start"><span class="vbad">0.332</span> <span class="dot">·</span> <span class="vbad">0.352</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/669270" target="_blank">Joel Kuhnel</a></td><td class="c">ATH</td><td class="dim">RP, P</td><td class="r">22%</td><td class="r"><span class="dim">—</span></td><td class="r">6.9</td><td class="r">10.0</td><td class="r good">5.0</td><td class="r vbad">5.0</td><td class="r vbad">0.354</td><td class="r">0.122</td><td class="per-start"><span class="bad">0.316</span> <span class="dot">·</span> <span class="elite">0.236</span> <span class="dot">·</span> <span class="vbad">0.527</span> <span class="dot">·</span> <span class="vbad">0.447</span> <span class="dot">·</span> <span class="vbad">0.551</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/643377" target="_blank">Griffin Jax</a></td><td class="c">TB</td><td class="dim">RP, P</td><td class="r">26%</td><td class="r"><span class="dim">—</span></td><td class="r">4.2</td><td class="r">23.1</td><td class="r vbad">15.4</td><td class="r vbad">7.7</td><td class="r vbad">0.357</td><td class="r">0.181</td><td class="per-start"><span class="elite">0.200</span> <span class="dot">·</span> <span class="vbad">0.359</span> <span class="dot">·</span> <span class="elite">0.186</span> <span class="dot">·</span> <span class="vbad">0.689</span> <span class="dot">·</span> <span class="vbad">0.369</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/676477" target="_blank">Garrett Whitlock</a></td><td class="c">BOS</td><td class="dim">RP, P</td><td class="r">21%</td><td class="r"><span class="dim">—</span></td><td class="r">6.9</td><td class="r">28.3</td><td class="r bad">10.9</td><td class="r ">17.4</td><td class="r vbad">0.358</td><td class="r">0.189</td><td class="per-start"><span class="vbad">0.420</span> <span class="dot">·</span> <span class="good">0.279</span> <span class="dot">·</span> <span class="vbad">0.648</span> <span class="dot">·</span> <span class="elite">0.112</span> <span class="dot">·</span> <span class="elite">0.194</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/640455" target="_blank">Sean Manaea</a></td><td class="c">NYM</td><td class="dim">SP, RP, P</td><td class="r">15%</td><td class="r"><span class="dim">—</span></td><td class="r">2.8</td><td class="r">22.3</td><td class="r bad">9.7</td><td class="r ">12.6</td><td class="r vbad">0.359</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/702070" target="_blank">Noah Cameron</a></td><td class="c">KC</td><td class="dim">SP, P</td><td class="r">26%</td><td class="r"><span class="dim">—</span></td><td class="r">9.9</td><td class="r">19.4</td><td class="r ">7.6</td><td class="r vbad">11.8</td><td class="r vbad">0.386</td><td class="r">0.074</td><td class="per-start"><span class="bad">0.311</span> <span class="dot">·</span> <span class="vbad">0.406</span> <span class="dot">·</span> <span class="vbad">0.538</span> <span class="dot">·</span> <span class="vbad">0.418</span> <span class="dot">·</span> <span class="vbad">0.375</span></td></tr>
-<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/650556" target="_blank">Bryan Abreu</a></td><td class="c">HOU</td><td class="dim">RP, P</td><td class="r">25%</td><td class="r"><span class="dim">—</span></td><td class="r">2.6</td><td class="r">30.2</td><td class="r vbad">28.3</td><td class="r vbad">1.9</td><td class="r vbad">0.401</td><td class="r">0.103</td><td class="per-start"><span class="bad">0.323</span> <span class="dot">·</span> <span class="elite">0.177</span> <span class="dot">·</span> <span class="vbad">0.436</span> <span class="dot">·</span> <span class="elite">0.176</span> <span class="dot">·</span> <span class="vbad">0.364</span></td></tr>
-<tr class="IL"><td class="nm">Quinn Priester<span class="tag tag-il">IL15</span></td><td class="c">MIL</td><td class="dim">SP, RP, P, IL</td><td class="r">22%</td><td class="r"><span class="dim">—</span></td><td class="r">0.0</td><td class="r"><span class="dim">—</span></td><td class="r "><span class="dim">—</span></td><td class="r "><span class="dim">—</span></td><td class="r "><span class="dim">—</span></td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/643511" target="_blank">Tyler Rogers</a></td><td class="c">TOR</td><td class="dim">RP, P</td><td class="r">21%</td><td class="r"><span class="dim">—</span></td><td class="r">4.4</td><td class="r">6.8</td><td class="r">13.6</td><td class="r ">6.8</td><td class="r vbad">6.8</td><td class="r elite">0.203</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/656641" target="_blank">Jacob Latz</a></td><td class="c">TEX</td><td class="dim">SP, RP, P</td><td class="r">10%</td><td class="r"><span class="dim">—</span></td><td class="r">8.0</td><td class="r">16.8</td><td class="r">23.7</td><td class="r good">5.1</td><td class="r good">18.6</td><td class="r elite">0.210</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/666661" target="_blank">Juan Morillo</a></td><td class="c">AZ</td><td class="dim">RP, P</td><td class="r">13%</td><td class="r"><span class="dim">—</span></td><td class="r">11.5</td><td class="r">6.5</td><td class="r">29.8</td><td class="r ">7.0</td><td class="r elite">22.8</td><td class="r elite">0.214</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/801139" target="_blank">Payton Tolle</a> <span class="tag tag-waiver">W</span></td><td class="c">BOS</td><td class="dim">SP, RP, P</td><td class="r">45%</td><td class="r"><span class="dim">—</span></td><td class="r">6.3</td><td class="r">1.2</td><td class="r">35.7</td><td class="r vbad">11.9</td><td class="r elite">23.8</td><td class="r elite">0.214</td><td class="r">0.068</td><td class="per-start"><span class="good">0.285</span> <span class="dot">·</span> <span class="elite">0.149</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/670329" target="_blank">Rico Garcia</a></td><td class="c">BAL</td><td class="dim">RP, P</td><td class="r">17%</td><td class="r"><span class="dim">—</span></td><td class="r">8.7</td><td class="r">4.4</td><td class="r">32.6</td><td class="r ">8.7</td><td class="r elite">23.9</td><td class="r elite">0.215</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/669276" target="_blank">Dylan Lee</a></td><td class="c">ATL</td><td class="dim">RP, P</td><td class="r">7%</td><td class="r"><span class="dim">—</span></td><td class="r">9.0</td><td class="r">10.7</td><td class="r">32.7</td><td class="r good">3.8</td><td class="r elite">28.9</td><td class="r elite">0.219</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/642397" target="_blank">Gregory Soto</a></td><td class="c">PIT</td><td class="dim">RP, P</td><td class="r">26%</td><td class="r"><span class="dim">—</span></td><td class="r">11.2</td><td class="r">10.5</td><td class="r">35.7</td><td class="r bad">10.7</td><td class="r elite">25.0</td><td class="r elite">0.221</td><td class="r">0.063</td><td class="per-start"><span class="good">0.285</span> <span class="dot">·</span> <span class="elite">0.118</span> <span class="dot">·</span> <span class="elite">0.250</span> <span class="dot">·</span> <span class="elite">0.226</span> <span class="dot">·</span> <span class="elite">0.144</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/669062" target="_blank">Erik Miller</a></td><td class="c">SF</td><td class="dim">RP, P</td><td class="r">8%</td><td class="r"><span class="dim">—</span></td><td class="r">9.0</td><td class="r">14.3</td><td class="r">35.4</td><td class="r vbad">12.5</td><td class="r elite">22.9</td><td class="r elite">0.232</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/622608" target="_blank">Antonio Senzatela</a></td><td class="c">COL</td><td class="dim">SP, RP, P</td><td class="r">12%</td><td class="r"><span class="dim">—</span></td><td class="r">13.1</td><td class="r">10.3</td><td class="r">26.8</td><td class="r ">7.0</td><td class="r good">19.8</td><td class="r elite">0.245</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/672456" target="_blank">Keider Montero</a></td><td class="c">DET</td><td class="dim">SP, RP, P</td><td class="r">8%</td><td class="r"><span class="dim">—</span></td><td class="r">9.3</td><td class="r">4.2</td><td class="r">21.5</td><td class="r good">4.7</td><td class="r ">16.8</td><td class="r elite">0.246</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/641755" target="_blank">Tyler Kinley</a></td><td class="c">ATL</td><td class="dim">RP, P</td><td class="r">4%</td><td class="r"><span class="dim">—</span></td><td class="r">11.4</td><td class="r">5.8</td><td class="r">24.1</td><td class="r vbad">12.1</td><td class="r ">12.0</td><td class="r elite">0.249</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/691799" target="_blank">Grant Taylor</a></td><td class="c">CWS</td><td class="dim">SP, RP, P</td><td class="r">7%</td><td class="r"><span class="dim">—</span></td><td class="r">10.1</td><td class="r">8.6</td><td class="r">34.8</td><td class="r ">6.1</td><td class="r elite">28.7</td><td class="r elite">0.250</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="IL"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/573204" target="_blank">Caleb Thielbar</a><span class="tag tag-il">IL15</span></td><td class="c">CHC</td><td class="dim">RP, P, IL</td><td class="r">7%</td><td class="r"><span class="dim">—</span></td><td class="r">10.5</td><td class="r">0.0</td><td class="r">29.7</td><td class="r bad">10.8</td><td class="r good">18.9</td><td class="r elite">0.250</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/641745" target="_blank">Brad Keller</a></td><td class="c">PHI</td><td class="dim">RP, P</td><td class="r">15%</td><td class="r"><span class="dim">—</span></td><td class="r">5.4</td><td class="r">14.6</td><td class="r">26.0</td><td class="r ">6.0</td><td class="r good">20.0</td><td class="r elite">0.253</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/621381" target="_blank">Matt Strahm</a></td><td class="c">KC</td><td class="dim">RP, P</td><td class="r">15%</td><td class="r"><span class="dim">—</span></td><td class="r">2.9</td><td class="r">4.0</td><td class="r">25.0</td><td class="r bad">10.4</td><td class="r ">14.6</td><td class="r elite">0.256</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/681911" target="_blank">Alex Vesia</a></td><td class="c">LAD</td><td class="dim">RP, P</td><td class="r">31%</td><td class="r"><span class="dim">—</span></td><td class="r">8.4</td><td class="r">3.5</td><td class="r">34.1</td><td class="r vbad">12.2</td><td class="r good">21.9</td><td class="r elite">0.259</td><td class="r">0.289</td><td class="per-start"><span class="elite">0.000</span> <span class="dot">·</span> <span class="elite">0.177</span> <span class="dot">·</span> <span class="vbad">0.412</span> <span class="dot">·</span> <span class="vbad">0.831</span> <span class="dot">·</span> <span class="elite">0.161</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/681870" target="_blank">Erik Sabrowski</a></td><td class="c">CLE</td><td class="dim">RP, P</td><td class="r">21%</td><td class="r"><span class="dim">—</span></td><td class="r">6.6</td><td class="r">6.0</td><td class="r">40.7</td><td class="r vbad">11.1</td><td class="r elite">29.6</td><td class="r good">0.261</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/676879" target="_blank">Aaron Ashby</a></td><td class="c">MIL</td><td class="dim">RP, P</td><td class="r">26%</td><td class="r"><span class="dim">—</span></td><td class="r">16.2</td><td class="r">11.8</td><td class="r">37.5</td><td class="r vbad">13.8</td><td class="r elite">23.7</td><td class="r good">0.266</td><td class="r">0.096</td><td class="per-start"><span class="elite">0.250</span> <span class="dot">·</span> <span class="elite">0.150</span> <span class="dot">·</span> <span class="vbad">0.449</span> <span class="dot">·</span> <span class="good">0.285</span> <span class="dot">·</span> <span class="good">0.285</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/676962" target="_blank">Ben Brown</a></td><td class="c">CHC</td><td class="dim">SP, RP, P</td><td class="r">6%</td><td class="r"><span class="dim">—</span></td><td class="r">7.9</td><td class="r">4.4</td><td class="r">24.4</td><td class="r ">7.8</td><td class="r ">16.6</td><td class="r good">0.269</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/663567" target="_blank">Peter Lambert</a> <span class="tag tag-waiver">W</span></td><td class="c">HOU</td><td class="dim">SP, P</td><td class="r">18%</td><td class="r"><span class="dim">—</span></td><td class="r">9.3</td><td class="r">1.6</td><td class="r">28.8</td><td class="r bad">10.6</td><td class="r good">18.2</td><td class="r good">0.276</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/640448" target="_blank">Kyle Finnegan</a></td><td class="c">DET</td><td class="dim">RP, P</td><td class="r">9%</td><td class="r"><span class="dim">—</span></td><td class="r">7.8</td><td class="r">18.2</td><td class="r">19.4</td><td class="r vbad">16.1</td><td class="r vbad">3.3</td><td class="r good">0.277</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/605488" target="_blank">Jeffrey Springs</a> <span class="tag tag-waiver">W</span><span class="tag tag-dtd">DTD</span></td><td class="c">ATH</td><td class="dim">SP, P</td><td class="r">47%</td><td class="r"><span class="dim">—</span></td><td class="r">18.2</td><td class="r">4.8</td><td class="r">22.2</td><td class="r ">7.6</td><td class="r ">14.6</td><td class="r good">0.285</td><td class="r">0.084</td><td class="per-start"><span class="vbad">0.388</span> <span class="dot">·</span> <span class="elite">0.244</span> <span class="dot">·</span> <span class="vbad">0.383</span> <span class="dot">·</span> <span>0.292</span> <span class="dot">·</span> <span class="elite">0.166</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/666808" target="_blank">Camilo Doval</a></td><td class="c">NYY</td><td class="dim">RP, P</td><td class="r">4%</td><td class="r"><span class="dim">—</span></td><td class="r">2.2</td><td class="r">4.0</td><td class="r">24.4</td><td class="r good">4.4</td><td class="r good">20.0</td><td class="r ">0.291</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/670970" target="_blank">Adrian Morejon</a></td><td class="c">SD</td><td class="dim">RP, P</td><td class="r">11%</td><td class="r"><span class="dim">—</span></td><td class="r">8.8</td><td class="r">5.3</td><td class="r">23.9</td><td class="r ">7.0</td><td class="r ">16.9</td><td class="r ">0.292</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/678022" target="_blank">Jack Perkins</a></td><td class="c">ATH</td><td class="dim">SP, RP, P</td><td class="r">16%</td><td class="r"><span class="dim">—</span></td><td class="r">15.5</td><td class="r">23.0</td><td class="r">30.9</td><td class="r good">5.5</td><td class="r elite">25.4</td><td class="r ">0.294</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/676083" target="_blank">Janson Junk</a></td><td class="c">MIA</td><td class="dim">SP, RP, P</td><td class="r">4%</td><td class="r"><span class="dim">—</span></td><td class="r">9.9</td><td class="r">20.0</td><td class="r">15.8</td><td class="r ">6.0</td><td class="r vbad">9.8</td><td class="r ">0.298</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class=""><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/663574" target="_blank">Tony Santillan</a></td><td class="c">CIN</td><td class="dim">RP, P</td><td class="r">19%</td><td class="r"><span class="dim">—</span></td><td class="r">7.4</td><td class="r">0.2</td><td class="r">28.3</td><td class="r vbad">13.2</td><td class="r ">15.1</td><td class="r ">0.298</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/676917" target="_blank">Cade Cavalli</a></td><td class="c">WSH</td><td class="dim">SP, P</td><td class="r">13%</td><td class="r"><span class="dim">—</span></td><td class="r">14.8</td><td class="r">27.5</td><td class="r">26.6</td><td class="r bad">9.8</td><td class="r ">16.8</td><td class="r ">0.309</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/669160" target="_blank">Dustin May</a></td><td class="c">STL</td><td class="dim">SP, P</td><td class="r">17%</td><td class="r"><span class="dim">—</span></td><td class="r">12.7</td><td class="r">3.5</td><td class="r">16.9</td><td class="r good">5.4</td><td class="r vbad">11.5</td><td class="r bad">0.319</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/592791" target="_blank">Jameson Taillon</a></td><td class="c">CHC</td><td class="dim">SP, P</td><td class="r">17%</td><td class="r"><span class="dim">—</span></td><td class="r">12.5</td><td class="r">18.0</td><td class="r">22.0</td><td class="r bad">9.2</td><td class="r ">12.8</td><td class="r bad">0.321</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="IL poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/665152" target="_blank">Dean Kremer</a><span class="tag tag-il">IL15</span></td><td class="c">BAL</td><td class="dim">SP, P, IL</td><td class="r">7%</td><td class="r"><span class="dim">—</span></td><td class="r">6.7</td><td class="r">0.0</td><td class="r">37.2</td><td class="r good">4.7</td><td class="r elite">32.5</td><td class="r bad">0.321</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/621121" target="_blank">Lance McCullers Jr.</a></td><td class="c">HOU</td><td class="dim">SP, P</td><td class="r">10%</td><td class="r"><span class="dim">—</span></td><td class="r">3.8</td><td class="r">17.8</td><td class="r">24.8</td><td class="r vbad">12.8</td><td class="r ">12.0</td><td class="r bad">0.330</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/669467" target="_blank">Andre Pallante</a></td><td class="c">STL</td><td class="dim">SP, P</td><td class="r">4%</td><td class="r"><span class="dim">—</span></td><td class="r">10.0</td><td class="r">32.3</td><td class="r">18.8</td><td class="r bad">10.1</td><td class="r vbad">8.7</td><td class="r vbad">0.331</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/676974" target="_blank">Max Meyer</a></td><td class="c">MIA</td><td class="dim">SP, P</td><td class="r">22%</td><td class="r"><span class="dim">—</span></td><td class="r">12.3</td><td class="r">10.8</td><td class="r">25.0</td><td class="r bad">9.1</td><td class="r ">15.9</td><td class="r vbad">0.332</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/527048" target="_blank">Martín Pérez</a></td><td class="c">ATL</td><td class="dim">SP, P</td><td class="r">4%</td><td class="r"><span class="dim">—</span></td><td class="r">9.5</td><td class="r">17.2</td><td class="r">17.0</td><td class="r ">8.9</td><td class="r vbad">8.1</td><td class="r vbad">0.333</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/656492" target="_blank">Foster Griffin</a></td><td class="c">WSH</td><td class="dim">SP, RP, P</td><td class="r">32%</td><td class="r"><span class="dim">—</span></td><td class="r">14.5</td><td class="r">19.8</td><td class="r">21.9</td><td class="r ">7.3</td><td class="r ">14.6</td><td class="r vbad">0.335</td><td class="r">0.044</td><td class="per-start"><span class="bad">0.329</span> <span class="dot">·</span> <span class="vbad">0.357</span> <span class="dot">·</span> <span class="good">0.280</span> <span class="dot">·</span> <span class="good">0.280</span> <span class="dot">·</span> <span class="vbad">0.394</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/650644" target="_blank">Aaron Civale</a></td><td class="c">ATH</td><td class="dim">SP, RP, P</td><td class="r">9%</td><td class="r"><span class="dim">—</span></td><td class="r">8.7</td><td class="r">6.8</td><td class="r">18.2</td><td class="r ">6.1</td><td class="r ">12.1</td><td class="r vbad">0.336</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/686799" target="_blank">Jack Kochanowicz</a> <span class="tag tag-waiver">W</span></td><td class="c">LAA</td><td class="dim">SP, P</td><td class="r">16%</td><td class="r"><span class="dim">—</span></td><td class="r">13.6</td><td class="r">10.0</td><td class="r">16.3</td><td class="r vbad">12.2</td><td class="r vbad">4.1</td><td class="r vbad">0.338</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/693855" target="_blank">Ian Seymour</a></td><td class="c">TB</td><td class="dim">SP, RP, P</td><td class="r">4%</td><td class="r"><span class="dim">—</span></td><td class="r">5.5</td><td class="r">4.9</td><td class="r">28.8</td><td class="r bad">10.2</td><td class="r good">18.6</td><td class="r vbad">0.338</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/625643" target="_blank">Reynaldo López</a></td><td class="c">ATL</td><td class="dim">SP, P</td><td class="r">18%</td><td class="r"><span class="dim">—</span></td><td class="r">9.5</td><td class="r">12.5</td><td class="r">21.8</td><td class="r bad">10.9</td><td class="r vbad">10.9</td><td class="r vbad">0.340</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/579328" target="_blank">Yusei Kikuchi</a> <span class="tag tag-waiver">W</span><span class="tag tag-dtd">DTD</span></td><td class="c">LAA</td><td class="dim">SP, P</td><td class="r">20%</td><td class="r"><span class="dim">—</span></td><td class="r">6.8</td><td class="r">2.2</td><td class="r">23.2</td><td class="r bad">9.9</td><td class="r ">13.3</td><td class="r vbad">0.341</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/694297" target="_blank">Brandon Pfaadt</a></td><td class="c">AZ</td><td class="dim">SP, P</td><td class="r">4%</td><td class="r"><span class="dim">—</span></td><td class="r">3.8</td><td class="r">3.5</td><td class="r">18.4</td><td class="r bad">9.6</td><td class="r vbad">8.8</td><td class="r vbad">0.341</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/702275" target="_blank">JR Ritchie</a></td><td class="c">ATL</td><td class="dim">SP, P</td><td class="r">33%</td><td class="r"><span class="dim">—</span></td><td class="r">6.3</td><td class="r">3.3</td><td class="r">21.6</td><td class="r vbad">11.8</td><td class="r vbad">9.8</td><td class="r vbad">0.342</td><td class="r">0.010</td><td class="per-start"><span class="vbad">0.332</span> <span class="dot">·</span> <span class="vbad">0.352</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/621111" target="_blank">Walker Buehler</a></td><td class="c">SD</td><td class="dim">SP, P</td><td class="r">5%</td><td class="r"><span class="dim">—</span></td><td class="r">7.3</td><td class="r">3.7</td><td class="r">21.1</td><td class="r bad">10.5</td><td class="r vbad">10.6</td><td class="r vbad">0.346</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/593958" target="_blank">Eduardo Rodriguez</a> <span class="tag tag-waiver">W</span></td><td class="c">AZ</td><td class="dim">SP, P</td><td class="r">18%</td><td class="r"><span class="dim">—</span></td><td class="r">8.5</td><td class="r">3.2</td><td class="r">15.4</td><td class="r vbad">11.2</td><td class="r vbad">4.2</td><td class="r vbad">0.351</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/605135" target="_blank">Chris Bassitt</a></td><td class="c">BAL</td><td class="dim">SP, P</td><td class="r">12%</td><td class="r"><span class="dim">—</span></td><td class="r">5.5</td><td class="r">24.2</td><td class="r">12.6</td><td class="r bad">10.4</td><td class="r vbad">2.2</td><td class="r vbad">0.355</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/687075" target="_blank">Brandon Sproat</a></td><td class="c">MIL</td><td class="dim">SP, P</td><td class="r">6%</td><td class="r"><span class="dim">—</span></td><td class="r">5.4</td><td class="r">2.1</td><td class="r">21.7</td><td class="r vbad">13.0</td><td class="r vbad">8.7</td><td class="r vbad">0.358</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/640455" target="_blank">Sean Manaea</a></td><td class="c">NYM</td><td class="dim">SP, RP, P</td><td class="r">15%</td><td class="r"><span class="dim">—</span></td><td class="r">2.8</td><td class="r">6.0</td><td class="r">22.3</td><td class="r bad">9.7</td><td class="r ">12.6</td><td class="r vbad">0.359</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/571578" target="_blank">Patrick Corbin</a></td><td class="c">TOR</td><td class="dim">SP, P</td><td class="r">5%</td><td class="r"><span class="dim">—</span></td><td class="r">4.5</td><td class="r">4.2</td><td class="r">20.3</td><td class="r ">7.6</td><td class="r ">12.7</td><td class="r vbad">0.375</td><td class="r"><span class="dim">—</span></td><td class="per-start"><span class="dim">—</span></td></tr>
+<tr class="poor-xwoba"><td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/702070" target="_blank">Noah Cameron</a></td><td class="c">KC</td><td class="dim">SP, P</td><td class="r">26%</td><td class="r"><span class="dim">—</span></td><td class="r">9.9</td><td class="r">19.4</td><td class="r">19.4</td><td class="r ">7.6</td><td class="r vbad">11.8</td><td class="r vbad">0.386</td><td class="r">0.074</td><td class="per-start"><span class="bad">0.311</span> <span class="dot">·</span> <span class="vbad">0.406</span> <span class="dot">·</span> <span class="vbad">0.538</span> <span class="dot">·</span> <span class="vbad">0.418</span> <span class="dot">·</span> <span class="vbad">0.375</span></td></tr>
   </tbody>
 </table>
-<p class="note">FP = season. Avg_FP_L4_Weeks = weekly avg over last 4 weeks. Sorted by xwOBA ascending. Row highlighted red when xwOBA &gt; .300.</p>
+<p class="note">Pool: top 100 by Yahoo ownership/season FP (incl. waivers), then pure RPs without xwOBA &lt; .300 dropped, then re-ranked by hybrid (L4W/wk + L1W) and trimmed to 50. Avg_FP_L2W est uses Yahoo's lastweek (7d) since 14d isn't exposed. Display sorted by xwOBA ascending. Row highlighted red when xwOBA &gt; .300. <strong>W</strong> badge = waiver claim required.</p>
 
 </section>
 
@@ -352,6 +779,13 @@ td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
   <tbody>
 
 <tr>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/605135" target="_blank">Chris Bassitt</a></td>
+  <td class="">04-30 vs HOU</td>
+  <td class="two-start">05-05 @ MIA <span class="dot">·</span> 05-10 vs ATH</td>
+  <td class="r">3</td>
+</tr>
+
+<tr>
   <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/702070" target="_blank">Noah Cameron</a></td>
   <td class="">04-30 @ ATH</td>
   <td class="two-start">05-05 vs CLE <span class="dot">·</span> 05-10 vs DET</td>
@@ -359,9 +793,16 @@ td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
 </tr>
 
 <tr>
-  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/702275" target="_blank">JR Ritchie</a></td>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/669467" target="_blank">Andre Pallante</a></td>
   <td class=""><span class="dim">—</span></td>
-  <td class="two-start">05-04 @ SEA <span class="dot">·</span> 05-10 @ LAD</td>
+  <td class="two-start">05-05 vs MIL <span class="dot">·</span> 05-10 @ SDP</td>
+  <td class="r">2</td>
+</tr>
+
+<tr>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/676917" target="_blank">Cade Cavalli</a></td>
+  <td class=""><span class="dim">—</span></td>
+  <td class="two-start">05-05 vs MIN <span class="dot">·</span> 05-10 @ MIA</td>
   <td class="r">2</td>
 </tr>
 
@@ -373,9 +814,37 @@ td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
 </tr>
 
 <tr>
-  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/656849" target="_blank">David Peterson</a></td>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/676083" target="_blank">Janson Junk</a></td>
   <td class=""><span class="dim">—</span></td>
-  <td class="two-start">05-04 @ COL <span class="dot">·</span> 05-10 @ ARI</td>
+  <td class="two-start">05-04 vs PHI <span class="dot">·</span> 05-09 vs WSN</td>
+  <td class="r">2</td>
+</tr>
+
+<tr>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/593958" target="_blank">Eduardo Rodriguez</a> <span class="tag tag-waiver">W</span></td>
+  <td class=""><span class="dim">—</span></td>
+  <td class="two-start">05-05 vs PIT <span class="dot">·</span> 05-10 vs NYM</td>
+  <td class="r">2</td>
+</tr>
+
+<tr>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/621111" target="_blank">Walker Buehler</a></td>
+  <td class=""><span class="dim">—</span></td>
+  <td class="two-start">05-04 @ SFG <span class="dot">·</span> 05-09 vs STL</td>
+  <td class="r">2</td>
+</tr>
+
+<tr>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/702275" target="_blank">JR Ritchie</a></td>
+  <td class=""><span class="dim">—</span></td>
+  <td class="two-start">05-04 @ SEA <span class="dot">·</span> 05-10 @ LAD</td>
+  <td class="r">2</td>
+</tr>
+
+<tr>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/687075" target="_blank">Brandon Sproat</a></td>
+  <td class=""><span class="dim">—</span></td>
+  <td class="two-start">05-04 @ STL <span class="dot">·</span> 05-10 vs NYY</td>
   <td class="r">2</td>
 </tr>
 
@@ -387,6 +856,13 @@ td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
 </tr>
 
 <tr>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/686799" target="_blank">Jack Kochanowicz</a> <span class="tag tag-waiver">W</span></td>
+  <td class="">05-03 vs NYM</td>
+  <td class="">05-09 @ TOR</td>
+  <td class="r">2</td>
+</tr>
+
+<tr>
   <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/676974" target="_blank">Max Meyer</a></td>
   <td class="">05-02 vs PHI</td>
   <td class="">05-07 vs BAL</td>
@@ -394,9 +870,16 @@ td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
 </tr>
 
 <tr>
-  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/607067" target="_blank">Colin Rea</a></td>
-  <td class="">05-01 vs ARI</td>
-  <td class="">05-06 vs CIN</td>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/605488" target="_blank">Jeffrey Springs</a> <span class="tag tag-waiver">W</span></td>
+  <td class="">04-30 vs KCR</td>
+  <td class="">05-06 @ PHI</td>
+  <td class="r">2</td>
+</tr>
+
+<tr>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/621121" target="_blank">Lance McCullers Jr.</a></td>
+  <td class="">04-30 @ BAL</td>
+  <td class="">05-06 vs LAD</td>
   <td class="r">2</td>
 </tr>
 
@@ -406,6 +889,48 @@ td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
   <td class="">05-08 @ SDP</td>
   <td class="r">2</td>
 </tr>
+
+<tr>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/650644" target="_blank">Aaron Civale</a></td>
+  <td class="">05-03 vs CLE</td>
+  <td class="">05-09 @ BAL</td>
+  <td class="r">2</td>
+</tr>
+
+<tr>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/672456" target="_blank">Keider Montero</a></td>
+  <td class="">05-02 vs TEX</td>
+  <td class="">05-09 @ KCR</td>
+  <td class="r">2</td>
+</tr>
+
+<tr>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/663567" target="_blank">Peter Lambert</a> <span class="tag tag-waiver">W</span></td>
+  <td class="">04-30 @ BAL</td>
+  <td class="">05-05 vs LAD</td>
+  <td class="r">2</td>
+</tr>
+
+<tr>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/571578" target="_blank">Patrick Corbin</a></td>
+  <td class="">05-01 @ MIN</td>
+  <td class="">05-06 @ TBR</td>
+  <td class="r">2</td>
+</tr>
+
+<tr>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/579328" target="_blank">Yusei Kikuchi</a> <span class="tag tag-waiver">W</span></td>
+  <td class=""><span class="dim">—</span></td>
+  <td class="">05-05 vs CHW</td>
+  <td class="r">1</td>
+</tr>
+
+<tr>
+  <td class="nm"><a href="https://baseballsavant.mlb.com/savant-player/801139" target="_blank">Payton Tolle</a> <span class="tag tag-waiver">W</span></td>
+  <td class=""><span class="dim">—</span></td>
+  <td class="">05-04 @ DET</td>
+  <td class="r">1</td>
+</tr>
   </tbody>
 </table>
 
@@ -414,6 +939,46 @@ td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
 <footer style="margin-top: 40px; color: var(--muted); font-size: 11px; text-align: center;">
   Generated by mtampellini/fantasybaseball · Data: Yahoo Fantasy, Baseball Savant, Fangraphs RosterResource
 </footer>
+
+
+<script>
+(function () {
+  function parseCell(td) {
+    var raw = (td.textContent || '').trim();
+    var m = raw.match(/-?[0-9][0-9,]*\.?[0-9]*/);
+    if (m) {
+      var num = parseFloat(m[0].replace(/,/g, ''));
+      if (!isNaN(num)) return { num: num, str: raw };
+    }
+    return { num: null, str: raw };
+  }
+  function sortTable(table, colIdx, dir) {
+    var tbody = table.tBodies[0];
+    var rows = Array.prototype.slice.call(tbody.rows);
+    rows.sort(function (a, b) {
+      var x = parseCell(a.cells[colIdx]);
+      var y = parseCell(b.cells[colIdx]);
+      var cmp;
+      if (x.num !== null && y.num !== null) cmp = x.num - y.num;
+      else cmp = x.str.localeCompare(y.str);
+      return dir === 'asc' ? cmp : -cmp;
+    });
+    rows.forEach(function (r) { tbody.appendChild(r); });
+  }
+  document.querySelectorAll('table.sortable').forEach(function (table) {
+    var ths = table.tHead ? table.tHead.rows[0].cells : [];
+    Array.prototype.forEach.call(ths, function (th, idx) {
+      th.addEventListener('click', function () {
+        var current = th.getAttribute('data-sort-dir');
+        var next = current === 'asc' ? 'desc' : 'asc';
+        Array.prototype.forEach.call(ths, function (h) { h.removeAttribute('data-sort-dir'); });
+        th.setAttribute('data-sort-dir', next);
+        sortTable(table, idx, next);
+      });
+    });
+  });
+})();
+</script>
 
 </body>
 </html>

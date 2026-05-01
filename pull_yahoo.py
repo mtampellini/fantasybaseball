@@ -122,12 +122,13 @@ def fetch_my_roster():
 
 def fetch_free_agents(position, count=30):
     """
-    Pull free agents for a position group, sorted by season fantasy points desc.
+    Pull available players (free agents + waivers) for a position group,
+    sorted by season fantasy points desc, falling back to ownership.
 
-    Args:
-        position: "B" for all batters, "P" for all pitchers,
-                  or specific like "SP", "RP", "1B", "OF", etc.
-        count: how many to return
+    Yahoo splits availability into two buckets: `free_agents` (no claim
+    pending) and `waivers` (a claim is pending). A hot recent call-up
+    can sit on waivers for days and never appear in `free_agents` —
+    so we merge both lists to keep them eligible candidates.
 
     Returns: list of dicts with:
         {
@@ -138,18 +139,42 @@ def fetch_free_agents(position, count=30):
             "status": "",
             "percent_owned": 35,
             "fantasy_points": 68.92,
+            "on_waivers": False,
         }
     """
     league = get_league()
     fas = league.free_agents(position)
+    waivers = league.waivers()
+    # Filter waivers to the requested position group
+    if position == "B":
+        waivers = [w for w in waivers if w.get("position_type") == "B"]
+    elif position == "P":
+        waivers = [w for w in waivers if w.get("position_type") == "P"]
+    else:
+        waivers = [w for w in waivers if position in (w.get("eligible_positions") or [])]
 
-    # Sort by fantasy points desc if available, else AR
-    def sort_key(p):
+    seen = set()
+    combined = []
+    for f in fas:
+        pid = f.get("player_id")
+        if pid in seen:
+            continue
+        seen.add(pid)
+        combined.append((f, False))
+    for w in waivers:
+        pid = w.get("player_id")
+        if pid in seen:
+            continue
+        seen.add(pid)
+        combined.append((w, True))
+
+    def sort_key(item):
+        p = item[0]
         return -(p.get("fantasy_points") or p.get("percent_owned") or 0)
 
-    fas_sorted = sorted(fas, key=sort_key)
+    combined.sort(key=sort_key)
     out = []
-    for fa in fas_sorted[:count * 2]:  # pull extra to filter then trim
+    for fa, is_waiver in combined[:count * 2]:
         out.append({
             "name": fa.get("name"),
             "player_id": fa.get("player_id"),
@@ -158,24 +183,22 @@ def fetch_free_agents(position, count=30):
             "status": fa.get("status", ""),
             "percent_owned": fa.get("percent_owned"),
             "fantasy_points": fa.get("fantasy_points"),
+            "on_waivers": is_waiver,
         })
         if len(out) >= count:
             break
     return out
 
 
-def fetch_last_month_fp(player_ids):
+def fetch_yahoo_stats(player_ids, range_type="lastmonth"):
     """
-    Fetch fantasy points over the last 30 days for given player IDs.
-
-    Yahoo's `lastmonth` stat type returns the trailing 30-day window. The
-    points league exposes a `total_points` field directly.
+    Fetch raw stats for `range_type` ('lastweek', 'lastmonth', etc.).
 
     A single invalid player_id in a batch causes Yahoo to reject the whole
     batch, so on chunk failure we fall back to per-player calls and skip
     only the bad IDs.
 
-    Returns: { player_id: float, ... }  (missing players silently dropped)
+    Returns: {player_id: stats_dict_from_yahoo}
     """
     if not player_ids:
         return {}
@@ -185,22 +208,68 @@ def fetch_last_month_fp(player_ids):
     def absorb(rows):
         for r in rows:
             pid = r.get("player_id")
-            tp = r.get("total_points")
-            if pid is not None and tp is not None:
-                out[pid] = float(tp)
+            if pid is None:
+                continue
+            out[pid] = r
 
     ids = list(player_ids)
     for i in range(0, len(ids), 25):
         chunk = ids[i:i + 25]
         try:
-            absorb(league.player_stats(chunk, "lastmonth"))
+            absorb(league.player_stats(chunk, range_type))
         except Exception:
-            # Batch failed — retry one at a time so good IDs still resolve
             for pid in chunk:
                 try:
-                    absorb(league.player_stats([pid], "lastmonth"))
+                    absorb(league.player_stats([pid], range_type))
                 except Exception:
                     continue
+    return out
+
+
+def fetch_last_month_fp(player_ids):
+    """Returns {player_id: total_points} from Yahoo's lastmonth stat type."""
+    raw = fetch_yahoo_stats(player_ids, "lastmonth")
+    out = {}
+    for pid, s in raw.items():
+        tp = s.get("total_points")
+        if tp is None:
+            continue
+        try:
+            out[pid] = float(tp)
+        except (ValueError, TypeError):
+            continue
+    return out
+
+
+def fetch_last_week_stats(player_ids):
+    """
+    Returns {player_id: {"fp_1w": float, "ab": int, "bb": int, "pa": int}}.
+    Used both as a recency signal and to filter hitters by recent plate
+    appearances. `pa` = ab + bb (HBP/SF aren't exposed in this endpoint).
+    """
+    raw = fetch_yahoo_stats(player_ids, "lastweek")
+    out = {}
+    for pid, s in raw.items():
+        try:
+            tp = float(s.get("total_points") or 0)
+        except (ValueError, TypeError):
+            tp = 0.0
+        h_ab = s.get("H/AB", "")
+        ab = 0
+        if isinstance(h_ab, str) and "/" in h_ab:
+            try:
+                ab = int(h_ab.split("/")[1])
+            except (ValueError, IndexError):
+                ab = 0
+        bb = 0
+        for key in ("BB", "Walks"):
+            if key in s:
+                try:
+                    bb = int(float(s[key]))
+                except (ValueError, TypeError):
+                    bb = 0
+                break
+        out[pid] = {"fp_1w": tp, "ab": ab, "bb": bb, "pa": ab + bb}
     return out
 
 

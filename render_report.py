@@ -13,6 +13,12 @@ Sections in order (per Mike's spec):
 from datetime import datetime
 from html import escape
 
+from render_weekly_section import (
+    render_section as render_weekly_section,
+    EXTRA_CSS as WEEKLY_CSS,
+    SORTABLE_JS,
+)
+
 
 CSS = """
 :root {
@@ -79,6 +85,7 @@ td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
 .tag-il { background: var(--red); color: white; }
 .tag-dtd { background: var(--orange); color: white; }
 .tag-na { background: #888; color: white; }
+.tag-waiver { background: var(--blue); color: white; }
 .dim { color: var(--muted); }
 .per-start { font-family: SFMono-Regular, Menlo, monospace; font-size: 10.5px; }
 .dot { color: var(--muted); margin: 0 4px; }
@@ -181,10 +188,11 @@ def _row_class(player, kind=None):
 def _player_link(player):
     pid = player.get("mlbam_id")
     name = escape(player.get("name") or "")
+    waiver_tag = ' <span class="tag tag-waiver">W</span>' if player.get("on_waivers") else ""
     if pid:
         url = f"https://baseballsavant.mlb.com/savant-player/{pid}"
-        return f'<a href="{url}" target="_blank">{name}</a>'
-    return name
+        return f'<a href="{url}" target="_blank">{name}</a>{waiver_tag}'
+    return name + waiver_tag
 
 
 def render_hitter_row(p, show_slot=True):
@@ -314,6 +322,7 @@ def render_fa_hitters_table(hitters):
         cells.append(f'<td class="r">{int(ros) if ros is not None else "—"}%</td>')
         cells.append(f'<td class="r">{_fmt(h.get("fantasy_points"), 1)}</td>')
         cells.append(f'<td class="r">{_fmt(h.get("avg_fp_4w"), 1)}</td>')
+        cells.append(f'<td class="r">{_fmt(h.get("avg_fp_2w_est"), 1)}</td>')
         cells.append(f'<td class="r">{_fmt(h.get("babip"))}</td>')
         cells.append(f'<td class="r">{_fmt(h.get("woba"))}</td>')
         xwc = _hitter_xwoba_class(h.get("xwoba"))
@@ -326,7 +335,7 @@ def render_fa_hitters_table(hitters):
         rows.append(f'<tr class="{_row_class(h, "B")}">' + "".join(cells) + "</tr>")
     rows_html = "\n".join(rows)
     return f"""
-<table>
+<table class="sortable">
   <thead>
     <tr>
       <th>Hitter</th>
@@ -334,7 +343,8 @@ def render_fa_hitters_table(hitters):
       <th>Eligible</th>
       <th class="r">%Ros</th>
       <th class="r">FP</th>
-      <th class="r">Avg_FP_L4_Weeks</th>
+      <th class="r">Avg_FP_L4W</th>
+      <th class="r">Avg_FP_L2W</th>
       <th class="r">BABIP</th>
       <th class="r">wOBA</th>
       <th class="r">xwOBA</th>
@@ -346,7 +356,7 @@ def render_fa_hitters_table(hitters):
 {rows_html}
   </tbody>
 </table>
-<p class="note">FP = season fantasy points. Avg_FP_L4_Weeks = weekly avg over last 4 weeks. Sorted by xwOBA descending. Row highlighted red when xwOBA &lt; .300.</p>
+<p class="note">Pool: top 100 by Yahoo ownership/season FP (incl. waivers), filtered to those with ≥15 PA over the last 2 weeks (1-week data extrapolated), then re-ranked by hybrid (L4W/wk + L1W) and trimmed to 50. Avg_FP_L2W est uses Yahoo's lastweek (7d) since 14d isn't exposed. Display sorted by xwOBA desc. Row highlighted red when xwOBA &lt; .300. <strong>W</strong> badge = waiver claim required.</p>
 """
 
 
@@ -363,6 +373,7 @@ def render_fa_pitchers_table(pitchers):
         cells.append(f'<td class="r">{int(ros) if ros is not None else "—"}%</td>')
         cells.append(f'<td class="r">{_fmt(p.get("fantasy_points"), 1)}</td>')
         cells.append(f'<td class="r">{_fmt(p.get("avg_fp_4w"), 1)}</td>')
+        cells.append(f'<td class="r">{_fmt(p.get("avg_fp_2w_est"), 1)}</td>')
         cells.append(f'<td class="r">{_fmt(p.get("k_pct"), 1)}</td>')
         bbc = _bb_class(p.get("bb_pct"))
         cells.append(f'<td class="r {bbc}">{_fmt(p.get("bb_pct"), 1)}</td>')
@@ -383,7 +394,7 @@ def render_fa_pitchers_table(pitchers):
         rows.append(f'<tr class="{_row_class(p, "P")}">' + "".join(cells) + "</tr>")
     rows_html = "\n".join(rows)
     return f"""
-<table>
+<table class="sortable">
   <thead>
     <tr>
       <th>Pitcher</th>
@@ -391,7 +402,8 @@ def render_fa_pitchers_table(pitchers):
       <th>Eligible</th>
       <th class="r">%Ros</th>
       <th class="r">FP</th>
-      <th class="r">Avg_FP_L4_Weeks</th>
+      <th class="r">Avg_FP_L4W</th>
+      <th class="r">Avg_FP_L2W</th>
       <th class="r">K%</th>
       <th class="r">BB%</th>
       <th class="r">K-BB%</th>
@@ -404,7 +416,7 @@ def render_fa_pitchers_table(pitchers):
 {rows_html}
   </tbody>
 </table>
-<p class="note">FP = season. Avg_FP_L4_Weeks = weekly avg over last 4 weeks. Sorted by xwOBA ascending. Row highlighted red when xwOBA &gt; .300.</p>
+<p class="note">Pool: top 100 by Yahoo ownership/season FP (incl. waivers), then pure RPs without xwOBA &lt; .300 dropped, then re-ranked by hybrid (L4W/wk + L1W) and trimmed to 50. Avg_FP_L2W est uses Yahoo's lastweek (7d) since 14d isn't exposed. Display sorted by xwOBA ascending. Row highlighted red when xwOBA &gt; .300. <strong>W</strong> badge = waiver claim required.</p>
 """
 
 
@@ -490,6 +502,9 @@ def render_html(snapshot):
     my_pitchers = snapshot.get("my_pitchers", [])
     fa_hitters = snapshot.get("fa_hitters", [])
     fa_pitchers = snapshot.get("fa_pitchers", [])
+    league_metrics = snapshot.get("league_metrics")
+
+    weekly_section_html = render_weekly_section(league_metrics) if league_metrics else ""
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -497,7 +512,7 @@ def render_html(snapshot):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tamp Slam Daily Report — {today}</title>
-<style>{CSS}</style>
+<style>{CSS}{WEEKLY_CSS}</style>
 </head>
 <body>
 
@@ -515,6 +530,8 @@ def render_html(snapshot):
   <h2>My Pitchers</h2>
   {render_my_pitchers_table(my_pitchers)}
 </section>
+
+{weekly_section_html}
 
 <section class="section">
   <h2>Free Agent Hitters (Top {len(fa_hitters)})</h2>
@@ -535,5 +552,6 @@ def render_html(snapshot):
   Generated by mtampellini/fantasybaseball · Data: Yahoo Fantasy, Baseball Savant, Fangraphs RosterResource
 </footer>
 
+{SORTABLE_JS}
 </body>
 </html>"""
