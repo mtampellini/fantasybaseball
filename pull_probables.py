@@ -109,6 +109,38 @@ def starts_by_pitcher(games):
     return dict(by_pitcher)
 
 
+def count_team_games_in_window(games, start_date, end_date):
+    """
+    Count scheduled MLB games per team in the given date window.
+
+    Each entry in `games` is one team's perspective of a single contest
+    (team's SP + opponent), so a 1-vs-1 game produces 2 entries — one
+    keyed under each team. We count entries by `team` field, which gives
+    us exactly one count per team per game (doubleheaders correctly
+    produce 2 entries per team).
+
+    Returns: {team_abbr: int}
+    """
+    if isinstance(start_date, datetime):
+        start_date = start_date.date()
+    if isinstance(end_date, datetime):
+        end_date = end_date.date()
+    counts = defaultdict(int)
+    for g in games:
+        d = g.get("date")
+        if not d:
+            continue
+        try:
+            gd = datetime.strptime(d, "%Y-%m-%d").date()
+        except ValueError:
+            continue
+        if start_date <= gd <= end_date:
+            t = g.get("team")
+            if t:
+                counts[t] += 1
+    return dict(counts)
+
+
 def filter_to_date_range(games, start_date, end_date):
     """Filter a list of games to a date range (inclusive)."""
     if isinstance(start_date, datetime):

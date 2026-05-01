@@ -19,12 +19,15 @@ from config import (
 )
 from pull_yahoo import (
     fetch_my_roster, fetch_free_agents, fetch_current_matchup,
-    fetch_last_month_fp, fetch_last_week_stats, get_league,
+    fetch_last_month_fp, fetch_last_week_stats, fetch_yahoo_stats,
+    fetch_all_rostered_hitters,
+    parse_pa_from_yahoo_stats, get_league,
 )
 from pull_savant import fetch_pitcher_leaderboard, fetch_hitter_leaderboard
 from pull_per_start import fetch_per_start_xwoba
 from pull_probables import (
-    fetch_probables_grid, starts_by_pitcher, get_fantasy_week_bounds
+    fetch_probables_grid, starts_by_pitcher, get_fantasy_week_bounds,
+    count_team_games_in_window,
 )
 from enrich import enrich_list, attach_per_start, attach_probable_starts
 from pull_weekly_results import fetch_all_weeks, fetch_standings
@@ -69,6 +72,16 @@ def main():
     fa_hitters = fetch_free_agents("B", FA_HITTER_COUNT * 2)
     print(f"  FA pool: {len(fa_pitchers)} pitchers, {len(fa_hitters)} hitters")
 
+    # Step 1b: All rostered hitters across the league (for full-league
+    # ROS leaderboard at the bottom of the report)
+    print("\nPulling rostered hitters across all 14 teams...")
+    rostered_hitters_other = fetch_all_rostered_hitters()
+    my_hitter_ids = {h["player_id"] for h in my_hitters}
+    rostered_hitters_other = [
+        h for h in rostered_hitters_other if h.get("player_id") not in my_hitter_ids
+    ]
+    print(f"  Got {len(rostered_hitters_other)} rostered hitters on other teams")
+
     # Step 2: Savant season leaderboards
     print("\n[2/6] Pulling Savant season Statcast...")
     pitcher_index = fetch_pitcher_leaderboard()
@@ -82,10 +95,14 @@ def main():
     enrich_list(my_pitchers, pitcher_index)
     enrich_list(fa_hitters, hitter_index)
     enrich_list(fa_pitchers, pitcher_index)
+    enrich_list(rostered_hitters_other, hitter_index)
 
     matched_h = sum(1 for p in my_hitters if p.get("savant_matched"))
     matched_p = sum(1 for p in my_pitchers if p.get("savant_matched"))
-    print(f"  Matched: {matched_h}/{len(my_hitters)} hitters, {matched_p}/{len(my_pitchers)} pitchers")
+    matched_other = sum(1 for p in rostered_hitters_other if p.get("savant_matched"))
+    print(f"  Matched: {matched_h}/{len(my_hitters)} hitters, "
+          f"{matched_p}/{len(my_pitchers)} pitchers, "
+          f"{matched_other}/{len(rostered_hitters_other)} rostered-other hitters")
 
     # Step 4: Per-start xwOBA for my pitchers + top FA pitchers
     print(f"\n[4/6] Pulling per-start xwOBA for {len(my_pitchers)} my pitchers + top FA SPs...")
@@ -147,6 +164,76 @@ def main():
             p["fp_1w"] = None
             p["pa_1w"] = None
             p["avg_fp_2w_est"] = None
+
+    # Step 5b'': season PA + xFP/wk for hitters (volume signal + composite KPI)
+    # xFP/wk = xwOBA * 3.5 * weekly_PA. The 3.5 constant is calibrated from
+    # this league's scoring (R=1.5, BB=1, HR=4, etc.) so an avg hitter
+    # (xwOBA .310, 22 PA/wk) projects to ~24 FP/wk, matching observed values.
+    print("\nPulling season totals for hitters (volume + xFP/wk)...")
+    league_obj = get_league()
+    weeks_played = max(1, int(league_obj.current_week()) - 1)
+    hitter_list = my_hitters + fa_hitters + rostered_hitters_other
+    hitter_ids = [h["player_id"] for h in hitter_list if h.get("player_id")]
+    season_stats = fetch_yahoo_stats(hitter_ids, "season")
+    matched = 0
+    for h in hitter_list:
+        s = season_stats.get(h.get("player_id"))
+        if s:
+            pa = parse_pa_from_yahoo_stats(s)
+            h["pa_season"] = pa
+            h["pa_per_wk"] = round(pa / weeks_played, 1) if pa else 0.0
+            try:
+                sb = int(float(s.get("SB") or 0))
+            except (ValueError, TypeError):
+                sb = 0
+            h["sb_season"] = sb
+            h["sb_per_wk"] = round(sb / weeks_played, 2) if sb else 0.0
+            matched += 1
+        else:
+            h["pa_season"] = None
+            h["pa_per_wk"] = None
+            h["sb_season"] = None
+            h["sb_per_wk"] = None
+        xw = h.get("xwoba")
+        pa_wk = h.get("pa_per_wk")
+        sb_wk = h.get("sb_per_wk") or 0.0
+        if xw is not None and pa_wk:
+            hitting_pts = xw * 3.5 * pa_wk
+            sb_pts = sb_wk * 2.0
+            h["xfp_hit"] = round(hitting_pts, 1)
+            h["xfp_sb"] = round(sb_pts, 1)
+            h["xfp_per_wk"] = round(hitting_pts + sb_pts, 1)
+        else:
+            h["xfp_hit"] = None
+            h["xfp_sb"] = None
+            h["xfp_per_wk"] = None
+    print(f"  Computed PA/wk + SB/wk + xFP/wk for {matched}/{len(hitter_list)} hitters "
+          f"(weeks_played={weeks_played})")
+
+    # Step 5b''': forward-looking projections — next week (NW) + rest-of-season (ROS)
+    # NW = current xFP/wk × (games_next_week / typical_week_games)
+    # ROS = current xFP/wk × weeks_remaining_to_end_of_playoffs
+    end_week = int(league_obj.end_week())
+    current_week_num = int(league_obj.current_week())
+    weeks_remaining = max(0, end_week - current_week_num + 1)  # inclusive of in-progress
+    typical_week_games = 6.0  # MLB averages ~6.2 games/wk; round factor for stability
+    games_per_team_nw = count_team_games_in_window(probables_raw, nw_start, nw_end)
+    print(f"\nForward projections: end_week={end_week}, current={current_week_num}, "
+          f"weeks_remaining={weeks_remaining}")
+    print(f"  Next week games per team (sample): "
+          f"{dict(list(games_per_team_nw.items())[:4])}")
+    for h in hitter_list:
+        cur = h.get("xfp_per_wk")
+        if cur is None:
+            h["xfp_next_week"] = None
+            h["xfp_ros"] = None
+            h["games_next_week"] = None
+            continue
+        team = h.get("team")
+        games_nw = games_per_team_nw.get(team, int(typical_week_games))
+        h["games_next_week"] = games_nw
+        h["xfp_next_week"] = round(cur * (games_nw / typical_week_games), 1)
+        h["xfp_ros"] = round(cur * weeks_remaining, 0)
 
     # Filter + hybrid-rerank FA pools, then trim to display count.
     # Note: Yahoo's FA list returns fantasy_points=None for all FAs (only
@@ -236,6 +323,7 @@ def main():
         "my_pitchers": my_pitchers,
         "fa_hitters": fa_hitters,
         "fa_pitchers": fa_pitchers,
+        "rostered_hitters_other": rostered_hitters_other,
         "fantasy_week_bounds": {
             "this_week_start": tw_start.isoformat(),
             "this_week_end": tw_end.isoformat(),

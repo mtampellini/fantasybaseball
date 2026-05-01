@@ -38,7 +38,7 @@ def fetch_hitter_leaderboard(year=2026, min_pa=10):
     """Pull every hitter with min_pa+ PA. Returns dict keyed on normalized name."""
     params = {
         "year": year, "type": "batter", "min": min_pa,
-        "selections": "babip,xslg,woba,xwoba",
+        "selections": "xba,babip,xslg,woba,xwoba",
         "sort": "xwoba", "sortDir": "desc",
         "csv": "true",
     }
@@ -88,7 +88,7 @@ def _parse_pitcher_csv(text):
 
 
 def _parse_hitter_csv(text):
-    """CSV: "last_name, first_name", player_id, year, babip, xslg, woba, xwoba"""
+    """CSV: "last_name, first_name", player_id, year, xba, babip, xslg, woba, xwoba"""
     out = {}
     text = text.lstrip("\ufeff")
     reader = csv.reader(io.StringIO(text))
@@ -97,22 +97,27 @@ def _parse_hitter_csv(text):
         return out
 
     for row in reader:
-        if len(row) < 7:
+        if len(row) < 8:
             continue
         raw_name = row[0].strip()
         if not raw_name:
             continue
         normalized = normalize_name(raw_name)
-        woba = parse_float(row[5])
-        xwoba = parse_float(row[6])
+        xba = parse_float(row[3])
+        xslg = parse_float(row[5])
+        xiso = round(xslg - xba, 3) if (xslg is not None and xba is not None) else None
+        woba = parse_float(row[6])
+        xwoba = parse_float(row[7])
         gap = None
         if woba is not None and xwoba is not None:
             gap = round((woba - xwoba) * 1000)
         out[normalized] = {
             "name": _display_name(raw_name),
             "player_id": row[1].strip(),
-            "babip": parse_float(row[3]),
-            "xslg": parse_float(row[4]),
+            "xba": xba,
+            "babip": parse_float(row[4]),
+            "xslg": xslg,
+            "xiso": xiso,
             "woba": woba,
             "xwoba": xwoba,
             "woba_xwoba_gap": gap,

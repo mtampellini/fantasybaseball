@@ -241,6 +241,30 @@ def fetch_last_month_fp(player_ids):
     return out
 
 
+def parse_pa_from_yahoo_stats(s):
+    """Extract estimated PA from a Yahoo player_stats response.
+
+    Yahoo's stats endpoint exposes H/AB ('21/104') and BB. PA = AB + BB
+    (HBP/SF aren't included in this scope, so we under-count by ~3-5%).
+    """
+    h_ab = s.get("H/AB", "")
+    ab = 0
+    if isinstance(h_ab, str) and "/" in h_ab:
+        try:
+            ab = int(h_ab.split("/")[1])
+        except (ValueError, IndexError):
+            ab = 0
+    bb = 0
+    for key in ("BB", "Walks"):
+        if key in s:
+            try:
+                bb = int(float(s[key]))
+            except (ValueError, TypeError):
+                bb = 0
+            break
+    return ab + bb
+
+
 def fetch_last_week_stats(player_ids):
     """
     Returns {player_id: {"fp_1w": float, "ab": int, "bb": int, "pa": int}}.
@@ -270,6 +294,51 @@ def fetch_last_week_stats(player_ids):
                     bb = 0
                 break
         out[pid] = {"fp_1w": tp, "ab": ab, "bb": bb, "pa": ab + bb}
+    return out
+
+
+def fetch_all_rostered_hitters():
+    """
+    Iterate every team in the league and return rostered hitters with
+    owner info attached. Used to build a full-league xFP leaderboard
+    (taken_players() exists but doesn't expose ownership).
+
+    Returns: list of dicts:
+        {
+            name, player_id, team, eligible_positions, status,
+            position_type='B', percent_owned,
+            owner_team_id, owner_team_name,
+        }
+    """
+    league = get_league()
+    teams_dict = league.teams()  # team_key -> meta dict
+    out = []
+    for team_key, team_meta in teams_dict.items():
+        if not isinstance(team_meta, dict):
+            continue
+        team_name = team_meta.get("name", "")
+        try:
+            owner_team_id = int(team_key.rsplit(".", 1)[-1])
+        except (ValueError, AttributeError):
+            owner_team_id = None
+        try:
+            roster = league.to_team(team_key).roster()
+        except Exception as e:
+            print(f"  WARN: roster pull failed for {team_name}: {e}")
+            continue
+        for r in roster:
+            if r.get("position_type") != "B":
+                continue
+            out.append({
+                "name": r.get("name"),
+                "player_id": r.get("player_id"),
+                "team": r.get("editorial_team_abbr") or "",
+                "eligible_positions": r.get("eligible_positions", []),
+                "status": r.get("status", ""),
+                "position_type": "B",
+                "owner_team_id": owner_team_id,
+                "owner_team_name": team_name,
+            })
     return out
 
 

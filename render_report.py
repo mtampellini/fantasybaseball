@@ -203,6 +203,11 @@ def render_hitter_row(p, show_slot=True):
     cells.append(f'<td class="nm">{name_html}</td>')
     cells.append(f'<td class="c">{escape(p.get("team") or "")}</td>')
     cells.append(f'<td class="r">{_fmt(p.get("avg_fp_4w"), 1)}</td>')
+    cells.append(f'<td class="r">{_fmt(p.get("xfp_per_wk"), 1)}</td>')
+    games_nw = p.get("games_next_week")
+    games_label = f' <span class="dim">({games_nw}g)</span>' if games_nw is not None else ""
+    cells.append(f'<td class="r"><strong>{_fmt(p.get("xfp_next_week"), 1)}</strong>{games_label}</td>')
+    cells.append(f'<td class="r"><strong>{_fmt(p.get("xfp_ros"), 0)}</strong></td>')
     cells.append(f'<td class="r">{_fmt(p.get("babip"))}</td>')
     cells.append(f'<td class="r">{_fmt(p.get("woba"))}</td>')
     xwc = _hitter_xwoba_class(p.get("xwoba"))
@@ -258,13 +263,16 @@ def _xwoba_inline_class(val):
 def render_my_hitters_table(hitters):
     rows = "\n".join(render_hitter_row(h) for h in hitters)
     return f"""
-<table>
+<table class="sortable">
   <thead>
     <tr>
       <th>Slot</th>
       <th>Hitter</th>
       <th>Team</th>
-      <th class="r">Avg_FP_L4_Weeks</th>
+      <th class="r">Avg_FP_L4W</th>
+      <th class="r">xFP/wk</th>
+      <th class="r">xFP NW</th>
+      <th class="r">xFP ROS</th>
       <th class="r">BABIP</th>
       <th class="r">wOBA</th>
       <th class="r">xwOBA</th>
@@ -276,7 +284,7 @@ def render_my_hitters_table(hitters):
 {rows}
   </tbody>
 </table>
-<p class="note">Avg_FP_L4_Weeks = (last-month FP total) / 4, i.e. weekly average over the last 4 weeks. Row highlighted red when xwOBA &lt; .300. Gap = wOBA − xwOBA in points. Positive = lucky outcomes (regression incoming). Negative = unlucky (positive regression candidate).</p>
+<p class="note">xFP/wk = typical-week projection = (xwOBA × 3.5 × PA/wk) + (SB/wk × 2). <strong>xFP NW</strong> = next-week projection scaled by actual MLB games scheduled (game count shown in dim). <strong>xFP ROS</strong> = rest-of-season cumulative projection through end of fantasy playoffs. Row highlighted red when xwOBA &lt; .300.</p>
 """
 
 
@@ -310,7 +318,7 @@ def render_my_pitchers_table(pitchers):
 
 
 def render_fa_hitters_table(hitters):
-    hitters = sorted(hitters, key=lambda h: (h.get("xwoba") is None, -(h.get("xwoba") or 0)))
+    hitters = sorted(hitters, key=lambda h: (h.get("xfp_next_week") is None, -(h.get("xfp_next_week") or 0)))
     rows = []
     for h in hitters:
         cells = []
@@ -320,9 +328,13 @@ def render_fa_hitters_table(hitters):
         cells.append(f'<td class="dim">{escape(positions)}</td>')
         ros = h.get("percent_owned")
         cells.append(f'<td class="r">{int(ros) if ros is not None else "—"}%</td>')
-        cells.append(f'<td class="r">{_fmt(h.get("fantasy_points"), 1)}</td>')
         cells.append(f'<td class="r">{_fmt(h.get("avg_fp_4w"), 1)}</td>')
         cells.append(f'<td class="r">{_fmt(h.get("avg_fp_2w_est"), 1)}</td>')
+        cells.append(f'<td class="r">{_fmt(h.get("xfp_per_wk"), 1)}</td>')
+        games_nw = h.get("games_next_week")
+        games_label = f' <span class="dim">({games_nw}g)</span>' if games_nw is not None else ""
+        cells.append(f'<td class="r"><strong>{_fmt(h.get("xfp_next_week"), 1)}</strong>{games_label}</td>')
+        cells.append(f'<td class="r"><strong>{_fmt(h.get("xfp_ros"), 0)}</strong></td>')
         cells.append(f'<td class="r">{_fmt(h.get("babip"))}</td>')
         cells.append(f'<td class="r">{_fmt(h.get("woba"))}</td>')
         xwc = _hitter_xwoba_class(h.get("xwoba"))
@@ -342,9 +354,11 @@ def render_fa_hitters_table(hitters):
       <th>Team</th>
       <th>Eligible</th>
       <th class="r">%Ros</th>
-      <th class="r">FP</th>
       <th class="r">Avg_FP_L4W</th>
       <th class="r">Avg_FP_L2W</th>
+      <th class="r">xFP/wk</th>
+      <th class="r">xFP NW</th>
+      <th class="r">xFP ROS</th>
       <th class="r">BABIP</th>
       <th class="r">wOBA</th>
       <th class="r">xwOBA</th>
@@ -356,7 +370,7 @@ def render_fa_hitters_table(hitters):
 {rows_html}
   </tbody>
 </table>
-<p class="note">Pool: top 100 by Yahoo ownership/season FP (incl. waivers), filtered to those with ≥15 PA over the last 2 weeks (1-week data extrapolated), then re-ranked by hybrid (L4W/wk + L1W) and trimmed to 50. Avg_FP_L2W est uses Yahoo's lastweek (7d) since 14d isn't exposed. Display sorted by xwOBA desc. Row highlighted red when xwOBA &lt; .300. <strong>W</strong> badge = waiver claim required.</p>
+<p class="note">Pool: top 100 by Yahoo ownership/season FP (incl. waivers), filtered to ≥15 PA over last 2 weeks, then trimmed to 50 by hybrid score. <strong>Default display sort: xFP NW desc</strong> — projected fantasy points for the upcoming Mon→Sun matchup, scaled by actual MLB games scheduled (count shown in dim). <strong>xFP/wk</strong> = typical-week per-week rate (xwOBA × 3.5 × PA/wk + SB/wk × 2). <strong>xFP ROS</strong> = rest-of-season cumulative through end of fantasy playoffs. Click any column to re-sort. Row highlighted red when xwOBA &lt; .300. <strong>W</strong> badge = waiver claim required.</p>
 """
 
 
@@ -417,6 +431,76 @@ def render_fa_pitchers_table(pitchers):
   </tbody>
 </table>
 <p class="note">Pool: top 100 by Yahoo ownership/season FP (incl. waivers), then pure RPs without xwOBA &lt; .300 dropped, then re-ranked by hybrid (L4W/wk + L1W) and trimmed to 50. Avg_FP_L2W est uses Yahoo's lastweek (7d) since 14d isn't exposed. Display sorted by xwOBA ascending. Row highlighted red when xwOBA &gt; .300. <strong>W</strong> badge = waiver claim required.</p>
+"""
+
+
+def render_top_ros_hitters(my_hitters, fa_hitters, rostered_other, count=30):
+    """Full-league ranking of all hitters by xfp_ros descending."""
+    pool = list(my_hitters) + list(fa_hitters) + list(rostered_other)
+    my_ids = {h.get("player_id") for h in my_hitters}
+    pool = [h for h in pool if h.get("xfp_ros") is not None]
+    # Dedupe in case the same player_id slipped through
+    seen = set()
+    deduped = []
+    for h in pool:
+        pid = h.get("player_id")
+        if pid in seen:
+            continue
+        seen.add(pid)
+        deduped.append(h)
+    deduped.sort(key=lambda h: -(h.get("xfp_ros") or 0))
+    deduped = deduped[:count]
+    if not deduped:
+        return ""
+    rows = []
+    for i, h in enumerate(deduped, start=1):
+        is_mine = h.get("player_id") in my_ids
+        owner_team = h.get("owner_team_name")
+        cls = "me-row" if is_mine else ""
+        if is_mine:
+            owner_html = '<span class="tag tag-na" style="background: var(--green-dark)">MINE</span>'
+        elif owner_team:
+            owner_html = f'<span class="dim">{escape(owner_team)}</span>'
+        elif h.get("on_waivers"):
+            owner_html = '<span class="tag tag-waiver">W</span>'
+        else:
+            owner_html = '<span class="tag tag-na">FA</span>'
+        positions = ", ".join(h.get("eligible_positions") or [])
+        games_nw = h.get("games_next_week")
+        games_label = f' <span class="dim">({games_nw}g)</span>' if games_nw is not None else ""
+        cells = [
+            f'<td class="r">{i}</td>',
+            f'<td class="nm">{_player_link(h)}</td>',
+            f'<td class="c">{escape(h.get("team") or "")}</td>',
+            f'<td>{owner_html}</td>',
+            f'<td class="dim">{escape(positions)}</td>',
+            f'<td class="r">{_fmt(h.get("xfp_per_wk"), 1)}</td>',
+            f'<td class="r">{_fmt(h.get("xfp_next_week"), 1)}{games_label}</td>',
+            f'<td class="r"><strong>{_fmt(h.get("xfp_ros"), 0)}</strong></td>',
+            f'<td class="r">{_fmt(h.get("xwoba"))}</td>',
+        ]
+        rows.append(f'<tr class="{cls}">' + "".join(cells) + "</tr>")
+    rows_html = "\n".join(rows)
+    return f"""
+<table class="sortable">
+  <thead>
+    <tr>
+      <th class="r">#</th>
+      <th>Hitter</th>
+      <th class="c">MLB</th>
+      <th>Owner</th>
+      <th>Eligible</th>
+      <th class="r">xFP/wk</th>
+      <th class="r">xFP NW</th>
+      <th class="r">xFP ROS</th>
+      <th class="r">xwOBA</th>
+    </tr>
+  </thead>
+  <tbody>
+{rows_html}
+  </tbody>
+</table>
+<p class="note">Top {count} hitters across the entire league (all 14 teams + free agents), ranked by xFP ROS descending. <strong>MINE</strong> = your roster · team-name shown for hitters owned by another team · <strong>W</strong> = on waivers · <strong>FA</strong> = available. Click any column to re-sort. Use this to identify trade targets (high xFP ROS owned by other teams) or available pickups (high xFP ROS marked FA / W).</p>
 """
 
 
@@ -502,6 +586,7 @@ def render_html(snapshot):
     my_pitchers = snapshot.get("my_pitchers", [])
     fa_hitters = snapshot.get("fa_hitters", [])
     fa_pitchers = snapshot.get("fa_pitchers", [])
+    rostered_other = snapshot.get("rostered_hitters_other", [])
     league_metrics = snapshot.get("league_metrics")
 
     weekly_section_html = render_weekly_section(league_metrics) if league_metrics else ""
@@ -546,6 +631,11 @@ def render_html(snapshot):
 <section class="section">
   <h2>Probable Pitchers</h2>
   {render_probables_section(my_pitchers, fa_pitchers)}
+</section>
+
+<section class="section">
+  <h2>Top 30 Hitters — Rest of Season (All Teams)</h2>
+  {render_top_ros_hitters(my_hitters, fa_hitters, rostered_other, count=30)}
 </section>
 
 <footer style="margin-top: 40px; color: var(--muted); font-size: 11px; text-align: center;">
