@@ -1,0 +1,3142 @@
+{
+  "date": "2026-05-01",
+  "generated_at": "2026-05-01 13:27:37",
+  "week": 6,
+  "record": "",
+  "my_hitters": [
+    {
+      "name": "Cal Raleigh",
+      "player_id": 11531,
+      "team": "SEA",
+      "selected_position": "C",
+      "eligible_positions": [
+        "C",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "babip": 0.215,
+      "woba": 0.296,
+      "xwoba": 0.327,
+      "xslg": 0.454,
+      "woba_xwoba_gap": -31,
+      "mlbam_id": "663728",
+      "savant_matched": true,
+      "avg_fp_4w": 32.875
+    },
+    {
+      "name": "Casey Schmitt",
+      "player_id": 12544,
+      "team": "SF",
+      "selected_position": "1B",
+      "eligible_positions": [
+        "1B",
+        "2B",
+        "3B",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "babip": 0.338,
+      "woba": 0.387,
+      "xwoba": 0.37,
+      "xslg": 0.53,
+      "woba_xwoba_gap": 17,
+      "mlbam_id": "669477",
+      "savant_matched": true,
+      "avg_fp_4w": 29.75
+    },
+    {
+      "name": "Otto Lopez",
+      "player_id": 12100,
+      "team": "MIA",
+      "selected_position": "2B",
+      "eligible_positions": [
+        "2B",
+        "SS",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "babip": 0.389,
+      "woba": 0.375,
+      "xwoba": 0.341,
+      "xslg": 0.456,
+      "woba_xwoba_gap": 34,
+      "mlbam_id": "672640",
+      "savant_matched": true,
+      "avg_fp_4w": 36.75
+    },
+    {
+      "name": "Maikel Garcia",
+      "player_id": 12336,
+      "team": "KC",
+      "selected_position": "3B",
+      "eligible_positions": [
+        "2B",
+        "3B",
+        "SS",
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "babip": 0.315,
+      "woba": 0.347,
+      "xwoba": 0.341,
+      "xslg": 0.403,
+      "woba_xwoba_gap": 6,
+      "mlbam_id": "672580",
+      "savant_matched": true,
+      "avg_fp_4w": 32.75
+    },
+    {
+      "name": "Corey Seager",
+      "player_id": 9584,
+      "team": "TEX",
+      "selected_position": "SS",
+      "eligible_positions": [
+        "SS",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "babip": 0.233,
+      "woba": 0.315,
+      "xwoba": 0.335,
+      "xslg": 0.443,
+      "woba_xwoba_gap": -20,
+      "mlbam_id": "608369",
+      "savant_matched": true,
+      "avg_fp_4w": 27.75
+    },
+    {
+      "name": "Kyle Schwarber",
+      "player_id": 9861,
+      "team": "PHI",
+      "selected_position": "OF",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "babip": 0.233,
+      "woba": 0.42,
+      "xwoba": 0.401,
+      "xslg": 0.542,
+      "woba_xwoba_gap": 19,
+      "mlbam_id": "656941",
+      "savant_matched": true,
+      "avg_fp_4w": 40.875
+    },
+    {
+      "name": "Jordan Walker",
+      "player_id": 12024,
+      "team": "STL",
+      "selected_position": "OF",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "babip": 0.358,
+      "woba": 0.393,
+      "xwoba": 0.384,
+      "xslg": 0.549,
+      "woba_xwoba_gap": 9,
+      "mlbam_id": "691023",
+      "savant_matched": true,
+      "avg_fp_4w": 44.125
+    },
+    {
+      "name": "George Springer",
+      "player_id": 9339,
+      "team": "TOR",
+      "selected_position": "OF",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "babip": 0.256,
+      "woba": 0.312,
+      "xwoba": 0.303,
+      "xslg": 0.372,
+      "woba_xwoba_gap": 9,
+      "mlbam_id": "543807",
+      "savant_matched": true,
+      "avg_fp_4w": 10.0
+    },
+    {
+      "name": "Rafael Devers",
+      "player_id": 10235,
+      "team": "SF",
+      "selected_position": "Util",
+      "eligible_positions": [
+        "1B",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "babip": 0.287,
+      "woba": 0.24,
+      "xwoba": 0.26,
+      "xslg": 0.342,
+      "woba_xwoba_gap": -20,
+      "mlbam_id": "646240",
+      "savant_matched": true,
+      "avg_fp_4w": 21.625
+    },
+    {
+      "name": "Carlos Cortes",
+      "player_id": 12488,
+      "team": "ATH",
+      "selected_position": "BN",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "babip": 0.397,
+      "woba": 0.488,
+      "xwoba": 0.447,
+      "xslg": 0.6,
+      "woba_xwoba_gap": 41,
+      "mlbam_id": "666126",
+      "savant_matched": true,
+      "avg_fp_4w": 28.75
+    },
+    {
+      "name": "Giancarlo Stanton",
+      "player_id": 8634,
+      "team": "NYY",
+      "selected_position": "IL",
+      "eligible_positions": [
+        "OF",
+        "Util",
+        "IL"
+      ],
+      "status": "IL10",
+      "position_type": "B",
+      "babip": 0.345,
+      "woba": 0.321,
+      "xwoba": 0.326,
+      "xslg": 0.466,
+      "woba_xwoba_gap": -5,
+      "mlbam_id": "519317",
+      "savant_matched": true,
+      "avg_fp_4w": 18.25
+    }
+  ],
+  "my_pitchers": [
+    {
+      "name": "Tyler Glasnow",
+      "player_id": 9616,
+      "team": "LAD",
+      "selected_position": "SP",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "position_type": "P",
+      "k_pct": 32.6,
+      "bb_pct": 9.0,
+      "k_bb_pct": 23.6,
+      "babip": 0.188,
+      "woba": 0.23,
+      "xwoba": 0.249,
+      "mlbam_id": "607192",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-29",
+          "pa": 23,
+          "xwoba": 0.317,
+          "woba": 0.374
+        },
+        {
+          "date": "2026-04-23",
+          "pa": 25,
+          "xwoba": 0.142,
+          "woba": 0.065
+        },
+        {
+          "date": "2026-04-17",
+          "pa": 24,
+          "xwoba": 0.264,
+          "woba": 0.166
+        },
+        {
+          "date": "2026-04-10",
+          "pa": 24,
+          "xwoba": 0.305,
+          "woba": 0.315
+        },
+        {
+          "date": "2026-04-04",
+          "pa": 24,
+          "xwoba": 0.231,
+          "woba": 0.271
+        }
+      ],
+      "per_start_sd": 0.063,
+      "this_week_starts": [],
+      "next_week_starts": [
+        {
+          "team": "LAD",
+          "team_id": 22,
+          "opponent": "HOU",
+          "opponent_id": 21,
+          "date": "2026-05-06",
+          "is_home": false,
+          "pitcher_name": "Tyler Glasnow",
+          "pitcher_id": "14374",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 0,
+      "next_week_count": 1,
+      "avg_fp_4w": 24.7925
+    },
+    {
+      "name": "Will Warren",
+      "player_id": 60295,
+      "team": "NYY",
+      "selected_position": "SP",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "position_type": "P",
+      "k_pct": 28.7,
+      "bb_pct": 5.4,
+      "k_bb_pct": 23.3,
+      "babip": 0.321,
+      "woba": 0.286,
+      "xwoba": 0.298,
+      "mlbam_id": "701542",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-24",
+          "pa": 24,
+          "xwoba": 0.265,
+          "woba": 0.309
+        },
+        {
+          "date": "2026-04-18",
+          "pa": 25,
+          "xwoba": 0.3,
+          "woba": 0.243
+        },
+        {
+          "date": "2026-04-13",
+          "pa": 17,
+          "xwoba": 0.327,
+          "woba": 0.267
+        },
+        {
+          "date": "2026-04-08",
+          "pa": 23,
+          "xwoba": 0.357,
+          "woba": 0.288
+        },
+        {
+          "date": "2026-04-03",
+          "pa": 21,
+          "xwoba": 0.23,
+          "woba": 0.284
+        }
+      ],
+      "per_start_sd": 0.045,
+      "this_week_starts": [
+        {
+          "team": "NYY",
+          "team_id": 9,
+          "opponent": "BAL",
+          "opponent_id": 2,
+          "date": "2026-05-01",
+          "is_home": true,
+          "pitcher_name": "Will Warren",
+          "pitcher_id": "30182",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "NYY",
+          "team_id": 9,
+          "opponent": "TEX",
+          "opponent_id": 13,
+          "date": "2026-05-06",
+          "is_home": true,
+          "pitcher_name": "Will Warren",
+          "pitcher_id": "30182",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 1,
+      "next_week_count": 1,
+      "avg_fp_4w": 21.5625
+    },
+    {
+      "name": "Robert Suarez",
+      "player_id": 12354,
+      "team": "ATL",
+      "selected_position": "RP",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "position_type": "P",
+      "k_pct": 27.1,
+      "bb_pct": 4.2,
+      "k_bb_pct": 22.9,
+      "babip": 0.273,
+      "woba": 0.199,
+      "xwoba": 0.246,
+      "mlbam_id": "663158",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-26",
+          "pa": 3,
+          "xwoba": 0.034,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-04-24",
+          "pa": 5,
+          "xwoba": 0.322,
+          "woba": 0.322
+        },
+        {
+          "date": "2026-04-22",
+          "pa": 4,
+          "xwoba": 0.246,
+          "woba": 0.226
+        },
+        {
+          "date": "2026-04-19",
+          "pa": 3,
+          "xwoba": 0.095,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-04-18",
+          "pa": 3,
+          "xwoba": 0.003,
+          "woba": 0.0
+        }
+      ],
+      "per_start_sd": 0.124,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 14.4175
+    },
+    {
+      "name": "Chase Dollander",
+      "player_id": 62975,
+      "team": "COL",
+      "selected_position": "RP",
+      "eligible_positions": [
+        "SP",
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "position_type": "P",
+      "k_pct": 30.0,
+      "bb_pct": 6.9,
+      "k_bb_pct": 23.1,
+      "babip": 0.267,
+      "woba": 0.269,
+      "xwoba": 0.269,
+      "mlbam_id": "801403",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-26",
+          "pa": 26,
+          "xwoba": 0.27,
+          "woba": 0.228
+        },
+        {
+          "date": "2026-04-21",
+          "pa": 24,
+          "xwoba": 0.203,
+          "woba": 0.22
+        },
+        {
+          "date": "2026-04-16",
+          "pa": 19,
+          "xwoba": 0.201,
+          "woba": 0.181
+        },
+        {
+          "date": "2026-04-12",
+          "pa": 4,
+          "xwoba": 0.309,
+          "woba": 0.32
+        },
+        {
+          "date": "2026-04-09",
+          "pa": 20,
+          "xwoba": 0.262,
+          "woba": 0.235
+        }
+      ],
+      "per_start_sd": 0.042,
+      "this_week_starts": [
+        {
+          "team": "COL",
+          "team_id": 19,
+          "opponent": "ATL",
+          "opponent_id": 16,
+          "date": "2026-05-02",
+          "is_home": true,
+          "pitcher_name": "Chase Dollander",
+          "pitcher_id": "33482",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "COL",
+          "team_id": 19,
+          "opponent": "PHI",
+          "opponent_id": 26,
+          "date": "2026-05-08",
+          "is_home": false,
+          "pitcher_name": "Chase Dollander",
+          "pitcher_id": "33482",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 1,
+      "next_week_count": 1,
+      "avg_fp_4w": 20.625
+    },
+    {
+      "name": "Jacob Misiorowski",
+      "player_id": 60254,
+      "team": "MIL",
+      "selected_position": "P",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "position_type": "P",
+      "k_pct": 37.2,
+      "bb_pct": 9.5,
+      "k_bb_pct": 27.7,
+      "babip": 0.297,
+      "woba": 0.285,
+      "xwoba": 0.279,
+      "mlbam_id": "694819",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-25",
+          "pa": 26,
+          "xwoba": 0.302,
+          "woba": 0.292
+        },
+        {
+          "date": "2026-04-19",
+          "pa": 23,
+          "xwoba": 0.29,
+          "woba": 0.298
+        },
+        {
+          "date": "2026-04-14",
+          "pa": 21,
+          "xwoba": 0.227,
+          "woba": 0.327
+        },
+        {
+          "date": "2026-04-07",
+          "pa": 22,
+          "xwoba": 0.286,
+          "woba": 0.244
+        },
+        {
+          "date": "2026-04-01",
+          "pa": 25,
+          "xwoba": 0.288,
+          "woba": 0.293
+        }
+      ],
+      "per_start_sd": 0.026,
+      "this_week_starts": [
+        {
+          "team": "MIL",
+          "team_id": 23,
+          "opponent": "WSN",
+          "opponent_id": 24,
+          "date": "2026-05-01",
+          "is_home": false,
+          "pitcher_name": "Jacob Misiorowski",
+          "pitcher_id": "31623",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "MIL",
+          "team_id": 23,
+          "opponent": "STL",
+          "opponent_id": 28,
+          "date": "2026-05-06",
+          "is_home": false,
+          "pitcher_name": "Jacob Misiorowski",
+          "pitcher_id": "31623",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 1,
+      "next_week_count": 1,
+      "avg_fp_4w": 16.48
+    },
+    {
+      "name": "Reid Detmers",
+      "player_id": 11926,
+      "team": "LAA",
+      "selected_position": "BN",
+      "eligible_positions": [
+        "SP",
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "position_type": "P",
+      "k_pct": 25.5,
+      "bb_pct": 6.4,
+      "k_bb_pct": 19.1,
+      "babip": 0.278,
+      "woba": 0.292,
+      "xwoba": 0.274,
+      "mlbam_id": "672282",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-26",
+          "pa": 21,
+          "xwoba": 0.318,
+          "woba": 0.357
+        },
+        {
+          "date": "2026-04-20",
+          "pa": 26,
+          "xwoba": 0.3,
+          "woba": 0.302
+        },
+        {
+          "date": "2026-04-14",
+          "pa": 25,
+          "xwoba": 0.26,
+          "woba": 0.16
+        },
+        {
+          "date": "2026-04-08",
+          "pa": 22,
+          "xwoba": 0.295,
+          "woba": 0.408
+        },
+        {
+          "date": "2026-04-03",
+          "pa": 26,
+          "xwoba": 0.274,
+          "woba": 0.213
+        }
+      ],
+      "per_start_sd": 0.02,
+      "this_week_starts": [
+        {
+          "team": "LAA",
+          "team_id": 1,
+          "opponent": "NYM",
+          "opponent_id": 25,
+          "date": "2026-05-02",
+          "is_home": true,
+          "pitcher_name": "Reid Detmers",
+          "pitcher_id": "27468",
+          "throws": "L",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "LAA",
+          "team_id": 1,
+          "opponent": "TOR",
+          "opponent_id": 14,
+          "date": "2026-05-08",
+          "is_home": false,
+          "pitcher_name": "Reid Detmers",
+          "pitcher_id": "27468",
+          "throws": "L",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 1,
+      "next_week_count": 1,
+      "avg_fp_4w": 11.1875
+    },
+    {
+      "name": "Drew Rasmussen",
+      "player_id": 11789,
+      "team": "TB",
+      "selected_position": "BN",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "position_type": "P",
+      "k_pct": 26.2,
+      "bb_pct": 4.1,
+      "k_bb_pct": 22.1,
+      "babip": 0.2,
+      "woba": 0.242,
+      "xwoba": 0.258,
+      "mlbam_id": "656876",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-29",
+          "pa": 24,
+          "xwoba": 0.248,
+          "woba": 0.271
+        },
+        {
+          "date": "2026-04-24",
+          "pa": 24,
+          "xwoba": 0.238,
+          "woba": 0.282
+        },
+        {
+          "date": "2026-04-18",
+          "pa": 15,
+          "xwoba": 0.327,
+          "woba": 0.371
+        },
+        {
+          "date": "2026-04-12",
+          "pa": 19,
+          "xwoba": 0.174,
+          "woba": 0.067
+        },
+        {
+          "date": "2026-04-01",
+          "pa": 20,
+          "xwoba": 0.319,
+          "woba": 0.229
+        }
+      ],
+      "per_start_sd": 0.057,
+      "this_week_starts": [],
+      "next_week_starts": [
+        {
+          "team": "TBR",
+          "team_id": 12,
+          "opponent": "TOR",
+          "opponent_id": 14,
+          "date": "2026-05-05",
+          "is_home": true,
+          "pitcher_name": "Drew Rasmussen",
+          "pitcher_id": "25385",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        },
+        {
+          "team": "TBR",
+          "team_id": 12,
+          "opponent": "BOS",
+          "opponent_id": 3,
+          "date": "2026-05-10",
+          "is_home": false,
+          "pitcher_name": "Drew Rasmussen",
+          "pitcher_id": "25385",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 0,
+      "next_week_count": 2,
+      "avg_fp_4w": 17.48
+    },
+    {
+      "name": "Gavin Williams",
+      "player_id": 12401,
+      "team": "CLE",
+      "selected_position": "BN",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "position_type": "P",
+      "k_pct": 31.0,
+      "bb_pct": 11.1,
+      "k_bb_pct": 19.9,
+      "babip": 0.207,
+      "woba": 0.269,
+      "xwoba": 0.309,
+      "mlbam_id": "668909",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-29",
+          "pa": 22,
+          "xwoba": 0.247,
+          "woba": 0.157
+        },
+        {
+          "date": "2026-04-24",
+          "pa": 27,
+          "xwoba": 0.413,
+          "woba": 0.415
+        },
+        {
+          "date": "2026-04-18",
+          "pa": 26,
+          "xwoba": 0.225,
+          "woba": 0.191
+        },
+        {
+          "date": "2026-04-13",
+          "pa": 22,
+          "xwoba": 0.375,
+          "woba": 0.323
+        },
+        {
+          "date": "2026-04-07",
+          "pa": 22,
+          "xwoba": 0.362,
+          "woba": 0.255
+        }
+      ],
+      "per_start_sd": 0.074,
+      "this_week_starts": [],
+      "next_week_starts": [
+        {
+          "team": "CLE",
+          "team_id": 5,
+          "opponent": "KCR",
+          "opponent_id": 7,
+          "date": "2026-05-05",
+          "is_home": false,
+          "pitcher_name": "Gavin Williams",
+          "pitcher_id": "30122",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        },
+        {
+          "team": "CLE",
+          "team_id": 5,
+          "opponent": "MIN",
+          "opponent_id": 8,
+          "date": "2026-05-10",
+          "is_home": true,
+          "pitcher_name": "Gavin Williams",
+          "pitcher_id": "30122",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 0,
+      "next_week_count": 2,
+      "avg_fp_4w": 31.02
+    },
+    {
+      "name": "Landen Roupp",
+      "player_id": 60650,
+      "team": "SF",
+      "selected_position": "BN",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "position_type": "P",
+      "k_pct": 27.0,
+      "bb_pct": 10.2,
+      "k_bb_pct": 16.8,
+      "babip": 0.205,
+      "woba": 0.221,
+      "xwoba": 0.253,
+      "mlbam_id": "694738",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-26",
+          "pa": 27,
+          "xwoba": 0.231,
+          "woba": 0.163
+        },
+        {
+          "date": "2026-04-21",
+          "pa": 20,
+          "xwoba": 0.252,
+          "woba": 0.222
+        },
+        {
+          "date": "2026-04-16",
+          "pa": 21,
+          "xwoba": 0.299,
+          "woba": 0.181
+        },
+        {
+          "date": "2026-04-10",
+          "pa": 25,
+          "xwoba": 0.276,
+          "woba": 0.282
+        },
+        {
+          "date": "2026-04-04",
+          "pa": 23,
+          "xwoba": 0.228,
+          "woba": 0.322
+        }
+      ],
+      "per_start_sd": 0.027,
+      "this_week_starts": [
+        {
+          "team": "SFG",
+          "team_id": 30,
+          "opponent": "TBR",
+          "opponent_id": 12,
+          "date": "2026-05-02",
+          "is_home": false,
+          "pitcher_name": "Landen Roupp",
+          "pitcher_id": "30076",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "SFG",
+          "team_id": 30,
+          "opponent": "PIT",
+          "opponent_id": 27,
+          "date": "2026-05-09",
+          "is_home": true,
+          "pitcher_name": "Landen Roupp",
+          "pitcher_id": "30076",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 1,
+      "next_week_count": 1,
+      "avg_fp_4w": 20.5825
+    },
+    {
+      "name": "Joe Boyle",
+      "player_id": 60134,
+      "team": "TB",
+      "selected_position": "IL",
+      "eligible_positions": [
+        "SP",
+        "RP",
+        "P",
+        "IL"
+      ],
+      "status": "IL15",
+      "position_type": "P",
+      "k_pct": 24.2,
+      "bb_pct": 9.1,
+      "k_bb_pct": 15.1,
+      "babip": 0.233,
+      "woba": 0.261,
+      "xwoba": 0.329,
+      "mlbam_id": "671212",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-08",
+          "pa": 20,
+          "xwoba": 0.421,
+          "woba": 0.402
+        },
+        {
+          "date": "2026-04-03",
+          "pa": 25,
+          "xwoba": 0.29,
+          "woba": 0.259
+        },
+        {
+          "date": "2026-03-28",
+          "pa": 21,
+          "xwoba": 0.283,
+          "woba": 0.129
+        }
+      ],
+      "per_start_sd": 0.063,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 2.355
+    },
+    {
+      "name": "Spencer Strider",
+      "player_id": 12281,
+      "team": "ATL",
+      "selected_position": "IL",
+      "eligible_positions": [
+        "SP",
+        "P",
+        "IL"
+      ],
+      "status": "IL15",
+      "position_type": "P",
+      "savant_matched": false,
+      "k_pct": null,
+      "bb_pct": null,
+      "k_bb_pct": null,
+      "babip": null,
+      "woba": null,
+      "xwoba": null,
+      "xslg": null,
+      "woba_xwoba_gap": null,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [
+        {
+          "team": "ATL",
+          "team_id": 16,
+          "opponent": "COL",
+          "opponent_id": 19,
+          "date": "2026-05-03",
+          "is_home": false,
+          "pitcher_name": "Spencer Strider",
+          "pitcher_id": "27498",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "ATL",
+          "team_id": 16,
+          "opponent": "LAD",
+          "opponent_id": 22,
+          "date": "2026-05-09",
+          "is_home": false,
+          "pitcher_name": "Spencer Strider",
+          "pitcher_id": "27498",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 1,
+      "next_week_count": 1,
+      "avg_fp_4w": 0.0
+    }
+  ],
+  "fa_hitters": [
+    {
+      "name": "Michael Busch",
+      "player_id": 11778,
+      "team": "CHC",
+      "eligible_positions": [
+        "1B",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 78,
+      "fantasy_points": null,
+      "babip": 0.241,
+      "woba": 0.271,
+      "xwoba": 0.285,
+      "xslg": 0.316,
+      "woba_xwoba_gap": -14,
+      "mlbam_id": "683737",
+      "savant_matched": true,
+      "avg_fp_4w": 22.5
+    },
+    {
+      "name": "Yainer Diaz",
+      "player_id": 12435,
+      "team": "HOU",
+      "eligible_positions": [
+        "C",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 56,
+      "fantasy_points": null,
+      "babip": 0.273,
+      "woba": 0.276,
+      "xwoba": 0.265,
+      "xslg": 0.331,
+      "woba_xwoba_gap": 11,
+      "mlbam_id": "673237",
+      "savant_matched": true,
+      "avg_fp_4w": 20.75
+    },
+    {
+      "name": "Marcus Semien",
+      "player_id": 9517,
+      "team": "NYM",
+      "eligible_positions": [
+        "2B",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 52,
+      "fantasy_points": null,
+      "babip": 0.267,
+      "woba": 0.259,
+      "xwoba": 0.289,
+      "xslg": 0.363,
+      "woba_xwoba_gap": -30,
+      "mlbam_id": "543760",
+      "savant_matched": true,
+      "avg_fp_4w": 21.875
+    },
+    {
+      "name": "Isaac Paredes",
+      "player_id": 10881,
+      "team": "HOU",
+      "eligible_positions": [
+        "3B",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 47,
+      "fantasy_points": null,
+      "babip": 0.282,
+      "woba": 0.33,
+      "xwoba": 0.298,
+      "xslg": 0.332,
+      "woba_xwoba_gap": 32,
+      "mlbam_id": "670623",
+      "savant_matched": true,
+      "avg_fp_4w": 24.75
+    },
+    {
+      "name": "Luis Garc\u00eda Jr.",
+      "player_id": 10964,
+      "team": "WSH",
+      "eligible_positions": [
+        "1B",
+        "2B",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 47,
+      "fantasy_points": null,
+      "babip": 0.289,
+      "woba": 0.284,
+      "xwoba": 0.324,
+      "xslg": 0.438,
+      "woba_xwoba_gap": -40,
+      "mlbam_id": "671277",
+      "savant_matched": true,
+      "avg_fp_4w": 26.0
+    },
+    {
+      "name": "Brenton Doyle",
+      "player_id": 12136,
+      "team": "COL",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 43,
+      "fantasy_points": null,
+      "babip": 0.333,
+      "woba": 0.268,
+      "xwoba": 0.258,
+      "xslg": 0.283,
+      "woba_xwoba_gap": 10,
+      "mlbam_id": "686668",
+      "savant_matched": true,
+      "avg_fp_4w": 19.5
+    },
+    {
+      "name": "Masyn Winn",
+      "player_id": 12025,
+      "team": "STL",
+      "eligible_positions": [
+        "SS",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 42,
+      "fantasy_points": null,
+      "babip": 0.324,
+      "woba": 0.315,
+      "xwoba": 0.3,
+      "xslg": 0.321,
+      "woba_xwoba_gap": 15,
+      "mlbam_id": "691026",
+      "savant_matched": true,
+      "avg_fp_4w": 28.5
+    },
+    {
+      "name": "Trent Grisham",
+      "player_id": 10522,
+      "team": "NYY",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 39,
+      "fantasy_points": null,
+      "babip": 0.145,
+      "woba": 0.286,
+      "xwoba": 0.357,
+      "xslg": 0.44,
+      "woba_xwoba_gap": -71,
+      "mlbam_id": "663757",
+      "savant_matched": true,
+      "avg_fp_4w": 24.375
+    },
+    {
+      "name": "Alec Bohm",
+      "player_id": 11365,
+      "team": "PHI",
+      "eligible_positions": [
+        "1B",
+        "3B",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 36,
+      "fantasy_points": null,
+      "babip": 0.17,
+      "woba": 0.201,
+      "xwoba": 0.271,
+      "xslg": 0.299,
+      "woba_xwoba_gap": -70,
+      "mlbam_id": "664761",
+      "savant_matched": true,
+      "avg_fp_4w": 15.0
+    },
+    {
+      "name": "Andrew Vaughn",
+      "player_id": 11866,
+      "team": "MIL",
+      "eligible_positions": [
+        "1B",
+        "Util",
+        "IL"
+      ],
+      "status": "IL10",
+      "percent_owned": 34,
+      "fantasy_points": null,
+      "savant_matched": false,
+      "k_pct": null,
+      "bb_pct": null,
+      "k_bb_pct": null,
+      "babip": null,
+      "woba": null,
+      "xwoba": null,
+      "xslg": null,
+      "woba_xwoba_gap": null,
+      "avg_fp_4w": 0.0
+    },
+    {
+      "name": "Royce Lewis",
+      "player_id": 10916,
+      "team": "MIN",
+      "eligible_positions": [
+        "3B",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 31,
+      "fantasy_points": null,
+      "babip": 0.238,
+      "woba": 0.304,
+      "xwoba": 0.315,
+      "xslg": 0.372,
+      "woba_xwoba_gap": -11,
+      "mlbam_id": "668904",
+      "savant_matched": true,
+      "avg_fp_4w": 14.25
+    },
+    {
+      "name": "Mois\u00e9s Ballesteros",
+      "player_id": 60120,
+      "team": "CHC",
+      "eligible_positions": [
+        "C",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 31,
+      "fantasy_points": null,
+      "babip": 0.345,
+      "woba": 0.435,
+      "xwoba": 0.364,
+      "xslg": 0.5,
+      "woba_xwoba_gap": 71,
+      "mlbam_id": "694208",
+      "savant_matched": true,
+      "avg_fp_4w": 30.375
+    },
+    {
+      "name": "Jorge Polanco",
+      "player_id": 9750,
+      "team": "NYM",
+      "eligible_positions": [
+        "2B",
+        "3B",
+        "Util",
+        "IL"
+      ],
+      "status": "IL10",
+      "percent_owned": 30,
+      "fantasy_points": null,
+      "babip": 0.205,
+      "woba": 0.244,
+      "xwoba": 0.27,
+      "xslg": 0.32,
+      "woba_xwoba_gap": -26,
+      "mlbam_id": "593871",
+      "savant_matched": true,
+      "avg_fp_4w": 5.625
+    },
+    {
+      "name": "Francisco Alvarez",
+      "player_id": 11349,
+      "team": "NYM",
+      "eligible_positions": [
+        "C",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 29,
+      "fantasy_points": null,
+      "babip": 0.25,
+      "woba": 0.321,
+      "xwoba": 0.344,
+      "xslg": 0.474,
+      "woba_xwoba_gap": -23,
+      "mlbam_id": "682626",
+      "savant_matched": true,
+      "avg_fp_4w": 17.375
+    },
+    {
+      "name": "Alejandro Kirk",
+      "player_id": 11853,
+      "team": "TOR",
+      "eligible_positions": [
+        "C",
+        "Util",
+        "IL"
+      ],
+      "status": "IL10",
+      "percent_owned": 29,
+      "fantasy_points": null,
+      "babip": 0.118,
+      "woba": 0.258,
+      "xwoba": 0.299,
+      "xslg": 0.343,
+      "woba_xwoba_gap": -41,
+      "mlbam_id": "672386",
+      "savant_matched": true,
+      "avg_fp_4w": 1.75
+    },
+    {
+      "name": "Dalton Rushing",
+      "player_id": 60232,
+      "team": "LAD",
+      "eligible_positions": [
+        "C",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 29,
+      "fantasy_points": null,
+      "babip": 0.346,
+      "woba": 0.533,
+      "xwoba": 0.436,
+      "xslg": 0.633,
+      "woba_xwoba_gap": 97,
+      "mlbam_id": "687221",
+      "savant_matched": true,
+      "avg_fp_4w": 30.125
+    },
+    {
+      "name": "Daniel Schneemann",
+      "player_id": 61948,
+      "team": "CLE",
+      "eligible_positions": [
+        "2B",
+        "3B",
+        "SS",
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 28,
+      "fantasy_points": null,
+      "babip": 0.438,
+      "woba": 0.417,
+      "xwoba": 0.369,
+      "xslg": 0.496,
+      "woba_xwoba_gap": 48,
+      "mlbam_id": "682177",
+      "savant_matched": true,
+      "avg_fp_4w": 31.125
+    },
+    {
+      "name": "Nolan Arenado",
+      "player_id": 9105,
+      "team": "AZ",
+      "eligible_positions": [
+        "3B",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 22,
+      "fantasy_points": null,
+      "babip": 0.297,
+      "woba": 0.336,
+      "xwoba": 0.307,
+      "xslg": 0.402,
+      "woba_xwoba_gap": 29,
+      "mlbam_id": "571448",
+      "savant_matched": true,
+      "avg_fp_4w": 32.0
+    },
+    {
+      "name": "Josh Bell",
+      "player_id": 9883,
+      "team": "MIN",
+      "eligible_positions": [
+        "1B",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 21,
+      "fantasy_points": null,
+      "babip": 0.256,
+      "woba": 0.304,
+      "xwoba": 0.332,
+      "xslg": 0.427,
+      "woba_xwoba_gap": -28,
+      "mlbam_id": "605137",
+      "savant_matched": true,
+      "avg_fp_4w": 32.625
+    },
+    {
+      "name": "Jordan Westburg",
+      "player_id": 12122,
+      "team": "BAL",
+      "eligible_positions": [
+        "2B",
+        "3B",
+        "Util",
+        "IL"
+      ],
+      "status": "IL60",
+      "percent_owned": 21,
+      "fantasy_points": null,
+      "savant_matched": false,
+      "k_pct": null,
+      "bb_pct": null,
+      "k_bb_pct": null,
+      "babip": null,
+      "woba": null,
+      "xwoba": null,
+      "xslg": null,
+      "woba_xwoba_gap": null,
+      "avg_fp_4w": 0.0
+    },
+    {
+      "name": "Jung Hoo Lee",
+      "player_id": 63494,
+      "team": "SF",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 20,
+      "fantasy_points": null,
+      "babip": 0.33,
+      "woba": 0.346,
+      "xwoba": 0.327,
+      "xslg": 0.391,
+      "woba_xwoba_gap": 19,
+      "mlbam_id": "808982",
+      "savant_matched": true,
+      "avg_fp_4w": 28.0
+    },
+    {
+      "name": "Jake Burger",
+      "player_id": 10877,
+      "team": "TEX",
+      "eligible_positions": [
+        "1B",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 19,
+      "fantasy_points": null,
+      "babip": 0.266,
+      "woba": 0.272,
+      "xwoba": 0.269,
+      "xslg": 0.376,
+      "woba_xwoba_gap": 3,
+      "mlbam_id": "669394",
+      "savant_matched": true,
+      "avg_fp_4w": 21.5
+    },
+    {
+      "name": "Colt Keith",
+      "player_id": 12430,
+      "team": "DET",
+      "eligible_positions": [
+        "1B",
+        "2B",
+        "3B",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 18,
+      "fantasy_points": null,
+      "babip": 0.411,
+      "woba": 0.339,
+      "xwoba": 0.342,
+      "xslg": 0.467,
+      "woba_xwoba_gap": -3,
+      "mlbam_id": "690993",
+      "savant_matched": true,
+      "avg_fp_4w": 18.75
+    },
+    {
+      "name": "Brandon Marsh",
+      "player_id": 10499,
+      "team": "PHI",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 17,
+      "fantasy_points": null,
+      "babip": 0.351,
+      "woba": 0.351,
+      "xwoba": 0.317,
+      "xslg": 0.443,
+      "woba_xwoba_gap": 34,
+      "mlbam_id": "669016",
+      "savant_matched": true,
+      "avg_fp_4w": 29.5
+    },
+    {
+      "name": "Max Muncy",
+      "player_id": 12501,
+      "team": "ATH",
+      "eligible_positions": [
+        "2B",
+        "3B",
+        "SS",
+        "Util",
+        "IL"
+      ],
+      "status": "IL10",
+      "percent_owned": 17,
+      "fantasy_points": null,
+      "babip": 0.313,
+      "woba": 0.416,
+      "xwoba": 0.413,
+      "xslg": 0.592,
+      "woba_xwoba_gap": 3,
+      "mlbam_id": "571970",
+      "savant_matched": true,
+      "avg_fp_4w": 19.875
+    },
+    {
+      "name": "Brooks Lee",
+      "player_id": 60266,
+      "team": "MIN",
+      "eligible_positions": [
+        "2B",
+        "3B",
+        "SS",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 17,
+      "fantasy_points": null,
+      "babip": 0.257,
+      "woba": 0.321,
+      "xwoba": 0.274,
+      "xslg": 0.333,
+      "woba_xwoba_gap": 47,
+      "mlbam_id": "686797",
+      "savant_matched": true,
+      "avg_fp_4w": 31.75
+    },
+    {
+      "name": "Jose Fernandez",
+      "player_id": 64063,
+      "team": "AZ",
+      "eligible_positions": [
+        "1B",
+        "SS",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 17,
+      "fantasy_points": null,
+      "babip": 0.393,
+      "woba": 0.362,
+      "xwoba": 0.306,
+      "xslg": 0.411,
+      "woba_xwoba_gap": 56,
+      "mlbam_id": "699912",
+      "savant_matched": true,
+      "avg_fp_4w": 24.75
+    },
+    {
+      "name": "TJ Friedl",
+      "player_id": 11290,
+      "team": "CIN",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 16,
+      "fantasy_points": null,
+      "babip": 0.234,
+      "woba": 0.256,
+      "xwoba": 0.246,
+      "xslg": 0.253,
+      "woba_xwoba_gap": 10,
+      "mlbam_id": "670770",
+      "savant_matched": true,
+      "avg_fp_4w": 21.625
+    },
+    {
+      "name": "Jasson Dom\u00ednguez",
+      "player_id": 11805,
+      "team": "NYY",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "status": "DTD",
+      "percent_owned": 16,
+      "fantasy_points": null,
+      "babip": 0.143,
+      "woba": 0.164,
+      "xwoba": 0.309,
+      "xslg": 0.31,
+      "woba_xwoba_gap": -145,
+      "mlbam_id": "691176",
+      "savant_matched": true,
+      "avg_fp_4w": 0.5
+    },
+    {
+      "name": "J.T. Realmuto",
+      "player_id": 9718,
+      "team": "PHI",
+      "eligible_positions": [
+        "C",
+        "Util",
+        "IL"
+      ],
+      "status": "IL10",
+      "percent_owned": 15,
+      "fantasy_points": null,
+      "babip": 0.31,
+      "woba": 0.321,
+      "xwoba": 0.3,
+      "xslg": 0.329,
+      "woba_xwoba_gap": 21,
+      "mlbam_id": "592663",
+      "savant_matched": true,
+      "avg_fp_4w": 12.0
+    }
+  ],
+  "fa_pitchers": [
+    {
+      "name": "Tanner Scott",
+      "player_id": 10432,
+      "team": "LAD",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 44,
+      "fantasy_points": null,
+      "k_pct": 26.5,
+      "bb_pct": 4.1,
+      "k_bb_pct": 22.4,
+      "babip": 0.188,
+      "woba": 0.224,
+      "xwoba": 0.317,
+      "mlbam_id": "656945",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 5.4375
+    },
+    {
+      "name": "JR Ritchie",
+      "player_id": 60071,
+      "team": "ATL",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 33,
+      "fantasy_points": null,
+      "k_pct": 21.6,
+      "bb_pct": 11.8,
+      "k_bb_pct": 9.8,
+      "babip": 0.226,
+      "woba": 0.337,
+      "xwoba": 0.342,
+      "mlbam_id": "702275",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-29",
+          "pa": 25,
+          "xwoba": 0.332,
+          "woba": 0.356
+        },
+        {
+          "date": "2026-04-23",
+          "pa": 26,
+          "xwoba": 0.352,
+          "woba": 0.318
+        }
+      ],
+      "per_start_sd": 0.01,
+      "this_week_starts": [],
+      "next_week_starts": [
+        {
+          "team": "ATL",
+          "team_id": 16,
+          "opponent": "SEA",
+          "opponent_id": 11,
+          "date": "2026-05-04",
+          "is_home": false,
+          "pitcher_name": "JR Ritchie",
+          "pitcher_id": "31760",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        },
+        {
+          "team": "ATL",
+          "team_id": 16,
+          "opponent": "LAD",
+          "opponent_id": 22,
+          "date": "2026-05-10",
+          "is_home": false,
+          "pitcher_name": "JR Ritchie",
+          "pitcher_id": "31760",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 0,
+      "next_week_count": 2,
+      "avg_fp_4w": 6.27
+    },
+    {
+      "name": "Foster Griffin",
+      "player_id": 10489,
+      "team": "WSH",
+      "eligible_positions": [
+        "SP",
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 32,
+      "fantasy_points": null,
+      "k_pct": 21.9,
+      "bb_pct": 7.3,
+      "k_bb_pct": 14.6,
+      "babip": 0.236,
+      "woba": 0.292,
+      "xwoba": 0.335,
+      "mlbam_id": "656492",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-26",
+          "pa": 26,
+          "xwoba": 0.329,
+          "woba": 0.152
+        },
+        {
+          "date": "2026-04-21",
+          "pa": 24,
+          "xwoba": 0.357,
+          "woba": 0.347
+        },
+        {
+          "date": "2026-04-16",
+          "pa": 24,
+          "xwoba": 0.28,
+          "woba": 0.395
+        },
+        {
+          "date": "2026-04-11",
+          "pa": 20,
+          "xwoba": 0.28,
+          "woba": 0.151
+        },
+        {
+          "date": "2026-04-05",
+          "pa": 21,
+          "xwoba": 0.394,
+          "woba": 0.39
+        }
+      ],
+      "per_start_sd": 0.044,
+      "this_week_starts": [
+        {
+          "team": "WSN",
+          "team_id": 24,
+          "opponent": "MIL",
+          "opponent_id": 23,
+          "date": "2026-05-02",
+          "is_home": true,
+          "pitcher_name": "Foster Griffin",
+          "pitcher_id": "16432",
+          "throws": "L",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "WSN",
+          "team_id": 24,
+          "opponent": "MIA",
+          "opponent_id": 20,
+          "date": "2026-05-08",
+          "is_home": false,
+          "pitcher_name": "Foster Griffin",
+          "pitcher_id": "16432",
+          "throws": "L",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 1,
+      "next_week_count": 1,
+      "avg_fp_4w": 14.5425
+    },
+    {
+      "name": "Alex Vesia",
+      "player_id": 11920,
+      "team": "LAD",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 32,
+      "fantasy_points": null,
+      "k_pct": 34.1,
+      "bb_pct": 12.2,
+      "k_bb_pct": 21.9,
+      "babip": 0.182,
+      "woba": 0.192,
+      "xwoba": 0.259,
+      "mlbam_id": "681911",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-29",
+          "pa": 1,
+          "xwoba": 0.0,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-04-27",
+          "pa": 4,
+          "xwoba": 0.177,
+          "woba": 0.177
+        },
+        {
+          "date": "2026-04-24",
+          "pa": 5,
+          "xwoba": 0.412,
+          "woba": 0.646
+        },
+        {
+          "date": "2026-04-19",
+          "pa": 1,
+          "xwoba": 0.831,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-04-18",
+          "pa": 3,
+          "xwoba": 0.161,
+          "woba": 0.0
+        }
+      ],
+      "per_start_sd": 0.289,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 8.355
+    },
+    {
+      "name": "Cade Horton",
+      "player_id": 60118,
+      "team": "CHC",
+      "eligible_positions": [
+        "SP",
+        "P",
+        "IL"
+      ],
+      "status": "IL60",
+      "percent_owned": 30,
+      "fantasy_points": null,
+      "k_pct": 15.4,
+      "bb_pct": 7.7,
+      "k_bb_pct": 7.7,
+      "babip": 0.158,
+      "woba": 0.238,
+      "xwoba": 0.283,
+      "mlbam_id": "690990",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-03",
+          "pa": 4,
+          "xwoba": 0.211,
+          "woba": 0.177
+        },
+        {
+          "date": "2026-03-28",
+          "pa": 22,
+          "xwoba": 0.301,
+          "woba": 0.249
+        }
+      ],
+      "per_start_sd": 0.045,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": -0.0625
+    },
+    {
+      "name": "Gregory Soto",
+      "player_id": 10882,
+      "team": "PIT",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 26,
+      "fantasy_points": null,
+      "k_pct": 35.7,
+      "bb_pct": 10.7,
+      "k_bb_pct": 25.0,
+      "babip": 0.179,
+      "woba": 0.213,
+      "xwoba": 0.221,
+      "mlbam_id": "642397",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-27",
+          "pa": 3,
+          "xwoba": 0.285,
+          "woba": 0.301
+        },
+        {
+          "date": "2026-04-25",
+          "pa": 3,
+          "xwoba": 0.118,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-04-22",
+          "pa": 6,
+          "xwoba": 0.25,
+          "woba": 0.514
+        },
+        {
+          "date": "2026-04-18",
+          "pa": 4,
+          "xwoba": 0.226,
+          "woba": 0.177
+        },
+        {
+          "date": "2026-04-17",
+          "pa": 3,
+          "xwoba": 0.144,
+          "woba": 0.0
+        }
+      ],
+      "per_start_sd": 0.063,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 11.2075
+    },
+    {
+      "name": "Aaron Ashby",
+      "player_id": 11489,
+      "team": "MIL",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 26,
+      "fantasy_points": null,
+      "k_pct": 37.5,
+      "bb_pct": 13.8,
+      "k_bb_pct": 23.7,
+      "babip": 0.368,
+      "woba": 0.295,
+      "xwoba": 0.266,
+      "mlbam_id": "676879",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-26",
+          "pa": 6,
+          "xwoba": 0.25,
+          "woba": 0.236
+        },
+        {
+          "date": "2026-04-25",
+          "pa": 7,
+          "xwoba": 0.15,
+          "woba": 0.129
+        },
+        {
+          "date": "2026-04-23",
+          "pa": 3,
+          "xwoba": 0.449,
+          "woba": 0.537
+        },
+        {
+          "date": "2026-04-21",
+          "pa": 5,
+          "xwoba": 0.285,
+          "woba": 0.283
+        },
+        {
+          "date": "2026-04-16",
+          "pa": 2,
+          "xwoba": 0.285,
+          "woba": 0.452
+        }
+      ],
+      "per_start_sd": 0.096,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 16.23
+    },
+    {
+      "name": "Griffin Jax",
+      "player_id": 12203,
+      "team": "TB",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 26,
+      "fantasy_points": null,
+      "k_pct": 23.1,
+      "bb_pct": 15.4,
+      "k_bb_pct": 7.7,
+      "babip": 0.296,
+      "woba": 0.383,
+      "xwoba": 0.357,
+      "mlbam_id": "643377",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-26",
+          "pa": 8,
+          "xwoba": 0.2,
+          "woba": 0.202
+        },
+        {
+          "date": "2026-04-21",
+          "pa": 6,
+          "xwoba": 0.359,
+          "woba": 0.464
+        },
+        {
+          "date": "2026-04-18",
+          "pa": 3,
+          "xwoba": 0.186,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-04-17",
+          "pa": 3,
+          "xwoba": 0.689,
+          "woba": 0.692
+        },
+        {
+          "date": "2026-04-16",
+          "pa": 4,
+          "xwoba": 0.369,
+          "woba": 0.497
+        }
+      ],
+      "per_start_sd": 0.181,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 4.2075
+    },
+    {
+      "name": "Noah Cameron",
+      "player_id": 60211,
+      "team": "KC",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 26,
+      "fantasy_points": null,
+      "k_pct": 19.4,
+      "bb_pct": 7.6,
+      "k_bb_pct": 11.8,
+      "babip": 0.35,
+      "woba": 0.374,
+      "xwoba": 0.386,
+      "mlbam_id": "702070",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-30",
+          "pa": 27,
+          "xwoba": 0.311,
+          "woba": 0.395
+        },
+        {
+          "date": "2026-04-24",
+          "pa": 28,
+          "xwoba": 0.406,
+          "woba": 0.361
+        },
+        {
+          "date": "2026-04-18",
+          "pa": 22,
+          "xwoba": 0.538,
+          "woba": 0.546
+        },
+        {
+          "date": "2026-04-12",
+          "pa": 23,
+          "xwoba": 0.418,
+          "woba": 0.415
+        },
+        {
+          "date": "2026-04-07",
+          "pa": 24,
+          "xwoba": 0.375,
+          "woba": 0.271
+        }
+      ],
+      "per_start_sd": 0.074,
+      "this_week_starts": [
+        {
+          "team": "KCR",
+          "team_id": 7,
+          "opponent": "ATH",
+          "opponent_id": 10,
+          "date": "2026-04-30",
+          "is_home": false,
+          "pitcher_name": "Noah Cameron",
+          "pitcher_id": "30184",
+          "throws": "L",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "KCR",
+          "team_id": 7,
+          "opponent": "CLE",
+          "opponent_id": 5,
+          "date": "2026-05-05",
+          "is_home": true,
+          "pitcher_name": "Noah Cameron",
+          "pitcher_id": "30184",
+          "throws": "L",
+          "doubleheader": 0,
+          "notes": null
+        },
+        {
+          "team": "KCR",
+          "team_id": 7,
+          "opponent": "DET",
+          "opponent_id": 6,
+          "date": "2026-05-10",
+          "is_home": true,
+          "pitcher_name": "Noah Cameron",
+          "pitcher_id": "30184",
+          "throws": "L",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 1,
+      "next_week_count": 2,
+      "avg_fp_4w": 9.855
+    },
+    {
+      "name": "Bryan Abreu",
+      "player_id": 11208,
+      "team": "HOU",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 25,
+      "fantasy_points": null,
+      "k_pct": 30.2,
+      "bb_pct": 28.3,
+      "k_bb_pct": 1.9,
+      "babip": 0.389,
+      "woba": 0.49,
+      "xwoba": 0.401,
+      "mlbam_id": "650556",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-30",
+          "pa": 7,
+          "xwoba": 0.323,
+          "woba": 0.514
+        },
+        {
+          "date": "2026-04-24",
+          "pa": 3,
+          "xwoba": 0.177,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-04-17",
+          "pa": 6,
+          "xwoba": 0.436,
+          "woba": 0.677
+        },
+        {
+          "date": "2026-04-15",
+          "pa": 5,
+          "xwoba": 0.176,
+          "woba": 0.142
+        },
+        {
+          "date": "2026-04-12",
+          "pa": 5,
+          "xwoba": 0.364,
+          "woba": 0.322
+        }
+      ],
+      "per_start_sd": 0.103,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 2.625
+    },
+    {
+      "name": "Jakob Junis",
+      "player_id": 10494,
+      "team": "TEX",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 23,
+      "fantasy_points": null,
+      "k_pct": 10.9,
+      "bb_pct": 7.3,
+      "k_bb_pct": 3.6,
+      "babip": 0.163,
+      "woba": 0.198,
+      "xwoba": 0.314,
+      "mlbam_id": "596001",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-28",
+          "pa": 3,
+          "xwoba": 0.19,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-04-25",
+          "pa": 4,
+          "xwoba": 0.255,
+          "woba": 0.32
+        },
+        {
+          "date": "2026-04-23",
+          "pa": 3,
+          "xwoba": 0.759,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-04-21",
+          "pa": 4,
+          "xwoba": 0.102,
+          "woba": 0.226
+        },
+        {
+          "date": "2026-04-19",
+          "pa": 6,
+          "xwoba": 0.589,
+          "woba": 0.359
+        }
+      ],
+      "per_start_sd": 0.252,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 4.645
+    },
+    {
+      "name": "Garrett Whitlock",
+      "player_id": 11358,
+      "team": "BOS",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 22,
+      "fantasy_points": null,
+      "k_pct": 28.3,
+      "bb_pct": 10.9,
+      "k_bb_pct": 17.4,
+      "babip": 0.231,
+      "woba": 0.293,
+      "xwoba": 0.358,
+      "mlbam_id": "676477",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-29",
+          "pa": 4,
+          "xwoba": 0.42,
+          "woba": 0.519
+        },
+        {
+          "date": "2026-04-26",
+          "pa": 5,
+          "xwoba": 0.279,
+          "woba": 0.361
+        },
+        {
+          "date": "2026-04-20",
+          "pa": 3,
+          "xwoba": 0.648,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-04-17",
+          "pa": 3,
+          "xwoba": 0.112,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-04-15",
+          "pa": 5,
+          "xwoba": 0.194,
+          "woba": 0.322
+        }
+      ],
+      "per_start_sd": 0.189,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 6.9375
+    },
+    {
+      "name": "Joel Kuhnel",
+      "player_id": 11639,
+      "team": "ATH",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 22,
+      "fantasy_points": null,
+      "k_pct": 10.0,
+      "bb_pct": 5.0,
+      "k_bb_pct": 5.0,
+      "babip": 0.294,
+      "woba": 0.27,
+      "xwoba": 0.354,
+      "mlbam_id": "669270",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-29",
+          "pa": 7,
+          "xwoba": 0.316,
+          "woba": 0.359
+        },
+        {
+          "date": "2026-04-26",
+          "pa": 3,
+          "xwoba": 0.236,
+          "woba": 0.236
+        },
+        {
+          "date": "2026-04-22",
+          "pa": 5,
+          "xwoba": 0.527,
+          "woba": 0.722
+        },
+        {
+          "date": "2026-04-20",
+          "pa": 5,
+          "xwoba": 0.447,
+          "woba": 0.436
+        },
+        {
+          "date": "2026-04-18",
+          "pa": 5,
+          "xwoba": 0.551,
+          "woba": 0.181
+        }
+      ],
+      "per_start_sd": 0.122,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 6.875
+    },
+    {
+      "name": "Quinn Priester",
+      "player_id": 11820,
+      "team": "MIL",
+      "eligible_positions": [
+        "SP",
+        "RP",
+        "P",
+        "IL"
+      ],
+      "status": "IL15",
+      "percent_owned": 22,
+      "fantasy_points": null,
+      "savant_matched": false,
+      "k_pct": null,
+      "bb_pct": null,
+      "k_bb_pct": null,
+      "babip": null,
+      "woba": null,
+      "xwoba": null,
+      "xslg": null,
+      "woba_xwoba_gap": null,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 0.0
+    },
+    {
+      "name": "Max Meyer",
+      "player_id": 12015,
+      "team": "MIA",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 22,
+      "fantasy_points": null,
+      "k_pct": 25.0,
+      "bb_pct": 9.1,
+      "k_bb_pct": 15.9,
+      "babip": 0.268,
+      "woba": 0.286,
+      "xwoba": 0.332,
+      "mlbam_id": "676974",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-26",
+          "pa": 21,
+          "xwoba": 0.338,
+          "woba": 0.275
+        },
+        {
+          "date": "2026-04-20",
+          "pa": 23,
+          "xwoba": 0.223,
+          "woba": 0.244
+        },
+        {
+          "date": "2026-04-14",
+          "pa": 21,
+          "xwoba": 0.353,
+          "woba": 0.302
+        },
+        {
+          "date": "2026-04-09",
+          "pa": 23,
+          "xwoba": 0.348,
+          "woba": 0.3
+        },
+        {
+          "date": "2026-04-04",
+          "pa": 21,
+          "xwoba": 0.389,
+          "woba": 0.286
+        }
+      ],
+      "per_start_sd": 0.056,
+      "this_week_starts": [
+        {
+          "team": "MIA",
+          "team_id": 20,
+          "opponent": "PHI",
+          "opponent_id": 26,
+          "date": "2026-05-02",
+          "is_home": true,
+          "pitcher_name": "Max Meyer",
+          "pitcher_id": "27474",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "MIA",
+          "team_id": 20,
+          "opponent": "BAL",
+          "opponent_id": 2,
+          "date": "2026-05-07",
+          "is_home": true,
+          "pitcher_name": "Max Meyer",
+          "pitcher_id": "27474",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 1,
+      "next_week_count": 1,
+      "avg_fp_4w": 12.3125
+    },
+    {
+      "name": "Tyler Rogers",
+      "player_id": 11644,
+      "team": "TOR",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 21,
+      "fantasy_points": null,
+      "k_pct": 13.6,
+      "bb_pct": 6.8,
+      "k_bb_pct": 6.8,
+      "babip": 0.174,
+      "woba": 0.144,
+      "xwoba": 0.203,
+      "mlbam_id": "643511",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 4.395
+    },
+    {
+      "name": "Erik Sabrowski",
+      "player_id": 63091,
+      "team": "CLE",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 21,
+      "fantasy_points": null,
+      "k_pct": 40.7,
+      "bb_pct": 11.1,
+      "k_bb_pct": 29.6,
+      "babip": 0.24,
+      "woba": 0.231,
+      "xwoba": 0.261,
+      "mlbam_id": "681870",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 6.645
+    },
+    {
+      "name": "Tony Santillan",
+      "player_id": 10864,
+      "team": "CIN",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 19,
+      "fantasy_points": null,
+      "k_pct": 28.3,
+      "bb_pct": 13.2,
+      "k_bb_pct": 15.1,
+      "babip": 0.207,
+      "woba": 0.274,
+      "xwoba": 0.298,
+      "mlbam_id": "663574",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 7.355
+    },
+    {
+      "name": "Reynaldo L\u00f3pez",
+      "player_id": 10152,
+      "team": "ATL",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 18,
+      "fantasy_points": null,
+      "k_pct": 21.8,
+      "bb_pct": 10.9,
+      "k_bb_pct": 10.9,
+      "babip": 0.254,
+      "woba": 0.325,
+      "xwoba": 0.34,
+      "mlbam_id": "625643",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 9.48
+    },
+    {
+      "name": "Jameson Taillon",
+      "player_id": 9123,
+      "team": "CHC",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 17,
+      "fantasy_points": null,
+      "k_pct": 22.0,
+      "bb_pct": 9.2,
+      "k_bb_pct": 12.8,
+      "babip": 0.207,
+      "woba": 0.329,
+      "xwoba": 0.321,
+      "mlbam_id": "592791",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [
+        {
+          "team": "CHC",
+          "team_id": 17,
+          "opponent": "CIN",
+          "opponent_id": 18,
+          "date": "2026-05-05",
+          "is_home": true,
+          "pitcher_name": "Jameson Taillon",
+          "pitcher_id": "11674",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        },
+        {
+          "team": "CHC",
+          "team_id": 17,
+          "opponent": "TEX",
+          "opponent_id": 13,
+          "date": "2026-05-10",
+          "is_home": false,
+          "pitcher_name": "Jameson Taillon",
+          "pitcher_id": "11674",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 0,
+      "next_week_count": 2,
+      "avg_fp_4w": 12.5
+    },
+    {
+      "name": "Colin Rea",
+      "player_id": 10048,
+      "team": "CHC",
+      "eligible_positions": [
+        "SP",
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 17,
+      "fantasy_points": null,
+      "k_pct": 20.5,
+      "bb_pct": 7.7,
+      "k_bb_pct": 12.8,
+      "babip": 0.291,
+      "woba": 0.304,
+      "xwoba": 0.326,
+      "mlbam_id": "607067",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [
+        {
+          "team": "CHC",
+          "team_id": 17,
+          "opponent": "ARI",
+          "opponent_id": 15,
+          "date": "2026-05-01",
+          "is_home": true,
+          "pitcher_name": "Colin Rea",
+          "pitcher_id": "12317",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "CHC",
+          "team_id": 17,
+          "opponent": "CIN",
+          "opponent_id": 18,
+          "date": "2026-05-06",
+          "is_home": true,
+          "pitcher_name": "Colin Rea",
+          "pitcher_id": "12317",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 1,
+      "next_week_count": 1,
+      "avg_fp_4w": 11.145
+    },
+    {
+      "name": "Dustin May",
+      "player_id": 10898,
+      "team": "STL",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 17,
+      "fantasy_points": null,
+      "k_pct": 16.9,
+      "bb_pct": 5.4,
+      "k_bb_pct": 11.5,
+      "babip": 0.385,
+      "woba": 0.383,
+      "xwoba": 0.319,
+      "mlbam_id": "669160",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [
+        {
+          "team": "STL",
+          "team_id": 28,
+          "opponent": "LAD",
+          "opponent_id": 22,
+          "date": "2026-05-03",
+          "is_home": true,
+          "pitcher_name": "Dustin May",
+          "pitcher_id": "19716",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "STL",
+          "team_id": 28,
+          "opponent": "SDP",
+          "opponent_id": 29,
+          "date": "2026-05-08",
+          "is_home": false,
+          "pitcher_name": "Dustin May",
+          "pitcher_id": "19716",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 1,
+      "next_week_count": 1,
+      "avg_fp_4w": 12.6675
+    },
+    {
+      "name": "Rico Garcia",
+      "player_id": 11453,
+      "team": "BAL",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 17,
+      "fantasy_points": null,
+      "k_pct": 32.6,
+      "bb_pct": 8.7,
+      "k_bb_pct": 23.9,
+      "babip": 0.0,
+      "woba": 0.107,
+      "xwoba": 0.215,
+      "mlbam_id": "670329",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 8.7075
+    },
+    {
+      "name": "Kodai Senga",
+      "player_id": 12776,
+      "team": "NYM",
+      "eligible_positions": [
+        "SP",
+        "P",
+        "IL"
+      ],
+      "status": "IL15",
+      "percent_owned": 17,
+      "fantasy_points": null,
+      "k_pct": 23.7,
+      "bb_pct": 13.4,
+      "k_bb_pct": 10.3,
+      "babip": 0.382,
+      "woba": 0.42,
+      "xwoba": 0.34,
+      "mlbam_id": "673540",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": -2.375
+    },
+    {
+      "name": "Jason Adam",
+      "player_id": 11009,
+      "team": "SD",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 16,
+      "fantasy_points": null,
+      "k_pct": 12.5,
+      "bb_pct": 6.3,
+      "k_bb_pct": 6.2,
+      "babip": 0.167,
+      "woba": 0.245,
+      "xwoba": 0.239,
+      "mlbam_id": "592094",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 2.75
+    },
+    {
+      "name": "Sean Manaea",
+      "player_id": 9582,
+      "team": "NYM",
+      "eligible_positions": [
+        "SP",
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 15,
+      "fantasy_points": null,
+      "k_pct": 22.3,
+      "bb_pct": 9.7,
+      "k_bb_pct": 12.6,
+      "babip": 0.359,
+      "woba": 0.381,
+      "xwoba": 0.359,
+      "mlbam_id": "640455",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 2.7925
+    },
+    {
+      "name": "Matt Strahm",
+      "player_id": 10355,
+      "team": "KC",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 15,
+      "fantasy_points": null,
+      "k_pct": 25.0,
+      "bb_pct": 10.4,
+      "k_bb_pct": 14.6,
+      "babip": 0.286,
+      "woba": 0.35,
+      "xwoba": 0.256,
+      "mlbam_id": "621381",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 2.9375
+    },
+    {
+      "name": "Brad Keller",
+      "player_id": 10418,
+      "team": "PHI",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 15,
+      "fantasy_points": null,
+      "k_pct": 26.0,
+      "bb_pct": 6.0,
+      "k_bb_pct": 20.0,
+      "babip": 0.226,
+      "woba": 0.267,
+      "xwoba": 0.253,
+      "mlbam_id": "641745",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 5.4175
+    },
+    {
+      "name": "Jack Perkins",
+      "player_id": 62461,
+      "team": "ATH",
+      "eligible_positions": [
+        "SP",
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 14,
+      "fantasy_points": null,
+      "k_pct": 30.9,
+      "bb_pct": 5.5,
+      "k_bb_pct": 25.4,
+      "babip": 0.333,
+      "woba": 0.26,
+      "xwoba": 0.294,
+      "mlbam_id": "678022",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 15.4575
+    },
+    {
+      "name": "Chris Bassitt",
+      "player_id": 9799,
+      "team": "BAL",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 13,
+      "fantasy_points": null,
+      "k_pct": 12.6,
+      "bb_pct": 10.4,
+      "k_bb_pct": 2.2,
+      "babip": 0.357,
+      "woba": 0.381,
+      "xwoba": 0.355,
+      "mlbam_id": "605135",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [
+        {
+          "team": "BAL",
+          "team_id": 2,
+          "opponent": "HOU",
+          "opponent_id": 21,
+          "date": "2026-04-30",
+          "is_home": true,
+          "pitcher_name": "Chris Bassitt",
+          "pitcher_id": "12304",
+          "throws": "R",
+          "doubleheader": 1,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "BAL",
+          "team_id": 2,
+          "opponent": "MIA",
+          "opponent_id": 20,
+          "date": "2026-05-05",
+          "is_home": false,
+          "pitcher_name": "Chris Bassitt",
+          "pitcher_id": "12304",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        },
+        {
+          "team": "BAL",
+          "team_id": 2,
+          "opponent": "ATH",
+          "opponent_id": 10,
+          "date": "2026-05-10",
+          "is_home": true,
+          "pitcher_name": "Chris Bassitt",
+          "pitcher_id": "12304",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 1,
+      "next_week_count": 2,
+      "avg_fp_4w": 5.48
+    }
+  ],
+  "fantasy_week_bounds": {
+    "this_week_start": "2026-04-27",
+    "this_week_end": "2026-05-03",
+    "next_week_start": "2026-05-04",
+    "next_week_end": "2026-05-10"
+  }
+}

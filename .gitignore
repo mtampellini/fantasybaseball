@@ -1,0 +1,17 @@
+# OAuth credentials - keep out of repo
+oauth2.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude Code
+.claude/
