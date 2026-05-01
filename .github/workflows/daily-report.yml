@@ -29,7 +29,17 @@ jobs:
         env:
           YAHOO_OAUTH_JSON: ${{ secrets.YAHOO_OAUTH_JSON }}
         run: |
-          echo "$YAHOO_OAUTH_JSON" > oauth2.json
+          python -c "import os, pathlib; pathlib.Path('oauth2.json').write_text(os.environ['YAHOO_OAUTH_JSON'])"
+          # Print non-sensitive diagnostics so we can verify the secret round-tripped intact
+          python -c "
+          import json
+          d = json.load(open('oauth2.json'))
+          ck = d.get('consumer_key', '')
+          print(f'oauth2.json keys: {sorted(d.keys())}')
+          print(f'consumer_key len={len(ck)}, prefix={ck[:6]!r}, suffix={ck[-6:]!r}')
+          print(f'has refresh_token: {bool(d.get(\"refresh_token\"))}')
+          print(f'token_time: {d.get(\"token_time\")}')
+          "
 
       - name: Run daily report
         run: python daily_report.py
