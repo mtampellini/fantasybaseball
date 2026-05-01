@@ -16,6 +16,10 @@ Useful resources:
 
 import os
 import json
+import time
+from pathlib import Path
+
+import requests
 from yahoo_oauth import OAuth2
 import yahoo_fantasy_api as yfa
 
@@ -23,14 +27,54 @@ from config import YAHOO_LEAGUE_ID, YAHOO_TEAM_ID, FA_PITCHER_COUNT, FA_HITTER_C
 
 
 OAUTH_FILE = os.environ.get("YAHOO_OAUTH_FILE", "oauth2.json")
+# Must match the Redirect URI registered with the Yahoo Developer App.
+REDIRECT_URI = "https://oauth.pstmn.io/v1/callback"
+TOKEN_URL = "https://api.login.yahoo.com/oauth2/get_token"
+
+
+def _maybe_refresh_token():
+    """
+    Refresh the access token if older than ~55 minutes.
+
+    The yahoo_oauth library hardcodes `redirect_uri=oob` in its refresh call,
+    which Yahoo rejects when the app is registered with a different URI. So
+    we do the refresh ourselves with the correct redirect_uri and overwrite
+    oauth2.json before yahoo_oauth ever sees it.
+    """
+    path = Path(OAUTH_FILE)
+    creds = json.loads(path.read_text())
+    if "refresh_token" not in creds:
+        return  # nothing to refresh with; will fall through to bootstrap
+    age = time.time() - creds.get("token_time", 0)
+    if age < 3300:
+        return  # token still has > 5 min of life
+    print(f"  Refreshing Yahoo access token (current is {age:.0f}s old)")
+    resp = requests.post(
+        TOKEN_URL,
+        data={
+            "grant_type": "refresh_token",
+            "refresh_token": creds["refresh_token"],
+            "redirect_uri": REDIRECT_URI,
+        },
+        auth=(creds["consumer_key"], creds["consumer_secret"]),
+        headers={"Accept": "application/json"},
+        timeout=30,
+    )
+    if resp.status_code != 200:
+        raise RuntimeError(f"Yahoo refresh failed {resp.status_code}: {resp.text}")
+    data = resp.json()
+    creds["access_token"] = data["access_token"]
+    creds["token_time"] = time.time()
+    if data.get("refresh_token"):
+        creds["refresh_token"] = data["refresh_token"]
+    creds["token_type"] = data.get("token_type", "bearer")
+    path.write_text(json.dumps(creds, indent=2))
 
 
 def get_session():
     """Get an authenticated OAuth2 session, refreshing token if needed."""
-    sess = OAuth2(None, None, from_file=OAUTH_FILE)
-    if not sess.token_is_valid():
-        sess.refresh_access_token()
-    return sess
+    _maybe_refresh_token()
+    return OAuth2(None, None, from_file=OAUTH_FILE)
 
 
 def get_league(sess=None):
