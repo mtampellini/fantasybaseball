@@ -1,6 +1,6 @@
 {
   "date": "2026-05-01",
-  "generated_at": "2026-05-01 13:27:37",
+  "generated_at": "2026-05-01 18:21:19",
   "week": 6,
   "record": "",
   "my_hitters": [
@@ -1444,26 +1444,6 @@
       "avg_fp_4w": 32.0
     },
     {
-      "name": "Josh Bell",
-      "player_id": 9883,
-      "team": "MIN",
-      "eligible_positions": [
-        "1B",
-        "Util"
-      ],
-      "status": "",
-      "percent_owned": 21,
-      "fantasy_points": null,
-      "babip": 0.256,
-      "woba": 0.304,
-      "xwoba": 0.332,
-      "xslg": 0.427,
-      "woba_xwoba_gap": -28,
-      "mlbam_id": "605137",
-      "savant_matched": true,
-      "avg_fp_4w": 32.625
-    },
-    {
       "name": "Jordan Westburg",
       "player_id": 12122,
       "team": "BAL",
@@ -1486,6 +1466,26 @@
       "xslg": null,
       "woba_xwoba_gap": null,
       "avg_fp_4w": 0.0
+    },
+    {
+      "name": "Josh Bell",
+      "player_id": 9883,
+      "team": "MIN",
+      "eligible_positions": [
+        "1B",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 20,
+      "fantasy_points": null,
+      "babip": 0.256,
+      "woba": 0.304,
+      "xwoba": 0.332,
+      "xslg": 0.427,
+      "woba_xwoba_gap": -28,
+      "mlbam_id": "605137",
+      "savant_matched": true,
+      "avg_fp_4w": 32.625
     },
     {
       "name": "Jung Hoo Lee",
@@ -1717,8 +1717,39 @@
       "xwoba": 0.317,
       "mlbam_id": "656945",
       "savant_matched": true,
-      "per_start": [],
-      "per_start_sd": null,
+      "per_start": [
+        {
+          "date": "2026-04-28",
+          "pa": 4,
+          "xwoba": 0.237,
+          "woba": 0.226
+        },
+        {
+          "date": "2026-04-27",
+          "pa": 4,
+          "xwoba": 0.177,
+          "woba": 0.177
+        },
+        {
+          "date": "2026-04-24",
+          "pa": 4,
+          "xwoba": 0.959,
+          "woba": 0.745
+        },
+        {
+          "date": "2026-04-23",
+          "pa": 3,
+          "xwoba": 0.059,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-04-21",
+          "pa": 4,
+          "xwoba": 0.511,
+          "woba": 0.177
+        }
+      ],
+      "per_start_sd": 0.321,
       "this_week_starts": [],
       "next_week_starts": [],
       "this_week_count": 0,
@@ -1888,7 +1919,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 32,
+      "percent_owned": 31,
       "fantasy_points": null,
       "k_pct": 34.1,
       "bb_pct": 12.2,
@@ -2368,64 +2399,6 @@
       "avg_fp_4w": 4.645
     },
     {
-      "name": "Garrett Whitlock",
-      "player_id": 11358,
-      "team": "BOS",
-      "eligible_positions": [
-        "RP",
-        "P"
-      ],
-      "status": "",
-      "percent_owned": 22,
-      "fantasy_points": null,
-      "k_pct": 28.3,
-      "bb_pct": 10.9,
-      "k_bb_pct": 17.4,
-      "babip": 0.231,
-      "woba": 0.293,
-      "xwoba": 0.358,
-      "mlbam_id": "676477",
-      "savant_matched": true,
-      "per_start": [
-        {
-          "date": "2026-04-29",
-          "pa": 4,
-          "xwoba": 0.42,
-          "woba": 0.519
-        },
-        {
-          "date": "2026-04-26",
-          "pa": 5,
-          "xwoba": 0.279,
-          "woba": 0.361
-        },
-        {
-          "date": "2026-04-20",
-          "pa": 3,
-          "xwoba": 0.648,
-          "woba": 0.0
-        },
-        {
-          "date": "2026-04-17",
-          "pa": 3,
-          "xwoba": 0.112,
-          "woba": 0.0
-        },
-        {
-          "date": "2026-04-15",
-          "pa": 5,
-          "xwoba": 0.194,
-          "woba": 0.322
-        }
-      ],
-      "per_start_sd": 0.189,
-      "this_week_starts": [],
-      "next_week_starts": [],
-      "this_week_count": 0,
-      "next_week_count": 0,
-      "avg_fp_4w": 6.9375
-    },
-    {
       "name": "Joel Kuhnel",
       "player_id": 11639,
       "team": "ATH",
@@ -2600,6 +2573,64 @@
       "avg_fp_4w": 12.3125
     },
     {
+      "name": "Garrett Whitlock",
+      "player_id": 11358,
+      "team": "BOS",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 21,
+      "fantasy_points": null,
+      "k_pct": 28.3,
+      "bb_pct": 10.9,
+      "k_bb_pct": 17.4,
+      "babip": 0.231,
+      "woba": 0.293,
+      "xwoba": 0.358,
+      "mlbam_id": "676477",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-04-29",
+          "pa": 4,
+          "xwoba": 0.42,
+          "woba": 0.519
+        },
+        {
+          "date": "2026-04-26",
+          "pa": 5,
+          "xwoba": 0.279,
+          "woba": 0.361
+        },
+        {
+          "date": "2026-04-20",
+          "pa": 3,
+          "xwoba": 0.648,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-04-17",
+          "pa": 3,
+          "xwoba": 0.112,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-04-15",
+          "pa": 5,
+          "xwoba": 0.194,
+          "woba": 0.322
+        }
+      ],
+      "per_start_sd": 0.189,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 6.9375
+    },
+    {
       "name": "Tyler Rogers",
       "player_id": 11644,
       "team": "TOR",
@@ -2681,6 +2712,62 @@
       "avg_fp_4w": 7.355
     },
     {
+      "name": "Colin Rea",
+      "player_id": 10048,
+      "team": "CHC",
+      "eligible_positions": [
+        "SP",
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 18,
+      "fantasy_points": null,
+      "k_pct": 20.5,
+      "bb_pct": 7.7,
+      "k_bb_pct": 12.8,
+      "babip": 0.291,
+      "woba": 0.304,
+      "xwoba": 0.326,
+      "mlbam_id": "607067",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [
+        {
+          "team": "CHC",
+          "team_id": 17,
+          "opponent": "ARI",
+          "opponent_id": 15,
+          "date": "2026-05-01",
+          "is_home": true,
+          "pitcher_name": "Colin Rea",
+          "pitcher_id": "12317",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "CHC",
+          "team_id": 17,
+          "opponent": "CIN",
+          "opponent_id": 18,
+          "date": "2026-05-06",
+          "is_home": true,
+          "pitcher_name": "Colin Rea",
+          "pitcher_id": "12317",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 1,
+      "next_week_count": 1,
+      "avg_fp_4w": 11.145
+    },
+    {
       "name": "Reynaldo L\u00f3pez",
       "player_id": 10152,
       "team": "ATL",
@@ -2760,62 +2847,6 @@
       "this_week_count": 0,
       "next_week_count": 2,
       "avg_fp_4w": 12.5
-    },
-    {
-      "name": "Colin Rea",
-      "player_id": 10048,
-      "team": "CHC",
-      "eligible_positions": [
-        "SP",
-        "RP",
-        "P"
-      ],
-      "status": "",
-      "percent_owned": 17,
-      "fantasy_points": null,
-      "k_pct": 20.5,
-      "bb_pct": 7.7,
-      "k_bb_pct": 12.8,
-      "babip": 0.291,
-      "woba": 0.304,
-      "xwoba": 0.326,
-      "mlbam_id": "607067",
-      "savant_matched": true,
-      "per_start": [],
-      "per_start_sd": null,
-      "this_week_starts": [
-        {
-          "team": "CHC",
-          "team_id": 17,
-          "opponent": "ARI",
-          "opponent_id": 15,
-          "date": "2026-05-01",
-          "is_home": true,
-          "pitcher_name": "Colin Rea",
-          "pitcher_id": "12317",
-          "throws": "R",
-          "doubleheader": 0,
-          "notes": null
-        }
-      ],
-      "next_week_starts": [
-        {
-          "team": "CHC",
-          "team_id": 17,
-          "opponent": "CIN",
-          "opponent_id": 18,
-          "date": "2026-05-06",
-          "is_home": true,
-          "pitcher_name": "Colin Rea",
-          "pitcher_id": "12317",
-          "throws": "R",
-          "doubleheader": 0,
-          "notes": null
-        }
-      ],
-      "this_week_count": 1,
-      "next_week_count": 1,
-      "avg_fp_4w": 11.145
     },
     {
       "name": "Dustin May",
@@ -3046,7 +3077,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 14,
+      "percent_owned": 15,
       "fantasy_points": null,
       "k_pct": 30.9,
       "bb_pct": 5.5,
@@ -3065,9 +3096,9 @@
       "avg_fp_4w": 15.4575
     },
     {
-      "name": "Chris Bassitt",
-      "player_id": 9799,
-      "team": "BAL",
+      "name": "David Peterson",
+      "player_id": 10921,
+      "team": "NYM",
       "eligible_positions": [
         "SP",
         "P"
@@ -3075,62 +3106,48 @@
       "status": "",
       "percent_owned": 13,
       "fantasy_points": null,
-      "k_pct": 12.6,
-      "bb_pct": 10.4,
-      "k_bb_pct": 2.2,
-      "babip": 0.357,
-      "woba": 0.381,
-      "xwoba": 0.355,
-      "mlbam_id": "605135",
+      "k_pct": 20.1,
+      "bb_pct": 9.7,
+      "k_bb_pct": 10.4,
+      "babip": 0.375,
+      "woba": 0.359,
+      "xwoba": 0.34,
+      "mlbam_id": "656849",
       "savant_matched": true,
       "per_start": [],
       "per_start_sd": null,
-      "this_week_starts": [
-        {
-          "team": "BAL",
-          "team_id": 2,
-          "opponent": "HOU",
-          "opponent_id": 21,
-          "date": "2026-04-30",
-          "is_home": true,
-          "pitcher_name": "Chris Bassitt",
-          "pitcher_id": "12304",
-          "throws": "R",
-          "doubleheader": 1,
-          "notes": null
-        }
-      ],
+      "this_week_starts": [],
       "next_week_starts": [
         {
-          "team": "BAL",
-          "team_id": 2,
-          "opponent": "MIA",
-          "opponent_id": 20,
-          "date": "2026-05-05",
+          "team": "NYM",
+          "team_id": 25,
+          "opponent": "COL",
+          "opponent_id": 19,
+          "date": "2026-05-04",
           "is_home": false,
-          "pitcher_name": "Chris Bassitt",
-          "pitcher_id": "12304",
-          "throws": "R",
+          "pitcher_name": "David Peterson",
+          "pitcher_id": "20302",
+          "throws": "L",
           "doubleheader": 0,
           "notes": null
         },
         {
-          "team": "BAL",
-          "team_id": 2,
-          "opponent": "ATH",
-          "opponent_id": 10,
+          "team": "NYM",
+          "team_id": 25,
+          "opponent": "ARI",
+          "opponent_id": 15,
           "date": "2026-05-10",
-          "is_home": true,
-          "pitcher_name": "Chris Bassitt",
-          "pitcher_id": "12304",
-          "throws": "R",
+          "is_home": false,
+          "pitcher_name": "David Peterson",
+          "pitcher_id": "20302",
+          "throws": "L",
           "doubleheader": 0,
           "notes": null
         }
       ],
-      "this_week_count": 1,
+      "this_week_count": 0,
       "next_week_count": 2,
-      "avg_fp_4w": 5.48
+      "avg_fp_4w": 2.0625
     }
   ],
   "fantasy_week_bounds": {
