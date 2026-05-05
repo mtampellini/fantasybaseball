@@ -1,6 +1,6 @@
 {
   "date": "2026-05-05",
-  "generated_at": "2026-05-05 13:21:31",
+  "generated_at": "2026-05-05 13:49:07",
   "week": 7,
   "record": "",
   "my_hitters": [
@@ -1240,7 +1240,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 19,
+      "percent_owned": 20,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.357,
@@ -1619,7 +1619,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 82,
+      "percent_owned": 81,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.259,
@@ -2587,7 +2587,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 19,
+      "percent_owned": 20,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.278,
@@ -2777,37 +2777,6 @@
       "fp_1w": 17.33,
       "pa_1w": 0,
       "avg_fp_2w_est": 17.33
-    },
-    {
-      "name": "Chris Bassitt",
-      "player_id": 9799,
-      "team": "BAL",
-      "eligible_positions": [
-        "SP",
-        "P"
-      ],
-      "status": "",
-      "percent_owned": 14,
-      "fantasy_points": null,
-      "on_waivers": false,
-      "k_pct": 12.6,
-      "bb_pct": 10.4,
-      "k_bb_pct": 2.2,
-      "babip": 0.357,
-      "woba": 0.381,
-      "xwoba": 0.355,
-      "mlbam_id": "605135",
-      "savant_matched": true,
-      "per_start": [],
-      "per_start_sd": null,
-      "this_week_starts": [],
-      "next_week_starts": [],
-      "this_week_count": 0,
-      "next_week_count": 0,
-      "avg_fp_4w": 5.48,
-      "fp_1w": 24.17,
-      "pa_1w": 1,
-      "avg_fp_2w_est": 24.17
     },
     {
       "name": "Devin Williams",
@@ -3629,7 +3598,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 4,
+      "percent_owned": 5,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 16.4,
@@ -3745,6 +3714,37 @@
       "avg_fp_2w_est": 4.25
     },
     {
+      "name": "Christian Scott",
+      "player_id": 60292,
+      "team": "NYM",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 5,
+      "fantasy_points": null,
+      "on_waivers": false,
+      "k_pct": 31.0,
+      "bb_pct": 17.2,
+      "k_bb_pct": 13.8,
+      "babip": 0.167,
+      "woba": 0.307,
+      "xwoba": 0.341,
+      "mlbam_id": "681035",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 2.77,
+      "fp_1w": 13.25,
+      "pa_1w": 0,
+      "avg_fp_2w_est": 13.25
+    },
+    {
       "name": "Jason Adam",
       "player_id": 11009,
       "team": "SD",
@@ -3805,6 +3805,37 @@
       "fp_1w": 12.25,
       "pa_1w": 2,
       "avg_fp_2w_est": 12.25
+    },
+    {
+      "name": "Tyler Mahle",
+      "player_id": 10455,
+      "team": "SF",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 8,
+      "fantasy_points": null,
+      "on_waivers": true,
+      "k_pct": 21.5,
+      "bb_pct": 11.4,
+      "k_bb_pct": 10.1,
+      "babip": 0.313,
+      "woba": 0.351,
+      "xwoba": 0.34,
+      "mlbam_id": "641816",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 8.5625,
+      "fp_1w": 6.58,
+      "pa_1w": 4,
+      "avg_fp_2w_est": 6.58
     },
     {
       "name": "Juan Morillo",
@@ -4119,37 +4150,6 @@
       "fp_1w": 0.08,
       "pa_1w": 2,
       "avg_fp_2w_est": 0.08
-    },
-    {
-      "name": "Camilo Doval",
-      "player_id": 11536,
-      "team": "NYY",
-      "eligible_positions": [
-        "RP",
-        "P"
-      ],
-      "status": "",
-      "percent_owned": 4,
-      "fantasy_points": null,
-      "on_waivers": false,
-      "k_pct": 27.3,
-      "bb_pct": 5.5,
-      "k_bb_pct": 21.8,
-      "babip": 0.235,
-      "woba": 0.304,
-      "xwoba": 0.276,
-      "mlbam_id": "666808",
-      "savant_matched": true,
-      "per_start": [],
-      "per_start_sd": null,
-      "this_week_starts": [],
-      "next_week_starts": [],
-      "this_week_count": 0,
-      "next_week_count": 0,
-      "avg_fp_4w": 4.855,
-      "fp_1w": 6.17,
-      "pa_1w": 1,
-      "avg_fp_2w_est": 6.17
     },
     {
       "name": "Walker Buehler",
@@ -9862,7 +9862,7 @@
         "points_for": 2209.25,
         "points_against": 2142.33,
         "waiver_priority": 3,
-        "moves": 20,
+        "moves": 21,
         "trades": 0
       },
       {
