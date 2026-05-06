@@ -222,9 +222,14 @@ def fetch_all_weeks(through_week=None, league=None):
     weeks = list(completed)
     if through_week is not None:
         weeks = [w for w in weeks if w <= through_week]
+    # Yahoo continues posting stat corrections for ~1-2 days after a week ends,
+    # so the most recently completed week (current_week - 1) gets re-fetched
+    # too. Earlier weeks are immutable and read from cache.
+    prior_week = int(current) - 1
     out = []
     for w in weeks:
-        out.append({"week": w, "results": fetch_week_results(w, league=league, scoring=scoring)})
+        force = (w == prior_week)
+        out.append({"week": w, "results": fetch_week_results(w, force=force, league=league, scoring=scoring)})
     # Always re-fetch current week (in progress) so partial standings refresh
     if (through_week is None or current <= through_week) and current >= 1:
         out.append({
