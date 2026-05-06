@@ -70,23 +70,33 @@ def fetch_probables_grid():
     if not grid_data:
         raise RuntimeError("Probables grid data missing from dehydrated state")
 
-    # grid_data may be a list (server response) or dict (cached values)
-    entries = grid_data.values() if isinstance(grid_data, dict) else grid_data
+    # As of 2026-05, Fangraphs returns {"games": [...]} where each entry is
+    # already one team's perspective of a contest (the page emits both
+    # perspectives, so a 1-vs-1 game produces 2 entries). The top-level
+    # fields describe the team being viewed; `opponent` is a sub-object;
+    # the team's SP lives at `team.sp.{name,playerId,throws}`.
+    raw_games = grid_data.get("games") if isinstance(grid_data, dict) else grid_data
+    if raw_games is None:
+        raise RuntimeError("Probables grid data missing 'games' key")
 
     games = []
-    for entry in entries:
+    for entry in raw_games:
+        team_obj = entry.get("team") or {}
+        opp_obj = entry.get("opponent") or {}
+        sp = team_obj.get("sp") or {}
+
         games.append({
-            "team": entry.get("AbbName"),
-            "team_id": entry.get("TeamId"),
-            "opponent": entry.get("OpponentAbbName"),
-            "opponent_id": entry.get("OpponentId"),
-            "date": (entry.get("GameDate") or "")[:10],
+            "team": entry.get("abbName"),
+            "team_id": entry.get("teamId"),
+            "opponent": opp_obj.get("abbName"),
+            "opponent_id": opp_obj.get("teamId"),
+            "date": (entry.get("gameDate") or "")[:10],
             "is_home": bool(entry.get("isHome")),
-            "pitcher_name": entry.get("teamSPPlayerName"),
-            "pitcher_id": str(entry.get("teamSPPlayerId")) if entry.get("teamSPPlayerId") else None,
-            "throws": entry.get("Throws"),
+            "pitcher_name": sp.get("name"),
+            "pitcher_id": str(sp["playerId"]) if sp.get("playerId") else None,
+            "throws": sp.get("throws"),
             "doubleheader": entry.get("dh", 0),
-            "notes": entry.get("notes"),
+            "notes": team_obj.get("notes"),
         })
     return games
 
