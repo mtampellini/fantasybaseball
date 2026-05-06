@@ -314,11 +314,20 @@ def main():
     except Exception as e:
         print(f"  WARN: current matchup fetch failed: {type(e).__name__}: {e}")
 
+    record = ""
+    if league_metrics:
+        my_id = int(YAHOO_TEAM_ID)
+        my_st = next((s for s in (league_metrics.get("standings") or [])
+                      if s.get("team_id") == my_id), None)
+        if my_st:
+            w, l, t = my_st.get("wins", 0), my_st.get("losses", 0), my_st.get("ties", 0)
+            record = f"{w}-{l}" + (f"-{t}" if t else "")
+
     snapshot = {
         "date": today,
         "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "week": week,
-        "record": "",  # TODO: pull from Yahoo standings
+        "record": record,
         "my_hitters": my_hitters,
         "my_pitchers": my_pitchers,
         "fa_hitters": fa_hitters,
