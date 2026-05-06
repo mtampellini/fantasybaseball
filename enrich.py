@@ -66,6 +66,8 @@ def attach_per_start(players, per_start_fetcher):
     """
     from pull_per_start import compute_per_start_sd
 
+    fail_count = 0
+    first_err = None
     for p in players:
         pid = p.get("mlbam_id")
         if not pid:
@@ -74,10 +76,16 @@ def attach_per_start(players, per_start_fetcher):
             continue
         try:
             starts = per_start_fetcher(pid)
-        except Exception:
+        except Exception as e:
             starts = []
+            fail_count += 1
+            if first_err is None:
+                first_err = f"{type(e).__name__}: {e}"
         p["per_start"] = starts
         p["per_start_sd"] = compute_per_start_sd(starts)
+    if fail_count:
+        print(f"  WARN: per-start fetch failed for {fail_count}/{len(players)} pitchers "
+              f"(first error: {first_err})")
     return players
 
 

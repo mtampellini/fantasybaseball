@@ -213,16 +213,26 @@ def fetch_yahoo_stats(player_ids, range_type="lastmonth"):
             out[pid] = r
 
     ids = list(player_ids)
+    chunk_fail = 0
+    pid_fail = 0
+    first_err = None
     for i in range(0, len(ids), 25):
         chunk = ids[i:i + 25]
         try:
             absorb(league.player_stats(chunk, range_type))
-        except Exception:
+        except Exception as e:
+            chunk_fail += 1
+            if first_err is None:
+                first_err = f"{type(e).__name__}: {e}"
             for pid in chunk:
                 try:
                     absorb(league.player_stats([pid], range_type))
                 except Exception:
+                    pid_fail += 1
                     continue
+    if chunk_fail or pid_fail:
+        print(f"  WARN: yahoo player_stats({range_type}) had {chunk_fail} chunk failures, "
+              f"{pid_fail} per-player failures (first error: {first_err})")
     return out
 
 

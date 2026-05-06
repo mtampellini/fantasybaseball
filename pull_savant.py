@@ -56,8 +56,28 @@ def _display_name(raw_name):
     return raw_name
 
 
+def _build_col_index(headers, required):
+    """
+    Map header name -> column index. Raises if any required column is missing,
+    so a Savant schema change fails loudly instead of silently producing junk
+    (the CSV's column order is not contractually stable).
+    """
+    norm = {h.strip().lower().lstrip("\ufeff"): i for i, h in enumerate(headers)}
+    missing = [c for c in required if c not in norm]
+    if missing:
+        raise RuntimeError(
+            f"Savant CSV missing expected columns {missing}; got headers={headers}"
+        )
+    return norm
+
+
+def _cell(row, col_idx, name):
+    i = col_idx[name]
+    return row[i] if i < len(row) else ""
+
+
 def _parse_pitcher_csv(text):
-    """CSV: "last_name, first_name", player_id, year, k_pct, bb_pct, babip, woba, xwoba"""
+    """CSV: "last_name, first_name", player_id, year, k_percent, bb_percent, babip, woba, xwoba"""
     out = {}
     text = text.lstrip("\ufeff")
     reader = csv.reader(io.StringIO(text))
@@ -65,24 +85,26 @@ def _parse_pitcher_csv(text):
     if not headers:
         return out
 
+    name_col = "last_name, first_name"
+    required = [name_col, "player_id", "k_percent", "bb_percent", "babip", "woba", "xwoba"]
+    col_idx = _build_col_index(headers, required)
+
     for row in reader:
-        if len(row) < 8:
-            continue
-        raw_name = row[0].strip()
+        raw_name = _cell(row, col_idx, name_col).strip()
         if not raw_name:
             continue
         normalized = normalize_name(raw_name)
-        kp = parse_float(row[3])
-        bbp = parse_float(row[4])
+        kp = parse_float(_cell(row, col_idx, "k_percent"))
+        bbp = parse_float(_cell(row, col_idx, "bb_percent"))
         out[normalized] = {
             "name": _display_name(raw_name),
-            "player_id": row[1].strip(),
+            "player_id": _cell(row, col_idx, "player_id").strip(),
             "k_pct": kp,
             "bb_pct": bbp,
             "k_bb_pct": (round(kp - bbp, 1) if kp is not None and bbp is not None else None),
-            "babip": parse_float(row[5]),
-            "woba": parse_float(row[6]),
-            "xwoba": parse_float(row[7]),
+            "babip": parse_float(_cell(row, col_idx, "babip")),
+            "woba": parse_float(_cell(row, col_idx, "woba")),
+            "xwoba": parse_float(_cell(row, col_idx, "xwoba")),
         }
     return out
 
@@ -96,26 +118,28 @@ def _parse_hitter_csv(text):
     if not headers:
         return out
 
+    name_col = "last_name, first_name"
+    required = [name_col, "player_id", "xba", "babip", "xslg", "woba", "xwoba"]
+    col_idx = _build_col_index(headers, required)
+
     for row in reader:
-        if len(row) < 8:
-            continue
-        raw_name = row[0].strip()
+        raw_name = _cell(row, col_idx, name_col).strip()
         if not raw_name:
             continue
         normalized = normalize_name(raw_name)
-        xba = parse_float(row[3])
-        xslg = parse_float(row[5])
+        xba = parse_float(_cell(row, col_idx, "xba"))
+        xslg = parse_float(_cell(row, col_idx, "xslg"))
         xiso = round(xslg - xba, 3) if (xslg is not None and xba is not None) else None
-        woba = parse_float(row[6])
-        xwoba = parse_float(row[7])
+        woba = parse_float(_cell(row, col_idx, "woba"))
+        xwoba = parse_float(_cell(row, col_idx, "xwoba"))
         gap = None
         if woba is not None and xwoba is not None:
             gap = round((woba - xwoba) * 1000)
         out[normalized] = {
             "name": _display_name(raw_name),
-            "player_id": row[1].strip(),
+            "player_id": _cell(row, col_idx, "player_id").strip(),
             "xba": xba,
-            "babip": parse_float(row[4]),
+            "babip": parse_float(_cell(row, col_idx, "babip")),
             "xslg": xslg,
             "xiso": xiso,
             "woba": woba,

@@ -311,8 +311,8 @@ def main():
     try:
         m = fetch_current_matchup()
         week = m.get("week", "—")
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"  WARN: current matchup fetch failed: {type(e).__name__}: {e}")
 
     snapshot = {
         "date": today,
