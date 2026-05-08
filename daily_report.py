@@ -24,6 +24,9 @@ from pull_yahoo import (
     parse_pa_from_yahoo_stats, get_league,
 )
 from pull_savant import fetch_pitcher_leaderboard, fetch_hitter_leaderboard
+from pull_savant_historical import (
+    load_or_fetch_2025_hitters, load_or_fetch_career_hitters,
+)
 from pull_per_start import fetch_per_start_xwoba
 from pull_probables import (
     fetch_probables_grid, starts_by_pitcher, get_fantasy_week_bounds,
@@ -34,6 +37,7 @@ from pull_weekly_results import fetch_all_weeks, fetch_standings
 from compute_league_metrics import (
     compute_team_distributions, get_my_team_summary, get_most_recent_completed_week,
 )
+from compute_trade_targets import rank_trade_targets, print_top_targets
 from render_report import render_html
 
 
@@ -61,7 +65,7 @@ def main():
     print(f"=== Tamp Slam Daily Report: {today} ===\n")
 
     # Step 1: Yahoo data
-    print("[1/6] Pulling Yahoo roster + FA wire...")
+    print("[1/8] Pulling Yahoo roster + FA wire...")
     roster = fetch_my_roster()
     my_hitters, my_pitchers = split_roster(roster)
     print(f"  Roster: {len(my_hitters)} hitters, {len(my_pitchers)} pitchers")
@@ -83,14 +87,14 @@ def main():
     print(f"  Got {len(rostered_hitters_other)} rostered hitters on other teams")
 
     # Step 2: Savant season leaderboards
-    print("\n[2/6] Pulling Savant season Statcast...")
+    print("\n[2/8] Pulling Savant season Statcast...")
     pitcher_index = fetch_pitcher_leaderboard()
     hitter_index = fetch_hitter_leaderboard()
     print(f"  Pitchers indexed: {len(pitcher_index)}")
     print(f"  Hitters indexed: {len(hitter_index)}")
 
     # Step 3: Enrich rosters with Statcast
-    print("\n[3/6] Enriching rosters with Statcast data...")
+    print("\n[3/8] Enriching rosters with Statcast data...")
     enrich_list(my_hitters, hitter_index)
     enrich_list(my_pitchers, pitcher_index)
     enrich_list(fa_hitters, hitter_index)
@@ -105,7 +109,7 @@ def main():
           f"{matched_other}/{len(rostered_hitters_other)} rostered-other hitters")
 
     # Step 4: Per-start xwOBA for my pitchers + top FA pitchers
-    print(f"\n[4/6] Pulling per-start xwOBA for {len(my_pitchers)} my pitchers + top FA SPs...")
+    print(f"\n[4/8] Pulling per-start xwOBA for {len(my_pitchers)} my pitchers + top FA SPs...")
     fetch_per_start_for_list(my_pitchers, PER_START_DEPTH)
     # Limit FA per-start fetches to top 15 to keep runtime under control
     fa_top = fa_pitchers[:15]
@@ -116,7 +120,7 @@ def main():
         p["per_start_sd"] = None
 
     # Step 5: Fangraphs probables
-    print("\n[5/6] Pulling Fangraphs probables grid...")
+    print("\n[5/8] Pulling Fangraphs probables grid...")
     try:
         probables_raw = fetch_probables_grid()
         probables_by_pitcher = starts_by_pitcher(probables_raw)
@@ -303,8 +307,32 @@ def main():
     except Exception as e:
         print(f"  WARN: weekly metrics failed: {e}")
 
-    # Step 6: Build snapshot, write JSON + HTML
-    print("\n[6/6] Writing report...")
+    # Step 6: Historical Statcast (2025 + career) for trade-target scoring
+    print("\n[6/8] Pulling 2025 + career Savant for trade targets...")
+    h2025 = {}
+    career_hitters = {}
+    try:
+        h2025 = load_or_fetch_2025_hitters()
+        career_hitters = load_or_fetch_career_hitters()
+        print(f"  2025 hitters: {len(h2025)}; career records: {len(career_hitters)}")
+    except Exception as e:
+        print(f"  WARN: historical Savant pull failed: {e}")
+
+    # Step 7: Score + rank trade targets (uses already-enriched rostered_hitters_other)
+    print("\n[7/8] Scoring trade targets...")
+    trade_targets = []
+    try:
+        trade_targets = rank_trade_targets(
+            rostered_hitters_other, h2025, career_hitters, top_n=20
+        )
+        print(f"  {len(trade_targets)} ranked targets")
+        if trade_targets:
+            print_top_targets(trade_targets, n=5)
+    except Exception as e:
+        print(f"  WARN: trade-target scoring failed: {e}")
+
+    # Step 8: Build snapshot, write JSON + HTML
+    print("\n[8/8] Writing report...")
 
     # Try matchup info (best-effort; might fail)
     week = "—"
@@ -333,6 +361,7 @@ def main():
         "fa_hitters": fa_hitters,
         "fa_pitchers": fa_pitchers,
         "rostered_hitters_other": rostered_hitters_other,
+        "trade_targets": trade_targets,
         "fantasy_week_bounds": {
             "this_week_start": tw_start.isoformat(),
             "this_week_end": tw_end.isoformat(),

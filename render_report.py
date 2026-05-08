@@ -18,6 +18,9 @@ from render_weekly_section import (
     EXTRA_CSS as WEEKLY_CSS,
     SORTABLE_JS,
 )
+from render_trade_targets import (
+    render_trade_targets_section, TRADE_TARGETS_CSS,
+)
 
 
 CSS = """
@@ -498,7 +501,7 @@ def render_html(snapshot):
     my_pitchers = snapshot.get("my_pitchers", [])
     fa_hitters = snapshot.get("fa_hitters", [])
     fa_pitchers = snapshot.get("fa_pitchers", [])
-    rostered_other = snapshot.get("rostered_hitters_other", [])
+    trade_targets = snapshot.get("trade_targets", [])
     league_metrics = snapshot.get("league_metrics")
 
     weekly_section_html = render_weekly_section(league_metrics) if league_metrics else ""
@@ -509,7 +512,7 @@ def render_html(snapshot):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tamp Slam Daily Report — {today}</title>
-<style>{CSS}{WEEKLY_CSS}</style>
+<style>{CSS}{WEEKLY_CSS}{TRADE_TARGETS_CSS}</style>
 </head>
 <body>
 
@@ -543,6 +546,11 @@ def render_html(snapshot):
 <section class="section">
   <h2>Probable Pitchers</h2>
   {render_probables_section(my_pitchers, fa_pitchers)}
+</section>
+
+<section class="section">
+  <h2>Trade Targets — Undervalued Hitters to Pursue</h2>
+  {render_trade_targets_section(trade_targets)}
 </section>
 
 <footer style="margin-top: 40px; color: var(--muted); font-size: 11px; text-align: center;">
