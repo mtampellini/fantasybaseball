@@ -33,6 +33,8 @@ SP_LEADERBOARD_CSS = """
 .sp-mine td:nth-child(2), .sp-fa td:nth-child(2) { font-weight: 700; }
 .sp-rank { text-align: right; font-variant-numeric: tabular-nums; }
 .sp-proj { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.sp-delta-up { color: #1976d2; font-weight: 600; }   /* hot — actual > proj */
+.sp-delta-dn { color: #c62828; font-weight: 600; }   /* cold — actual < proj */
 .sp-legend { font-size: 12px; color: var(--muted); margin-top: 8px; }
 .sp-legend .swatch { display: inline-block; width: 12px; height: 12px;
   margin: 0 4px 0 12px; vertical-align: middle; border: 1px solid #ccc; }
@@ -133,10 +135,15 @@ def render_sp_leaderboard_section(my_pitchers: list[dict], fa_pitchers: list[dic
         elif r["role"] == "fa":
             cls = "sp-fa"
             label = "FA"
-        avg = (
-            f'{r["avg_fp_actual"]:.2f}' if r["avg_fp_actual"] is not None
-            else '<span class="dim">—</span>'
-        )
+        if r["avg_fp_actual"] is not None:
+            avg = f'{r["avg_fp_actual"]:.2f}'
+            delta = r["avg_fp_actual"] - r["fp_projection"]
+            sign = "+" if delta >= 0 else "-"
+            d_class = "sp-delta-up" if delta >= 0 else "sp-delta-dn"
+            delta_html = f'<span class="{d_class}">{sign}{abs(delta):.2f}</span>'
+        else:
+            avg = '<span class="dim">—</span>'
+            delta_html = '<span class="dim">—</span>'
         n_act = r["n_starts_actual"] if r["n_starts_actual"] is not None else "—"
         body.append(
             f'<tr class="{cls}">'
@@ -146,6 +153,7 @@ def render_sp_leaderboard_section(my_pitchers: list[dict], fa_pitchers: list[dic
             f'<td class="sp-rank">{r["n_starts_prior"]}</td>'
             f'<td class="sp-proj">{r["fp_projection"]:.2f}</td>'
             f'<td class="sp-rank">{avg}</td>'
+            f'<td class="sp-rank">{delta_html}</td>'
             f'<td class="sp-rank">{n_act}</td>'
             f'<td>{label}</td>'
             f'</tr>'
@@ -181,11 +189,15 @@ def render_sp_leaderboard_section(my_pitchers: list[dict], fa_pitchers: list[dic
         "<p class='dim'>Ranked by projected Yahoo FP per start using the Ridge model trained on 2024+2025 May-15+ data. "
         f"Source: <code>sp-correlation/output/2026_pitcher_projections.csv</code>. "
         f"Shows top 50 plus {len(extras)} rostered SP{'s' if len(extras) != 1 else ''} below rank 50.</p>"
+        "<p class='sp-legend'>Click any column header to sort. "
+        "<span class='sp-delta-up'>Δ blue</span> = hot (actual &gt; projected, possible sell). "
+        "<span class='sp-delta-dn'>Δ red</span> = cold (actual &lt; projected, possible buy).</p>"
         "<table class='sortable'>"
         "<thead><tr><th>Rank</th><th>Pitcher</th><th>Team</th>"
         "<th>N starts<br><small>(as-of)</small></th>"
         "<th>Proj FP/start</th>"
         "<th>Actual avg FP/start</th>"
+        "<th>Δ (Actual − Proj)</th>"
         "<th>N starts<br><small>(actual)</small></th>"
         "<th>Role</th></tr></thead>"
         f"<tbody>{''.join(body)}</tbody></table>"
