@@ -144,17 +144,19 @@ def render_sp_leaderboard_section(my_pitchers: list[dict], fa_pitchers: list[dic
         else:
             avg = '<span class="dim">—</span>'
             delta_html = '<span class="dim">—</span>'
-        n_act = r["n_starts_actual"] if r["n_starts_actual"] is not None else "—"
+        n_starts = (
+            r["n_starts_actual"] if r["n_starts_actual"] is not None
+            else r["n_starts_prior"]
+        )
         body.append(
             f'<tr class="{cls}">'
             f'<td class="sp-rank">{r["rank"]}</td>'
             f'<td>{escape(r["pitcher_name"])}</td>'
             f'<td>{escape(r["team"])}</td>'
-            f'<td class="sp-rank">{r["n_starts_prior"]}</td>'
+            f'<td class="sp-rank">{n_starts}</td>'
             f'<td class="sp-proj">{r["fp_projection"]:.2f}</td>'
             f'<td class="sp-rank">{avg}</td>'
             f'<td class="sp-rank">{delta_html}</td>'
-            f'<td class="sp-rank">{n_act}</td>'
             f'<td>{label}</td>'
             f'</tr>'
         )
@@ -194,11 +196,10 @@ def render_sp_leaderboard_section(my_pitchers: list[dict], fa_pitchers: list[dic
         "<span class='sp-delta-dn'>Δ red</span> = cold (actual &lt; projected, possible buy).</p>"
         "<table class='sortable'>"
         "<thead><tr><th>Rank</th><th>Pitcher</th><th>Team</th>"
-        "<th>N starts<br><small>(as-of)</small></th>"
+        "<th>N starts</th>"
         "<th>Proj FP/start</th>"
         "<th>Actual avg FP/start</th>"
         "<th>Δ (Actual − Proj)</th>"
-        "<th>N starts<br><small>(actual)</small></th>"
         "<th>Role</th></tr></thead>"
         f"<tbody>{''.join(body)}</tbody></table>"
         f"{legend}{not_in_html}"
