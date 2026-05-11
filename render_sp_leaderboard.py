@@ -200,7 +200,7 @@ def render_sp_leaderboard_section(my_pitchers: list[dict], fa_pitchers: list[dic
         "<th>Proj FP/start</th>"
         "<th>Actual avg FP/start</th>"
         "<th>Δ (Actual − Proj)</th>"
-        "<th>Role</th></tr></thead>"
+        "<th>Owned</th></tr></thead>"
         f"<tbody>{''.join(body)}</tbody></table>"
         f"{legend}{not_in_html}"
     )
