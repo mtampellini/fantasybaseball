@@ -1,0 +1,346 @@
+{
+  "league_id": "41657",
+  "fetched_at": "2026-05-11T11:43:22",
+  "stats": [
+    {
+      "stat_id": 7,
+      "name": "Runs",
+      "display_name": "R",
+      "position_type": "B",
+      "abbr": "R",
+      "value": 1.5
+    },
+    {
+      "stat_id": 8,
+      "name": "Hits",
+      "display_name": "H",
+      "position_type": "B",
+      "abbr": "H",
+      "value": 1.0
+    },
+    {
+      "stat_id": 9,
+      "name": "Singles",
+      "display_name": "1B",
+      "position_type": "B",
+      "abbr": "1B",
+      "value": 1.0
+    },
+    {
+      "stat_id": 10,
+      "name": "Doubles",
+      "display_name": "2B",
+      "position_type": "B",
+      "abbr": "2B",
+      "value": 2.0
+    },
+    {
+      "stat_id": 11,
+      "name": "Triples",
+      "display_name": "3B",
+      "position_type": "B",
+      "abbr": "3B",
+      "value": 3.0
+    },
+    {
+      "stat_id": 12,
+      "name": "Home Runs",
+      "display_name": "HR",
+      "position_type": "B",
+      "abbr": "HR",
+      "value": 4.0
+    },
+    {
+      "stat_id": 13,
+      "name": "Runs Batted In",
+      "display_name": "RBI",
+      "position_type": "B",
+      "abbr": "RBI",
+      "value": 2.0
+    },
+    {
+      "stat_id": 16,
+      "name": "Stolen Bases",
+      "display_name": "SB",
+      "position_type": "B",
+      "abbr": "SB",
+      "value": 2.0
+    },
+    {
+      "stat_id": 18,
+      "name": "Walks",
+      "display_name": "BB",
+      "position_type": "B",
+      "abbr": "BB",
+      "value": 1.0
+    },
+    {
+      "stat_id": 28,
+      "name": "Wins",
+      "display_name": "W",
+      "position_type": "P",
+      "abbr": "W",
+      "value": 8.0
+    },
+    {
+      "stat_id": 30,
+      "name": "Complete Games",
+      "display_name": "CG",
+      "position_type": "P",
+      "abbr": "CG",
+      "value": 10.0
+    },
+    {
+      "stat_id": 31,
+      "name": "Shutouts",
+      "display_name": "SHO",
+      "position_type": "P",
+      "abbr": "SHO",
+      "value": 4.0
+    },
+    {
+      "stat_id": 32,
+      "name": "Saves",
+      "display_name": "SV",
+      "position_type": "P",
+      "abbr": "SV",
+      "value": 6.0
+    },
+    {
+      "stat_id": 37,
+      "name": "Earned Runs",
+      "display_name": "ER",
+      "position_type": "P",
+      "abbr": "ER",
+      "value": -2.0
+    },
+    {
+      "stat_id": 39,
+      "name": "Walks",
+      "display_name": "BB",
+      "position_type": "P",
+      "abbr": "BB",
+      "value": -0.5
+    },
+    {
+      "stat_id": 42,
+      "name": "Strikeouts",
+      "display_name": "K",
+      "position_type": "P",
+      "abbr": "K",
+      "value": 2.0
+    },
+    {
+      "stat_id": 50,
+      "name": "Innings Pitched",
+      "display_name": "IP",
+      "position_type": "P",
+      "abbr": "IP",
+      "value": 0.25
+    },
+    {
+      "stat_id": 60,
+      "name": "Hits / At Bats",
+      "display_name": "H/AB",
+      "position_type": "B",
+      "abbr": "H/AB",
+      "value": null
+    },
+    {
+      "stat_id": 64,
+      "name": "Hitting for the Cycle",
+      "display_name": "CYC",
+      "position_type": "B",
+      "abbr": "CYC",
+      "value": 15.0
+    },
+    {
+      "stat_id": 66,
+      "name": "Grand Slam Home Runs",
+      "display_name": "SLAM",
+      "position_type": "B",
+      "abbr": "SLAM",
+      "value": 10.0
+    },
+    {
+      "stat_id": 83,
+      "name": "Quality Starts",
+      "display_name": "QS",
+      "position_type": "P",
+      "abbr": "QS",
+      "value": 3.0
+    }
+  ],
+  "pitching": [
+    {
+      "stat_id": 28,
+      "name": "Wins",
+      "display_name": "W",
+      "position_type": "P",
+      "abbr": "W",
+      "value": 8.0
+    },
+    {
+      "stat_id": 30,
+      "name": "Complete Games",
+      "display_name": "CG",
+      "position_type": "P",
+      "abbr": "CG",
+      "value": 10.0
+    },
+    {
+      "stat_id": 31,
+      "name": "Shutouts",
+      "display_name": "SHO",
+      "position_type": "P",
+      "abbr": "SHO",
+      "value": 4.0
+    },
+    {
+      "stat_id": 32,
+      "name": "Saves",
+      "display_name": "SV",
+      "position_type": "P",
+      "abbr": "SV",
+      "value": 6.0
+    },
+    {
+      "stat_id": 37,
+      "name": "Earned Runs",
+      "display_name": "ER",
+      "position_type": "P",
+      "abbr": "ER",
+      "value": -2.0
+    },
+    {
+      "stat_id": 39,
+      "name": "Walks",
+      "display_name": "BB",
+      "position_type": "P",
+      "abbr": "BB",
+      "value": -0.5
+    },
+    {
+      "stat_id": 42,
+      "name": "Strikeouts",
+      "display_name": "K",
+      "position_type": "P",
+      "abbr": "K",
+      "value": 2.0
+    },
+    {
+      "stat_id": 50,
+      "name": "Innings Pitched",
+      "display_name": "IP",
+      "position_type": "P",
+      "abbr": "IP",
+      "value": 0.25
+    },
+    {
+      "stat_id": 83,
+      "name": "Quality Starts",
+      "display_name": "QS",
+      "position_type": "P",
+      "abbr": "QS",
+      "value": 3.0
+    }
+  ],
+  "batting": [
+    {
+      "stat_id": 7,
+      "name": "Runs",
+      "display_name": "R",
+      "position_type": "B",
+      "abbr": "R",
+      "value": 1.5
+    },
+    {
+      "stat_id": 8,
+      "name": "Hits",
+      "display_name": "H",
+      "position_type": "B",
+      "abbr": "H",
+      "value": 1.0
+    },
+    {
+      "stat_id": 9,
+      "name": "Singles",
+      "display_name": "1B",
+      "position_type": "B",
+      "abbr": "1B",
+      "value": 1.0
+    },
+    {
+      "stat_id": 10,
+      "name": "Doubles",
+      "display_name": "2B",
+      "position_type": "B",
+      "abbr": "2B",
+      "value": 2.0
+    },
+    {
+      "stat_id": 11,
+      "name": "Triples",
+      "display_name": "3B",
+      "position_type": "B",
+      "abbr": "3B",
+      "value": 3.0
+    },
+    {
+      "stat_id": 12,
+      "name": "Home Runs",
+      "display_name": "HR",
+      "position_type": "B",
+      "abbr": "HR",
+      "value": 4.0
+    },
+    {
+      "stat_id": 13,
+      "name": "Runs Batted In",
+      "display_name": "RBI",
+      "position_type": "B",
+      "abbr": "RBI",
+      "value": 2.0
+    },
+    {
+      "stat_id": 16,
+      "name": "Stolen Bases",
+      "display_name": "SB",
+      "position_type": "B",
+      "abbr": "SB",
+      "value": 2.0
+    },
+    {
+      "stat_id": 18,
+      "name": "Walks",
+      "display_name": "BB",
+      "position_type": "B",
+      "abbr": "BB",
+      "value": 1.0
+    },
+    {
+      "stat_id": 60,
+      "name": "Hits / At Bats",
+      "display_name": "H/AB",
+      "position_type": "B",
+      "abbr": "H/AB",
+      "value": null
+    },
+    {
+      "stat_id": 64,
+      "name": "Hitting for the Cycle",
+      "display_name": "CYC",
+      "position_type": "B",
+      "abbr": "CYC",
+      "value": 15.0
+    },
+    {
+      "stat_id": 66,
+      "name": "Grand Slam Home Runs",
+      "display_name": "SLAM",
+      "position_type": "B",
+      "abbr": "SLAM",
+      "value": 10.0
+    }
+  ]
+}
