@@ -35,6 +35,26 @@ def _train_default_model():
     return fit_model(df, feats)
 
 
+def _actual_fp_per_pitcher() -> pd.DataFrame:
+    """Compute mean / count of actual Yahoo FP per pitcher across all 2026 starts
+    (including the early-season ones excluded from the as-of dataset)."""
+    from pathlib import Path
+    from src.yahoo_scoring import PitcherWeights, pitcher_fp
+
+    box_path = Path(__file__).resolve().parents[1] / "data" / "processed" / "box_starts_2026.parquet"
+    if not box_path.exists():
+        return pd.DataFrame(columns=["pitcher_id", "avg_fp_actual", "n_starts_actual"])
+    box = pd.read_parquet(box_path)
+    w = PitcherWeights.from_file()
+    box["fp"] = box.apply(lambda r: pitcher_fp(r.to_dict(), w), axis=1)
+    agg = box.groupby("pitcher_id").agg(
+        avg_fp_actual=("fp", "mean"),
+        n_starts_actual=("fp", "size"),
+    ).reset_index()
+    agg["avg_fp_actual"] = agg["avg_fp_actual"].round(2)
+    return agg
+
+
 def project_all(model, feats: list[str]) -> pd.DataFrame:
     """Project each 2026 pitcher's FP/start using their most-recent as-of row."""
     df = load_dataset([2026])
@@ -44,8 +64,15 @@ def project_all(model, feats: list[str]) -> pd.DataFrame:
     last = df.sort_values("game_date").groupby("pitcher_id").tail(1).copy()
     sub = last.dropna(subset=feats)
     sub["fp_projection"] = model.predict(sub[feats].values)
+
+    # Attach actual mean FP scored in 2026 (from the raw box data — includes
+    # the pitcher's first 3 starts that were excluded from the as-of dataset)
+    actual = _actual_fp_per_pitcher()
+    sub = sub.merge(actual, on="pitcher_id", how="left")
+
     cols = ["pitcher_id", "pitcher_name", "team", "game_date",
-            "n_starts_prior", "fp_projection"] + feats
+            "n_starts_prior", "fp_projection",
+            "avg_fp_actual", "n_starts_actual"] + feats
     out = sub[cols].sort_values("fp_projection", ascending=False).reset_index(drop=True)
     return out
 

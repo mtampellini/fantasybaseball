@@ -54,12 +54,16 @@ def _load_projections() -> list[dict]:
     rows = []
     with PROJ_CSV.open(encoding="utf-8") as f:
         for i, r in enumerate(csv.DictReader(f), start=1):
+            avg_actual = r.get("avg_fp_actual", "")
+            n_actual = r.get("n_starts_actual", "")
             rows.append({
                 "rank": i,
                 "pitcher_name": r["pitcher_name"],
                 "team": r["team"],
                 "n_starts_prior": int(float(r.get("n_starts_prior", 0))),
                 "fp_projection": float(r["fp_projection"]),
+                "avg_fp_actual": float(avg_actual) if avg_actual not in ("", "nan") else None,
+                "n_starts_actual": int(float(n_actual)) if n_actual not in ("", "nan") else None,
                 "last_norm": _norm_last(r["pitcher_name"]),
             })
     return rows
@@ -129,6 +133,11 @@ def render_sp_leaderboard_section(my_pitchers: list[dict], fa_pitchers: list[dic
         elif r["role"] == "fa":
             cls = "sp-fa"
             label = "FA"
+        avg = (
+            f'{r["avg_fp_actual"]:.2f}' if r["avg_fp_actual"] is not None
+            else '<span class="dim">—</span>'
+        )
+        n_act = r["n_starts_actual"] if r["n_starts_actual"] is not None else "—"
         body.append(
             f'<tr class="{cls}">'
             f'<td class="sp-rank">{r["rank"]}</td>'
@@ -136,6 +145,8 @@ def render_sp_leaderboard_section(my_pitchers: list[dict], fa_pitchers: list[dic
             f'<td>{escape(r["team"])}</td>'
             f'<td class="sp-rank">{r["n_starts_prior"]}</td>'
             f'<td class="sp-proj">{r["fp_projection"]:.2f}</td>'
+            f'<td class="sp-rank">{avg}</td>'
+            f'<td class="sp-rank">{n_act}</td>'
             f'<td>{label}</td>'
             f'</tr>'
         )
@@ -171,7 +182,12 @@ def render_sp_leaderboard_section(my_pitchers: list[dict], fa_pitchers: list[dic
         f"Source: <code>sp-correlation/output/2026_pitcher_projections.csv</code>. "
         f"Shows top 50 plus {len(extras)} rostered SP{'s' if len(extras) != 1 else ''} below rank 50.</p>"
         "<table class='sortable'>"
-        "<thead><tr><th>Rank</th><th>Pitcher</th><th>Team</th><th>N starts</th><th>Proj FP/start</th><th>Role</th></tr></thead>"
+        "<thead><tr><th>Rank</th><th>Pitcher</th><th>Team</th>"
+        "<th>N starts<br><small>(as-of)</small></th>"
+        "<th>Proj FP/start</th>"
+        "<th>Actual avg FP/start</th>"
+        "<th>N starts<br><small>(actual)</small></th>"
+        "<th>Role</th></tr></thead>"
         f"<tbody>{''.join(body)}</tbody></table>"
         f"{legend}{not_in_html}"
     )
