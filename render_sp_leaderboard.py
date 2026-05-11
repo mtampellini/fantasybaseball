@@ -19,7 +19,9 @@ from pathlib import Path
 import csv
 
 
-SPCORR_DIR = Path(r"C:\Users\mtamp\Documents\Fantasy Baseball\sp-correlation")
+# Compute path relative to this file so it works on both local Windows
+# (C:\Users\mtamp\) and the GitHub Actions Linux runner.
+SPCORR_DIR = Path(__file__).resolve().parent / "Documents" / "Fantasy Baseball" / "sp-correlation"
 PROJ_CSV = SPCORR_DIR / "output" / "2026_pitcher_projections.csv"
 ROSTERS_JSON = SPCORR_DIR / "data" / "rosters.json"
 MY_TEAM_ID = 11
