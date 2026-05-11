@@ -1,0 +1,15 @@
+team_id,team_name,sp_count_total,sp_count_matched,top30_rostered,top50_rostered,top5_proj_sum,all_proj_sum,mean_proj,rank_top5
+11,Tamp Slam,12,8,7,8,79.11,117.54,14.69,1
+1,Pine Barrens,12,9,3,4,67.4,95.86,10.65,2
+7,LB Jefes,6,5,3,4,65.34,65.34,13.07,3
+2,Balcony Tears,9,8,2,4,63.61,91.34,11.42,4
+12,SS Express,8,7,3,4,61.99,78.54,11.22,5
+6,KING JULIAN,12,8,3,3,61.57,86.23,10.78,6
+5,Rayhood,7,6,1,4,59.39,66.71,11.12,7
+8,Mama's Juiced,8,8,1,3,58.92,84.83,10.6,8
+14,Short Porchers,7,5,2,2,57.96,57.96,11.59,9
+3,Chicks Dig,8,5,2,3,54.38,54.38,10.88,10
+9,Soto Shuffle,8,7,1,3,53.48,60.65,8.66,11
+4,Diamond Dogs,7,6,0,3,53.02,60.12,10.02,12
+10,South Park Cows,8,5,1,1,51.0,51.0,10.2,13
+13,Wally Cats,7,4,0,1,42.01,42.01,10.5,14
