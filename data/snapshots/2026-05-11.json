@@ -1,6 +1,6 @@
 {
   "date": "2026-05-11",
-  "generated_at": "2026-05-11 14:44:48",
+  "generated_at": "2026-05-11 17:39:44",
   "week": 8,
   "record": "3-4",
   "my_hitters": [
@@ -1477,7 +1477,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 45,
+      "percent_owned": 46,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.36,
@@ -2516,7 +2516,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 6,
+      "percent_owned": 5,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.279,
@@ -2726,7 +2726,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 7,
+      "percent_owned": 8,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.333,
@@ -2794,7 +2794,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 47,
+      "percent_owned": 46,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.231,
@@ -2818,40 +2818,6 @@
       "games_next_week": 7,
       "xfp_next_week": 25.3,
       "xfp_ros": 282.0
-    },
-    {
-      "name": "Trevor Larnach",
-      "player_id": 11347,
-      "team": "MIN",
-      "eligible_positions": [
-        "OF",
-        "Util"
-      ],
-      "status": "",
-      "percent_owned": 2,
-      "fantasy_points": null,
-      "on_waivers": false,
-      "babip": 0.324,
-      "woba": 0.349,
-      "xwoba": 0.32,
-      "xslg": 0.345,
-      "woba_xwoba_gap": 29,
-      "mlbam_id": "663616",
-      "savant_matched": true,
-      "avg_fp_4w": 24.0,
-      "fp_1w": 13.0,
-      "pa_1w": 20,
-      "avg_fp_2w_est": 13.0,
-      "pa_season": 113,
-      "pa_per_wk": 16.1,
-      "sb_season": 1,
-      "sb_per_wk": 0.14,
-      "xfp_hit": 18.0,
-      "xfp_sb": 0.3,
-      "xfp_per_wk": 18.3,
-      "games_next_week": 6,
-      "xfp_next_week": 18.3,
-      "xfp_ros": 238.0
     },
     {
       "name": "Josh Bell",
@@ -3129,6 +3095,40 @@
       "games_next_week": 6,
       "xfp_next_week": 12.7,
       "xfp_ros": 165.0
+    },
+    {
+      "name": "Jake Burger",
+      "player_id": 10877,
+      "team": "TEX",
+      "eligible_positions": [
+        "1B",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 13,
+      "fantasy_points": null,
+      "on_waivers": false,
+      "babip": 0.248,
+      "woba": 0.267,
+      "xwoba": 0.278,
+      "xslg": 0.386,
+      "woba_xwoba_gap": -11,
+      "mlbam_id": "669394",
+      "savant_matched": true,
+      "avg_fp_4w": 23.875,
+      "fp_1w": 8.5,
+      "pa_1w": 16,
+      "avg_fp_2w_est": 8.5,
+      "pa_season": 155,
+      "pa_per_wk": 22.1,
+      "sb_season": 0,
+      "sb_per_wk": 0.0,
+      "xfp_hit": 21.5,
+      "xfp_sb": 0.0,
+      "xfp_per_wk": 21.5,
+      "games_next_week": 6,
+      "xfp_next_week": 21.5,
+      "xfp_ros": 280.0
     }
   ],
   "fa_pitchers": [
@@ -3141,7 +3141,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 29,
+      "percent_owned": 30,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 37.3,
@@ -3326,7 +3326,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 17,
+      "percent_owned": 18,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 21.6,
@@ -3375,79 +3375,6 @@
       "fp_1w": 24.25,
       "pa_1w": 1,
       "avg_fp_2w_est": 24.25
-    },
-    {
-      "name": "Trevor McDonald",
-      "player_id": 60389,
-      "team": "SF",
-      "eligible_positions": [
-        "SP",
-        "RP",
-        "P"
-      ],
-      "status": "",
-      "percent_owned": 11,
-      "fantasy_points": null,
-      "on_waivers": false,
-      "k_pct": 33.3,
-      "bb_pct": 0.0,
-      "k_bb_pct": 33.3,
-      "babip": 0.071,
-      "woba": 0.155,
-      "xwoba": 0.269,
-      "mlbam_id": "686790",
-      "savant_matched": true,
-      "per_start": [],
-      "per_start_sd": null,
-      "this_week_starts": [
-        {
-          "team": "SFG",
-          "team_id": 30,
-          "opponent": "LAD",
-          "opponent_id": 22,
-          "date": "2026-05-11",
-          "is_home": false,
-          "pitcher_name": "Trevor McDonald",
-          "pitcher_id": "26448",
-          "throws": "R",
-          "doubleheader": 0,
-          "notes": null
-        },
-        {
-          "team": "SFG",
-          "team_id": 30,
-          "opponent": "ATH",
-          "opponent_id": 10,
-          "date": "2026-05-16",
-          "is_home": false,
-          "pitcher_name": "Trevor McDonald",
-          "pitcher_id": "26448",
-          "throws": "R",
-          "doubleheader": 0,
-          "notes": null
-        }
-      ],
-      "next_week_starts": [
-        {
-          "team": "SFG",
-          "team_id": 30,
-          "opponent": "CHW",
-          "opponent_id": 4,
-          "date": "2026-05-22",
-          "is_home": true,
-          "pitcher_name": "Trevor McDonald",
-          "pitcher_id": "26448",
-          "throws": "R",
-          "doubleheader": 0,
-          "notes": null
-        }
-      ],
-      "this_week_count": 2,
-      "next_week_count": 1,
-      "avg_fp_4w": 6.6875,
-      "fp_1w": 26.75,
-      "pa_1w": 0,
-      "avg_fp_2w_est": 26.75
     },
     {
       "name": "Gregory Soto",
@@ -3773,7 +3700,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 25,
+      "percent_owned": 24,
       "fantasy_points": null,
       "on_waivers": true,
       "k_pct": 18.2,
@@ -5010,7 +4937,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 19,
+      "percent_owned": 18,
       "fantasy_points": null,
       "on_waivers": true,
       "k_pct": 23.2,
@@ -5184,109 +5111,6 @@
       "avg_fp_2w_est": 2.5
     },
     {
-      "name": "Jeffrey Springs",
-      "player_id": 11121,
-      "team": "ATH",
-      "eligible_positions": [
-        "SP",
-        "P"
-      ],
-      "status": "",
-      "percent_owned": 36,
-      "fantasy_points": null,
-      "on_waivers": false,
-      "k_pct": 21.5,
-      "bb_pct": 6.6,
-      "k_bb_pct": 14.9,
-      "babip": 0.256,
-      "woba": 0.308,
-      "xwoba": 0.298,
-      "mlbam_id": "605488",
-      "savant_matched": true,
-      "per_start": [
-        {
-          "date": "2026-05-06",
-          "pa": 23,
-          "xwoba": 0.389,
-          "woba": 0.412
-        },
-        {
-          "date": "2026-04-30",
-          "pa": 16,
-          "xwoba": 0.387,
-          "woba": 0.469
-        },
-        {
-          "date": "2026-04-25",
-          "pa": 26,
-          "xwoba": 0.244,
-          "woba": 0.302
-        },
-        {
-          "date": "2026-04-19",
-          "pa": 25,
-          "xwoba": 0.383,
-          "woba": 0.572
-        },
-        {
-          "date": "2026-04-14",
-          "pa": 23,
-          "xwoba": 0.292,
-          "woba": 0.195
-        }
-      ],
-      "per_start_sd": 0.06,
-      "this_week_starts": [
-        {
-          "team": "ATH",
-          "team_id": 10,
-          "opponent": "STL",
-          "opponent_id": 28,
-          "date": "2026-05-12",
-          "is_home": true,
-          "pitcher_name": "Jeffrey Springs",
-          "pitcher_id": "17677",
-          "throws": "L",
-          "doubleheader": 0,
-          "notes": null
-        },
-        {
-          "team": "ATH",
-          "team_id": 10,
-          "opponent": "SFG",
-          "opponent_id": 30,
-          "date": "2026-05-17",
-          "is_home": true,
-          "pitcher_name": "Jeffrey Springs",
-          "pitcher_id": "17677",
-          "throws": "L",
-          "doubleheader": 0,
-          "notes": null
-        }
-      ],
-      "next_week_starts": [
-        {
-          "team": "ATH",
-          "team_id": 10,
-          "opponent": "SDP",
-          "opponent_id": 29,
-          "date": "2026-05-22",
-          "is_home": false,
-          "pitcher_name": "Jeffrey Springs",
-          "pitcher_id": "17677",
-          "throws": "L",
-          "doubleheader": 0,
-          "notes": null
-        }
-      ],
-      "this_week_count": 2,
-      "next_week_count": 1,
-      "avg_fp_4w": 7.605,
-      "fp_1w": 5.33,
-      "pa_1w": 0,
-      "avg_fp_2w_est": 5.33
-    },
-    {
       "name": "Bryan King",
       "player_id": 64014,
       "team": "HOU",
@@ -5420,7 +5244,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 5,
+      "percent_owned": 4,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 20.9,
@@ -5668,6 +5492,38 @@
       "avg_fp_2w_est": 7.08
     },
     {
+      "name": "Erik Miller",
+      "player_id": 11815,
+      "team": "SF",
+      "eligible_positions": [
+        "RP",
+        "P",
+        "IL"
+      ],
+      "status": "IL15",
+      "percent_owned": 5,
+      "fantasy_points": null,
+      "on_waivers": false,
+      "k_pct": 35.4,
+      "bb_pct": 12.5,
+      "k_bb_pct": 22.9,
+      "babip": 0.32,
+      "woba": 0.262,
+      "xwoba": 0.232,
+      "mlbam_id": "669062",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 8.4575,
+      "fp_1w": 0.0,
+      "pa_1w": 0,
+      "avg_fp_2w_est": 0.0
+    },
+    {
       "name": "Caleb Thielbar",
       "player_id": 9402,
       "team": "CHC",
@@ -5762,6 +5618,37 @@
       "fp_1w": 3.83,
       "pa_1w": 1,
       "avg_fp_2w_est": 3.83
+    },
+    {
+      "name": "Camilo Doval",
+      "player_id": 11536,
+      "team": "NYY",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 4,
+      "fantasy_points": null,
+      "on_waivers": false,
+      "k_pct": 25.0,
+      "bb_pct": 4.7,
+      "k_bb_pct": 20.3,
+      "babip": 0.286,
+      "woba": 0.317,
+      "xwoba": 0.282,
+      "mlbam_id": "666808",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 4.355,
+      "fp_1w": 2.67,
+      "pa_1w": 0,
+      "avg_fp_2w_est": 2.67
     }
   ],
   "rostered_hitters_other": [
@@ -7194,36 +7081,6 @@
       "xfp_ros": 247.0
     },
     {
-      "name": "Jakob Marsee",
-      "player_id": 62119,
-      "team": "MIA",
-      "eligible_positions": [
-        "OF",
-        "Util"
-      ],
-      "status": "",
-      "position_type": "B",
-      "owner_team_id": 2,
-      "owner_team_name": "Balcony Tears",
-      "babip": 0.248,
-      "woba": 0.277,
-      "xwoba": 0.282,
-      "xslg": 0.281,
-      "woba_xwoba_gap": -5,
-      "mlbam_id": "805300",
-      "savant_matched": true,
-      "pa_season": 171,
-      "pa_per_wk": 24.4,
-      "sb_season": 12,
-      "sb_per_wk": 1.71,
-      "xfp_hit": 24.1,
-      "xfp_sb": 3.4,
-      "xfp_per_wk": 27.5,
-      "games_next_week": 7,
-      "xfp_next_week": 32.1,
-      "xfp_ros": 358.0
-    },
-    {
       "name": "Taylor Ward",
       "player_id": 10496,
       "team": "BAL",
@@ -7287,6 +7144,38 @@
       "xfp_ros": 276.0
     },
     {
+      "name": "Ryan Waldschmidt",
+      "player_id": 64479,
+      "team": "AZ",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "owner_team_id": 2,
+      "owner_team_name": "Balcony Tears",
+      "savant_matched": false,
+      "k_pct": null,
+      "bb_pct": null,
+      "k_bb_pct": null,
+      "babip": null,
+      "woba": null,
+      "xwoba": null,
+      "xslg": null,
+      "woba_xwoba_gap": null,
+      "pa_season": 8,
+      "pa_per_wk": 1.1,
+      "sb_season": 0,
+      "sb_per_wk": 0.0,
+      "xfp_hit": null,
+      "xfp_sb": null,
+      "xfp_per_wk": null,
+      "xfp_next_week": null,
+      "xfp_ros": null,
+      "games_next_week": null
+    },
+    {
       "name": "Shohei Ohtani (Batter)",
       "player_id": 1000001,
       "team": "LAD",
@@ -7318,35 +7207,34 @@
       "games_next_week": null
     },
     {
-      "name": "Kerry Carpenter",
-      "player_id": 12667,
-      "team": "DET",
+      "name": "Jakob Marsee",
+      "player_id": 62119,
+      "team": "MIA",
       "eligible_positions": [
         "OF",
-        "Util",
-        "IL"
+        "Util"
       ],
-      "status": "IL10",
+      "status": "",
       "position_type": "B",
       "owner_team_id": 2,
       "owner_team_name": "Balcony Tears",
-      "babip": 0.276,
-      "woba": 0.328,
-      "xwoba": 0.302,
-      "xslg": 0.398,
-      "woba_xwoba_gap": 26,
-      "mlbam_id": "681481",
+      "babip": 0.248,
+      "woba": 0.277,
+      "xwoba": 0.282,
+      "xslg": 0.281,
+      "woba_xwoba_gap": -5,
+      "mlbam_id": "805300",
       "savant_matched": true,
-      "pa_season": 113,
-      "pa_per_wk": 16.1,
-      "sb_season": 0,
-      "sb_per_wk": 0.0,
-      "xfp_hit": 17.0,
-      "xfp_sb": 0.0,
-      "xfp_per_wk": 17.0,
+      "pa_season": 171,
+      "pa_per_wk": 24.4,
+      "sb_season": 12,
+      "sb_per_wk": 1.71,
+      "xfp_hit": 24.1,
+      "xfp_sb": 3.4,
+      "xfp_per_wk": 27.5,
       "games_next_week": 7,
-      "xfp_next_week": 19.8,
-      "xfp_ros": 221.0
+      "xfp_next_week": 32.1,
+      "xfp_ros": 358.0
     },
     {
       "name": "Ronald Acu\u00f1a Jr.",
@@ -10055,11 +9943,10 @@
       "xfp_ros": 403.0
     },
     {
-      "name": "Alec Burleson",
-      "player_id": 12550,
-      "team": "STL",
+      "name": "Chandler Simpson",
+      "player_id": 60420,
+      "team": "TB",
       "eligible_positions": [
-        "1B",
         "OF",
         "Util"
       ],
@@ -10067,23 +9954,23 @@
       "position_type": "B",
       "owner_team_id": 3,
       "owner_team_name": "Chicks Dig Longballs",
-      "babip": 0.287,
-      "woba": 0.346,
-      "xwoba": 0.376,
-      "xslg": 0.54,
-      "woba_xwoba_gap": -30,
-      "mlbam_id": "676475",
+      "babip": 0.336,
+      "woba": 0.306,
+      "xwoba": 0.264,
+      "xslg": 0.299,
+      "woba_xwoba_gap": 42,
+      "mlbam_id": "802415",
       "savant_matched": true,
-      "pa_season": 172,
-      "pa_per_wk": 24.6,
-      "sb_season": 2,
-      "sb_per_wk": 0.29,
-      "xfp_hit": 32.4,
-      "xfp_sb": 0.6,
-      "xfp_per_wk": 33.0,
+      "pa_season": 158,
+      "pa_per_wk": 22.6,
+      "sb_season": 12,
+      "sb_per_wk": 1.71,
+      "xfp_hit": 20.9,
+      "xfp_sb": 3.4,
+      "xfp_per_wk": 24.3,
       "games_next_week": 6,
-      "xfp_next_week": 33.0,
-      "xfp_ros": 429.0
+      "xfp_next_week": 24.3,
+      "xfp_ros": 316.0
     },
     {
       "name": "Brendan Donovan",
@@ -10119,10 +10006,11 @@
       "xfp_ros": 164.0
     },
     {
-      "name": "Chandler Simpson",
-      "player_id": 60420,
-      "team": "TB",
+      "name": "Alec Burleson",
+      "player_id": 12550,
+      "team": "STL",
       "eligible_positions": [
+        "1B",
         "OF",
         "Util"
       ],
@@ -10130,23 +10018,23 @@
       "position_type": "B",
       "owner_team_id": 3,
       "owner_team_name": "Chicks Dig Longballs",
-      "babip": 0.336,
-      "woba": 0.306,
-      "xwoba": 0.264,
-      "xslg": 0.299,
-      "woba_xwoba_gap": 42,
-      "mlbam_id": "802415",
+      "babip": 0.287,
+      "woba": 0.346,
+      "xwoba": 0.376,
+      "xslg": 0.54,
+      "woba_xwoba_gap": -30,
+      "mlbam_id": "676475",
       "savant_matched": true,
-      "pa_season": 158,
-      "pa_per_wk": 22.6,
-      "sb_season": 12,
-      "sb_per_wk": 1.71,
-      "xfp_hit": 20.9,
-      "xfp_sb": 3.4,
-      "xfp_per_wk": 24.3,
+      "pa_season": 172,
+      "pa_per_wk": 24.6,
+      "sb_season": 2,
+      "sb_per_wk": 0.29,
+      "xfp_hit": 32.4,
+      "xfp_sb": 0.6,
+      "xfp_per_wk": 33.0,
       "games_next_week": 6,
-      "xfp_next_week": 24.3,
-      "xfp_ros": 316.0
+      "xfp_next_week": 33.0,
+      "xfp_ros": 429.0
     },
     {
       "name": "Wyatt Langford",
@@ -11869,7 +11757,7 @@
         "points_for": 2519.92,
         "points_against": 2382.9100000000003,
         "waiver_priority": 12,
-        "moves": 26,
+        "moves": 28,
         "trades": 1
       },
       {
@@ -11989,7 +11877,7 @@
         "points_for": 2364.51,
         "points_against": 2732.0,
         "waiver_priority": 14,
-        "moves": 23,
+        "moves": 24,
         "trades": 2
       },
       {
