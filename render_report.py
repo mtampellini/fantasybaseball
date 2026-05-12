@@ -212,16 +212,9 @@ def render_hitter_row(p, show_slot=True):
     name_html = _player_link(p) + _status_tag(p.get("status"))
     cells.append(f'<td class="nm">{name_html}</td>')
     cells.append(f'<td class="c">{escape(p.get("team") or "")}</td>')
+    cells.append(f'<td class="r"><strong>{_fmt(p.get("_proj_fp_g"), 2)}</strong></td>')
     cells.append(f'<td class="r">{_fmt(p.get("avg_fp_4w"), 1)}</td>')
     cells.append(f'<td class="r">{_fmt(p.get("babip"))}</td>')
-    cells.append(f'<td class="r">{_fmt(p.get("woba"))}</td>')
-    xwc = _hitter_xwoba_class(p.get("xwoba"))
-    cells.append(f'<td class="r {xwc}">{_fmt(p.get("xwoba"))}</td>')
-    cells.append(f'<td class="r">{_fmt(p.get("xslg"))}</td>')
-    gap = p.get("woba_xwoba_gap")
-    gap_class = "vbad" if gap is not None and gap > 80 else ("good" if gap is not None and gap < -50 else "")
-    gap_str = f"{gap:+d}" if gap is not None else "—"
-    cells.append(f'<td class="r {gap_class}">{gap_str}</td>')
     return f'<tr class="{_row_class(p, "B")}">' + "".join(cells) + "</tr>"
 
 
@@ -266,6 +259,9 @@ def _xwoba_inline_class(val):
 
 
 def render_my_hitters_table(hitters):
+    proj_idx = load_proj_fp_g_index()
+    for h in hitters:
+        h["_proj_fp_g"] = proj_idx.for_player(h.get("name", "")) if proj_idx else None
     rows = "\n".join(render_hitter_row(h) for h in hitters)
     return f"""
 <table class="sortable">
@@ -274,19 +270,16 @@ def render_my_hitters_table(hitters):
       <th>Slot</th>
       <th>Hitter</th>
       <th>Team</th>
+      <th class="r">Proj FP/G</th>
       <th class="r">Avg_FP_L4W</th>
       <th class="r">BABIP</th>
-      <th class="r">wOBA</th>
-      <th class="r">xwOBA</th>
-      <th class="r">xSLG</th>
-      <th class="r">Gap</th>
     </tr>
   </thead>
   <tbody>
 {rows}
   </tbody>
 </table>
-<p class="note">Avg_FP_L4W = (last-month FP total) / 4, i.e. weekly average over the last 4 weeks. Row highlighted red when xwOBA &lt; .300.</p>
+<p class="note">Proj FP/G = Ridge-model projection on 2024+2025 Statcast skill features (same model as the Top 100 Hitter Projections section). Avg_FP_L4W = last-month FP total / 4. Proj FP/G blank = not in projection dataset (insufficient 2026 games).</p>
 """
 
 
@@ -365,7 +358,7 @@ def render_fa_hitters_table(hitters):
 
 
 def render_fa_pitchers_table(pitchers):
-    pitchers = sorted(pitchers, key=lambda p: (p.get("xwoba") is None, p.get("xwoba") or 1))
+    pitchers = sorted(pitchers, key=lambda p: (p.get("xwoba") is None, p.get("xwoba") or 1))[:35]
     rows = []
     for p in pitchers:
         cells = []
@@ -542,7 +535,7 @@ def render_html(snapshot):
 </section>
 
 <section class="section">
-  <h2>Free Agent Pitchers (Top {len(fa_pitchers)})</h2>
+  <h2>Free Agent Pitchers (Top 35)</h2>
   {render_fa_pitchers_table(fa_pitchers)}
 </section>
 
