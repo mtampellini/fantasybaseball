@@ -221,6 +221,110 @@ def pull_range(start_date: str, end_date: str, year: int) -> pd.DataFrame:
     return df
 
 
+# ============================================================ hitter rows
+
+def _i(x) -> int:
+    """Parse stat string like '4' or '' to int."""
+    if x is None or x == "":
+        return 0
+    try:
+        return int(x)
+    except (TypeError, ValueError):
+        return 0
+
+
+def _team_batter_rows(side: str, game: dict, box: dict) -> list[dict]:
+    """Extract per-batter rows for one team side. One row per (game, batter)
+    summing across substitution rows if a player appears more than once.
+    """
+    batters = box.get(f"{side}Batters") or []
+    pinfo = box.get("playerInfo", {}) or {}
+
+    is_home = side == "home"
+    opp_side = "away" if is_home else "home"
+    team_info = box.get("teamInfo", {}) or {}
+    team_name = (team_info.get(side) or {}).get("teamName") or game.get(f"{side}_name")
+    opp_name = (team_info.get(opp_side) or {}).get("teamName") or game.get(f"{opp_side}_name")
+
+    # Aggregate by personId in case of substitution (same player, multiple rows)
+    agg: dict[int, dict] = {}
+    for row in batters:
+        if not isinstance(row, dict):
+            continue
+        pid = row.get("personId")
+        if not pid or pid == 0:
+            continue  # header / totals row
+        ab = _i(row.get("ab"))
+        bb = _i(row.get("bb"))
+        if ab == 0 and bb == 0:
+            continue  # didn't bat (defensive sub, pinch runner, etc.)
+
+        cur = agg.setdefault(int(pid), {
+            "ab": 0, "r": 0, "h": 0, "2b": 0, "3b": 0, "hr": 0,
+            "rbi": 0, "sb": 0, "bb": 0, "k": 0,
+            "position": row.get("position", ""),
+            "batting_order": row.get("battingOrder", ""),
+        })
+        cur["ab"] += ab
+        cur["r"] += _i(row.get("r"))
+        cur["h"] += _i(row.get("h"))
+        cur["2b"] += _i(row.get("doubles"))
+        cur["3b"] += _i(row.get("triples"))
+        cur["hr"] += _i(row.get("hr"))
+        cur["rbi"] += _i(row.get("rbi"))
+        cur["sb"] += _i(row.get("sb"))
+        cur["bb"] += bb
+        cur["k"] += _i(row.get("k"))
+
+    rows = []
+    for pid, s in agg.items():
+        pi = pinfo.get(f"ID{pid}", {}) or {}
+        h = s["h"]
+        b1 = max(0, h - s["2b"] - s["3b"] - s["hr"])
+        # Cycle: at least one each of 1B/2B/3B/HR in a single game
+        cyc = 1 if (b1 >= 1 and s["2b"] >= 1 and s["3b"] >= 1 and s["hr"] >= 1) else 0
+        rows.append({
+            "game_pk": int(game["game_id"]),
+            "game_date": game["game_date"],
+            "batter_id": pid,
+            "batter_name": pi.get("fullName") or "",
+            "team": team_name,
+            "opponent": opp_name,
+            "is_home": int(is_home),
+            "position": s["position"],
+            "batting_order": s["batting_order"],
+            "ab": s["ab"],
+            "h": h,
+            "1b": b1,
+            "2b": s["2b"],
+            "3b": s["3b"],
+            "hr": s["hr"],
+            "r": s["r"],
+            "rbi": s["rbi"],
+            "bb": s["bb"],
+            "sb": s["sb"],
+            "k": s["k"],
+            "cyc": cyc,
+            "pa": s["ab"] + s["bb"],  # approx PA (no HBP/SF in box totals)
+        })
+    return rows
+
+
+def pull_hitter_range(start_date: str, end_date: str, year: int) -> pd.DataFrame:
+    """Pull all batter rows for the date range; returns DataFrame.
+    Reuses cached schedule + boxscores from pull_range (SP side)."""
+    games = fetch_schedule(start_date, end_date)
+    print(f"  {len(games)} regular-season Final games in {start_date}..{end_date}")
+    rows: list[dict] = []
+    for g in tqdm(games, desc=f"hitter boxes {year}"):
+        box = fetch_boxscore(int(g["game_id"]), year)
+        if not box:
+            continue
+        for side in ("home", "away"):
+            rows.extend(_team_batter_rows(side, g, box))
+    return pd.DataFrame(rows)
+
+
 # ------------------------------------------------------------------- cli
 
 def main() -> int:
@@ -228,6 +332,8 @@ def main() -> int:
     ap.add_argument("--year", type=int)
     ap.add_argument("--start", help="YYYY-MM-DD (overrides --year)")
     ap.add_argument("--end", help="YYYY-MM-DD (overrides --year)")
+    ap.add_argument("--hitters", action="store_true",
+                    help="Pull hitter box rows instead of starting-pitcher rows")
     args = ap.parse_args()
 
     if args.start and args.end:
@@ -243,6 +349,17 @@ def main() -> int:
     else:
         ap.error("Provide --year or --start/--end")
         return 2
+
+    if args.hitters:
+        print(f"\n=== Pulling hitter box rows: {start} to {end} ===")
+        df = pull_hitter_range(start, end, year)
+        out = PROC / f"box_hitters_{year}.parquet"
+        df.to_parquet(out, index=False)
+        print(f"\nWrote {out}")
+        print(f"  Hitter-game rows : {len(df)}")
+        print(f"  Unique hitters   : {df['batter_id'].nunique()}")
+        print(f"  Date range       : {df['game_date'].min()} .. {df['game_date'].max()}")
+        return 0
 
     print(f"\n=== Pulling box-score starts: {start} to {end} ===")
     df = pull_range(start, end, year)

@@ -21,6 +21,9 @@ from render_weekly_section import (
 from render_sp_leaderboard import (
     render_sp_leaderboard_section, SP_LEADERBOARD_CSS,
 )
+from render_hitter_leaderboard import (
+    render_hitter_leaderboard_section, HITTER_LEADERBOARD_CSS,
+)
 from render_trade_targets import (
     render_trade_targets_section, TRADE_TARGETS_CSS,
 )
@@ -515,7 +518,7 @@ def render_html(snapshot):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tamp Slam Daily Report — {today}</title>
-<style>{CSS}{WEEKLY_CSS}{TRADE_TARGETS_CSS}{SP_LEADERBOARD_CSS}</style>
+<style>{CSS}{WEEKLY_CSS}{TRADE_TARGETS_CSS}{SP_LEADERBOARD_CSS}{HITTER_LEADERBOARD_CSS}</style>
 </head>
 <body>
 
@@ -559,6 +562,11 @@ def render_html(snapshot):
 <section class="section">
   <h2>Top 50 SP Projections — 2026</h2>
   {render_sp_leaderboard_section(my_pitchers, fa_pitchers)}
+</section>
+
+<section class="section">
+  <h2>Top 100 Hitter Projections — 2026</h2>
+  {render_hitter_leaderboard_section(my_hitters, fa_hitters)}
 </section>
 
 <footer style="margin-top: 40px; color: var(--muted); font-size: 11px; text-align: center;">

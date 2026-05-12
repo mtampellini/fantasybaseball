@@ -157,6 +157,89 @@ def aggregate_per_game(pitches: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
+def aggregate_per_game_batter(pitches: pd.DataFrame) -> pd.DataFrame:
+    """Aggregate pitch-level to per (batter, game) rows.
+
+    Mirrors aggregate_per_game() but groups by batter instead of pitcher.
+    K/BB rates are computed off PA (woba_denom==1) for consistency with how
+    Yahoo scoring buckets events.
+    """
+    if pitches.empty:
+        return pd.DataFrame()
+
+    df = pitches.copy()
+    df["is_swing"] = df["description"].isin(_SWING_DESC)
+    df["is_whiff"] = df["description"].isin(_WHIFF_DESC)
+    df["is_cstrike"] = df["description"].isin(_CSTRIKE_DESC)
+    df["is_bbe"] = df["events"].notna() & df["launch_speed"].notna()
+    df["is_hard"] = df["is_bbe"] & (df["launch_speed"] >= 95)
+    df["is_barrel"] = df["launch_speed_angle"] == 6
+
+    # PA-ending events and outcome flags (batter perspective)
+    df["woba_denom"] = pd.to_numeric(df["woba_denom"], errors="coerce")
+    df["is_pa"] = df["woba_denom"] == 1
+    df["is_k"] = df["is_pa"] & df["events"].isin(["strikeout", "strikeout_double_play"])
+    df["is_bb"] = df["is_pa"] & (df["events"] == "walk")
+
+    est = pd.to_numeric(df["estimated_woba_using_speedangle"], errors="coerce")
+    actual = pd.to_numeric(df["woba_value"], errors="coerce")
+    df["xwoba_per_pa"] = est.where(est.notna(), actual)
+    df.loc[~df["is_pa"], "xwoba_per_pa"] = np.nan
+
+    # xBA on BBE
+    df["xba_bbe"] = pd.to_numeric(df["estimated_ba_using_speedangle"], errors="coerce")
+    df.loc[~df["is_bbe"], "xba_bbe"] = np.nan
+
+    # Launch-angle buckets (same as pitcher side, but recorded as batter metrics)
+    la = pd.to_numeric(df["launch_angle"], errors="coerce")
+    df["is_gb"] = df["is_bbe"] & (la < 10)
+    df["is_ld"] = df["is_bbe"] & (la >= 10) & (la < 25)
+    df["is_fb"] = df["is_bbe"] & (la >= 25) & (la < 50)
+    df["is_pu"] = df["is_bbe"] & (la >= 50)
+    df["is_sweet_spot"] = df["is_bbe"] & (la >= 8) & (la <= 32)
+
+    grp = df.groupby(["game_pk", "game_date", "batter"], dropna=False)
+    out = grp.agg(
+        pitches=("description", "size"),
+        pa=("is_pa", "sum"),
+        swings=("is_swing", "sum"),
+        whiffs=("is_whiff", "sum"),
+        cstrikes=("is_cstrike", "sum"),
+        bbe=("is_bbe", "sum"),
+        hard_hit=("is_hard", "sum"),
+        barrels=("is_barrel", "sum"),
+        gb=("is_gb", "sum"),
+        ld=("is_ld", "sum"),
+        fb=("is_fb", "sum"),
+        pu=("is_pu", "sum"),
+        sweet=("is_sweet_spot", "sum"),
+        ks=("is_k", "sum"),
+        bbs=("is_bb", "sum"),
+        xwoba_sum=("xwoba_per_pa", "sum"),
+        xwoba_n=("woba_denom", "sum"),
+        xba_sum=("xba_bbe", "sum"),
+    ).reset_index()
+
+    out = out.rename(columns={"batter": "batter_id"})
+    out["game_pk"] = out["game_pk"].astype("Int64")
+    out["batter_id"] = out["batter_id"].astype("Int64")
+    out["game_date"] = pd.to_datetime(out["game_date"]).dt.date.astype(str)
+
+    # Rate columns
+    out["whiff_rate"] = out["whiffs"] / out["swings"].replace(0, np.nan)
+    out["hard_hit_rate"] = out["hard_hit"] / out["bbe"].replace(0, np.nan)
+    out["barrel_rate"] = out["barrels"] / out["bbe"].replace(0, np.nan)
+    out["sweet_spot_rate"] = out["sweet"] / out["bbe"].replace(0, np.nan)
+    out["gb_rate"] = out["gb"] / out["bbe"].replace(0, np.nan)
+    out["fb_rate"] = out["fb"] / out["bbe"].replace(0, np.nan)
+    out["ld_rate"] = out["ld"] / out["bbe"].replace(0, np.nan)
+    out["k_rate"] = out["ks"] / out["pa"].replace(0, np.nan)
+    out["bb_rate"] = out["bbs"] / out["pa"].replace(0, np.nan)
+    out["xwoba_per_pa"] = out["xwoba_sum"] / out["xwoba_n"].replace(0, np.nan)
+    out["xba_per_bbe"] = out["xba_sum"] / out["bbe"].replace(0, np.nan)
+    return out
+
+
 # ---------------------------------------------------------------- cli
 
 def main() -> int:
@@ -164,6 +247,8 @@ def main() -> int:
     ap.add_argument("--year", type=int)
     ap.add_argument("--start", help="YYYY-MM-DD")
     ap.add_argument("--end", help="YYYY-MM-DD")
+    ap.add_argument("--hitters", action="store_true",
+                    help="Aggregate to per-(batter,game) instead of per-(pitcher,game)")
     args = ap.parse_args()
 
     if args.start and args.end:
@@ -181,6 +266,15 @@ def main() -> int:
     print(f"\n=== Pulling Statcast pitch-level: {s} to {e} ===")
     pitches = pull_range(s, e)
     print(f"  {len(pitches):,} pitches pulled")
+
+    if args.hitters:
+        agg = aggregate_per_game_batter(pitches)
+        out = PROC / f"bat_agg_{year}.parquet"
+        agg.to_parquet(out, index=False)
+        print(f"\nWrote {out}")
+        print(f"  Batter-game rows: {len(agg)}")
+        print(f"  Unique batters  : {agg['batter_id'].nunique()}")
+        return 0
 
     agg = aggregate_per_game(pitches)
     out = PROC / f"pitch_agg_{year}.parquet"
