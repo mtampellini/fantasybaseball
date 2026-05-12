@@ -10,6 +10,7 @@ Outputs:
 """
 
 import json
+import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -45,6 +46,42 @@ REPO_ROOT = Path(__file__).parent
 DATA_DIR = REPO_ROOT / "data"
 SNAPSHOT_DIR = DATA_DIR / "snapshots"
 REPORT_DIR = REPO_ROOT / "reports"
+SPCORR_DIR = REPO_ROOT / "Documents" / "Fantasy Baseball" / "sp-correlation"
+
+
+def refresh_hitter_projections() -> bool:
+    """Refresh 2026 hitter projection CSV by running the sp-correlation pipeline.
+
+    Requires the training-year parquet files (2024 + 2025) to already exist in
+    sp-correlation/data/processed/. Those files are gitignored, so this step
+    only runs on the local machine where they were built — in CI it logs a
+    skip and the report falls back to the committed projection CSV.
+
+    Returns True if the pipeline ran end-to-end, False if it was skipped or
+    failed.
+    """
+    proc_dir = SPCORR_DIR / "data" / "processed"
+    needed = ["hitter_dataset_2024.parquet", "hitter_dataset_2025.parquet"]
+    missing = [n for n in needed if not (proc_dir / n).exists()]
+    if missing:
+        print(f"  skip: training data not present ({missing[0]} etc.). "
+              f"Using committed projection CSV.")
+        return False
+
+    steps = [
+        ("box hitters",  ["python", "-m", "src.pull_box_scores", "--year", "2026", "--hitters"]),
+        ("statcast hit", ["python", "-m", "src.pull_statcast", "--year", "2026", "--hitters"]),
+        ("as-of feats",  ["python", "-m", "src.as_of_features_hitter", "--year", "2026"]),
+        ("project",      ["python", "-m", "src.project_hitter", "--all"]),
+    ]
+    for label, cmd in steps:
+        print(f"  [{label}] running...")
+        r = subprocess.run(cmd, cwd=SPCORR_DIR, capture_output=True, text=True)
+        if r.returncode != 0:
+            print(f"  FAIL [{label}]: {r.stderr.strip().splitlines()[-1] if r.stderr.strip() else 'no stderr'}")
+            return False
+    print(f"  Projection refreshed: {SPCORR_DIR / 'output' / '2026_hitter_projections.csv'}")
+    return True
 
 
 def split_roster(roster):
@@ -330,6 +367,13 @@ def main():
             print_top_targets(trade_targets, n=5)
     except Exception as e:
         print(f"  WARN: trade-target scoring failed: {e}")
+
+    # Step 7b: Refresh hitter projection CSV (sp-correlation pipeline)
+    print("\nRefreshing hitter projections (sp-correlation)...")
+    try:
+        refresh_hitter_projections()
+    except Exception as e:
+        print(f"  WARN: hitter refresh failed: {type(e).__name__}: {e}")
 
     # Step 8: Build snapshot, write JSON + HTML
     print("\n[8/8] Writing report...")
