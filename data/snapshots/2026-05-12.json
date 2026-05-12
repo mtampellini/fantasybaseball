@@ -1,6 +1,6 @@
 {
   "date": "2026-05-12",
-  "generated_at": "2026-05-12 19:48:34",
+  "generated_at": "2026-05-12 20:51:58",
   "week": 8,
   "record": "3-4",
   "my_hitters": [
@@ -2439,7 +2439,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 3,
+      "percent_owned": 4,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.27,
@@ -2859,7 +2859,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 25,
+      "percent_owned": 24,
       "fantasy_points": null,
       "on_waivers": true,
       "babip": 0.272,
@@ -3200,7 +3200,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 33,
+      "percent_owned": 32,
       "fantasy_points": null,
       "on_waivers": true,
       "k_pct": 24.2,
@@ -3415,68 +3415,6 @@
       "fp_1w": 24.25,
       "pa_1w": 1,
       "avg_fp_2w_est": 24.25
-    },
-    {
-      "name": "Gregory Soto",
-      "player_id": 10882,
-      "team": "PIT",
-      "eligible_positions": [
-        "RP",
-        "P"
-      ],
-      "status": "",
-      "percent_owned": 40,
-      "fantasy_points": null,
-      "on_waivers": false,
-      "k_pct": 35.1,
-      "bb_pct": 9.5,
-      "k_bb_pct": 25.6,
-      "babip": 0.128,
-      "woba": 0.171,
-      "xwoba": 0.216,
-      "mlbam_id": "642397",
-      "savant_matched": true,
-      "per_start": [
-        {
-          "date": "2026-05-10",
-          "pa": 4,
-          "xwoba": 0.17,
-          "woba": 0.0
-        },
-        {
-          "date": "2026-05-07",
-          "pa": 3,
-          "xwoba": 0.162,
-          "woba": 0.0
-        },
-        {
-          "date": "2026-05-06",
-          "pa": 4,
-          "xwoba": 0.226,
-          "woba": 0.176
-        },
-        {
-          "date": "2026-05-03",
-          "pa": 4,
-          "xwoba": 0.232,
-          "woba": 0.0
-        },
-        {
-          "date": "2026-05-02",
-          "pa": 3,
-          "xwoba": 0.198,
-          "woba": 0.0
-        }
-      ],
-      "per_start_sd": 0.028,
-      "this_week_starts": [],
-      "next_week_starts": [],
-      "this_week_count": 0,
-      "next_week_count": 0,
-      "avg_fp_4w": 14.98,
-      "fp_1w": 18.33,
-      "pa_1w": 1,
-      "avg_fp_2w_est": 18.33
     },
     {
       "name": "Adrian Morejon",
@@ -4382,8 +4320,39 @@
       "xwoba": 0.246,
       "mlbam_id": "681870",
       "savant_matched": true,
-      "per_start": [],
-      "per_start_sd": null,
+      "per_start": [
+        {
+          "date": "2026-05-09",
+          "pa": 3,
+          "xwoba": 0.073,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-05-07",
+          "pa": 1,
+          "xwoba": 0.0,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-05-06",
+          "pa": 5,
+          "xwoba": 0.243,
+          "woba": 0.141
+        },
+        {
+          "date": "2026-05-01",
+          "pa": 3,
+          "xwoba": 0.248,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-04-27",
+          "pa": 4,
+          "xwoba": 0.397,
+          "woba": 0.401
+        }
+      ],
+      "per_start_sd": 0.141,
       "this_week_starts": [],
       "next_week_starts": [],
       "this_week_count": 0,
@@ -5244,7 +5213,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 24,
+      "percent_owned": 23,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 31.5,
@@ -5479,6 +5448,79 @@
       "fp_1w": 4.75,
       "pa_1w": 1,
       "avg_fp_2w_est": 4.75
+    },
+    {
+      "name": "Trevor McDonald",
+      "player_id": 60389,
+      "team": "SF",
+      "eligible_positions": [
+        "SP",
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 14,
+      "fantasy_points": null,
+      "on_waivers": true,
+      "k_pct": 24.0,
+      "bb_pct": 4.0,
+      "k_bb_pct": 20.0,
+      "babip": 0.273,
+      "woba": 0.304,
+      "xwoba": 0.307,
+      "mlbam_id": "686790",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [
+        {
+          "team": "SFG",
+          "team_id": 30,
+          "opponent": "LAD",
+          "opponent_id": 22,
+          "date": "2026-05-11",
+          "is_home": false,
+          "pitcher_name": "Trevor McDonald",
+          "pitcher_id": "26448",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        },
+        {
+          "team": "SFG",
+          "team_id": 30,
+          "opponent": "ATH",
+          "opponent_id": 10,
+          "date": "2026-05-16",
+          "is_home": false,
+          "pitcher_name": "Trevor McDonald",
+          "pitcher_id": "26448",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "SFG",
+          "team_id": 30,
+          "opponent": "CHW",
+          "opponent_id": 4,
+          "date": "2026-05-22",
+          "is_home": true,
+          "pitcher_name": "Trevor McDonald",
+          "pitcher_id": "26448",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 2,
+      "next_week_count": 1,
+      "avg_fp_4w": 7.27,
+      "fp_1w": 2.33,
+      "pa_1w": 2,
+      "avg_fp_2w_est": 2.33
     },
     {
       "name": "Kevin Kelly",
@@ -8565,35 +8607,35 @@
       "xfp_ros": 425.0
     },
     {
-      "name": "Konnor Griffin",
-      "player_id": 64318,
-      "team": "PIT",
+      "name": "Kevin McGonigle",
+      "player_id": 62955,
+      "team": "DET",
       "eligible_positions": [
+        "3B",
         "SS",
-        "OF",
         "Util"
       ],
       "status": "",
       "position_type": "B",
       "owner_team_id": 10,
       "owner_team_name": "South Park Cows",
-      "babip": 0.345,
-      "woba": 0.321,
-      "xwoba": 0.324,
-      "xslg": 0.428,
-      "woba_xwoba_gap": -3,
-      "mlbam_id": "804606",
+      "babip": 0.331,
+      "woba": 0.375,
+      "xwoba": 0.39,
+      "xslg": 0.504,
+      "woba_xwoba_gap": -15,
+      "mlbam_id": "805808",
       "savant_matched": true,
-      "pa_season": 136,
-      "pa_per_wk": 19.4,
-      "sb_season": 9,
-      "sb_per_wk": 1.29,
-      "xfp_hit": 22.0,
-      "xfp_sb": 2.6,
-      "xfp_per_wk": 24.6,
-      "games_next_week": 6,
-      "xfp_next_week": 24.6,
-      "xfp_ros": 320.0
+      "pa_season": 170,
+      "pa_per_wk": 24.3,
+      "sb_season": 5,
+      "sb_per_wk": 0.71,
+      "xfp_hit": 33.2,
+      "xfp_sb": 1.4,
+      "xfp_per_wk": 34.6,
+      "games_next_week": 7,
+      "xfp_next_week": 40.4,
+      "xfp_ros": 450.0
     },
     {
       "name": "Brandon Nimmo",
@@ -8717,6 +8759,37 @@
       "xfp_ros": 78.0
     },
     {
+      "name": "Konnor Griffin",
+      "player_id": 64318,
+      "team": "PIT",
+      "eligible_positions": [
+        "SS",
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "owner_team_id": 10,
+      "owner_team_name": "South Park Cows",
+      "babip": 0.345,
+      "woba": 0.321,
+      "xwoba": 0.324,
+      "xslg": 0.428,
+      "woba_xwoba_gap": -3,
+      "mlbam_id": "804606",
+      "savant_matched": true,
+      "pa_season": 136,
+      "pa_per_wk": 19.4,
+      "sb_season": 9,
+      "sb_per_wk": 1.29,
+      "xfp_hit": 22.0,
+      "xfp_sb": 2.6,
+      "xfp_per_wk": 24.6,
+      "games_next_week": 6,
+      "xfp_next_week": 24.6,
+      "xfp_ros": 320.0
+    },
+    {
       "name": "Jos\u00e9 Caballero",
       "player_id": 60776,
       "team": "NYY",
@@ -8725,9 +8798,10 @@
         "3B",
         "SS",
         "OF",
-        "Util"
+        "Util",
+        "IL"
       ],
-      "status": "DTD",
+      "status": "IL10",
       "position_type": "B",
       "owner_team_id": 10,
       "owner_team_name": "South Park Cows",
@@ -8809,37 +8883,6 @@
       "games_next_week": 6,
       "xfp_next_week": 29.0,
       "xfp_ros": 377.0
-    },
-    {
-      "name": "Kevin McGonigle",
-      "player_id": 62955,
-      "team": "DET",
-      "eligible_positions": [
-        "3B",
-        "SS",
-        "Util"
-      ],
-      "status": "",
-      "position_type": "B",
-      "owner_team_id": 10,
-      "owner_team_name": "South Park Cows",
-      "babip": 0.331,
-      "woba": 0.375,
-      "xwoba": 0.39,
-      "xslg": 0.504,
-      "woba_xwoba_gap": -15,
-      "mlbam_id": "805808",
-      "savant_matched": true,
-      "pa_season": 170,
-      "pa_per_wk": 24.3,
-      "sb_season": 5,
-      "sb_per_wk": 0.71,
-      "xfp_hit": 33.2,
-      "xfp_sb": 1.4,
-      "xfp_per_wk": 34.6,
-      "games_next_week": 7,
-      "xfp_next_week": 40.4,
-      "xfp_ros": 450.0
     },
     {
       "name": "Will Smith",
@@ -11955,7 +11998,7 @@
         "points_for": 2364.51,
         "points_against": 2732.0,
         "waiver_priority": 14,
-        "moves": 24,
+        "moves": 25,
         "trades": 2
       },
       {
