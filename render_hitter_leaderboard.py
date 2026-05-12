@@ -78,6 +78,42 @@ def _to_int(s):
         return None
 
 
+def load_proj_fp_g_index() -> dict[str, float]:
+    """Return {normalized_full_name: fp_g_projection} for fast lookup from
+    other render sections (e.g., FA hitters table). Falls back to last-name
+    when full-name doesn't collide. Returns {} if the CSV is missing."""
+    if not PROJ_CSV.exists():
+        return {}
+    full_index: dict[str, float] = {}
+    last_counts: dict[str, int] = {}
+    last_index: dict[str, float] = {}
+    with PROJ_CSV.open(encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            try:
+                v = float(r["fp_g_projection"])
+            except (KeyError, TypeError, ValueError):
+                continue
+            full = _norm_full(r["batter_name"])
+            last = _norm_last(r["batter_name"])
+            full_index[full] = v
+            last_counts[last] = last_counts.get(last, 0) + 1
+            last_index.setdefault(last, v)  # first occurrence; only used when unique
+    # Drop last-name entries that have collisions
+    last_unique = {k: v for k, v in last_index.items() if last_counts.get(k, 0) == 1}
+
+    class _Lookup(dict):
+        def __init__(self, full, last):
+            super().__init__(full)
+            self._last = last
+        def for_player(self, name: str) -> float | None:
+            v = self.get(_norm_full(name))
+            if v is not None:
+                return v
+            return self._last.get(_norm_last(name))
+
+    return _Lookup(full_index, last_unique)
+
+
 def _load_projections() -> list[dict]:
     if not PROJ_CSV.exists():
         return []

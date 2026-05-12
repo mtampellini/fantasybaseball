@@ -23,6 +23,7 @@ from render_sp_leaderboard import (
 )
 from render_hitter_leaderboard import (
     render_hitter_leaderboard_section, HITTER_LEADERBOARD_CSS,
+    load_proj_fp_g_index,
 )
 from render_trade_targets import (
     render_trade_targets_section, TRADE_TARGETS_CSS,
@@ -319,7 +320,13 @@ def render_my_pitchers_table(pitchers):
 
 
 def render_fa_hitters_table(hitters):
-    hitters = sorted(hitters, key=lambda h: (h.get("avg_fp_4w") is None, -(h.get("avg_fp_4w") or 0)))
+    proj_idx = load_proj_fp_g_index()
+    for h in hitters:
+        h["_proj_fp_g"] = proj_idx.for_player(h.get("name", "")) if proj_idx else None
+    hitters = sorted(
+        hitters,
+        key=lambda h: (h.get("_proj_fp_g") is None, -(h.get("_proj_fp_g") or 0)),
+    )
     rows = []
     for h in hitters:
         cells = []
@@ -329,6 +336,7 @@ def render_fa_hitters_table(hitters):
         cells.append(f'<td class="dim">{escape(positions)}</td>')
         ros = h.get("percent_owned")
         cells.append(f'<td class="r">{int(ros) if ros is not None else "—"}%</td>')
+        cells.append(f'<td class="r"><strong>{_fmt(h.get("_proj_fp_g"), 2)}</strong></td>')
         cells.append(f'<td class="r">{_fmt(h.get("avg_fp_4w"), 1)}</td>')
         cells.append(f'<td class="r">{_fmt(h.get("avg_fp_2w_est"), 1)}</td>')
         cells.append(f'<td class="r">{_fmt(h.get("babip"))}</td>')
@@ -350,6 +358,7 @@ def render_fa_hitters_table(hitters):
       <th>Team</th>
       <th>Eligible</th>
       <th class="r">%Ros</th>
+      <th class="r">Proj FP/G</th>
       <th class="r">Avg_FP_L4W</th>
       <th class="r">Avg_FP_L2W</th>
       <th class="r">BABIP</th>
@@ -363,7 +372,7 @@ def render_fa_hitters_table(hitters):
 {rows_html}
   </tbody>
 </table>
-<p class="note">Pool: top 100 by Yahoo ownership/season FP (incl. waivers), filtered to ≥15 PA over last 2 weeks, then trimmed to 50 by hybrid score. Default sort: Avg_FP_L4W desc. Avg_FP_L2W est uses Yahoo's lastweek (7d) since 14d isn't exposed. Click any column to re-sort. Row highlighted red when xwOBA &lt; .300. <strong>W</strong> badge = waiver claim required.</p>
+<p class="note">Pool: top 100 by Yahoo ownership/season FP (incl. waivers), filtered to ≥15 PA over last 2 weeks, then trimmed to 50 by hybrid score. Default sort: <strong>Proj FP/G desc</strong> (Ridge model on 2024+2025 Statcast skills — same as the hitter leaderboard below). Avg_FP_L2W est uses Yahoo's lastweek (7d) since 14d isn't exposed. Click any column to re-sort. Row highlighted red when xwOBA &lt; .300. <strong>W</strong> badge = waiver claim required. Proj FP/G blank = FA not in projection dataset (insufficient 2026 games).</p>
 """
 
 
