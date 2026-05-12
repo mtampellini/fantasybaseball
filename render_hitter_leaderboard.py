@@ -147,31 +147,18 @@ def render_hitter_leaderboard_section(my_hitters: list[dict], fa_hitters: list[d
             f"<code>{escape(str(SPCORR_DIR))}</code> to generate it.</p>"
         )
 
-    # Role maps from daily-report snapshot. Primary match = full normalized
-    # name to avoid last-name collisions (Walker, Garcia, etc.). Fall back to
-    # last name only when there is no full-name collision in the projection
-    # table — otherwise we'd mis-label both colliding players.
+    # Role maps from daily-report snapshot. Match by full normalized name only
+    # — last-name fallback is unsafe because a player rostered on another team
+    # and an FA may share a last name (e.g., Julio Rodríguez rostered,
+    # Jesus Rodriguez on the FA wire). Mis-labeling a rostered star as FA is
+    # worse than failing to color-code a player whose name spelling drifted.
     my_full = {_norm_full(p["name"]) for p in (my_hitters or [])}
     fa_full = {_norm_full(p["name"]) for p in (fa_hitters or [])}
-
-    last_counts: dict[str, int] = {}
-    for r in proj:
-        last_counts[r["last_norm"]] = last_counts.get(r["last_norm"], 0) + 1
-    unique_last = {ln for ln, c in last_counts.items() if c == 1}
-
-    my_last_fallback = {_norm_last(p["name"]) for p in (my_hitters or [])} & unique_last
-    fa_last_fallback = {_norm_last(p["name"]) for p in (fa_hitters or [])} & unique_last
 
     def role(row):
         if row["name_norm"] in my_full:
             return "mine"
         if row["name_norm"] in fa_full:
-            return "fa"
-        # Fallback only when projection has a unique last name AND snapshot
-        # has that last name — covers minor name spelling drift safely.
-        if row["last_norm"] in my_last_fallback:
-            return "mine"
-        if row["last_norm"] in fa_last_fallback:
             return "fa"
         return "other"
 

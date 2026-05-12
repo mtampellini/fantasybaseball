@@ -326,7 +326,7 @@ def render_fa_hitters_table(hitters):
     hitters = sorted(
         hitters,
         key=lambda h: (h.get("_proj_fp_g") is None, -(h.get("_proj_fp_g") or 0)),
-    )
+    )[:25]
     rows = []
     for h in hitters:
         cells = []
@@ -340,14 +340,6 @@ def render_fa_hitters_table(hitters):
         cells.append(f'<td class="r">{_fmt(h.get("avg_fp_4w"), 1)}</td>')
         cells.append(f'<td class="r">{_fmt(h.get("avg_fp_2w_est"), 1)}</td>')
         cells.append(f'<td class="r">{_fmt(h.get("babip"))}</td>')
-        cells.append(f'<td class="r">{_fmt(h.get("woba"))}</td>')
-        xwc = _hitter_xwoba_class(h.get("xwoba"))
-        cells.append(f'<td class="r {xwc}">{_fmt(h.get("xwoba"))}</td>')
-        cells.append(f'<td class="r">{_fmt(h.get("xslg"))}</td>')
-        gap = h.get("woba_xwoba_gap")
-        gap_class = "vbad" if gap is not None and gap > 80 else ("good" if gap is not None and gap < -50 else "")
-        gap_str = f"{gap:+d}" if gap is not None else "—"
-        cells.append(f'<td class="r {gap_class}">{gap_str}</td>')
         rows.append(f'<tr class="{_row_class(h, "B")}">' + "".join(cells) + "</tr>")
     rows_html = "\n".join(rows)
     return f"""
@@ -362,17 +354,13 @@ def render_fa_hitters_table(hitters):
       <th class="r">Avg_FP_L4W</th>
       <th class="r">Avg_FP_L2W</th>
       <th class="r">BABIP</th>
-      <th class="r">wOBA</th>
-      <th class="r">xwOBA</th>
-      <th class="r">xSLG</th>
-      <th class="r">Gap</th>
     </tr>
   </thead>
   <tbody>
 {rows_html}
   </tbody>
 </table>
-<p class="note">Pool: top 100 by Yahoo ownership/season FP (incl. waivers), filtered to ≥15 PA over last 2 weeks, then trimmed to 50 by hybrid score. Default sort: <strong>Proj FP/G desc</strong> (Ridge model on 2024+2025 Statcast skills — same as the hitter leaderboard below). Avg_FP_L2W est uses Yahoo's lastweek (7d) since 14d isn't exposed. Click any column to re-sort. Row highlighted red when xwOBA &lt; .300. <strong>W</strong> badge = waiver claim required. Proj FP/G blank = FA not in projection dataset (insufficient 2026 games).</p>
+<p class="note">Top 25 free-agent hitters by <strong>Proj FP/G desc</strong> (Ridge model on 2024+2025 Statcast skills — same as the hitter leaderboard below). Pool is filtered to ≥15 PA over last 2 weeks. Avg_FP_L2W est uses Yahoo's lastweek (7d). Click any column to re-sort. <strong>W</strong> badge = waiver claim required. Proj FP/G blank = FA not in projection dataset (insufficient 2026 games).</p>
 """
 
 
@@ -549,7 +537,7 @@ def render_html(snapshot):
 {weekly_section_html}
 
 <section class="section">
-  <h2>Free Agent Hitters (Top {len(fa_hitters)})</h2>
+  <h2>Free Agent Hitters (Top 25)</h2>
   {render_fa_hitters_table(fa_hitters)}
 </section>
 
