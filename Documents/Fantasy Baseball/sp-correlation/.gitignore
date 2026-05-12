@@ -5,5 +5,9 @@ __pycache__/
 data/raw/
 data/fangraphs/
 data/processed/
+# Whitelist hitter training datasets so CI can train without rebuilding from
+# scratch. These are frozen historical seasons — they don't change.
+!data/processed/hitter_dataset_2024.parquet
+!data/processed/hitter_dataset_2025.parquet
 oauth2.json
 .env

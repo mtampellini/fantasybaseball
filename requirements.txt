@@ -2,3 +2,13 @@ requests>=2.31.0
 beautifulsoup4>=4.12.0
 yahoo-oauth>=2.0
 yahoo-fantasy-api>=2.6.0
+
+# sp-correlation hitter/SP projection pipeline
+pandas>=2.0
+numpy>=1.24
+scipy>=1.10
+scikit-learn>=1.3
+pyarrow>=14.0
+tqdm>=4.65
+pybaseball>=2.2
+MLB-StatsAPI>=1.7

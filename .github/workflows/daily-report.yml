@@ -48,7 +48,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html reports/ data/snapshots/ data/weekly/
+          git add index.html reports/ data/snapshots/ data/weekly/ \
+                  "Documents/Fantasy Baseball/sp-correlation/output/2026_hitter_projections.csv"
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
