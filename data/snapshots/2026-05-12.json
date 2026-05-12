@@ -1,6 +1,6 @@
 {
   "date": "2026-05-12",
-  "generated_at": "2026-05-12 20:51:58",
+  "generated_at": "2026-05-12 21:16:39",
   "week": 8,
   "record": "3-4",
   "my_hitters": [
@@ -2954,40 +2954,6 @@
       "xfp_ros": 282.0
     },
     {
-      "name": "Nick Castellanos",
-      "player_id": 9108,
-      "team": "SD",
-      "eligible_positions": [
-        "OF",
-        "Util"
-      ],
-      "status": "",
-      "percent_owned": 2,
-      "fantasy_points": null,
-      "on_waivers": false,
-      "babip": 0.231,
-      "woba": 0.242,
-      "xwoba": 0.303,
-      "xslg": 0.42,
-      "woba_xwoba_gap": -61,
-      "mlbam_id": "592206",
-      "savant_matched": true,
-      "avg_fp_4w": 11.5,
-      "fp_1w": 24.0,
-      "pa_1w": 12,
-      "avg_fp_2w_est": 24.0,
-      "pa_season": 77,
-      "pa_per_wk": 11.0,
-      "sb_season": 1,
-      "sb_per_wk": 0.14,
-      "xfp_hit": 11.7,
-      "xfp_sb": 0.3,
-      "xfp_per_wk": 11.9,
-      "games_next_week": 6,
-      "xfp_next_week": 11.9,
-      "xfp_ros": 155.0
-    },
-    {
       "name": "Gavin Sheets",
       "player_id": 10879,
       "team": "SD",
@@ -3126,6 +3092,41 @@
       "games_next_week": 7,
       "xfp_next_week": 21.2,
       "xfp_ros": 237.0
+    },
+    {
+      "name": "Miguel Andujar",
+      "player_id": 10544,
+      "team": "SD",
+      "eligible_positions": [
+        "3B",
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 3,
+      "fantasy_points": null,
+      "on_waivers": false,
+      "babip": 0.333,
+      "woba": 0.335,
+      "xwoba": 0.29,
+      "xslg": 0.369,
+      "woba_xwoba_gap": 45,
+      "mlbam_id": "609280",
+      "savant_matched": true,
+      "avg_fp_4w": 18.125,
+      "fp_1w": 14.5,
+      "pa_1w": 20,
+      "avg_fp_2w_est": 14.5,
+      "pa_season": 105,
+      "pa_per_wk": 15.0,
+      "sb_season": 1,
+      "sb_per_wk": 0.14,
+      "xfp_hit": 15.2,
+      "xfp_sb": 0.3,
+      "xfp_per_wk": 15.5,
+      "games_next_week": 6,
+      "xfp_next_week": 15.5,
+      "xfp_ros": 202.0
     }
   ],
   "fa_pitchers": [
@@ -3138,7 +3139,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 32,
+      "percent_owned": 33,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 37.3,
@@ -3528,7 +3529,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 14,
+      "percent_owned": 13,
       "fantasy_points": null,
       "on_waivers": true,
       "k_pct": 14.5,
@@ -3927,7 +3928,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 6,
+      "percent_owned": 5,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 17.8,
@@ -4019,7 +4020,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 24,
+      "percent_owned": 25,
       "fantasy_points": null,
       "on_waivers": true,
       "k_pct": 21.1,
@@ -9797,9 +9798,10 @@
       "team": "ATH",
       "eligible_positions": [
         "SS",
-        "Util"
+        "Util",
+        "IL"
       ],
-      "status": "DTD",
+      "status": "IL10",
       "position_type": "B",
       "owner_team_id": 4,
       "owner_team_name": "Diamond Dogs",
