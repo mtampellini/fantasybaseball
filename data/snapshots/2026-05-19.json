@@ -1,6 +1,6 @@
 {
   "date": "2026-05-19",
-  "generated_at": "2026-05-19 14:30:09",
+  "generated_at": "2026-05-19 14:57:09",
   "week": 9,
   "record": "4-4",
   "my_hitters": [
@@ -2261,7 +2261,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 8,
+      "percent_owned": 7,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.372,
