@@ -1,6 +1,6 @@
 {
   "date": "2026-05-20",
-  "generated_at": "2026-05-20 11:55:58",
+  "generated_at": "2026-05-20 15:01:01",
   "week": 9,
   "record": "4-4",
   "my_hitters": [
@@ -292,10 +292,10 @@
       "woba_xwoba_gap": 24,
       "mlbam_id": "646240",
       "savant_matched": true,
-      "avg_fp_4w": 30.75,
-      "fp_1w": 31.5,
-      "pa_1w": 30,
-      "avg_fp_2w_est": 31.5,
+      "avg_fp_4w": 30.0,
+      "fp_1w": 28.5,
+      "pa_1w": 27,
+      "avg_fp_2w_est": 28.5,
       "pa_season": 200,
       "pa_per_wk": 25.0,
       "sb_season": 0,
@@ -465,6 +465,12 @@
       "savant_matched": true,
       "per_start": [
         {
+          "date": "2026-05-19",
+          "pa": 22,
+          "xwoba": 0.158,
+          "woba": 0.155
+        },
+        {
           "date": "2026-05-13",
           "pa": 25,
           "xwoba": 0.169,
@@ -487,15 +493,9 @@
           "pa": 26,
           "xwoba": 0.301,
           "woba": 0.291
-        },
-        {
-          "date": "2026-04-19",
-          "pa": 23,
-          "xwoba": 0.289,
-          "woba": 0.297
         }
       ],
-      "per_start_sd": 0.05,
+      "per_start_sd": 0.051,
       "this_week_starts": [
         {
           "team": "MIL",
@@ -554,6 +554,12 @@
       "savant_matched": true,
       "per_start": [
         {
+          "date": "2026-05-19",
+          "pa": 22,
+          "xwoba": 0.267,
+          "woba": 0.299
+        },
+        {
           "date": "2026-05-12",
           "pa": 24,
           "xwoba": 0.156,
@@ -576,15 +582,9 @@
           "pa": 24,
           "xwoba": 0.265,
           "woba": 0.308
-        },
-        {
-          "date": "2026-04-18",
-          "pa": 25,
-          "xwoba": 0.3,
-          "woba": 0.242
         }
       ],
-      "per_start_sd": 0.069,
+      "per_start_sd": 0.068,
       "this_week_starts": [
         {
           "team": "NYY",
@@ -643,6 +643,12 @@
       "savant_matched": true,
       "per_start": [
         {
+          "date": "2026-05-19",
+          "pa": 27,
+          "xwoba": 0.295,
+          "woba": 0.361
+        },
+        {
           "date": "2026-05-13",
           "pa": 25,
           "xwoba": 0.389,
@@ -665,15 +671,9 @@
           "pa": 21,
           "xwoba": 0.318,
           "woba": 0.356
-        },
-        {
-          "date": "2026-04-20",
-          "pa": 26,
-          "xwoba": 0.299,
-          "woba": 0.301
         }
       ],
-      "per_start_sd": 0.047,
+      "per_start_sd": 0.048,
       "this_week_starts": [
         {
           "team": "LAA",
@@ -731,6 +731,12 @@
       "savant_matched": true,
       "per_start": [
         {
+          "date": "2026-05-19",
+          "pa": 23,
+          "xwoba": 0.301,
+          "woba": 0.338
+        },
+        {
           "date": "2026-05-14",
           "pa": 24,
           "xwoba": 0.344,
@@ -753,15 +759,9 @@
           "pa": 27,
           "xwoba": 0.231,
           "woba": 0.163
-        },
-        {
-          "date": "2026-04-21",
-          "pa": 20,
-          "xwoba": 0.252,
-          "woba": 0.221
         }
       ],
-      "per_start_sd": 0.049,
+      "per_start_sd": 0.05,
       "this_week_starts": [
         {
           "team": "SFG",
@@ -794,10 +794,10 @@
       ],
       "this_week_count": 1,
       "next_week_count": 1,
-      "avg_fp_4w": 17.27,
-      "fp_1w": 14.83,
+      "avg_fp_4w": 14.7075,
+      "fp_1w": 4.58,
       "pa_1w": 2,
-      "avg_fp_2w_est": 14.83
+      "avg_fp_2w_est": 4.58
     },
     {
       "name": "Christian Scott",
@@ -1297,40 +1297,6 @@
   ],
   "fa_hitters": [
     {
-      "name": "Nolan Arenado",
-      "player_id": 9105,
-      "team": "AZ",
-      "eligible_positions": [
-        "3B",
-        "Util"
-      ],
-      "status": "",
-      "percent_owned": 31,
-      "fantasy_points": null,
-      "on_waivers": false,
-      "babip": 0.303,
-      "woba": 0.358,
-      "xwoba": 0.339,
-      "xslg": 0.426,
-      "woba_xwoba_gap": 19,
-      "mlbam_id": "571448",
-      "savant_matched": true,
-      "avg_fp_4w": 39.0,
-      "fp_1w": 60.5,
-      "pa_1w": 25,
-      "avg_fp_2w_est": 60.5,
-      "pa_season": 167,
-      "pa_per_wk": 20.9,
-      "sb_season": 1,
-      "sb_per_wk": 0.12,
-      "xfp_hit": 24.8,
-      "xfp_sb": 0.2,
-      "xfp_per_wk": 25.0,
-      "games_next_week": 6,
-      "xfp_next_week": 25.0,
-      "xfp_ros": 300.0
-    },
-    {
       "name": "Gavin Sheets",
       "player_id": 10879,
       "team": "SD",
@@ -1340,7 +1306,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 34,
+      "percent_owned": 35,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.267,
@@ -1366,6 +1332,40 @@
       "xfp_ros": 281.0
     },
     {
+      "name": "Nolan Arenado",
+      "player_id": 9105,
+      "team": "AZ",
+      "eligible_positions": [
+        "3B",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 31,
+      "fantasy_points": null,
+      "on_waivers": false,
+      "babip": 0.303,
+      "woba": 0.358,
+      "xwoba": 0.339,
+      "xslg": 0.426,
+      "woba_xwoba_gap": 19,
+      "mlbam_id": "571448",
+      "savant_matched": true,
+      "avg_fp_4w": 38.25,
+      "fp_1w": 57.5,
+      "pa_1w": 22,
+      "avg_fp_2w_est": 57.5,
+      "pa_season": 167,
+      "pa_per_wk": 20.9,
+      "sb_season": 1,
+      "sb_per_wk": 0.12,
+      "xfp_hit": 24.8,
+      "xfp_sb": 0.2,
+      "xfp_per_wk": 25.0,
+      "games_next_week": 6,
+      "xfp_next_week": 25.0,
+      "xfp_ros": 300.0
+    },
+    {
       "name": "Zack Gelof",
       "player_id": 12503,
       "team": "ATH",
@@ -1376,7 +1376,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 18,
+      "percent_owned": 19,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.279,
@@ -1737,10 +1737,10 @@
       "woba_xwoba_gap": 18,
       "mlbam_id": "669477",
       "savant_matched": true,
-      "avg_fp_4w": 31.625,
-      "fp_1w": 32.5,
-      "pa_1w": 23,
-      "avg_fp_2w_est": 32.5,
+      "avg_fp_4w": 31.125,
+      "fp_1w": 30.5,
+      "pa_1w": 20,
+      "avg_fp_2w_est": 30.5,
       "pa_season": 159,
       "pa_per_wk": 19.9,
       "sb_season": 3,
@@ -1843,7 +1843,7 @@
       "savant_matched": true,
       "avg_fp_4w": 14.125,
       "fp_1w": 45.0,
-      "pa_1w": 23,
+      "pa_1w": 19,
       "avg_fp_2w_est": 45.0,
       "pa_season": 84,
       "pa_per_wk": 10.5,
@@ -1855,40 +1855,6 @@
       "games_next_week": 6,
       "xfp_next_week": 10.3,
       "xfp_ros": 124.0
-    },
-    {
-      "name": "Lourdes Gurriel Jr.",
-      "player_id": 10616,
-      "team": "AZ",
-      "eligible_positions": [
-        "OF",
-        "Util"
-      ],
-      "status": "",
-      "percent_owned": 3,
-      "fantasy_points": null,
-      "on_waivers": false,
-      "babip": 0.266,
-      "woba": 0.279,
-      "xwoba": 0.292,
-      "xslg": 0.332,
-      "woba_xwoba_gap": -13,
-      "mlbam_id": "666971",
-      "savant_matched": true,
-      "avg_fp_4w": 20.5,
-      "fp_1w": 36.5,
-      "pa_1w": 22,
-      "avg_fp_2w_est": 36.5,
-      "pa_season": 91,
-      "pa_per_wk": 11.4,
-      "sb_season": 1,
-      "sb_per_wk": 0.12,
-      "xfp_hit": 11.7,
-      "xfp_sb": 0.2,
-      "xfp_per_wk": 11.9,
-      "games_next_week": 6,
-      "xfp_next_week": 11.9,
-      "xfp_ros": 143.0
     },
     {
       "name": "Cedric Mullins",
@@ -2061,6 +2027,40 @@
       "games_next_week": 4,
       "xfp_next_week": 15.8,
       "xfp_ros": 284.0
+    },
+    {
+      "name": "Lourdes Gurriel Jr.",
+      "player_id": 10616,
+      "team": "AZ",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 3,
+      "fantasy_points": null,
+      "on_waivers": false,
+      "babip": 0.266,
+      "woba": 0.279,
+      "xwoba": 0.292,
+      "xslg": 0.332,
+      "woba_xwoba_gap": -13,
+      "mlbam_id": "666971",
+      "savant_matched": true,
+      "avg_fp_4w": 19.5,
+      "fp_1w": 32.5,
+      "pa_1w": 18,
+      "avg_fp_2w_est": 32.5,
+      "pa_season": 91,
+      "pa_per_wk": 11.4,
+      "sb_season": 1,
+      "sb_per_wk": 0.12,
+      "xfp_hit": 11.7,
+      "xfp_sb": 0.2,
+      "xfp_per_wk": 11.9,
+      "games_next_week": 6,
+      "xfp_next_week": 11.9,
+      "xfp_ros": 143.0
     },
     {
       "name": "Justin Crawford",
@@ -2488,7 +2488,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 3,
+      "percent_owned": 4,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.305,
@@ -2938,7 +2938,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 15,
+      "percent_owned": 14,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.279,
@@ -3808,7 +3808,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 5,
+      "percent_owned": 6,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 18.4,
@@ -3840,7 +3840,7 @@
         "IL"
       ],
       "status": "IL60",
-      "percent_owned": 38,
+      "percent_owned": 37,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 20.9,
@@ -4189,6 +4189,12 @@
       "savant_matched": true,
       "per_start": [
         {
+          "date": "2026-05-19",
+          "pa": 2,
+          "xwoba": 0.065,
+          "woba": 0.0
+        },
+        {
           "date": "2026-05-17",
           "pa": 3,
           "xwoba": 0.003,
@@ -4211,15 +4217,9 @@
           "pa": 5,
           "xwoba": 0.44,
           "woba": 0.681
-        },
-        {
-          "date": "2026-05-08",
-          "pa": 1,
-          "xwoba": 0.03,
-          "woba": 0.0
         }
       ],
-      "per_start_sd": 0.167,
+      "per_start_sd": 0.161,
       "this_week_starts": [],
       "next_week_starts": [],
       "this_week_count": 0,
@@ -4452,6 +4452,12 @@
       "savant_matched": true,
       "per_start": [
         {
+          "date": "2026-05-19",
+          "pa": 3,
+          "xwoba": 0.4,
+          "woba": 0.726
+        },
+        {
           "date": "2026-05-17",
           "pa": 4,
           "xwoba": 0.234,
@@ -4474,15 +4480,9 @@
           "pa": 3,
           "xwoba": 0.25,
           "woba": 0.235
-        },
-        {
-          "date": "2026-05-05",
-          "pa": 5,
-          "xwoba": 0.251,
-          "woba": 0.141
         }
       ],
-      "per_start_sd": 0.11,
+      "per_start_sd": 0.134,
       "this_week_starts": [],
       "next_week_starts": [],
       "this_week_count": 0,
@@ -4533,7 +4533,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 9,
+      "percent_owned": 10,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 21.8,
@@ -4787,7 +4787,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 13,
+      "percent_owned": 12,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 14.9,
@@ -4867,6 +4867,66 @@
       "fp_1w": 8.5,
       "pa_1w": 0,
       "avg_fp_2w_est": 8.5
+    },
+    {
+      "name": "Colin Rea",
+      "player_id": 10048,
+      "team": "CHC",
+      "eligible_positions": [
+        "SP",
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 15,
+      "fantasy_points": null,
+      "on_waivers": true,
+      "k_pct": 19.3,
+      "bb_pct": 6.8,
+      "k_bb_pct": 12.5,
+      "babip": 0.326,
+      "woba": 0.334,
+      "xwoba": 0.359,
+      "mlbam_id": "607067",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [
+        {
+          "team": "CHC",
+          "team_id": 17,
+          "opponent": "HOU",
+          "opponent_id": 21,
+          "date": "2026-05-23",
+          "is_home": true,
+          "pitcher_name": "Colin Rea",
+          "pitcher_id": "12317",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "CHC",
+          "team_id": 17,
+          "opponent": "PIT",
+          "opponent_id": 27,
+          "date": "2026-05-28",
+          "is_home": false,
+          "pitcher_name": "Colin Rea",
+          "pitcher_id": "12317",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 1,
+      "next_week_count": 1,
+      "avg_fp_4w": 8.23,
+      "fp_1w": 0.67,
+      "pa_1w": 1,
+      "avg_fp_2w_est": 0.67
     },
     {
       "name": "Camilo Doval",
@@ -5071,38 +5131,6 @@
       "fp_1w": 0.25,
       "pa_1w": 0,
       "avg_fp_2w_est": 0.25
-    },
-    {
-      "name": "Keaton Winn",
-      "player_id": 12737,
-      "team": "SF",
-      "eligible_positions": [
-        "SP",
-        "RP",
-        "P"
-      ],
-      "status": "",
-      "percent_owned": 8,
-      "fantasy_points": null,
-      "on_waivers": false,
-      "k_pct": 22.2,
-      "bb_pct": 8.3,
-      "k_bb_pct": 13.9,
-      "babip": 0.204,
-      "woba": 0.201,
-      "xwoba": 0.212,
-      "mlbam_id": "676775",
-      "savant_matched": true,
-      "per_start": [],
-      "per_start_sd": null,
-      "this_week_starts": [],
-      "next_week_starts": [],
-      "this_week_count": 0,
-      "next_week_count": 0,
-      "avg_fp_4w": 1.5625,
-      "fp_1w": 4.0,
-      "pa_1w": 1,
-      "avg_fp_2w_est": 4.0
     },
     {
       "name": "Brady Singer",
@@ -7952,36 +7980,6 @@
       "xfp_ros": 353.0
     },
     {
-      "name": "Jo Adell",
-      "player_id": 10893,
-      "team": "LAA",
-      "eligible_positions": [
-        "OF",
-        "Util"
-      ],
-      "status": "",
-      "position_type": "B",
-      "owner_team_id": 9,
-      "owner_team_name": "Soto Shuffle",
-      "babip": 0.308,
-      "woba": 0.308,
-      "xwoba": 0.328,
-      "xslg": 0.432,
-      "woba_xwoba_gap": -20,
-      "mlbam_id": "666176",
-      "savant_matched": true,
-      "pa_season": 195,
-      "pa_per_wk": 24.4,
-      "sb_season": 2,
-      "sb_per_wk": 0.25,
-      "xfp_hit": 28.0,
-      "xfp_sb": 0.5,
-      "xfp_per_wk": 28.5,
-      "games_next_week": 4,
-      "xfp_next_week": 19.0,
-      "xfp_ros": 342.0
-    },
-    {
       "name": "Wilyer Abreu",
       "player_id": 12731,
       "team": "BOS",
@@ -8070,6 +8068,36 @@
       "games_next_week": 6,
       "xfp_next_week": 25.0,
       "xfp_ros": 300.0
+    },
+    {
+      "name": "Jo Adell",
+      "player_id": 10893,
+      "team": "LAA",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "owner_team_id": 9,
+      "owner_team_name": "Soto Shuffle",
+      "babip": 0.308,
+      "woba": 0.308,
+      "xwoba": 0.328,
+      "xslg": 0.432,
+      "woba_xwoba_gap": -20,
+      "mlbam_id": "666176",
+      "savant_matched": true,
+      "pa_season": 195,
+      "pa_per_wk": 24.4,
+      "sb_season": 2,
+      "sb_per_wk": 0.25,
+      "xfp_hit": 28.0,
+      "xfp_sb": 0.5,
+      "xfp_per_wk": 28.5,
+      "games_next_week": 4,
+      "xfp_next_week": 19.0,
+      "xfp_ros": 342.0
     },
     {
       "name": "Will Smith",
