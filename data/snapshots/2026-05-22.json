@@ -1,6 +1,6 @@
 {
   "date": "2026-05-22",
-  "generated_at": "2026-05-22 12:09:39",
+  "generated_at": "2026-05-22 14:35:50",
   "week": 9,
   "record": "4-4",
   "my_hitters": [
@@ -1312,7 +1312,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 45,
+      "percent_owned": 46,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.294,
@@ -1336,6 +1336,40 @@
       "games_next_week": 6,
       "xfp_next_week": 27.8,
       "xfp_ros": 334.0
+    },
+    {
+      "name": "Nolan Arenado",
+      "player_id": 9105,
+      "team": "AZ",
+      "eligible_positions": [
+        "3B",
+        "Util"
+      ],
+      "status": "",
+      "percent_owned": 36,
+      "fantasy_points": null,
+      "on_waivers": true,
+      "babip": 0.31,
+      "woba": 0.364,
+      "xwoba": 0.339,
+      "xslg": 0.426,
+      "woba_xwoba_gap": 25,
+      "mlbam_id": "571448",
+      "savant_matched": true,
+      "avg_fp_4w": 37.125,
+      "fp_1w": 47.5,
+      "pa_1w": 24,
+      "avg_fp_2w_est": 47.5,
+      "pa_season": 170,
+      "pa_per_wk": 21.2,
+      "sb_season": 1,
+      "sb_per_wk": 0.12,
+      "xfp_hit": 25.2,
+      "xfp_sb": 0.2,
+      "xfp_per_wk": 25.4,
+      "games_next_week": 6,
+      "xfp_next_week": 25.4,
+      "xfp_ros": 305.0
     },
     {
       "name": "Gavin Sheets",
@@ -1405,44 +1439,6 @@
       "games_next_week": 7,
       "xfp_next_week": 30.8,
       "xfp_ros": 317.0
-    },
-    {
-      "name": "Ezequiel Duran",
-      "player_id": 11886,
-      "team": "TEX",
-      "eligible_positions": [
-        "1B",
-        "2B",
-        "3B",
-        "SS",
-        "OF",
-        "Util"
-      ],
-      "status": "",
-      "percent_owned": 36,
-      "fantasy_points": null,
-      "on_waivers": false,
-      "babip": 0.362,
-      "woba": 0.368,
-      "xwoba": 0.324,
-      "xslg": 0.4,
-      "woba_xwoba_gap": 44,
-      "mlbam_id": "677649",
-      "savant_matched": true,
-      "avg_fp_4w": 31.75,
-      "fp_1w": 46.0,
-      "pa_1w": 27,
-      "avg_fp_2w_est": 46.0,
-      "pa_season": 141,
-      "pa_per_wk": 17.6,
-      "sb_season": 4,
-      "sb_per_wk": 0.5,
-      "xfp_hit": 20.0,
-      "xfp_sb": 1.0,
-      "xfp_per_wk": 21.0,
-      "games_next_week": 7,
-      "xfp_next_week": 24.5,
-      "xfp_ros": 252.0
     },
     {
       "name": "Casey Schmitt",
@@ -2215,7 +2211,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 5,
+      "percent_owned": 4,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.308,
@@ -2345,6 +2341,40 @@
       "games_next_week": 6,
       "xfp_next_week": 25.4,
       "xfp_ros": 305.0
+    },
+    {
+      "name": "Trent Grisham",
+      "player_id": 10522,
+      "team": "NYY",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "status": "DTD",
+      "percent_owned": 41,
+      "fantasy_points": null,
+      "on_waivers": true,
+      "babip": 0.181,
+      "woba": 0.299,
+      "xwoba": 0.338,
+      "xslg": 0.423,
+      "woba_xwoba_gap": -39,
+      "mlbam_id": "663757",
+      "savant_matched": true,
+      "avg_fp_4w": 29.375,
+      "fp_1w": 16.0,
+      "pa_1w": 20,
+      "avg_fp_2w_est": 16.0,
+      "pa_season": 185,
+      "pa_per_wk": 23.1,
+      "sb_season": 3,
+      "sb_per_wk": 0.38,
+      "xfp_hit": 27.3,
+      "xfp_sb": 0.8,
+      "xfp_per_wk": 28.1,
+      "games_next_week": 6,
+      "xfp_next_week": 28.1,
+      "xfp_ros": 337.0
     },
     {
       "name": "Dominic Smith",
@@ -2562,7 +2592,7 @@
         "Util"
       ],
       "status": "DTD",
-      "percent_owned": 4,
+      "percent_owned": 3,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.306,
@@ -2932,40 +2962,6 @@
       "xfp_ros": 253.0
     },
     {
-      "name": "Josh Lowe",
-      "player_id": 10601,
-      "team": "LAA",
-      "eligible_positions": [
-        "OF",
-        "Util"
-      ],
-      "status": "",
-      "percent_owned": 2,
-      "fantasy_points": null,
-      "on_waivers": false,
-      "babip": 0.215,
-      "woba": 0.244,
-      "xwoba": 0.259,
-      "xslg": 0.355,
-      "woba_xwoba_gap": -15,
-      "mlbam_id": "666139",
-      "savant_matched": true,
-      "avg_fp_4w": 12.125,
-      "fp_1w": 25.5,
-      "pa_1w": 19,
-      "avg_fp_2w_est": 25.5,
-      "pa_season": 131,
-      "pa_per_wk": 16.4,
-      "sb_season": 1,
-      "sb_per_wk": 0.12,
-      "xfp_hit": 14.9,
-      "xfp_sb": 0.2,
-      "xfp_per_wk": 15.1,
-      "games_next_week": 6,
-      "xfp_next_week": 15.1,
-      "xfp_ros": 181.0
-    },
-    {
       "name": "Marcelo Mayer",
       "player_id": 12375,
       "team": "BOS",
@@ -3168,7 +3164,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 22,
+      "percent_owned": 24,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 22.4,
@@ -3179,8 +3175,27 @@
       "xwoba": 0.309,
       "mlbam_id": "686790",
       "savant_matched": true,
-      "per_start": [],
-      "per_start_sd": null,
+      "per_start": [
+        {
+          "date": "2026-05-16",
+          "pa": 26,
+          "xwoba": 0.311,
+          "woba": 0.257
+        },
+        {
+          "date": "2026-05-11",
+          "pa": 26,
+          "xwoba": 0.342,
+          "woba": 0.44
+        },
+        {
+          "date": "2026-05-04",
+          "pa": 24,
+          "xwoba": 0.269,
+          "woba": 0.155
+        }
+      ],
+      "per_start_sd": 0.03,
       "this_week_starts": [
         {
           "team": "SFG",
@@ -3755,7 +3770,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 9,
+      "percent_owned": 10,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 16.6,
@@ -3909,7 +3924,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 8,
+      "percent_owned": 9,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 20.6,
@@ -4429,7 +4444,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 19,
+      "percent_owned": 18,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 17.1,
@@ -4987,7 +5002,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 8,
+      "percent_owned": 7,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 16.3,
@@ -5109,7 +5124,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 11,
+      "percent_owned": 10,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 25.6,
@@ -5622,6 +5637,40 @@
       "xfp_ros": 505.0
     },
     {
+      "name": "Ezequiel Duran",
+      "player_id": 11886,
+      "team": "TEX",
+      "eligible_positions": [
+        "1B",
+        "2B",
+        "3B",
+        "SS",
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "owner_team_id": 12,
+      "owner_team_name": "The SS Express",
+      "babip": 0.362,
+      "woba": 0.368,
+      "xwoba": 0.324,
+      "xslg": 0.4,
+      "woba_xwoba_gap": 44,
+      "mlbam_id": "677649",
+      "savant_matched": true,
+      "pa_season": 141,
+      "pa_per_wk": 17.6,
+      "sb_season": 4,
+      "sb_per_wk": 0.5,
+      "xfp_hit": 20.0,
+      "xfp_sb": 1.0,
+      "xfp_per_wk": 21.0,
+      "games_next_week": 7,
+      "xfp_next_week": 24.5,
+      "xfp_ros": 252.0
+    },
+    {
       "name": "A.J. Ewing",
       "player_id": 63129,
       "team": "NYM",
@@ -5651,36 +5700,6 @@
       "games_next_week": 6,
       "xfp_next_week": 7.2,
       "xfp_ros": 86.0
-    },
-    {
-      "name": "Trent Grisham",
-      "player_id": 10522,
-      "team": "NYY",
-      "eligible_positions": [
-        "OF",
-        "Util"
-      ],
-      "status": "DTD",
-      "position_type": "B",
-      "owner_team_id": 12,
-      "owner_team_name": "The SS Express",
-      "babip": 0.181,
-      "woba": 0.299,
-      "xwoba": 0.338,
-      "xslg": 0.423,
-      "woba_xwoba_gap": -39,
-      "mlbam_id": "663757",
-      "savant_matched": true,
-      "pa_season": 185,
-      "pa_per_wk": 23.1,
-      "sb_season": 3,
-      "sb_per_wk": 0.38,
-      "xfp_hit": 27.3,
-      "xfp_sb": 0.8,
-      "xfp_per_wk": 28.1,
-      "games_next_week": 6,
-      "xfp_next_week": 28.1,
-      "xfp_ros": 337.0
     },
     {
       "name": "Salvador Perez",
@@ -7022,9 +7041,9 @@
       "xfp_ros": 257.0
     },
     {
-      "name": "Samuel Basallo",
-      "player_id": 60092,
-      "team": "BAL",
+      "name": "J.T. Realmuto",
+      "player_id": 9718,
+      "team": "PHI",
       "eligible_positions": [
         "C",
         "Util"
@@ -7033,23 +7052,23 @@
       "position_type": "B",
       "owner_team_id": 7,
       "owner_team_name": "LB Jefes",
-      "babip": 0.341,
-      "woba": 0.362,
-      "xwoba": 0.342,
-      "xslg": 0.474,
-      "woba_xwoba_gap": 20,
-      "mlbam_id": "694212",
+      "babip": 0.244,
+      "woba": 0.261,
+      "xwoba": 0.292,
+      "xslg": 0.339,
+      "woba_xwoba_gap": -31,
+      "mlbam_id": "592663",
       "savant_matched": true,
-      "pa_season": 149,
-      "pa_per_wk": 18.6,
+      "pa_season": 112,
+      "pa_per_wk": 14.0,
       "sb_season": 0,
       "sb_per_wk": 0.0,
-      "xfp_hit": 22.3,
+      "xfp_hit": 14.3,
       "xfp_sb": 0.0,
-      "xfp_per_wk": 22.3,
-      "games_next_week": 7,
-      "xfp_next_week": 26.0,
-      "xfp_ros": 268.0
+      "xfp_per_wk": 14.3,
+      "games_next_week": 6,
+      "xfp_next_week": 14.3,
+      "xfp_ros": 172.0
     },
     {
       "name": "Jonathan Aranda",
@@ -7293,9 +7312,9 @@
       "xfp_ros": 359.0
     },
     {
-      "name": "J.T. Realmuto",
-      "player_id": 9718,
-      "team": "PHI",
+      "name": "Samuel Basallo",
+      "player_id": 60092,
+      "team": "BAL",
       "eligible_positions": [
         "C",
         "Util"
@@ -7304,23 +7323,23 @@
       "position_type": "B",
       "owner_team_id": 7,
       "owner_team_name": "LB Jefes",
-      "babip": 0.244,
-      "woba": 0.261,
-      "xwoba": 0.292,
-      "xslg": 0.339,
-      "woba_xwoba_gap": -31,
-      "mlbam_id": "592663",
+      "babip": 0.341,
+      "woba": 0.362,
+      "xwoba": 0.342,
+      "xslg": 0.474,
+      "woba_xwoba_gap": 20,
+      "mlbam_id": "694212",
       "savant_matched": true,
-      "pa_season": 112,
-      "pa_per_wk": 14.0,
+      "pa_season": 149,
+      "pa_per_wk": 18.6,
       "sb_season": 0,
       "sb_per_wk": 0.0,
-      "xfp_hit": 14.3,
+      "xfp_hit": 22.3,
       "xfp_sb": 0.0,
-      "xfp_per_wk": 14.3,
-      "games_next_week": 6,
-      "xfp_next_week": 14.3,
-      "xfp_ros": 172.0
+      "xfp_per_wk": 22.3,
+      "games_next_week": 7,
+      "xfp_next_week": 26.0,
+      "xfp_ros": 268.0
     },
     {
       "name": "Spencer Torkelson",
@@ -7537,10 +7556,11 @@
       "xfp_ros": 397.0
     },
     {
-      "name": "Mookie Betts",
-      "player_id": 9552,
-      "team": "LAD",
+      "name": "Kevin McGonigle",
+      "player_id": 62955,
+      "team": "DET",
       "eligible_positions": [
+        "3B",
         "SS",
         "Util"
       ],
@@ -7548,23 +7568,23 @@
       "position_type": "B",
       "owner_team_id": 10,
       "owner_team_name": "South Park Cows",
-      "babip": 0.157,
-      "woba": 0.302,
-      "xwoba": 0.373,
-      "xslg": 0.514,
-      "woba_xwoba_gap": -71,
-      "mlbam_id": "605141",
+      "babip": 0.327,
+      "woba": 0.364,
+      "xwoba": 0.374,
+      "xslg": 0.47,
+      "woba_xwoba_gap": -10,
+      "mlbam_id": "805808",
       "savant_matched": true,
-      "pa_season": 67,
-      "pa_per_wk": 8.4,
-      "sb_season": 0,
-      "sb_per_wk": 0.0,
-      "xfp_hit": 11.0,
-      "xfp_sb": 0.0,
-      "xfp_per_wk": 11.0,
+      "pa_season": 213,
+      "pa_per_wk": 26.6,
+      "sb_season": 7,
+      "sb_per_wk": 0.88,
+      "xfp_hit": 34.8,
+      "xfp_sb": 1.8,
+      "xfp_per_wk": 36.6,
       "games_next_week": 6,
-      "xfp_next_week": 11.0,
-      "xfp_ros": 132.0
+      "xfp_next_week": 36.6,
+      "xfp_ros": 439.0
     },
     {
       "name": "Fernando Tatis Jr.",
@@ -7598,36 +7618,6 @@
       "xfp_ros": 390.0
     },
     {
-      "name": "Daylen Lile",
-      "player_id": 12582,
-      "team": "WSH",
-      "eligible_positions": [
-        "OF",
-        "Util"
-      ],
-      "status": "",
-      "position_type": "B",
-      "owner_team_id": 10,
-      "owner_team_name": "South Park Cows",
-      "babip": 0.292,
-      "woba": 0.332,
-      "xwoba": 0.339,
-      "xslg": 0.444,
-      "woba_xwoba_gap": -7,
-      "mlbam_id": "695734",
-      "savant_matched": true,
-      "pa_season": 218,
-      "pa_per_wk": 27.2,
-      "sb_season": 3,
-      "sb_per_wk": 0.38,
-      "xfp_hit": 32.3,
-      "xfp_sb": 0.8,
-      "xfp_per_wk": 33.0,
-      "games_next_week": 6,
-      "xfp_next_week": 33.0,
-      "xfp_ros": 396.0
-    },
-    {
       "name": "Konnor Griffin",
       "player_id": 64318,
       "team": "PIT",
@@ -7659,37 +7649,6 @@
       "xfp_ros": 318.0
     },
     {
-      "name": "Kevin McGonigle",
-      "player_id": 62955,
-      "team": "DET",
-      "eligible_positions": [
-        "3B",
-        "SS",
-        "Util"
-      ],
-      "status": "",
-      "position_type": "B",
-      "owner_team_id": 10,
-      "owner_team_name": "South Park Cows",
-      "babip": 0.327,
-      "woba": 0.364,
-      "xwoba": 0.374,
-      "xslg": 0.47,
-      "woba_xwoba_gap": -10,
-      "mlbam_id": "805808",
-      "savant_matched": true,
-      "pa_season": 213,
-      "pa_per_wk": 26.6,
-      "sb_season": 7,
-      "sb_per_wk": 0.88,
-      "xfp_hit": 34.8,
-      "xfp_sb": 1.8,
-      "xfp_per_wk": 36.6,
-      "games_next_week": 6,
-      "xfp_next_week": 36.6,
-      "xfp_ros": 439.0
-    },
-    {
       "name": "Julio Rodr\u00edguez",
       "player_id": 11384,
       "team": "SEA",
@@ -7718,6 +7677,66 @@
       "games_next_week": 6,
       "xfp_next_week": 32.9,
       "xfp_ros": 395.0
+    },
+    {
+      "name": "Mookie Betts",
+      "player_id": 9552,
+      "team": "LAD",
+      "eligible_positions": [
+        "SS",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "owner_team_id": 10,
+      "owner_team_name": "South Park Cows",
+      "babip": 0.157,
+      "woba": 0.302,
+      "xwoba": 0.373,
+      "xslg": 0.514,
+      "woba_xwoba_gap": -71,
+      "mlbam_id": "605141",
+      "savant_matched": true,
+      "pa_season": 67,
+      "pa_per_wk": 8.4,
+      "sb_season": 0,
+      "sb_per_wk": 0.0,
+      "xfp_hit": 11.0,
+      "xfp_sb": 0.0,
+      "xfp_per_wk": 11.0,
+      "games_next_week": 6,
+      "xfp_next_week": 11.0,
+      "xfp_ros": 132.0
+    },
+    {
+      "name": "Daylen Lile",
+      "player_id": 12582,
+      "team": "WSH",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "owner_team_id": 10,
+      "owner_team_name": "South Park Cows",
+      "babip": 0.292,
+      "woba": 0.332,
+      "xwoba": 0.339,
+      "xslg": 0.444,
+      "woba_xwoba_gap": -7,
+      "mlbam_id": "695734",
+      "savant_matched": true,
+      "pa_season": 218,
+      "pa_per_wk": 27.2,
+      "sb_season": 3,
+      "sb_per_wk": 0.38,
+      "xfp_hit": 32.3,
+      "xfp_sb": 0.8,
+      "xfp_per_wk": 33.0,
+      "games_next_week": 6,
+      "xfp_next_week": 33.0,
+      "xfp_ros": 396.0
     },
     {
       "name": "Brandon Nimmo",
@@ -8054,36 +8073,6 @@
       "games_next_week": 6,
       "xfp_next_week": 33.6,
       "xfp_ros": 403.0
-    },
-    {
-      "name": "Nolan Arenado",
-      "player_id": 9105,
-      "team": "AZ",
-      "eligible_positions": [
-        "3B",
-        "Util"
-      ],
-      "status": "",
-      "position_type": "B",
-      "owner_team_id": 9,
-      "owner_team_name": "Soto Shuffle",
-      "babip": 0.31,
-      "woba": 0.364,
-      "xwoba": 0.339,
-      "xslg": 0.426,
-      "woba_xwoba_gap": 25,
-      "mlbam_id": "571448",
-      "savant_matched": true,
-      "pa_season": 170,
-      "pa_per_wk": 21.2,
-      "sb_season": 1,
-      "sb_per_wk": 0.12,
-      "xfp_hit": 25.2,
-      "xfp_sb": 0.2,
-      "xfp_per_wk": 25.4,
-      "games_next_week": 6,
-      "xfp_next_week": 25.4,
-      "xfp_ros": 305.0
     },
     {
       "name": "Willy Adames",
@@ -9965,35 +9954,6 @@
       }
     },
     {
-      "name": "Trent Grisham",
-      "owner_team_id": 12,
-      "owner_team_name": "The SS Express",
-      "team": "NYY",
-      "eligible_positions": [
-        "OF",
-        "Util"
-      ],
-      "mlbam_id": "663757",
-      "score": 90.0,
-      "drivers": {
-        "pa_2026": 185,
-        "woba_2026": 0.299,
-        "xwoba_2026": 0.338,
-        "babip_2026": 0.181,
-        "gap_raw": 0.039,
-        "gap_points": 39.0,
-        "gap_score": 78.0,
-        "babip_baseline": 0.261,
-        "babip_baseline_source": "career",
-        "babip_delta": 0.08,
-        "babip_score": 8.0,
-        "pa_2025": 581,
-        "woba_2025": 0.353,
-        "yoy_delta": 0.054,
-        "yoy_score": 4.0
-      }
-    },
-    {
       "name": "Kyle Stowers",
       "owner_team_id": 7,
       "owner_team_name": "LB Jefes",
@@ -10370,6 +10330,35 @@
         "woba_2025": 0.37,
         "yoy_delta": 0.021,
         "yoy_score": 2.1
+      }
+    },
+    {
+      "name": "Adolis Garc\u00eda",
+      "owner_team_id": 13,
+      "owner_team_name": "Wally Cats",
+      "team": "PHI",
+      "eligible_positions": [
+        "OF",
+        "Util"
+      ],
+      "mlbam_id": "666969",
+      "score": 64.2,
+      "drivers": {
+        "pa_2026": 190,
+        "woba_2026": 0.276,
+        "xwoba_2026": 0.307,
+        "babip_2026": 0.276,
+        "gap_raw": 0.031,
+        "gap_points": 31.0,
+        "gap_score": 62.0,
+        "babip_baseline": 0.288,
+        "babip_baseline_source": "career",
+        "babip_delta": 0.012,
+        "babip_score": 1.2,
+        "pa_2025": 547,
+        "woba_2025": 0.286,
+        "yoy_delta": 0.01,
+        "yoy_score": 1.0
       }
     }
   ],
@@ -11468,7 +11457,7 @@
         "points_for": 2933.84,
         "points_against": 2748.17,
         "waiver_priority": 4,
-        "moves": 22,
+        "moves": 23,
         "trades": 0
       },
       {
@@ -11588,7 +11577,7 @@
         "points_for": 2676.58,
         "points_against": 2725.84,
         "waiver_priority": 1,
-        "moves": 33,
+        "moves": 34,
         "trades": 0
       },
       {
