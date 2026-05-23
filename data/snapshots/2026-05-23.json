@@ -1,6 +1,6 @@
 {
   "date": "2026-05-23",
-  "generated_at": "2026-05-23 12:40:48",
+  "generated_at": "2026-05-23 13:20:47",
   "week": 9,
   "record": "4-4",
   "my_hitters": [
@@ -712,10 +712,73 @@
       "avg_fp_2w_est": 0.42
     },
     {
+      "name": "Stephen Kolek",
+      "player_id": 60645,
+      "team": "KC",
+      "selected_position": "P",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "position_type": "P",
+      "k_pct": 17.4,
+      "bb_pct": 5.8,
+      "k_bb_pct": 11.6,
+      "babip": 0.204,
+      "woba": 0.278,
+      "xwoba": 0.317,
+      "mlbam_id": "663568",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-05-17",
+          "pa": 24,
+          "xwoba": 0.29,
+          "woba": 0.21
+        },
+        {
+          "date": "2026-05-12",
+          "pa": 23,
+          "xwoba": 0.361,
+          "woba": 0.407
+        },
+        {
+          "date": "2026-05-05",
+          "pa": 22,
+          "xwoba": 0.299,
+          "woba": 0.218
+        }
+      ],
+      "per_start_sd": 0.032,
+      "this_week_starts": [
+        {
+          "team": "KCR",
+          "team_id": 7,
+          "opponent": "SEA",
+          "opponent_id": 11,
+          "date": "2026-05-23",
+          "is_home": true,
+          "pitcher_name": "Stephen Kolek",
+          "pitcher_id": "21487",
+          "throws": "R",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [],
+      "this_week_count": 1,
+      "next_week_count": 0,
+      "avg_fp_4w": 8.0625,
+      "fp_1w": 18.08,
+      "pa_1w": 1,
+      "avg_fp_2w_est": 18.08
+    },
+    {
       "name": "Christian Scott",
       "player_id": 60292,
       "team": "NYM",
-      "selected_position": "P",
+      "selected_position": "BN",
       "eligible_positions": [
         "SP",
         "P"
@@ -888,95 +951,6 @@
       "fp_1w": 57.5,
       "pa_1w": 0,
       "avg_fp_2w_est": 57.5
-    },
-    {
-      "name": "Connor Prielipp",
-      "player_id": 60267,
-      "team": "MIN",
-      "selected_position": "BN",
-      "eligible_positions": [
-        "SP",
-        "P"
-      ],
-      "status": "",
-      "position_type": "P",
-      "k_pct": 28.4,
-      "bb_pct": 8.8,
-      "k_bb_pct": 19.6,
-      "babip": 0.19,
-      "woba": 0.267,
-      "xwoba": 0.28,
-      "mlbam_id": "687570",
-      "savant_matched": true,
-      "per_start": [
-        {
-          "date": "2026-05-22",
-          "pa": 21,
-          "xwoba": 0.448,
-          "woba": 0.464
-        },
-        {
-          "date": "2026-05-16",
-          "pa": 23,
-          "xwoba": 0.24,
-          "woba": 0.23
-        },
-        {
-          "date": "2026-05-08",
-          "pa": 23,
-          "xwoba": 0.28,
-          "woba": 0.301
-        },
-        {
-          "date": "2026-05-02",
-          "pa": 20,
-          "xwoba": 0.398,
-          "woba": 0.38
-        },
-        {
-          "date": "2026-04-27",
-          "pa": 19,
-          "xwoba": 0.232,
-          "woba": 0.158
-        }
-      ],
-      "per_start_sd": 0.087,
-      "this_week_starts": [
-        {
-          "team": "MIN",
-          "team_id": 8,
-          "opponent": "BOS",
-          "opponent_id": 3,
-          "date": "2026-05-22",
-          "is_home": false,
-          "pitcher_name": "Connor Prielipp",
-          "pitcher_id": "31857",
-          "throws": "L",
-          "doubleheader": 0,
-          "notes": null
-        }
-      ],
-      "next_week_starts": [
-        {
-          "team": "MIN",
-          "team_id": 8,
-          "opponent": "CHW",
-          "opponent_id": 4,
-          "date": "2026-05-27",
-          "is_home": false,
-          "pitcher_name": "Connor Prielipp",
-          "pitcher_id": "31857",
-          "throws": "L",
-          "doubleheader": 0,
-          "notes": null
-        }
-      ],
-      "this_week_count": 1,
-      "next_week_count": 1,
-      "avg_fp_4w": 9.3125,
-      "fp_1w": 9.0,
-      "pa_1w": 5,
-      "avg_fp_2w_est": 9.0
     },
     {
       "name": "Landen Roupp",
@@ -2441,7 +2415,7 @@
         "Util"
       ],
       "status": "",
-      "percent_owned": 27,
+      "percent_owned": 26,
       "fantasy_points": null,
       "on_waivers": false,
       "babip": 0.281,
@@ -3032,7 +3006,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 38,
+      "percent_owned": 39,
       "fantasy_points": null,
       "on_waivers": true,
       "k_pct": 21.5,
@@ -3488,7 +3462,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 6,
+      "percent_owned": 7,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 18.2,
@@ -3717,51 +3691,6 @@
       "avg_fp_2w_est": 17.5
     },
     {
-      "name": "Stephen Kolek",
-      "player_id": 60645,
-      "team": "KC",
-      "eligible_positions": [
-        "SP",
-        "P"
-      ],
-      "status": "",
-      "percent_owned": 7,
-      "fantasy_points": null,
-      "on_waivers": false,
-      "k_pct": 17.4,
-      "bb_pct": 5.8,
-      "k_bb_pct": 11.6,
-      "babip": 0.204,
-      "woba": 0.278,
-      "xwoba": 0.317,
-      "mlbam_id": "663568",
-      "savant_matched": true,
-      "per_start": [],
-      "per_start_sd": null,
-      "this_week_starts": [
-        {
-          "team": "KCR",
-          "team_id": 7,
-          "opponent": "SEA",
-          "opponent_id": 11,
-          "date": "2026-05-23",
-          "is_home": true,
-          "pitcher_name": "Stephen Kolek",
-          "pitcher_id": "21487",
-          "throws": "R",
-          "doubleheader": 0,
-          "notes": null
-        }
-      ],
-      "next_week_starts": [],
-      "this_week_count": 1,
-      "next_week_count": 0,
-      "avg_fp_4w": 8.0625,
-      "fp_1w": 18.08,
-      "pa_1w": 1,
-      "avg_fp_2w_est": 18.08
-    },
-    {
       "name": "Trevor McDonald",
       "player_id": 60389,
       "team": "SF",
@@ -3771,7 +3700,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 24,
+      "percent_owned": 23,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 22.4,
@@ -3782,33 +3711,8 @@
       "xwoba": 0.309,
       "mlbam_id": "686790",
       "savant_matched": true,
-      "per_start": [
-        {
-          "date": "2026-05-22",
-          "pa": 11,
-          "xwoba": 0.369,
-          "woba": 0.134
-        },
-        {
-          "date": "2026-05-16",
-          "pa": 26,
-          "xwoba": 0.311,
-          "woba": 0.257
-        },
-        {
-          "date": "2026-05-11",
-          "pa": 26,
-          "xwoba": 0.342,
-          "woba": 0.44
-        },
-        {
-          "date": "2026-05-04",
-          "pa": 24,
-          "xwoba": 0.269,
-          "woba": 0.155
-        }
-      ],
-      "per_start_sd": 0.037,
+      "per_start": [],
+      "per_start_sd": null,
       "this_week_starts": [
         {
           "team": "SFG",
@@ -4331,6 +4235,65 @@
       "avg_fp_2w_est": 7.83
     },
     {
+      "name": "Connor Prielipp",
+      "player_id": 60267,
+      "team": "MIN",
+      "eligible_positions": [
+        "SP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 23,
+      "fantasy_points": null,
+      "on_waivers": true,
+      "k_pct": 28.4,
+      "bb_pct": 8.8,
+      "k_bb_pct": 19.6,
+      "babip": 0.19,
+      "woba": 0.267,
+      "xwoba": 0.28,
+      "mlbam_id": "687570",
+      "savant_matched": true,
+      "per_start": [],
+      "per_start_sd": null,
+      "this_week_starts": [
+        {
+          "team": "MIN",
+          "team_id": 8,
+          "opponent": "BOS",
+          "opponent_id": 3,
+          "date": "2026-05-22",
+          "is_home": false,
+          "pitcher_name": "Connor Prielipp",
+          "pitcher_id": "31857",
+          "throws": "L",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "next_week_starts": [
+        {
+          "team": "MIN",
+          "team_id": 8,
+          "opponent": "CHW",
+          "opponent_id": 4,
+          "date": "2026-05-27",
+          "is_home": false,
+          "pitcher_name": "Connor Prielipp",
+          "pitcher_id": "31857",
+          "throws": "L",
+          "doubleheader": 0,
+          "notes": null
+        }
+      ],
+      "this_week_count": 1,
+      "next_week_count": 1,
+      "avg_fp_4w": 9.3125,
+      "fp_1w": 9.0,
+      "pa_1w": 5,
+      "avg_fp_2w_est": 9.0
+    },
+    {
       "name": "Rico Garcia",
       "player_id": 11453,
       "team": "BAL",
@@ -4608,6 +4571,68 @@
       "avg_fp_2w_est": 10.5
     },
     {
+      "name": "Aaron Ashby",
+      "player_id": 11489,
+      "team": "MIL",
+      "eligible_positions": [
+        "RP",
+        "P"
+      ],
+      "status": "",
+      "percent_owned": 40,
+      "fantasy_points": null,
+      "on_waivers": true,
+      "k_pct": 35.9,
+      "bb_pct": 12.5,
+      "k_bb_pct": 23.4,
+      "babip": 0.4,
+      "woba": 0.299,
+      "xwoba": 0.249,
+      "mlbam_id": "676879",
+      "savant_matched": true,
+      "per_start": [
+        {
+          "date": "2026-05-22",
+          "pa": 6,
+          "xwoba": 0.374,
+          "woba": 0.239
+        },
+        {
+          "date": "2026-05-19",
+          "pa": 7,
+          "xwoba": 0.372,
+          "woba": 0.669
+        },
+        {
+          "date": "2026-05-15",
+          "pa": 8,
+          "xwoba": 0.288,
+          "woba": 0.45
+        },
+        {
+          "date": "2026-05-13",
+          "pa": 3,
+          "xwoba": 0.114,
+          "woba": 0.0
+        },
+        {
+          "date": "2026-05-10",
+          "pa": 4,
+          "xwoba": 0.181,
+          "woba": 0.225
+        }
+      ],
+      "per_start_sd": 0.104,
+      "this_week_starts": [],
+      "next_week_starts": [],
+      "this_week_count": 0,
+      "next_week_count": 0,
+      "avg_fp_4w": 14.875,
+      "fp_1w": -0.5,
+      "pa_1w": 2,
+      "avg_fp_2w_est": -0.5
+    },
+    {
       "name": "Brad Keller",
       "player_id": 10418,
       "team": "PHI",
@@ -4648,7 +4673,7 @@
         "P"
       ],
       "status": "",
-      "percent_owned": 18,
+      "percent_owned": 17,
       "fantasy_points": null,
       "on_waivers": false,
       "k_pct": 19.9,
@@ -4726,7 +4751,7 @@
           "team_id": 28,
           "opponent": "MIL",
           "opponent_id": 23,
-          "date": "2026-05-26",
+          "date": "2026-05-27",
           "is_home": false,
           "pitcher_name": "Dustin May",
           "pitcher_id": "19716",
@@ -5370,38 +5395,6 @@
       "fp_1w": 5.5,
       "pa_1w": 2,
       "avg_fp_2w_est": 5.5
-    },
-    {
-      "name": "Lance McCullers Jr.",
-      "player_id": 9575,
-      "team": "HOU",
-      "eligible_positions": [
-        "SP",
-        "P",
-        "IL"
-      ],
-      "status": "IL15",
-      "percent_owned": 5,
-      "fantasy_points": null,
-      "on_waivers": false,
-      "k_pct": 25.0,
-      "bb_pct": 12.8,
-      "k_bb_pct": 12.2,
-      "babip": 0.316,
-      "woba": 0.374,
-      "xwoba": 0.33,
-      "mlbam_id": "621121",
-      "savant_matched": true,
-      "per_start": [],
-      "per_start_sd": null,
-      "this_week_starts": [],
-      "next_week_starts": [],
-      "this_week_count": 0,
-      "next_week_count": 0,
-      "avg_fp_4w": 5.3125,
-      "fp_1w": 0.0,
-      "pa_1w": 0,
-      "avg_fp_2w_est": 0.0
     }
   ],
   "rostered_hitters_other": [
@@ -7084,9 +7077,9 @@
       "xfp_ros": 176.0
     },
     {
-      "name": "Jonathan Aranda",
-      "player_id": 12309,
-      "team": "TB",
+      "name": "Spencer Torkelson",
+      "player_id": 11914,
+      "team": "DET",
       "eligible_positions": [
         "1B",
         "Util"
@@ -7095,23 +7088,23 @@
       "position_type": "B",
       "owner_team_id": 7,
       "owner_team_name": "LB Jefes",
-      "babip": 0.311,
-      "woba": 0.358,
-      "xwoba": 0.365,
-      "xslg": 0.451,
-      "woba_xwoba_gap": -7,
-      "mlbam_id": "666018",
+      "babip": 0.26,
+      "woba": 0.309,
+      "xwoba": 0.32,
+      "xslg": 0.401,
+      "woba_xwoba_gap": -11,
+      "mlbam_id": "679529",
       "savant_matched": true,
-      "pa_season": 204,
-      "pa_per_wk": 25.5,
+      "pa_season": 194,
+      "pa_per_wk": 24.2,
       "sb_season": 0,
       "sb_per_wk": 0.0,
-      "xfp_hit": 32.6,
+      "xfp_hit": 27.1,
       "xfp_sb": 0.0,
-      "xfp_per_wk": 32.6,
+      "xfp_per_wk": 27.1,
       "games_next_week": 6,
-      "xfp_next_week": 32.6,
-      "xfp_ros": 391.0
+      "xfp_next_week": 27.1,
+      "xfp_ros": 325.0
     },
     {
       "name": "Brandon Lowe",
@@ -7295,36 +7288,6 @@
       "xfp_ros": 205.0
     },
     {
-      "name": "Spencer Torkelson",
-      "player_id": 11914,
-      "team": "DET",
-      "eligible_positions": [
-        "1B",
-        "Util"
-      ],
-      "status": "",
-      "position_type": "B",
-      "owner_team_id": 7,
-      "owner_team_name": "LB Jefes",
-      "babip": 0.26,
-      "woba": 0.309,
-      "xwoba": 0.32,
-      "xslg": 0.401,
-      "woba_xwoba_gap": -11,
-      "mlbam_id": "679529",
-      "savant_matched": true,
-      "pa_season": 194,
-      "pa_per_wk": 24.2,
-      "sb_season": 0,
-      "sb_per_wk": 0.0,
-      "xfp_hit": 27.1,
-      "xfp_sb": 0.0,
-      "xfp_per_wk": 27.1,
-      "games_next_week": 6,
-      "xfp_next_week": 27.1,
-      "xfp_ros": 325.0
-    },
-    {
       "name": "Matt McLain",
       "player_id": 12390,
       "team": "CIN",
@@ -7383,6 +7346,36 @@
       "games_next_week": 7,
       "xfp_next_week": 26.8,
       "xfp_ros": 276.0
+    },
+    {
+      "name": "Jonathan Aranda",
+      "player_id": 12309,
+      "team": "TB",
+      "eligible_positions": [
+        "1B",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "owner_team_id": 7,
+      "owner_team_name": "LB Jefes",
+      "babip": 0.311,
+      "woba": 0.358,
+      "xwoba": 0.365,
+      "xslg": 0.451,
+      "woba_xwoba_gap": -7,
+      "mlbam_id": "666018",
+      "savant_matched": true,
+      "pa_season": 204,
+      "pa_per_wk": 25.5,
+      "sb_season": 0,
+      "sb_per_wk": 0.0,
+      "xfp_hit": 32.6,
+      "xfp_sb": 0.0,
+      "xfp_per_wk": 32.6,
+      "games_next_week": 6,
+      "xfp_next_week": 32.6,
+      "xfp_ros": 391.0
     },
     {
       "name": "Addison Barger",
@@ -8389,6 +8382,36 @@
       "xfp_ros": 328.0
     },
     {
+      "name": "Eugenio Su\u00e1rez",
+      "player_id": 9724,
+      "team": "CIN",
+      "eligible_positions": [
+        "3B",
+        "Util"
+      ],
+      "status": "",
+      "position_type": "B",
+      "owner_team_id": 14,
+      "owner_team_name": "Short Porchers",
+      "babip": 0.31,
+      "woba": 0.299,
+      "xwoba": 0.273,
+      "xslg": 0.333,
+      "woba_xwoba_gap": 26,
+      "mlbam_id": "553993",
+      "savant_matched": true,
+      "pa_season": 100,
+      "pa_per_wk": 12.5,
+      "sb_season": 0,
+      "sb_per_wk": 0.0,
+      "xfp_hit": 11.9,
+      "xfp_sb": 0.0,
+      "xfp_per_wk": 11.9,
+      "games_next_week": 6,
+      "xfp_next_week": 11.9,
+      "xfp_ros": 143.0
+    },
+    {
       "name": "Josh Jung",
       "player_id": 11850,
       "team": "TEX",
@@ -8448,36 +8471,6 @@
       "games_next_week": 6,
       "xfp_next_week": 26.2,
       "xfp_ros": 314.0
-    },
-    {
-      "name": "Eugenio Su\u00e1rez",
-      "player_id": 9724,
-      "team": "CIN",
-      "eligible_positions": [
-        "3B",
-        "Util"
-      ],
-      "status": "",
-      "position_type": "B",
-      "owner_team_id": 14,
-      "owner_team_name": "Short Porchers",
-      "babip": 0.31,
-      "woba": 0.299,
-      "xwoba": 0.273,
-      "xslg": 0.333,
-      "woba_xwoba_gap": 26,
-      "mlbam_id": "553993",
-      "savant_matched": true,
-      "pa_season": 100,
-      "pa_per_wk": 12.5,
-      "sb_season": 0,
-      "sb_per_wk": 0.0,
-      "xfp_hit": 11.9,
-      "xfp_sb": 0.0,
-      "xfp_per_wk": 11.9,
-      "games_next_week": 6,
-      "xfp_next_week": 11.9,
-      "xfp_ros": 143.0
     },
     {
       "name": "Gabriel Moreno",
@@ -11499,7 +11492,7 @@
         "points_for": 3052.33,
         "points_against": 2821.6600000000003,
         "waiver_priority": 10,
-        "moves": 32,
+        "moves": 33,
         "trades": 1
       },
       {
