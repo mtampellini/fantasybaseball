@@ -4,10 +4,16 @@ __pycache__/
 *.log
 data/raw/
 data/fangraphs/
-data/processed/
+data/processed/*
 # Whitelist hitter training datasets so CI can train without rebuilding from
 # scratch. These are frozen historical seasons — they don't change.
 !data/processed/hitter_dataset_2024.parquet
 !data/processed/hitter_dataset_2025.parquet
+# Team defense (OAA) used as a feature in pitcher projection — frozen
+# full-season for 2024/2025, partial-season for 2026 (refreshed by
+# pull_team_defense.py).
+!data/processed/team_defense_2024.parquet
+!data/processed/team_defense_2025.parquet
+!data/processed/team_defense_2026.parquet
 oauth2.json
 .env

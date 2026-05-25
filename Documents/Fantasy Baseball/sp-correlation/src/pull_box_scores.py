@@ -124,10 +124,11 @@ def fetch_boxscore(game_pk: int, year: int) -> dict | None:
 def _team_starter_row(side: str, game: dict, box: dict) -> dict | None:
     """Extract the *effective* starting pitcher line for one team side.
 
-    Rule: pitcher with the most IP on that team for that game AND >=4 IP.
+    Rule: pitcher with the most IP on that team for that game AND >=3 IP.
     This captures traditional GS starters as well as bulk-relief pitchers
     used behind an opener (e.g., Dollander '26 Rockies, modern Brewers/Tigers
-    bullpen days). Pure openers (<4 IP) and middle relievers are excluded.
+    bullpen days). Pure openers (<3 IP) and middle relievers are excluded.
+    Threshold lowered from 4 IP to 3 IP so short returns from the IL count.
     """
     pitchers = box.get(f"{side}Pitchers")
     if not pitchers:
@@ -137,7 +138,7 @@ def _team_starter_row(side: str, game: dict, box: dict) -> dict | None:
         if not isinstance(row, dict) or not row.get("personId"):
             continue
         outs = _ip_str_to_outs(row.get("ip", "0.0"))
-        if outs >= 12:
+        if outs >= 9:
             candidates.append((outs, row))
     if not candidates:
         return None

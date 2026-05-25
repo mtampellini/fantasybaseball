@@ -31,7 +31,6 @@ from pull_savant_historical import (
 from pull_per_start import fetch_per_start_xwoba
 from pull_probables import (
     fetch_probables_grid, starts_by_pitcher, get_fantasy_week_bounds,
-    count_team_games_in_window,
 )
 from enrich import enrich_list, attach_per_start, attach_probable_starts
 from pull_weekly_results import fetch_all_weeks, fetch_standings
@@ -40,6 +39,7 @@ from compute_league_metrics import (
 )
 from compute_trade_targets import rank_trade_targets, print_top_targets
 from render_report import render_html
+from xfp_matchup import enrich_matchup_xfp
 
 
 REPO_ROOT = Path(__file__).parent
@@ -251,30 +251,26 @@ def main():
     print(f"  Computed PA/wk + SB/wk + xFP/wk for {matched}/{len(hitter_list)} hitters "
           f"(weeks_played={weeks_played})")
 
-    # Step 5b''': forward-looking projections — next week (NW) + rest-of-season (ROS)
-    # NW = current xFP/wk × (games_next_week / typical_week_games)
-    # ROS = current xFP/wk × weeks_remaining_to_end_of_playoffs
+    # Step 5b''': forward-looking projections — this week, next week, ROS
+    # This week + next week use matchup + park adjusted xFP (log5 vs each
+    # game's probable SP, park factor at home/road). See xfp_matchup.py.
+    # ROS stays a simple xfp_per_wk * weeks_remaining estimate because we
+    # don't have probables that far out.
     end_week = int(league_obj.end_week())
     current_week_num = int(league_obj.current_week())
     weeks_remaining = max(0, end_week - current_week_num + 1)  # inclusive of in-progress
-    typical_week_games = 6.0  # MLB averages ~6.2 games/wk; round factor for stability
-    games_per_team_nw = count_team_games_in_window(probables_raw, nw_start, nw_end)
     print(f"\nForward projections: end_week={end_week}, current={current_week_num}, "
           f"weeks_remaining={weeks_remaining}")
-    print(f"  Next week games per team (sample): "
-          f"{dict(list(games_per_team_nw.items())[:4])}")
+
+    # Matchup + park adjusted xFP for this week and next week (sets
+    # xfp_this_week, xfp_next_week, games_this_week, games_next_week,
+    # plus matchup deltas vs neutral baseline).
+    enrich_matchup_xfp(hitter_list, probables_raw, pitcher_index,
+                       tw_start, tw_end, nw_start, nw_end)
+
     for h in hitter_list:
         cur = h.get("xfp_per_wk")
-        if cur is None:
-            h["xfp_next_week"] = None
-            h["xfp_ros"] = None
-            h["games_next_week"] = None
-            continue
-        team = h.get("team")
-        games_nw = games_per_team_nw.get(team, int(typical_week_games))
-        h["games_next_week"] = games_nw
-        h["xfp_next_week"] = round(cur * (games_nw / typical_week_games), 1)
-        h["xfp_ros"] = round(cur * weeks_remaining, 0)
+        h["xfp_ros"] = round(cur * weeks_remaining, 0) if cur is not None else None
 
     # Filter + hybrid-rerank FA pools, then trim to display count.
     # Note: Yahoo's FA list returns fantasy_points=None for all FAs (only
