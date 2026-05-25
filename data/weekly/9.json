@@ -3,8 +3,8 @@
     "team_id": 1,
     "team_name": "Pine Barrens",
     "hitting": 252.0,
-    "pitching": 103.0,
-    "total": 355.0,
+    "pitching": 105.0,
+    "total": 357.0,
     "week": 9
   },
   {
@@ -18,9 +18,9 @@
   {
     "team_id": 2,
     "team_name": "Balcony Tears",
-    "hitting": 285.0,
-    "pitching": 92.34,
-    "total": 377.34,
+    "hitting": 283.0,
+    "pitching": 92.33,
+    "total": 375.33,
     "week": 9
   },
   {
@@ -43,8 +43,8 @@
     "team_id": 14,
     "team_name": "Short Porchers",
     "hitting": 253.5,
-    "pitching": 73.09,
-    "total": 326.59,
+    "pitching": 73.08,
+    "total": 326.58,
     "week": 9
   },
   {
@@ -99,8 +99,8 @@
     "team_id": 9,
     "team_name": "Soto Shuffle",
     "hitting": 287.5,
-    "pitching": 116.59,
-    "total": 404.09,
+    "pitching": 116.58,
+    "total": 404.08,
     "week": 9
   },
   {
