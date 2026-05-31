@@ -46,7 +46,7 @@ def refresh():
     print(f"[3/4] Rebuilding 2026 as-of feature dataset")
     df = build_year(2026)
     df.to_parquet(PROC / "sp_dataset_2026.parquet", index=False)
-    print(f"      {len(df)} rows after May-15+/≥3 prior starts filter (or season-start for 2026)")
+    print(f"      {len(df)} rows after May-15+/>=3 prior starts filter (or season-start for 2026)")
 
     print(f"[4/4] Re-training model + projecting all 2026 SPs")
     model, feats = _train_default_model()
