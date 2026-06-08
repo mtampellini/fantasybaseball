@@ -184,7 +184,10 @@ def compute_recent_playing_time(hitter_list, today_str):
             gpw = recent_pa / PA_PER_GAME
             h["recent_pa_per_wk"] = round(recent_pa, 1)
             h["games_per_wk"] = round(gpw, 1)
-            h["start_pct"] = round(gpw / TEAM_GAMES_PER_WEEK, 2)
+            # Start% is a share of team games, so it caps at 100% -- a hitter
+            # can't start more often than the team plays. Doubleheaders / a
+            # high PA-per-game can push the raw ratio over 1.0, so clamp it.
+            h["start_pct"] = round(min(gpw / TEAM_GAMES_PER_WEEK, 1.0), 2)
             h["playing_time_src"] = src
         else:
             h["recent_pa_per_wk"] = None
