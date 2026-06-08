@@ -185,6 +185,68 @@ def aggregate_week(rows):
     }
 
 
+def weekly_table_from_rows(rows, buckets):
+    """Aggregate a list of pitch rows into one row per bucket.
+
+    Returns: list of (label, agg_dict, gap) in bucket order.
+    """
+    out = []
+    for label, start, end in buckets:
+        s, e = start.isoformat(), end.isoformat()
+        wk_rows = [r for r in rows if r.get("game_date") and s <= r["game_date"] <= e]
+        agg = aggregate_week(wk_rows)
+        gap = None
+        if agg["woba"] is not None and agg["xwoba"] is not None:
+            gap = round((agg["woba"] - agg["xwoba"]) * 1000)
+        out.append((label, agg, gap))
+    return out
+
+
+def _fmt_gap(gap):
+    if gap is None:
+        return "n/a"
+    return f"+{gap}" if gap >= 0 else str(gap)
+
+
+def parse_csv_file(path, buckets):
+    """Parse a downloaded Savant statcast_search CSV (one or many players) and
+    print a per-player weekly split table.
+
+    The CSV may contain multiple players (multiple batters_lookup[] ids in one
+    query); we group rows by player_name and emit a table per player, plus a
+    span-total row.
+    """
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        rows = list(csv.DictReader(f))
+
+    by_player = defaultdict(list)
+    for r in rows:
+        by_player[r.get("player_name") or "(unknown)"].append(r)
+
+    full_start = min(b[1] for b in buckets)
+    full_end = max(b[2] for b in buckets)
+
+    print(f"Statcast weekly splits from {path}")
+    print(f"  {len(rows)} pitch rows, {len(by_player)} player(s), "
+          f"window {full_start}..{full_end}\n")
+
+    for name in sorted(by_player):
+        prows = by_player[name]
+        print(f"=== {name} ===")
+        print(f"{'window':>24} {'PA':>4} {'xwOBA':>6} {'wOBA':>6} {'BABIP':>6} {'gap':>5}")
+        for label, agg, gap in weekly_table_from_rows(prows, buckets):
+            print(f"{label:>24} {agg['pa']:>4} "
+                  f"{agg['xwoba']!s:>6} {agg['woba']!s:>6} {agg['babip']!s:>6} "
+                  f"{_fmt_gap(gap):>5}")
+        # span total
+        span = [(f"{full_start}..{full_end}", full_start, full_end)]
+        for label, agg, gap in weekly_table_from_rows(prows, span):
+            print(f"{'TOTAL':>24} {agg['pa']:>4} "
+                  f"{agg['xwoba']!s:>6} {agg['woba']!s:>6} {agg['babip']!s:>6} "
+                  f"{_fmt_gap(gap):>5}")
+        print()
+
+
 def main():
     ap = argparse.ArgumentParser(description="Per-week Statcast splits for a hitter")
     ap.add_argument("--player", help="Player name (uses known-id table)")
@@ -194,7 +256,32 @@ def main():
     ap.add_argument("--start", help="Explicit start date YYYY-MM-DD (single bucket)")
     ap.add_argument("--end", help="Explicit end date YYYY-MM-DD (single bucket)")
     ap.add_argument("--today", help="Override 'today' as YYYY-MM-DD (for backtests)")
+    ap.add_argument("--csv", help="Parse a downloaded Savant CSV instead of "
+                                  "fetching (works offline; supports many players)")
     args = ap.parse_args()
+
+    today = (datetime.strptime(args.today, "%Y-%m-%d").date()
+             if args.today else date.today())
+
+    # Build the week buckets once; shared by fetch and CSV modes.
+    if args.start and args.end:
+        s = datetime.strptime(args.start, "%Y-%m-%d").date()
+        e = datetime.strptime(args.end, "%Y-%m-%d").date()
+        # Still split a long explicit range into Mon-Sun weeks for readability.
+        buckets = []
+        cur = _monday_of(s)
+        while cur <= e:
+            wk_end = cur + timedelta(days=6)
+            lo, hi = max(cur, s), min(wk_end, e)
+            buckets.append((f"{lo.isoformat()}..{hi.isoformat()}", lo, hi))
+            cur = wk_end + timedelta(days=1)
+    else:
+        buckets = last_completed_weeks(args.weeks, today=today)
+
+    # CSV mode: parse a downloaded file, no network needed.
+    if args.csv:
+        parse_csv_file(args.csv, buckets)
+        return 0
 
     pid = args.player_id
     if pid is None:
@@ -203,16 +290,6 @@ def main():
         if pid is None:
             print(f"Unknown player '{name}'. Pass --player-id <MLBAM id>.", file=sys.stderr)
             return 2
-
-    today = (datetime.strptime(args.today, "%Y-%m-%d").date()
-             if args.today else date.today())
-
-    if args.start and args.end:
-        s = datetime.strptime(args.start, "%Y-%m-%d").date()
-        e = datetime.strptime(args.end, "%Y-%m-%d").date()
-        buckets = [(f"{s.isoformat()}..{e.isoformat()}", s, e)]
-    else:
-        buckets = last_completed_weeks(args.weeks, today=today)
 
     print(f"Statcast weekly splits — player_id={pid}\n")
     print(f"{'window':>24} {'PA':>4} {'xwOBA':>6} {'wOBA':>6} {'BABIP':>6} {'gap':>5}")
@@ -228,7 +305,7 @@ def main():
             gap = round((agg["woba"] - agg["xwoba"]) * 1000)
         print(f"{label:>24} {agg['pa']:>4} "
               f"{agg['xwoba']!s:>6} {agg['woba']!s:>6} {agg['babip']!s:>6} "
-              f"{('+' + str(gap)) if (gap is not None and gap >= 0) else str(gap):>5}")
+              f"{_fmt_gap(gap):>5}")
     return 0
 
 
