@@ -145,14 +145,18 @@ def _pa_per_game(h):
     Best estimate of PA-per-game for a hitter.
 
     Priority:
-      1. pa_1w (Yahoo last-7-days PA) divided by typical 6 games -- reflects
-         current playing role, including recently-promoted starters.
-      2. pa_season / (weeks_played * 6) as a season-rate fallback.
+      1. recent_pa_per_wk (trailing ~2-week PA pace from daily_report's
+         compute_recent_playing_time) -- the most stable read of current role,
+         including recently-promoted everyday starters.
+      2. pa_1w (Yahoo last-7-days PA) -- single-week recency signal.
+      3. pa_season / weeks_played (season-average) as a final fallback.
 
-    Players with pa_1w < 10 are treated as part-time / bench and routed
-    through the season fallback instead, since a 5-PA week is too noisy
-    to extrapolate.
+    Players with pa_1w < 10 and no recent_pa_per_wk are routed through the
+    season fallback, since a 5-PA week is too noisy to extrapolate.
     """
+    recent = h.get("recent_pa_per_wk")
+    if recent:
+        return recent / TYPICAL_GAMES_PER_WEEK
     pa_1w = h.get("pa_1w") or 0
     if pa_1w >= 10:
         return pa_1w / TYPICAL_GAMES_PER_WEEK

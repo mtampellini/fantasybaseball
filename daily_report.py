@@ -12,7 +12,7 @@ Outputs:
 import json
 import subprocess
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from config import (
@@ -89,6 +89,111 @@ def split_roster(roster):
     hitters = [p for p in roster if p.get("position_type") == "B"]
     pitchers = [p for p in roster if p.get("position_type") == "P"]
     return hitters, pitchers
+
+
+# A team plays ~6.45 games per calendar week (162 / ~25.1 weeks). Used to turn
+# a hitter's recent PA pace into an estimated games-played-per-week and a
+# "start %" = how often they're in the lineup out of every team game.
+PA_PER_GAME = 4.3
+TEAM_GAMES_PER_WEEK = 6.45
+PLAYING_TIME_WINDOW_DAYS = 14
+
+
+def _load_snapshot_near(target_date, max_back=4):
+    """Load the snapshot on or just before `target_date` (a date object).
+
+    Walks back up to `max_back` days to tolerate gaps in the daily run.
+    Returns the parsed snapshot dict, or None if none found.
+    """
+    for back in range(max_back + 1):
+        d = target_date - timedelta(days=back)
+        path = SNAPSHOT_DIR / f"{d.isoformat()}.json"
+        if path.exists():
+            try:
+                with path.open() as f:
+                    return json.load(f)
+            except (json.JSONDecodeError, OSError):
+                continue
+    return None
+
+
+def _season_pa_index(snapshot):
+    """Map player key -> pa_season from a snapshot, across all hitter lists."""
+    out = {}
+    if not snapshot:
+        return out
+    for key in ("my_hitters", "fa_hitters", "rostered_hitters_other"):
+        for h in snapshot.get(key, []):
+            pid = h.get("player_id")
+            if pid is not None and h.get("pa_season") is not None:
+                out[pid] = h["pa_season"]
+    return out
+
+
+def compute_recent_playing_time(hitter_list, today_str):
+    """Set recent (trailing ~2-week) playing-time fields on each hitter.
+
+    Playing time is measured from the last ~14 days of actual games rather
+    than season-average, so recently-promoted everyday players (e.g. a May
+    call-up) aren't penalized by being smeared across weeks they spent in the
+    minors. We difference `pa_season` against the snapshot from ~14 days ago;
+    if no prior snapshot has the player (truly new), we fall back to
+    `pa_1w * 2`.
+
+    Adds, per hitter:
+      recent_pa_per_wk  - PA/week over the trailing window
+      games_per_wk      - estimated games started per week
+      start_pct         - games_per_wk / TEAM_GAMES_PER_WEEK (0-1+)
+      playing_time_src  - 'diff' (snapshot diff) or '1w' (fallback)
+    """
+    today = datetime.strptime(today_str, "%Y-%m-%d").date()
+    prior = _load_snapshot_near(today - timedelta(days=PLAYING_TIME_WINDOW_DAYS))
+    prior_pa = _season_pa_index(prior)
+    prior_date = None
+    if prior and prior.get("date"):
+        try:
+            prior_date = datetime.strptime(prior["date"], "%Y-%m-%d").date()
+        except ValueError:
+            prior_date = None
+
+    # Actual span of the diff window (handles snapshot gaps); default to 14d.
+    span_days = (today - prior_date).days if prior_date else PLAYING_TIME_WINDOW_DAYS
+    span_weeks = max(span_days / 7.0, 1.0)
+
+    diff_n = fallback_n = 0
+    for h in hitter_list:
+        pid = h.get("player_id")
+        pa_now = h.get("pa_season")
+        recent_pa = None
+        src = None
+
+        if pid in prior_pa and pa_now is not None:
+            window_pa = max(0, pa_now - prior_pa[pid])
+            # Only trust the diff if the player actually batted in the window;
+            # a stale 0 (injured/benched all 2 weeks) is a real signal too, but
+            # a missing prior is not — that's handled by the branch above.
+            recent_pa = window_pa / span_weeks
+            src = "diff"
+            diff_n += 1
+        elif h.get("pa_1w") is not None:
+            recent_pa = (h["pa_1w"] or 0) * 1.0  # pa_1w already a weekly figure
+            src = "1w"
+            fallback_n += 1
+
+        if recent_pa is not None:
+            gpw = recent_pa / PA_PER_GAME
+            h["recent_pa_per_wk"] = round(recent_pa, 1)
+            h["games_per_wk"] = round(gpw, 1)
+            h["start_pct"] = round(gpw / TEAM_GAMES_PER_WEEK, 2)
+            h["playing_time_src"] = src
+        else:
+            h["recent_pa_per_wk"] = None
+            h["games_per_wk"] = None
+            h["start_pct"] = None
+            h["playing_time_src"] = None
+
+    print(f"  Recent playing time: {diff_n} via 14d snapshot diff, "
+          f"{fallback_n} via 1w fallback (window={span_days}d)")
 
 
 def fetch_per_start_for_list(pitchers, depth=5):
@@ -222,6 +327,7 @@ def main():
         if s:
             pa = parse_pa_from_yahoo_stats(s)
             h["pa_season"] = pa
+            # Season-average pace, kept for reference + as a playing-time fallback.
             h["pa_per_wk"] = round(pa / weeks_played, 1) if pa else 0.0
             try:
                 sb = int(float(s.get("SB") or 0))
@@ -235,8 +341,18 @@ def main():
             h["pa_per_wk"] = None
             h["sb_season"] = None
             h["sb_per_wk"] = None
+
+    # Recent playing time from the trailing ~2 weeks of actual games (needs
+    # pa_season set on every hitter first). This is what xFP/wk is built on,
+    # so call-ups playing every day aren't penalized by a season-average pace.
+    compute_recent_playing_time(hitter_list, today)
+
+    for h in hitter_list:
         xw = h.get("xwoba")
-        pa_wk = h.get("pa_per_wk")
+        # Prefer the recent (last-2-week) PA pace; fall back to season average.
+        pa_wk = h.get("recent_pa_per_wk")
+        if pa_wk is None:
+            pa_wk = h.get("pa_per_wk")
         sb_wk = h.get("sb_per_wk") or 0.0
         if xw is not None and pa_wk:
             hitting_pts = xw * 3.5 * pa_wk
