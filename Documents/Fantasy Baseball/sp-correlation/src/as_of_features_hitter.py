@@ -111,6 +111,26 @@ def build_year(year: int) -> pd.DataFrame:
 
     box["game_date"] = pd.to_datetime(box["game_date"]).dt.date.astype(str)
 
+    # ---- synthetic projection rows (2026 only): one per batter, dated the
+    # day after his last game. Because window sums are strictly prior, this
+    # row's features cover the trailing window INCLUDING his latest game —
+    # without it, every projection ignores the most recent game (one game
+    # out of ~30 in a 5-week window is too much to drop). Stats are zeroed
+    # and fp is NaN so these rows can never be trained or evaluated on.
+    box["is_proj_row"] = 0
+    if year == 2026:
+        synth = box.sort_values("game_date").groupby("batter_id").tail(1).copy()
+        synth["game_date"] = (
+            pd.to_datetime(synth["game_date"]) + pd.Timedelta(days=1)
+        ).dt.date.astype(str)
+        stat_cols = [c for c in synth.select_dtypes(include="number").columns
+                     if c not in ("batter_id", "game_pk", "is_home")]
+        synth[stat_cols] = 0
+        synth["fp"] = np.nan
+        synth["game_pk"] = -1
+        synth["is_proj_row"] = 1
+        box = pd.concat([box, synth], ignore_index=True)
+
     # ---- trailing-window prior aggregates per batter
     cum = _rolling_window_with_lag(box, by="batter_id", sort_cols=["batter_id", "game_date"])
 
@@ -125,6 +145,7 @@ def build_year(year: int) -> pd.DataFrame:
     o["position"] = cum["position"]
     o["fp"] = cum["fp"]
     o["n_games_prior"] = cum["n_games_prior"]
+    o["is_proj_row"] = cum["is_proj_row"]
 
     # Box-derived rate features
     ab = cum["cum_ab"]
@@ -165,6 +186,14 @@ def build_year(year: int) -> pd.DataFrame:
     home_team = np.where(o["is_home"] == 1, o["team"], o["opponent"])
     o["park_factor"] = pd.Series(home_team).map(lambda t: park_factor(t)).values
 
+    # Projection rows have no scheduled venue: neutral park, coin-flip home.
+    # (Also stops the previous quirk where a hitter's ROS projection carried
+    # the park of whatever stadium he happened to play his last game in.)
+    proj_mask = o["is_proj_row"] == 1
+    o["is_home"] = o["is_home"].astype(float)
+    o.loc[proj_mask, "park_factor"] = 100.0
+    o.loc[proj_mask, "is_home"] = 0.5
+
     # ---- own-team offense (lineup quality affects R/RBI)
     to_path = PROC / f"team_offense_{year}.parquet"
     if to_path.exists():
@@ -176,6 +205,14 @@ def build_year(year: int) -> pd.DataFrame:
             ],
             on=["_team_code", "game_date"], how="left",
         )
+        # Projection rows are dated after the team's last game, so the exact
+        # date join misses — fall back to the team's most recent value.
+        latest_to = (
+            to.sort_values("game_date").groupby("team").tail(1)
+            .set_index("team")["team_xwoba_prior"]
+        )
+        fb_mask = proj_mask & o["own_team_xwoba_prior"].isna()
+        o.loc[fb_mask, "own_team_xwoba_prior"] = o.loc[fb_mask, "_team_code"].map(latest_to)
         o = o.drop(columns=["_team_code"])
     else:
         print(f"  WARN: team_offense_{year}.parquet missing")
