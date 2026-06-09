@@ -72,6 +72,9 @@ def refresh_hitter_projections() -> bool:
     steps = [
         ("box hitters",  ["python", "-m", "src.pull_box_scores", "--year", "2026", "--hitters"]),
         ("statcast hit", ["python", "-m", "src.pull_statcast", "--year", "2026", "--hitters"]),
+        # team_offense must be rebuilt with the pulls: a stale parquet null-joins
+        # own_team_xwoba on recent rows and pins every projection to old form.
+        ("team offense", ["python", "-m", "src.team_offense", "--year", "2026"]),
         ("as-of feats",  ["python", "-m", "src.as_of_features_hitter", "--year", "2026"]),
         ("project",      ["python", "-m", "src.project_hitter", "--all"]),
     ]
