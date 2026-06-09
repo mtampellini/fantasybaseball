@@ -4,9 +4,10 @@ Render the Top 100 Hitter ROS Projections section for the Tamp Slam daily report
 Pulls from the sibling sp-correlation project's outputs:
     Documents/Fantasy Baseball/sp-correlation/output/2026_hitter_projections.csv
 
-Headline metric: Proj FP ROS = fp_g_projection × games_remaining_est.
-Rostered hitters highlighted (own team = green, FA = yellow). Rostered
-hitters below rank 100 are appended.
+Headline metric: fp_g_projection from the Ridge model fed trailing-5-week
+form features (not season-to-date), with actuals shown over the same 5-week
+window. Rostered hitters highlighted (own team = green, FA = yellow).
+Rostered hitters below rank 100 are appended.
 """
 
 from __future__ import annotations
@@ -130,6 +131,8 @@ def _load_projections() -> list[dict]:
                 "games_remaining_est": _to_float(r.get("games_remaining_est")),
                 "fp_g_projection": _to_float(r["fp_g_projection"]),
                 "avg_fp_actual": _to_float(r.get("avg_fp_actual")),
+                "avg_fp_5wk": _to_float(r.get("avg_fp_5wk")),
+                "games_5wk": _to_int(r.get("games_5wk")),
                 "fp_ros_projection": _to_float(r["fp_ros_projection"]),
                 "name_norm": _norm_full(r["batter_name"]),
                 "last_norm": _norm_last(r["batter_name"]),
@@ -180,7 +183,7 @@ def render_hitter_leaderboard_section(my_hitters: list[dict], fa_hitters: list[d
             cls = "h-fa"
             label = "FA"
 
-        actual = r["avg_fp_actual"]
+        actual = r["avg_fp_5wk"]
         proj_g = r["fp_g_projection"]
         if actual is not None and proj_g is not None:
             actual_s = f'{actual:.2f}'
@@ -192,7 +195,7 @@ def render_hitter_leaderboard_section(my_hitters: list[dict], fa_hitters: list[d
             actual_s = '<span class="dim">—</span>'
             delta_html = '<span class="dim">—</span>'
 
-        g_played = r["games_played_2026"] if r["games_played_2026"] is not None else "—"
+        g_played = r["games_5wk"] if r["games_5wk"] is not None else "—"
         proj_g_s = f'{proj_g:.2f}' if proj_g is not None else "—"
 
         body.append(
@@ -222,7 +225,7 @@ def render_hitter_leaderboard_section(my_hitters: list[dict], fa_hitters: list[d
         not_in_html = (
             f"<p class='dim h-legend' style='margin-top:10px;'>"
             f"<b>My rostered hitters not in projection dataset</b> "
-            f"(need ≥5 prior games in 2026 or on IL): {', '.join(not_in_dataset)}</p>"
+            f"(need ≥5 games in the last 5 weeks or on IL): {', '.join(not_in_dataset)}</p>"
         )
 
     legend = (
@@ -234,8 +237,11 @@ def render_hitter_leaderboard_section(my_hitters: list[dict], fa_hitters: list[d
     )
 
     return (
-        "<p class='dim'>Ranked by projected Yahoo FP per game. Model: Ridge "
-        "trained on 2024+2025 Statcast skill features. "
+        "<p class='dim'>Ranked by projected Yahoo FP per game from "
+        "<b>trailing-5-week form</b> — both the model features and the actuals "
+        "below cover only the last 35 days, so hot/cold streaks and role changes "
+        "show up instead of being diluted by April. Model: Ridge trained on "
+        "2024+2025 trailing-5-week Statcast skill features. "
         f"Source: <code>sp-correlation/output/2026_hitter_projections.csv</code>. "
         f"Shows top 100 plus {len(extras)} rostered hitter{'s' if len(extras) != 1 else ''} below rank 100.</p>"
         "<p class='h-legend'>Click any column header to sort. "
@@ -243,10 +249,10 @@ def render_hitter_leaderboard_section(my_hitters: list[dict], fa_hitters: list[d
         "<span class='h-delta-dn'>Δ red</span> = cold (actual &lt; projected, possible buy).</p>"
         "<table class='sortable'>"
         "<thead><tr><th>Rank</th><th>Hitter</th><th>Team</th><th>Pos</th>"
-        "<th>G played</th>"
+        "<th>G (5wk)</th>"
         "<th>Proj FP/G</th>"
-        "<th>Actual FP/G</th>"
-        "<th>Δ (Actual − Proj)</th>"
+        "<th>FP/G (5wk)</th>"
+        "<th>Δ (5wk − Proj)</th>"
         "<th>Owned</th></tr></thead>"
         f"<tbody>{''.join(body)}</tbody></table>"
         f"{legend}{not_in_html}"

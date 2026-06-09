@@ -280,7 +280,7 @@ def render_my_hitters_table(hitters):
 {rows}
   </tbody>
 </table>
-<p class="note">Proj FP/G = Ridge-model projection on 2024+2025 Statcast skill features (same model as the Top 100 Hitter Projections section). Avg_FP_L4W = last-month FP total / 4. Proj FP/G blank = not in projection dataset (insufficient 2026 games).</p>
+<p class="note">Proj FP/G = Ridge-model projection on trailing-5-week Statcast skill features (same model as the Top 100 Hitter Projections section). Avg_FP_L4W = last-month FP total / 4. Proj FP/G blank = not in projection dataset (insufficient recent games).</p>
 """
 
 
@@ -576,7 +576,7 @@ def render_html(snapshot):
 </section>
 
 <section class="section">
-  <h2>Top 100 Hitter Projections — 2026</h2>
+  <h2>Top 100 Hitter Projections — Trailing 5-Week Form</h2>
   {render_hitter_leaderboard_section(my_hitters, fa_hitters)}
 </section>
 

@@ -1,7 +1,9 @@
 """
 Build the per-hitter-game analysis dataset: one row per (batter, game_date)
-with season-to-date metrics ENTERING that game (i.e., computed over all prior
-games in that season only).
+with trailing-window metrics ENTERING that game — computed over the batter's
+games in the prior WINDOW_DAYS days only (not season-to-date), so the
+features track current form. Hitters adjust; April stats stop describing a
+June hitter, and a rolling window forgets them on purpose.
 
 Mirror of as_of_features.py for the hitter side.
 
@@ -16,7 +18,7 @@ Output:
 Each row carries:
   - Identity:  batter_id, batter_name, team, opponent, game_date, is_home
   - Target  :  fp (Yahoo fantasy points scored that game, no CYC/SLAM bonus)
-  - As-of features (season-to-date entering the game):
+  - As-of features (trailing WINDOW_DAYS days entering the game):
       fp_per_g, pa_per_g, n_games_prior
       xwoba, xba_per_bbe, barrel_pct, hard_hit_pct, sweet_spot_pct,
       k_pct, bb_pct, gb_pct, fb_pct, ld_pct,
@@ -41,16 +43,31 @@ ROOT = Path(__file__).resolve().parents[1]
 PROC = ROOT / "data" / "processed"
 
 
-def _expanding_with_lag(df: pd.DataFrame, by: str, sort_cols: list[str]) -> pd.DataFrame:
-    """Per-batter cumulative sums strictly prior to current row."""
+WINDOW_DAYS = 35  # trailing form window: 5 weeks
+
+
+def _rolling_window_with_lag(df: pd.DataFrame, by: str, sort_cols: list[str],
+                             window_days: int = WINDOW_DAYS) -> pd.DataFrame:
+    """Per-batter sums over the trailing `window_days` days strictly prior to
+    the current row (closed='left' also excludes same-day doubleheader games).
+    Output keeps the cum_ prefix so downstream feature code is unchanged."""
     df = df.sort_values(sort_cols).reset_index(drop=True)
     num_cols = df.select_dtypes(include="number").columns.tolist()
     num_cols = [c for c in num_cols if c not in (by, "is_home", "game_pk")]
-    grouped = df.groupby(by, sort=False)[num_cols]
-    cum_inc = grouped.cumsum()
-    cum = cum_inc.groupby(df[by]).shift(1).fillna(0).add_prefix("cum_")
-    df["n_games_prior"] = grouped.cumcount()
-    out = pd.concat([df, cum], axis=1)
+    df["_dt"] = pd.to_datetime(df["game_date"])
+    df["_g"] = 1.0
+    # Group order under sort=False matches the sorted frame, so the rolling
+    # result rows are positionally aligned with df after dropping the index.
+    rolled = (
+        df.groupby(by, sort=False)
+        .rolling(f"{window_days}D", on="_dt", closed="left")[num_cols + ["_g"]]
+        .sum()
+        .reset_index(drop=True)
+        .fillna(0)
+    )
+    cum = rolled[num_cols].add_prefix("cum_")
+    df["n_games_prior"] = rolled["_g"].astype(int)
+    out = pd.concat([df.drop(columns=["_dt", "_g"]), cum], axis=1)
     return out
 
 
@@ -94,8 +111,8 @@ def build_year(year: int) -> pd.DataFrame:
 
     box["game_date"] = pd.to_datetime(box["game_date"]).dt.date.astype(str)
 
-    # ---- cumulative-prior aggregates per batter
-    cum = _expanding_with_lag(box, by="batter_id", sort_cols=["batter_id", "game_date"])
+    # ---- trailing-window prior aggregates per batter
+    cum = _rolling_window_with_lag(box, by="batter_id", sort_cols=["batter_id", "game_date"])
 
     o = pd.DataFrame()
     o["batter_id"] = cum["batter_id"]
@@ -164,12 +181,13 @@ def build_year(year: int) -> pd.DataFrame:
         print(f"  WARN: team_offense_{year}.parquet missing")
         o["own_team_xwoba_prior"] = np.nan
 
-    # Filter: in-season analysis cutoff for training years; min prior games
-    # for stable features. 2026 keeps all rows (we need the latest per-batter
-    # for projection).
+    # Filter: the 5/15 cutoff for training years guarantees a full
+    # WINDOW_DAYS of season behind every row; n_games_prior now counts games
+    # inside the window (max ~31), so >=20 still means everyday players.
+    # 2026 stays loose for projection coverage.
     MIN_PRIOR = 20
     if year == 2026:
-        final = o[o["n_games_prior"] >= 5].copy()  # loose for projection coverage
+        final = o[o["n_games_prior"] >= 5].copy()  # >=5 games in last 5 weeks
     else:
         cutoff = f"{year}-05-15"
         final = o[(o["game_date"] >= cutoff) & (o["n_games_prior"] >= MIN_PRIOR)].copy()

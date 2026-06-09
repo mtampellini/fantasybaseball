@@ -1,6 +1,7 @@
 """
 Project each 2026 hitter's rest-of-season Yahoo FP using the Ridge model
-trained on 2024+2025 as-of features.
+trained on 2024+2025 trailing-5-week (WINDOW_DAYS) as-of features, so the
+projection reflects current form rather than season-to-date averages.
 
 Headline metric: fp_ros_projection = fp_g_projection × games_remaining_est
 where games_remaining_est = (player_G / team_G) × (162 - team_G).
@@ -20,6 +21,7 @@ from pathlib import Path
 import pandas as pd
 
 from src.analysis_hitter import FEATURE_COLS, fit_model, load_dataset
+from src.as_of_features_hitter import WINDOW_DAYS
 from src.yahoo_scoring import HitterWeights, hitter_fp
 
 
@@ -41,12 +43,13 @@ def _train_default_model():
 
 def _actual_fp_per_batter() -> pd.DataFrame:
     """Mean / count / sum of actual 2026 Yahoo FP per batter (with CYC bonus
-    in actuals, but our 2026 data has zero cycles so far)."""
+    in actuals, but our 2026 data has zero cycles so far). Also computes the
+    trailing-5-week (WINDOW_DAYS) actuals to match the model's form window."""
     box_path = PROC / "box_hitters_2026.parquet"
     if not box_path.exists():
         return pd.DataFrame(columns=[
             "batter_id", "avg_fp_actual", "games_played_2026",
-            "fp_total_2026", "team",
+            "fp_total_2026", "avg_fp_5wk", "games_5wk", "team",
         ])
     box = pd.read_parquet(box_path)
     w = HitterWeights.from_file()
@@ -64,6 +67,19 @@ def _actual_fp_per_batter() -> pd.DataFrame:
         fp_total_2026=("fp", "sum"),
     ).reset_index()
     agg["avg_fp_actual"] = agg["avg_fp_actual"].round(2)
+
+    # Trailing 5 weeks, anchored to the newest game in the data (not today,
+    # so a stale box pull doesn't shrink everyone's window)
+    dates = pd.to_datetime(box["game_date"])
+    window_start = dates.max() - pd.Timedelta(days=WINDOW_DAYS - 1)
+    recent = box[dates >= window_start]
+    agg5 = recent.groupby("batter_id").agg(
+        avg_fp_5wk=("fp", "mean"),
+        games_5wk=("fp", "size"),
+    ).reset_index()
+    agg5["avg_fp_5wk"] = agg5["avg_fp_5wk"].round(2)
+
+    agg = agg.merge(agg5, on="batter_id", how="left")
     agg = agg.merge(last_team, on="batter_id", how="left")
     return agg
 
@@ -114,7 +130,8 @@ def project_all(model, feats: list[str]) -> pd.DataFrame:
     cols = [
         "batter_id", "batter_name", "team", "position",
         "games_played_2026", "team_games_played", "games_remaining_est",
-        "fp_g_projection", "avg_fp_actual", "fp_total_2026",
+        "fp_g_projection", "avg_fp_actual", "avg_fp_5wk", "games_5wk",
+        "fp_total_2026",
         "fp_ros_projection",
         "n_games_prior",
     ] + feats
