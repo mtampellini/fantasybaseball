@@ -55,10 +55,16 @@ def _chunks(start: date, end: date, days: int = 7):
 
 
 def fetch_chunk(start: date, end: date) -> pd.DataFrame:
-    """Fetch one weekly chunk; cached to parquet."""
+    """Fetch one weekly chunk; cached to parquet.
+
+    A cache file is only trusted if it was written after the chunk's end
+    date — a chunk cached mid-week holds partial data and must be refetched.
+    """
     cache = RAW / f"{start.isoformat()}.parquet"
     if cache.exists():
-        return pd.read_parquet(cache)
+        cached_on = datetime.fromtimestamp(cache.stat().st_mtime).date()
+        if cached_on > end:
+            return pd.read_parquet(cache)
     df = pyb.statcast(start_dt=start.isoformat(), end_dt=end.isoformat(), verbose=False)
     keep = [c for c in KEEP_COLS if c in df.columns]
     df = df[keep].copy()
