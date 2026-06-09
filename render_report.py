@@ -488,11 +488,12 @@ def render_probables_section(my_pitchers, fa_pitchers):
 
 
 def _fmt_last_update(raw):
-    """Format generated_at as a 12-hour New York clock (e.g. 2026-06-09 2:45 PM ET).
+    """Format generated_at as a 12-hour New York clock (e.g. 2026-06-09 10:45 AM ET).
 
-    New snapshots store an ISO timestamp with UTC offset; legacy snapshots
-    store a naive 'YYYY-MM-DD HH:MM:SS' string that is assumed to already
-    be Eastern. Anything unparseable is shown as-is.
+    New snapshots store an ISO timestamp with UTC offset. Legacy snapshots
+    store a naive 'YYYY-MM-DD HH:MM:SS' stamped by the GitHub Actions runner,
+    whose clock is UTC — verified against CI commit times — so naive is
+    treated as UTC. Anything unparseable is shown as-is.
     """
     if not raw:
         return ""
@@ -500,8 +501,9 @@ def _fmt_last_update(raw):
         dt = datetime.fromisoformat(str(raw))
     except ValueError:
         return str(raw)
-    if dt.tzinfo is not None:
-        dt = dt.astimezone(ZoneInfo("America/New_York"))
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=ZoneInfo("UTC"))
+    dt = dt.astimezone(ZoneInfo("America/New_York"))
     hour12 = dt.hour % 12 or 12
     ampm = "AM" if dt.hour < 12 else "PM"
     return f"{dt:%Y-%m-%d} {hour12}:{dt.minute:02d} {ampm} ET"
