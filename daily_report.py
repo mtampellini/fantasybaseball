@@ -14,6 +14,7 @@ import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from config import (
     YAHOO_TEAM_ID, FA_PITCHER_COUNT, FA_HITTER_COUNT, PER_START_DEPTH
@@ -393,7 +394,7 @@ def main():
 
     snapshot = {
         "date": today,
-        "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "generated_at": datetime.now(ZoneInfo("America/New_York")).isoformat(timespec="seconds"),
         "week": week,
         "record": record,
         "my_hitters": my_hitters,

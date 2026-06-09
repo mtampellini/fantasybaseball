@@ -12,6 +12,7 @@ Sections in order (per Mike's spec):
 
 from datetime import datetime
 from html import escape
+from zoneinfo import ZoneInfo
 
 from render_weekly_section import (
     render_section as render_weekly_section,
@@ -486,10 +487,30 @@ def render_probables_section(my_pitchers, fa_pitchers):
 """
 
 
+def _fmt_last_update(raw):
+    """Format generated_at as a 12-hour New York clock (e.g. 2026-06-09 2:45 PM ET).
+
+    New snapshots store an ISO timestamp with UTC offset; legacy snapshots
+    store a naive 'YYYY-MM-DD HH:MM:SS' string that is assumed to already
+    be Eastern. Anything unparseable is shown as-is.
+    """
+    if not raw:
+        return ""
+    try:
+        dt = datetime.fromisoformat(str(raw))
+    except ValueError:
+        return str(raw)
+    if dt.tzinfo is not None:
+        dt = dt.astimezone(ZoneInfo("America/New_York"))
+    hour12 = dt.hour % 12 or 12
+    ampm = "AM" if dt.hour < 12 else "PM"
+    return f"{dt:%Y-%m-%d} {hour12}:{dt.minute:02d} {ampm} ET"
+
+
 def render_html(snapshot):
     """Build the full HTML document."""
     today = snapshot.get("date", datetime.now().strftime("%Y-%m-%d"))
-    last_update = snapshot.get("generated_at", "")
+    last_update = _fmt_last_update(snapshot.get("generated_at", ""))
     week = snapshot.get("week", "—")
     record = snapshot.get("record", "")
 
