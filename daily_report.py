@@ -344,6 +344,21 @@ def main():
     except Exception as e:
         print(f"  WARN: weekly metrics failed: {e}")
 
+    # Fallback: a transient Yahoo failure shouldn't blank the standings
+    # section for a whole day (happened 2026-06-09). Reuse the most recent
+    # snapshot that has league_metrics, flagged with the date it came from.
+    if league_metrics is None:
+        for prev in sorted(SNAPSHOT_DIR.glob("*.json"), reverse=True):
+            try:
+                old = json.loads(prev.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                continue
+            if old.get("league_metrics"):
+                league_metrics = old["league_metrics"]
+                league_metrics["stale_from"] = old.get("date", prev.stem)
+                print(f"  Fallback: reusing league_metrics from {prev.name}")
+                break
+
     # Step 6: Historical Statcast (2025 + career) for trade-target scoring
     print("\n[6/8] Pulling 2025 + career Savant for trade targets...")
     h2025 = {}

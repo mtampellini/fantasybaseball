@@ -596,6 +596,12 @@ def render_section(league_metrics):
     if not league_metrics:
         return ""
     parts = []
+    stale = league_metrics.get("stale_from")
+    if stale:
+        parts.append(
+            f'<p class="note" style="color:#c62828;">Live Yahoo pull failed this '
+            f'morning — showing the last good data from <b>{stale}</b>.</p>'
+        )
     standings = league_metrics.get("standings")
     if standings:
         parts.append(_render_standings(standings))
