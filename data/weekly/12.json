@@ -2,56 +2,56 @@
   {
     "team_id": 1,
     "team_name": "Pine Barrens",
-    "hitting": 272.0,
-    "pitching": 117.5,
+    "hitting": 291.5,
+    "pitching": 98.0,
     "total": 389.5,
     "week": 12
   },
   {
     "team_id": 11,
     "team_name": "Tamp Slam",
-    "hitting": 277.0,
-    "pitching": 136.5,
+    "hitting": 293.5,
+    "pitching": 120.0,
     "total": 413.5,
     "week": 12
   },
   {
     "team_id": 2,
     "team_name": "Balcony Tears",
-    "hitting": 299.0,
-    "pitching": 173.33,
+    "hitting": 324.5,
+    "pitching": 147.83,
     "total": 472.33,
     "week": 12
   },
   {
     "team_id": 6,
     "team_name": "KING JULIAN",
-    "hitting": 266.0,
-    "pitching": 75.58,
+    "hitting": 268.0,
+    "pitching": 73.58,
     "total": 341.58,
     "week": 12
   },
   {
     "team_id": 3,
     "team_name": "Chicks Dig Longballs",
-    "hitting": 339.0,
-    "pitching": 131.25,
+    "hitting": 341.0,
+    "pitching": 129.25,
     "total": 470.25,
     "week": 12
   },
   {
     "team_id": 5,
     "team_name": "Rayhood",
-    "hitting": 285.0,
-    "pitching": 113.75,
+    "hitting": 291.5,
+    "pitching": 107.25,
     "total": 398.75,
     "week": 12
   },
   {
     "team_id": 4,
     "team_name": "Diamond Dogs",
-    "hitting": 337.0,
-    "pitching": 74.17,
+    "hitting": 338.0,
+    "pitching": 73.17,
     "total": 411.17,
     "week": 12
   },
@@ -66,8 +66,8 @@
   {
     "team_id": 7,
     "team_name": "LB Jefes",
-    "hitting": 273.0,
-    "pitching": 61.75,
+    "hitting": 274.0,
+    "pitching": 60.75,
     "total": 334.75,
     "week": 12
   },
@@ -82,16 +82,16 @@
   {
     "team_id": 8,
     "team_name": "Mama's Juiced Meatballs",
-    "hitting": 377.5,
-    "pitching": 47.83,
+    "hitting": 379.5,
+    "pitching": 45.83,
     "total": 425.33,
     "week": 12
   },
   {
     "team_id": 12,
     "team_name": "The SS Express",
-    "hitting": 340.5,
-    "pitching": 67.0,
+    "hitting": 355.0,
+    "pitching": 52.5,
     "total": 407.5,
     "week": 12
   },
@@ -106,8 +106,8 @@
   {
     "team_id": 14,
     "team_name": "Short Porchers",
-    "hitting": 298.0,
-    "pitching": 50.25,
+    "hitting": 300.0,
+    "pitching": 48.25,
     "total": 348.25,
     "week": 12
   }
