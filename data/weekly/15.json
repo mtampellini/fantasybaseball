@@ -2,113 +2,113 @@
   {
     "team_id": 1,
     "team_name": "Pine Barrens",
-    "hitting": 198.0,
-    "pitching": 147.42,
-    "total": 345.42,
+    "hitting": 215.0,
+    "pitching": 138.92,
+    "total": 353.92,
     "week": 15
   },
   {
     "team_id": 12,
     "team_name": "The SS Express",
-    "hitting": 191.5,
-    "pitching": 113.92,
-    "total": 305.42,
+    "hitting": 229.0,
+    "pitching": 159.83,
+    "total": 388.83,
     "week": 15
   },
   {
     "team_id": 2,
     "team_name": "Balcony Tears",
-    "hitting": 132.0,
-    "pitching": 98.58,
-    "total": 230.58,
+    "hitting": 168.0,
+    "pitching": 122.17,
+    "total": 290.17,
     "week": 15
   },
   {
     "team_id": 11,
     "team_name": "Tamp Slam",
-    "hitting": 176.0,
-    "pitching": 57.75,
-    "total": 233.75,
+    "hitting": 240.0,
+    "pitching": 52.5,
+    "total": 292.5,
     "week": 15
   },
   {
     "team_id": 3,
     "team_name": "Chicks Dig Longballs",
-    "hitting": 175.0,
-    "pitching": 74.33,
-    "total": 249.33,
+    "hitting": 215.5,
+    "pitching": 71.17,
+    "total": 286.67,
     "week": 15
   },
   {
     "team_id": 8,
     "team_name": "Mama's Juiced Meatballs",
-    "hitting": 261.5,
-    "pitching": 43.92,
-    "total": 305.42,
+    "hitting": 325.0,
+    "pitching": 95.08,
+    "total": 420.08,
     "week": 15
   },
   {
     "team_id": 4,
     "team_name": "Diamond Dogs",
-    "hitting": 207.5,
-    "pitching": 72.92,
-    "total": 280.42,
+    "hitting": 243.0,
+    "pitching": 91.58,
+    "total": 334.58,
     "week": 15
   },
   {
     "team_id": 6,
     "team_name": "KING JULIAN",
-    "hitting": 189.0,
+    "hitting": 245.0,
     "pitching": 14.67,
-    "total": 203.67,
+    "total": 259.67,
     "week": 15
   },
   {
     "team_id": 5,
     "team_name": "Rayhood",
-    "hitting": 126.0,
-    "pitching": 19.25,
-    "total": 145.25,
+    "hitting": 195.0,
+    "pitching": 51.0,
+    "total": 246.0,
     "week": 15
   },
   {
     "team_id": 14,
     "team_name": "Short Porchers",
-    "hitting": 219.0,
-    "pitching": 90.42,
-    "total": 309.42,
+    "hitting": 276.5,
+    "pitching": 100.58,
+    "total": 377.08,
     "week": 15
   },
   {
     "team_id": 7,
     "team_name": "LB Jefes",
-    "hitting": 229.5,
-    "pitching": 21.17,
-    "total": 250.67,
+    "hitting": 311.5,
+    "pitching": 93.58,
+    "total": 405.08,
     "week": 15
   },
   {
     "team_id": 9,
     "team_name": "Soto Shuffle",
-    "hitting": 192.0,
-    "pitching": 3.58,
-    "total": 195.58,
+    "hitting": 236.0,
+    "pitching": 35.33,
+    "total": 271.33,
     "week": 15
   },
   {
     "team_id": 10,
     "team_name": "South Park Cows",
-    "hitting": 217.5,
-    "pitching": 88.0,
-    "total": 305.5,
+    "hitting": 250.5,
+    "pitching": 81.0,
+    "total": 331.5,
     "week": 15
   },
   {
     "team_id": 13,
     "team_name": "Wally Cats",
-    "hitting": 188.5,
-    "pitching": 77.67,
-    "total": 266.17,
+    "hitting": 222.0,
+    "pitching": 87.42,
+    "total": 309.42,
     "week": 15
   }
 ]
