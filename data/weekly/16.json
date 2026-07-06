@@ -1,0 +1,114 @@
+[
+  {
+    "team_id": 1,
+    "team_name": "Pine Barrens",
+    "hitting": 0.0,
+    "pitching": 0.0,
+    "total": 0.0,
+    "week": 16
+  },
+  {
+    "team_id": 7,
+    "team_name": "LB Jefes",
+    "hitting": 0.0,
+    "pitching": 0.0,
+    "total": 0.0,
+    "week": 16
+  },
+  {
+    "team_id": 2,
+    "team_name": "Balcony Tears",
+    "hitting": 0.0,
+    "pitching": 0.0,
+    "total": 0.0,
+    "week": 16
+  },
+  {
+    "team_id": 9,
+    "team_name": "Soto Shuffle",
+    "hitting": 0.0,
+    "pitching": 0.0,
+    "total": 0.0,
+    "week": 16
+  },
+  {
+    "team_id": 3,
+    "team_name": "Chicks Dig Longballs",
+    "hitting": 0.0,
+    "pitching": 0.0,
+    "total": 0.0,
+    "week": 16
+  },
+  {
+    "team_id": 11,
+    "team_name": "Tamp Slam",
+    "hitting": 0.0,
+    "pitching": 0.0,
+    "total": 0.0,
+    "week": 16
+  },
+  {
+    "team_id": 4,
+    "team_name": "Diamond Dogs",
+    "hitting": 0.0,
+    "pitching": 0.0,
+    "total": 0.0,
+    "week": 16
+  },
+  {
+    "team_id": 13,
+    "team_name": "Wally Cats",
+    "hitting": 0.0,
+    "pitching": 0.0,
+    "total": 0.0,
+    "week": 16
+  },
+  {
+    "team_id": 5,
+    "team_name": "Rayhood",
+    "hitting": 0.0,
+    "pitching": 0.0,
+    "total": 0.0,
+    "week": 16
+  },
+  {
+    "team_id": 6,
+    "team_name": "KING JULIAN",
+    "hitting": 0.0,
+    "pitching": 0.0,
+    "total": 0.0,
+    "week": 16
+  },
+  {
+    "team_id": 8,
+    "team_name": "Mama's Juiced Meatballs",
+    "hitting": 0.0,
+    "pitching": 0.0,
+    "total": 0.0,
+    "week": 16
+  },
+  {
+    "team_id": 10,
+    "team_name": "South Park Cows",
+    "hitting": 0.0,
+    "pitching": 0.0,
+    "total": 0.0,
+    "week": 16
+  },
+  {
+    "team_id": 12,
+    "team_name": "The SS Express",
+    "hitting": 0.0,
+    "pitching": 0.0,
+    "total": 0.0,
+    "week": 16
+  },
+  {
+    "team_id": 14,
+    "team_name": "Short Porchers",
+    "hitting": 0.0,
+    "pitching": 0.0,
+    "total": 0.0,
+    "week": 16
+  }
+]
