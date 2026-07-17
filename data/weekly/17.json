@@ -2,9 +2,9 @@
   {
     "team_id": 1,
     "team_name": "Pine Barrens",
-    "hitting": 0.0,
+    "hitting": 5.0,
     "pitching": 0.0,
-    "total": 0.0,
+    "total": 5.0,
     "week": 17
   },
   {
@@ -50,25 +50,25 @@
   {
     "team_id": 5,
     "team_name": "Rayhood",
-    "hitting": 0.0,
+    "hitting": 22.0,
     "pitching": 0.0,
-    "total": 0.0,
+    "total": 22.0,
     "week": 17
   },
   {
     "team_id": 13,
     "team_name": "Wally Cats",
-    "hitting": 0.0,
+    "hitting": 4.0,
     "pitching": 0.0,
-    "total": 0.0,
+    "total": 4.0,
     "week": 17
   },
   {
     "team_id": 6,
     "team_name": "KING JULIAN",
     "hitting": 0.0,
-    "pitching": 0.0,
-    "total": 0.0,
+    "pitching": 8.25,
+    "total": 8.25,
     "week": 17
   },
   {
@@ -90,9 +90,9 @@
   {
     "team_id": 12,
     "team_name": "The SS Express",
-    "hitting": 0.0,
+    "hitting": 8.5,
     "pitching": 0.0,
-    "total": 0.0,
+    "total": 8.5,
     "week": 17
   },
   {
@@ -106,9 +106,9 @@
   {
     "team_id": 11,
     "team_name": "Tamp Slam",
-    "hitting": 0.0,
+    "hitting": 3.0,
     "pitching": 0.0,
-    "total": 0.0,
+    "total": 3.0,
     "week": 17
   }
 ]
