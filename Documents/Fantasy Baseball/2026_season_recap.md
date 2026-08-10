@@ -350,3 +350,88 @@ identical, puts you around **8,600** — roughly 1,500 clear of the field.
 ---
 
 *Generated 2026-08-09.*
+
+---
+
+## 10. The 2027 plan
+
+### Keep these two things — they are already elite
+
+**Roster structure.** 9-10 hitters, 9-10 arms, stack starts across the week.
+It produced **7,048 points (1st in the league)** and **1,250 IP (+37% vs
+average, most in the league)**. Every argument against it in the post-mortem
+was wrong.
+
+**In-season process.** 70 moves (most in the league), 1st in pitching points,
+**+61% over what the drafted arms produced**. Nobody else in this league does
+this.
+
+### The one real gap: rounds 1-12
+
+Holding your exact 9-hitter / 10-pitcher structure and changing only *who* was
+picked, a model trained on 2023-2025 and applied blind to 2026 produced:
+
+| | n | You | Model | Gain |
+|---|---|---|---|---|
+| Hitters | 9 | 3,726 | 4,492 | **+765** |
+| Pitchers | 10 | 1,638 | 2,033 | **+394** |
+| **Total** | 19 | **5,365** | **6,524** | **+1,159** |
+
+Rounds 1-12 accounted for **+1,241**. Rounds 13-19 were **-82** — the model was
+worse than you late. Late picks are noise for every method tested.
+
+### How to rank hitters
+
+From a three-year stability test (~1,900 player-seasons):
+
+| Metric | Y-o-Y stability | Predicts next-yr FP/G |
+|---|---|---|
+| HardHit% | **0.71** | 0.39 |
+| ExitVelo | 0.69 | 0.42 |
+| Barrel% | 0.68 | 0.38 |
+| **FP/G** | 0.63 | **0.62** |
+| Games | 0.57 | 0.37 |
+| xwOBA | **0.37** | 0.50 |
+| wOBA | **0.27** | 0.43 |
+
+1. **Base = last season's FP/G.** Best single predictor.
+2. **Adjust toward contact quality** (HardHit/ExitVelo/Barrel, which repeat at
+   ~0.70) when results and process diverge.
+3. **Skip xwOBA** — only 0.37 stable; it blends repeatable inputs with BABIP noise.
+4. **Multiply by expected games** — prior games predicts at r ~ 0.44. A nudge,
+   **not an injury filter**. Injuries are not forecastable.
+5. **Then stop.** Inside the top 30-40 the ranking is worthless (rank
+   correlation with outcome = **0.13**). Ceiling on any projection is
+   **R^2 ~ 0.44**.
+
+### Round by round
+
+| Rounds | Take |
+|---|---|
+| 1-8 | Hitters. This is where the entire gap lives |
+| 9-12 | Starting pitchers with real innings (Wheeler/Ray tier was +394) |
+| 13-19 | Churn fodder. Consider **2 closers** — 3 saves all year cost ~164 FP |
+
+### Tooling
+
+`draft_board.py` in this folder generates the board. Run it after the MLB
+regular season ends:
+
+```
+python draft_board.py --season 2026
+```
+
+Outputs `draft_board_2027.md` (read this on draft day) plus hitter and pitcher
+CSVs. Validated on the 2026 board: projection vs actual **r = 0.55**, and tiers
+separated cleanly (T1 avg 518 actual, T5 330, T6 259).
+
+### Honest expectations
+
+Closing the draft gap is worth roughly **+700-800 to actual team score** — not
+the full +1,159, since some of it would displace in-season adds you would have
+made anyway. That puts you near **7,800**, about 900 clear of 2026's best team.
+
+But you scored the most points in the league and went 9-8. You were 2.5-3.3
+wins below what your scoring deserved, against opponents averaging 9.1
+points/week above league average. **More points improves the odds; it does not
+fix schedule luck.**
